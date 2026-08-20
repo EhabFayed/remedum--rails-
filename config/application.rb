@@ -27,6 +27,9 @@ module App
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
-    config.api_only = true
+    # This app also serves the migrated HTML frontend, so it runs as a full
+    # Rails app. Build future JSON endpoints under app/controllers/api/ with
+    # a base controller inheriting from ActionController::API.
+    config.api_only = false
   end
 end

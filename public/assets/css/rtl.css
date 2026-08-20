@@ -1,0 +1,171 @@
+/* =========================================================
+   ROOTS OF BEAUTY — RTL override layer for the landing design
+   Loads AFTER style.css. Every rule is scoped to html[dir="rtl"].
+   Flex/grid flow flips automatically with dir=rtl — only
+   physical (left/right-anchored) declarations are mirrored here.
+   JS-positioned elements (.fpop, .fpoint, .fpop-dur__fill inline
+   left/right) are deliberately NOT flipped.
+   ========================================================= */
+
+/* ---------- 1. ARABIC TYPE ---------- */
+html[dir="rtl"]{
+  --ff:'IBM Plex Sans Arabic','Plus Jakarta Sans',system-ui,sans-serif;
+  --ff-d:'Cairo','IBM Plex Sans Arabic',sans-serif;
+}
+/* Arabic takes no tracking — zero every set letter-spacing on text that
+   will hold Arabic (the Latin spin-badge ring keeps its spacing). */
+html[dir="rtl"] .eyebrow,
+html[dir="rtl"] .sec-title,
+html[dir="rtl"] .logo__text,
+html[dir="rtl"] .hero__badge,
+html[dir="rtl"] .hero__title,
+html[dir="rtl"] .hero__sub,
+html[dir="rtl"] .stats-card__list strong,
+html[dir="rtl"] .year,
+html[dir="rtl"] .about__col h4,
+html[dir="rtl"] .acc__title,
+html[dir="rtl"] .fpop__zone,
+html[dir="rtl"] .fpop__title,
+html[dir="rtl"] .fpop-prod__body b,
+html[dir="rtl"] .fpop-dur__head span,
+html[dir="rtl"] .fpop-dur__head b,
+html[dir="rtl"] .fpoint__label,
+html[dir="rtl"] .fprod__body strong,
+html[dir="rtl"] .fprod__dur,
+html[dir="rtl"] .fprod__dur small,
+html[dir="rtl"] .facemap__side-title,
+html[dir="rtl"] .exp-badge__num b,
+html[dir="rtl"] .exp-badge__txt,
+html[dir="rtl"] .step__title,
+html[dir="rtl"] .testi__title,
+html[dir="rtl"] .testi__author strong,
+html[dir="rtl"] .why-card h4,
+html[dir="rtl"] .compare__row--head > span,
+html[dir="rtl"] .certs__head h3,
+html[dir="rtl"] .certs__list b,
+html[dir="rtl"] .post__title,
+html[dir="rtl"] .footer__cta h2,
+html[dir="rtl"] .cta-box__tag,
+html[dir="rtl"] .cta-box strong,
+html[dir="rtl"] .footer__watermark{letter-spacing:0}
+html[dir="rtl"] .hero__title,
+html[dir="rtl"] .footer__cta h2{text-transform:none}
+
+/* ---------- 4. BUTTONS ---------- */
+html[dir="rtl"] .btn{padding:7px 26px 7px 7px}
+html[dir="rtl"] .btn--sm{padding:5px 22px 5px 5px}
+/* mirrored arrow spin on hover */
+html[dir="rtl"] .btn:hover .btn__circle{transform:rotate(-45deg)}
+
+/* ---------- 5. HEADER ---------- */
+html[dir="rtl"] .nav{margin-left:0;margin-right:6px}
+html[dir="rtl"] .header__actions{margin-left:0;margin-right:auto}
+html[dir="rtl"] .dropdown{left:auto;right:0}
+
+/* ---------- 6. HERO ---------- */
+html[dir="rtl"] .hero__panel{
+  right:auto;left:0;
+  border-radius:0 var(--r-xl) var(--r-xl) 0;
+  background:radial-gradient(120% 120% at 15% 10%, #14503B 0%, #0C3728 55%, #082419 100%);
+}
+html[dir="rtl"] .dots--a{left:auto;right:12%}
+html[dir="rtl"] .dots--b{right:auto;left:6%}
+html[dir="rtl"] .checker{right:auto;left:0}
+html[dir="rtl"] .hero__badge{padding:7px 12px 7px 16px}
+html[dir="rtl"] .hero__figure{margin:0 -26px -64px -6px}
+html[dir="rtl"] .stats-card{padding:14px 14px 14px 26px}
+html[dir="rtl"] .avatars img{margin-left:0;margin-right:-9px}
+html[dir="rtl"] .avatars img:first-child{margin-right:0}
+html[dir="rtl"] .avatars__more{margin-left:0;margin-right:-9px}
+
+/* ---------- 7. ABOUT ---------- */
+html[dir="rtl"] .side-word{right:auto;left:14px}
+html[dir="rtl"] .about__grid{padding-right:0;padding-left:64px}
+html[dir="rtl"] .spin-badge{left:auto;right:16.5%}
+html[dir="rtl"] .collage__img--arch{
+  left:auto;right:50%;
+  border-radius:50% 50% 0 26% / 35% 35% 0 18%;
+}
+html[dir="rtl"] .collage__img--arch-alt{
+  left:auto;right:0;
+  border-radius:50% 50% 26% 0 / 37% 37% 19% 0;
+}
+html[dir="rtl"] .exp-badge{left:auto;right:50%}
+html[dir="rtl"] .exp-badge__num b{transform:rotate(90deg)}
+html[dir="rtl"] .exp-badge__num sup{margin-left:0;margin-right:1px}
+html[dir="rtl"] .exp-badge__txt{padding:0 9% 0 8%}
+
+/* ---------- 8. SERVICES ---------- */
+html[dir="rtl"] .deco-leaf--tr{right:auto;left:40px}
+html[dir="rtl"] .deco-leaf--bl{left:auto;right:34px}
+html[dir="rtl"] .acc__head{text-align:right}
+
+/* ---------- 9. FACE MAP ---------- */
+html[dir="rtl"] .facemap__note{text-align:right}
+html[dir="rtl"] .fprod{text-align:right}
+html[dir="rtl"] .fpop__close{right:auto;left:12px}
+html[dir="rtl"] .fpop-prod__swatch{right:auto;left:-4px}
+/* the 0–24 month scale stays a left-to-right timeline, matching the
+   JS-positioned fill (which sets physical left/right inline) */
+html[dir="rtl"] .fpop-dur__scale{direction:ltr}
+html[dir="rtl"] .fpop-dur__track{direction:ltr}
+
+/* ---------- 10. PROCESS ---------- */
+html[dir="rtl"] .process{
+  background:
+    radial-gradient(90% 70% at 78% 4%, rgba(31,120,88,.55) 0%, rgba(31,120,88,0) 62%),
+    radial-gradient(130% 130% at 50% 0%, #0E4432 0%, #093225 48%, #04150F 100%);
+}
+html[dir="rtl"] .process__flower--tl{left:auto;right:-104px;transform:rotate(-24deg)}
+html[dir="rtl"] .process__flower--br{right:auto;left:-96px;transform:rotate(158deg)}
+html[dir="rtl"] .process__wave--tr{right:auto;left:-140px;transform:rotate(16deg) skewX(10deg)}
+html[dir="rtl"] .process__wave--bl{left:auto;right:-150px;transform:rotate(-14deg) skewX(-10deg)}
+html[dir="rtl"] .step__media::after{right:auto;left:-34px;transform:scaleX(-1)}
+html[dir="rtl"] .step__img--circle{right:auto;left:6%}
+
+/* ---------- 11. TESTIMONIALS ---------- */
+html[dir="rtl"] .testi__frame{left:auto;right:0}
+html[dir="rtl"] .testi__badge{right:auto;left:2px}
+
+/* ---------- 12. WHY CHOOSE US ---------- */
+html[dir="rtl"] .why .deco-leaf--tr{right:auto;left:30px}
+html[dir="rtl"] .why-card__btn{right:auto;left:14px}
+html[dir="rtl"] .why-card:hover .why-card__btn{background:var(--green);color:#fff;transform:rotate(-45deg)}
+
+/* ---------- 13. BLOG ---------- */
+html[dir="rtl"] .post__date{left:auto;right:16px}
+html[dir="rtl"] .post__btn{right:auto;left:16px}
+html[dir="rtl"] .post:hover .post__btn{transform:rotate(-45deg)}
+
+/* ---------- 14. FOOTER ---------- */
+html[dir="rtl"] .footer{
+  background:radial-gradient(110% 130% at 90% 0%, #103F2E 0%, #0A2E22 55%, #061B13 100%);
+}
+html[dir="rtl"] .footer__watermark{text-align:left}
+html[dir="rtl"] .cta-box i{right:auto;left:16px}
+html[dir="rtl"] .cta-box:hover i{transform:rotate(-45deg)}
+
+/* ---------- 15. RESPONSIVE ---------- */
+@media (max-width:1200px){
+  html[dir="rtl"] .hero__panel{border-radius:0 var(--r-lg) var(--r-lg) 0}
+  html[dir="rtl"] .process__flower--tl{left:auto;right:-84px}
+  html[dir="rtl"] .process__flower--br{right:auto;left:-76px}
+}
+@media (max-width:992px){
+  html[dir="rtl"] .nav{
+    inset:0 auto 0 0;
+    box-shadow:20px 0 60px -30px rgba(0,0,0,.4);
+    transform:translateX(-100%);
+  }
+  html[dir="rtl"] .nav.is-open{transform:none}
+  html[dir="rtl"] .dropdown{padding:0 12px 8px 0}
+  html[dir="rtl"] .hero__panel{border-radius:0 0 var(--r-lg) var(--r-lg);left:0;right:0}
+  html[dir="rtl"] .about__grid{padding-left:0}
+  /* CSS-generated labels in the stacked comparison cards */
+  html[dir="rtl"] .compare__us::before{content:'جذور الجمال';letter-spacing:0}
+  html[dir="rtl"] .compare__them::before{content:'توريد غير نظامي';letter-spacing:0}
+}
+@media (max-width:768px){
+  html[dir="rtl"] .process__flower--tl{left:auto;right:-64px}
+  html[dir="rtl"] .process__flower--br{right:auto;left:-58px}
+}
