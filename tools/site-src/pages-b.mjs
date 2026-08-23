@@ -210,7 +210,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('الشركة', 'Com
 <section class="section"><div class="container">
   <div class="grid" style="grid-template-columns:1.35fr .65fr;align-items:stretch" id="map">
     <div style="position:relative;min-height:330px;border:1px solid var(--line);border-radius:28px;overflow:hidden;background:var(--mint)">
-      <iframe src="https://www.google.com/maps?q=Hadhramaut%20St%2C%20Al%20Khaleej%20District%2C%20Riyadh%2013223&hl=${ctx.L}&z=15&output=embed" style="position:absolute;inset:0;width:100%;height:100%;border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="${T('موقعنا على الخريطة', 'Our location on the map')}"></iframe>
+      <iframe src="https://www.google.com/maps?q=Hadhramaut%20St%2C%20Al%20Khaleej%20District%2C%20Riyadh%2013223&hl=${T('ar', 'en')}&z=15&output=embed" style="position:absolute;inset:0;width:100%;height:100%;border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="${T('موقعنا على الخريطة', 'Our location on the map')}"></iframe>
     </div>
     <div class="dark-strip" style="display:flex;flex-direction:column;gap:14px;justify-content:center;padding:32px">
       <h3>${T('دعوة مزدوجة', 'Two ways to start')}</h3>
@@ -522,7 +522,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات 
       [T('المتابعة المستمرة', 'Consumption follow-up'), T('متابعة دورية لمعدل الاستهلاك لضمان جدولة وإعادة الطلب في وقته دون انقطاع.', 'Proactive stock replenishment monitoring to prevent clinical supply disruption.')],
     ].map(([t, d], i) => `
     <div class="card step-card${i === 0 ? ' is-first' : ''}">
-      <span class="step-no">${ctx.L === 'ar' ? ['١', '٢', '٣', '٤', '٥'][i] : i + 1}</span>
+      <span class="step-no">${T(['١', '٢', '٣', '٤', '٥'][i], String(i + 1))}</span>
       <h4 class="card__title" style="font-size:14.5px;margin-bottom:7px">${t}</h4>
       <p style="font-size:12px">${d}</p>
     </div>`).join('')}

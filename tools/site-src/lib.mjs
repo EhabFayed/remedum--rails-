@@ -302,7 +302,7 @@ export const crumbs = (ctx, parts) => `
 <div class="crumbs">
   ${parts.map((p, i) => i === parts.length - 1
     ? `<span class="here">${p[0]}</span>`
-    : `<a href="${p[1]}">${p[0]}</a><span class="sep">${ctx.L === 'ar' ? '←' : '→'}</span>`).join('')}
+    : `<a href="${p[1]}">${p[0]}</a><span class="sep">${ctx.T('←', '→')}</span>`).join('')}
 </div>`;
 
 export const pageHero = (ctx, crumbList, title, lead, extra = '') => `

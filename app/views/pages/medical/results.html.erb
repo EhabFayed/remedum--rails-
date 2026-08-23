@@ -1,0 +1,68 @@
+<% content_for :title, t('content.medical_results_title') %>
+<% content_for :description, t('content.medical_results_description') %>
+<% content_for :nav_active, 'medical' %>
+
+
+<section class="page-hero"><div class="container"><div class="page-hero__inner">
+  
+<div class="crumbs">
+  <a href="<%= locale_path("") %>"><%= t('content.brands_76') %></a><span class="sep"><%= t('content.brands_80') %></span><a href="<%= locale_path("medical") %>"><%= t('content.pages_228') %></a><span class="sep"><%= t('content.brands_80') %></span><span class="here"><%= t('content.pages_335') %></span>
+</div>
+  <h1 class="page-title"><%= t('content.pages_337') %></h1>
+  <p class="page-hero__lead"><%= t('content.pages_338') %></p>
+  <div class="page-hero__chips"><span class="chip chip--green"><%= t('content.pages_339') %></span></div>
+</div></div></section>
+
+<section class="section"><div class="container">
+  <div class="dark-panel gate" data-gate>
+    <span class="icon-badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></span>
+    <h2><%= t('content.pages_340') %></h2>
+    <p><%= t('content.pages_341') %></p>
+    <label>
+      <input type="checkbox">
+      <span><%= t('content.pages_342') %></span>
+    </label>
+    <div style="display:flex;justify-content:center">
+      <button class="btn btn--green" data-gate-enter disabled><%= t('content.pages_343') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></span></button>
+    </div>
+    <p class="small"><%= t('content.pages_344') %></p>
+  </div>
+</div></section>
+
+<section class="section section--last gated" hidden><div class="container">
+  
+<div class="sec-head">
+  <span class="eyebrow"><i></i><%= t('content.pages_345') %></span>
+  <h2 class="sec-title"><%= t('content.pages_346') %></h2>
+  <p class="sec-lead"><%= t('content.pages_347') %></p>
+</div>
+  <div class="grid grid-3">
+    
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <b class="lat" dir="ltr" style="font-size:16px;font-weight:800">ReMedium® Fine</b>
+        <span class="chip chip--warn"><%= t('content.pages_354') %></span>
+      </div>
+      <h4 class="card__title" style="font-size:14.5px"><%= t('content.pages_348') %></h4>
+      <p style="line-height:1.95"><%= t('content.pages_349') %></p>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <b class="lat" dir="ltr" style="font-size:16px;font-weight:800">ReMedium® Mid</b>
+        <span class="chip chip--warn"><%= t('content.pages_354') %></span>
+      </div>
+      <h4 class="card__title" style="font-size:14.5px"><%= t('content.pages_350') %></h4>
+      <p style="line-height:1.95"><%= t('content.pages_351') %></p>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <b class="lat" dir="ltr" style="font-size:16px;font-weight:800">ReMedium® Sub-Q</b>
+        <span class="chip chip--warn"><%= t('content.pages_354') %></span>
+      </div>
+      <h4 class="card__title" style="font-size:14.5px"><%= t('content.pages_352') %></h4>
+      <p style="line-height:1.95"><%= t('content.pages_353') %></p>
+    </div>
+  </div>
+  <div style="margin-top:16px"><div class="note-strip"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"></path><path d="M9 12l2 2 4-4"></path></svg><p><%= t('content.pages_355') %></p></div></div>
+</div></section>
+

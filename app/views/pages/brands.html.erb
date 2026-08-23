@@ -1,0 +1,152 @@
+<% content_for :title, t('content.brands_title') %>
+<% content_for :description, t('content.brands_description') %>
+<% content_for :nav_active, 'brands' %>
+
+
+<section class="page-hero"><div class="container"><div class="page-hero__inner">
+  
+<div class="crumbs">
+  <a href="<%= locale_path("") %>"><%= t('content.brands_76') %></a><span class="sep"><%= t('content.brands_80') %></span><span class="here"><%= t('content.brands_77') %></span>
+</div>
+  <h1 class="page-title"><%= t('content.brands_74') %></h1>
+  <p class="page-hero__lead"><%= t('content.brands_78') %></p>
+  <div class="page-hero__chips"><span class="chip"><%= t('content.brands_79') %></span></div>
+</div></div></section>
+
+<section class="section"><div class="container">
+  <div class="dark-panel" style="padding:44px 46px;display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center;box-shadow:var(--shadow-card)">
+    <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start">
+      <span class="chip chip--green"><%= t('content.brands_81') %></span>
+      <h2 class="lat" dir="ltr" style="font-size:44px;font-weight:800;letter-spacing:-.02em">ReMedium&reg;</h2>
+      <p style="font-size:14px;line-height:2;color:rgba(255,255,255,.78)"><%= t('content.brands_82_html') %></p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px"><span class="chip chip--dark"><span class="lat" dir="ltr">SFDA</span></span><span class="chip chip--dark"><span class="lat" dir="ltr">MFDS</span></span><span class="chip chip--dark"><span class="lat" dir="ltr">GMP</span></span><span class="chip chip--dark"><span class="lat" dir="ltr">MDSAP</span></span><span class="chip chip--dark"><span class="lat" dir="ltr">ISO 13485</span></span><span class="chip chip--dark"><span class="lat" dir="ltr">CE</span></span></div>
+      <div style="margin-top:6px"><a class="btn btn--white" href="<%= locale_path("brands/remedium") %>"><%= t('content.brands_89') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></span></a></div>
+    </div>
+    <div style="position:relative;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.13)">
+      <img src="/assets/img/clinic.jpg" alt="<%= t('content.brands_90') %>" style="width:100%;height:330px;object-fit:cover">
+      <span class="media-tag"><%= t('content.brands_91') %></span>
+    </div>
+  </div>
+</div></section>
+
+<section class="section"><div class="container">
+  <div class="grid grid-3" style="gap:18px">
+    
+<div class="card card--soft product-card">
+  <div class="product-card__head">
+    <span class="swatch swatch--fine"></span>
+    <b class="product-card__name" dir="ltr">ReMedium Fine</b>
+    <span class="chip"><%= t('content.brands_1') %></span>
+  </div>
+  <p><%= t('content.brands_3') %></p>
+  
+<div class="dur">
+  <div class="dur__head"><span><%= t('content.brands_92') %></span><b style="color:var(--fine)"><%= t('content.brands_4') %></b></div>
+  <div class="dur__track"><span class="dur__fill" style="inset-inline-start:37.5%;width:12.5%;background:var(--fine)"></span></div>
+  <div class="dur__scale"><span>0</span><span>6</span><span>12</span><span>18</span><span><%= t('content.brands_93') %></span></div>
+</div>
+  <a class="go" href="<%= locale_path("brands/remedium/fine") %>"><%= t('content.brands_94') %> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></a>
+</div>
+<div class="card card--soft product-card">
+  <div class="product-card__head">
+    <span class="swatch swatch--mid"></span>
+    <b class="product-card__name" dir="ltr">ReMedium Mid</b>
+    <span class="chip"><%= t('content.brands_26') %></span>
+  </div>
+  <p><%= t('content.brands_28') %></p>
+  
+<div class="dur">
+  <div class="dur__head"><span><%= t('content.brands_92') %></span><b style="color:var(--mid)"><%= t('content.brands_29') %></b></div>
+  <div class="dur__track"><span class="dur__fill" style="inset-inline-start:50%;width:25%;background:var(--mid)"></span></div>
+  <div class="dur__scale"><span>0</span><span>6</span><span>12</span><span>18</span><span><%= t('content.brands_93') %></span></div>
+</div>
+  <a class="go" href="<%= locale_path("brands/remedium/mid") %>"><%= t('content.brands_94') %> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></a>
+</div>
+<div class="card card--soft product-card">
+  <div class="product-card__head">
+    <span class="swatch swatch--subq"></span>
+    <b class="product-card__name" dir="ltr">ReMedium Sub-Q</b>
+    <span class="chip"><%= t('content.brands_50') %></span>
+  </div>
+  <p><%= t('content.brands_52') %></p>
+  
+<div class="dur">
+  <div class="dur__head"><span><%= t('content.brands_92') %></span><b style="color:var(--subq)"><%= t('content.brands_53') %></b></div>
+  <div class="dur__track"><span class="dur__fill" style="inset-inline-start:75%;width:25%;background:var(--subq)"></span></div>
+  <div class="dur__scale"><span>0</span><span>6</span><span>12</span><span>18</span><span><%= t('content.brands_93') %></span></div>
+</div>
+  <a class="go" href="<%= locale_path("brands/remedium/sub-q") %>"><%= t('content.brands_94') %> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></a>
+</div>
+  </div>
+</div></section>
+
+<section class="section"><div class="container">
+  <div class="card">
+    <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+      <span class="icon-tile" style="width:56px;height:56px;border-radius:16px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg></span>
+      <div style="flex:1;min-width:260px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;flex-wrap:wrap">
+          <b style="font-family:var(--ff-d);font-size:19px;font-weight:800"><%= t('content.brands_95') %></b>
+          <span class="chip"><%= t('content.brands_96') %></span>
+          <span class="chip chip--green"><%= t('content.brands_97_html') %></span>
+        </div>
+        <p style="font-size:13px"><%= t('content.brands_98') %></p>
+      </div>
+      <a href="<%= locale_path("brands/ha-filler") %>" style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--green-600);white-space:nowrap"><%= t('content.brands_99') %> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></a>
+    </div>
+  </div>
+</div></section>
+
+<section class="section--mint" id="skincare-external"><div class="container">
+  
+<div class="sec-head">
+  <span class="eyebrow"><i></i><%= t('content.brands_100') %></span>
+  <h2 class="sec-title"><%= t('content.brands_101') %></h2>
+  <p class="sec-lead"><%= t('content.brands_102') %></p>
+</div>
+  <div class="grid" style="grid-template-columns:.85fr repeat(4,minmax(0,1fr))">
+    <div class="arch-media arch-media--card" style="min-height:180px"><img src="/assets/img/skincare.jpg" alt="<%= t('content.brands_103') %>"></div>
+    
+    <div class="card" style="display:flex;flex-direction:column;gap:10px;padding:24px">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <b class="lat" dir="ltr" style="font-size:16.5px;font-weight:800">SKIN1004</b>
+        <span style="color:var(--green)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5h5v5"></path><path d="M19 5l-8 8"></path><path d="M9 5H5v14h14v-4"></path></svg></span>
+      </div>
+      <p><%= t('content.brands_104') %></p>
+      <span style="font-size:11.5px;font-weight:700;color:var(--green-600)"><%= t('content.brands_108') %></span>
+    </div>
+    <div class="card" style="display:flex;flex-direction:column;gap:10px;padding:24px">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <b class="lat" dir="ltr" style="font-size:16.5px;font-weight:800">Purito</b>
+        <span style="color:var(--green)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5h5v5"></path><path d="M19 5l-8 8"></path><path d="M9 5H5v14h14v-4"></path></svg></span>
+      </div>
+      <p><%= t('content.brands_105') %></p>
+      <span style="font-size:11.5px;font-weight:700;color:var(--green-600)"><%= t('content.brands_108') %></span>
+    </div>
+    <div class="card" style="display:flex;flex-direction:column;gap:10px;padding:24px">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <b class="lat" dir="ltr" style="font-size:16.5px;font-weight:800">Orjena</b>
+        <span style="color:var(--green)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5h5v5"></path><path d="M19 5l-8 8"></path><path d="M9 5H5v14h14v-4"></path></svg></span>
+      </div>
+      <p><%= t('content.brands_106') %></p>
+      <span style="font-size:11.5px;font-weight:700;color:var(--green-600)"><%= t('content.brands_108') %></span>
+    </div>
+    <div class="card" style="display:flex;flex-direction:column;gap:10px;padding:24px">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <b class="lat" dir="ltr" style="font-size:16.5px;font-weight:800">Herb Earth</b>
+        <span style="color:var(--green)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5h5v5"></path><path d="M19 5l-8 8"></path><path d="M9 5H5v14h14v-4"></path></svg></span>
+      </div>
+      <p><%= t('content.brands_107') %></p>
+      <span style="font-size:11.5px;font-weight:700;color:var(--green-600)"><%= t('content.brands_108') %></span>
+    </div>
+  </div>
+  <div style="margin-top:22px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
+    <a class="btn btn--green" href="https://reemncream.com/ar/collections/all" target="_blank" rel="noopener"><%= t('content.brands_109') %><span class="btn__circle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5h5v5"></path><path d="M19 5l-8 8"></path><path d="M9 5H5v14h14v-4"></path></svg></span></a>
+    <p style="font-size:12px;color:var(--muted);max-width:560px"><%= t('content.brands_110') %></p>
+  </div>
+</div></section>
+
+<section class="section section--last"><div class="container">
+  <div class="dark-strip"><h3><%= t('content.brands_111') %></h3><p><%= t('content.brands_112') %></p></div>
+</div></section>
+

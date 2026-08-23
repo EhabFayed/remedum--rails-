@@ -1,0 +1,108 @@
+<% content_for :title, t('content.quality_certifications_title') %>
+<% content_for :description, t('content.quality_certifications_description') %>
+<% content_for :nav_active, 'quality' %>
+
+
+<section class="page-hero"><div class="container"><div class="page-hero__inner">
+  
+<div class="crumbs">
+  <a href="<%= locale_path("") %>"><%= t('content.brands_76') %></a><span class="sep"><%= t('content.brands_80') %></span><a href="<%= locale_path("quality/compliance") %>"><%= t('content.pages_107') %></a><span class="sep"><%= t('content.brands_80') %></span><span class="here"><%= t('content.pages_194') %></span>
+</div>
+  <h1 class="page-title"><%= t('content.pages_194') %></h1>
+  <p class="page-hero__lead"><%= t('content.pages_196') %></p>
+  
+</div></div></section>
+
+<section class="section"><div class="container">
+  
+<div class="sec-head">
+  <span class="eyebrow"><i></i><%= t('content.pages_197') %></span>
+  <h2 class="sec-title"><%= t('content.pages_198') %></h2>
+  
+</div>
+  <div style="display:flex;flex-direction:column;gap:12px">
+    
+    <div style="display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px 26px" class="cert-row">
+      <b class="lat" dir="ltr" style="font-size:21px;font-weight:800;color:var(--green-900);text-align:center;background:var(--mint);border-radius:14px;padding:16px 8px">CE</b>
+      <div>
+        <span class="lat" dir="ltr" style="display:block;font-size:12px;font-weight:700;color:var(--muted-2);margin-bottom:4px;text-align:start">European Conformity</span>
+        <p style="font-size:13.5px;line-height:1.95;color:var(--muted)"><%= t('content.pages_199') %></p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px 26px" class="cert-row">
+      <b class="lat" dir="ltr" style="font-size:21px;font-weight:800;color:var(--green-900);text-align:center;background:var(--mint);border-radius:14px;padding:16px 8px">ISO 13485</b>
+      <div>
+        <span class="lat" dir="ltr" style="display:block;font-size:12px;font-weight:700;color:var(--muted-2);margin-bottom:4px;text-align:start">Medical Devices — Quality Management Systems</span>
+        <p style="font-size:13.5px;line-height:1.95;color:var(--muted)"><%= t('content.pages_200') %></p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px 26px" class="cert-row">
+      <b class="lat" dir="ltr" style="font-size:21px;font-weight:800;color:var(--green-900);text-align:center;background:var(--mint);border-radius:14px;padding:16px 8px">MDSAP</b>
+      <div>
+        <span class="lat" dir="ltr" style="display:block;font-size:12px;font-weight:700;color:var(--muted-2);margin-bottom:4px;text-align:start">Medical Device Single Audit Program</span>
+        <p style="font-size:13.5px;line-height:1.95;color:var(--muted)"><%= t('content.pages_201') %></p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px 26px" class="cert-row">
+      <b class="lat" dir="ltr" style="font-size:21px;font-weight:800;color:var(--green-900);text-align:center;background:var(--mint);border-radius:14px;padding:16px 8px">GMP</b>
+      <div>
+        <span class="lat" dir="ltr" style="display:block;font-size:12px;font-weight:700;color:var(--muted-2);margin-bottom:4px;text-align:start">Good Manufacturing Practice</span>
+        <p style="font-size:13.5px;line-height:1.95;color:var(--muted)"><%= t('content.pages_202') %></p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px 26px" class="cert-row">
+      <b class="lat" dir="ltr" style="font-size:21px;font-weight:800;color:var(--green-900);text-align:center;background:var(--mint);border-radius:14px;padding:16px 8px">MFDS</b>
+      <div>
+        <span class="lat" dir="ltr" style="display:block;font-size:12px;font-weight:700;color:var(--muted-2);margin-bottom:4px;text-align:start"><%= t('content.pages_203') %></span>
+        <p style="font-size:13.5px;line-height:1.95;color:var(--muted)"><%= t('content.pages_204') %></p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="section"><div class="container">
+  <div class="dark-strip" style="display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;padding:38px 42px">
+    <b class="lat" dir="ltr" style="font-size:30px;font-weight:800;color:#7FE3BE;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:22px 30px">SFDA</b>
+    <div>
+      <h3 style="font-size:19px"><%= t('content.pages_205') %></h3>
+      <p><%= t('content.pages_206') %></p>
+      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+        <span class="chip chip--dark"><%= t('content.pages_207_html') %></span>
+        <span class="chip chip--dark"><%= t('content.pages_208_html') %></span>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="section section--last"><div class="container">
+  
+<div class="sec-head">
+  <span class="eyebrow"><i></i><%= t('content.pages_209') %></span>
+  <h2 class="sec-title"><%= t('content.pages_210') %></h2>
+  
+</div>
+  <div class="grid grid-3">
+    
+    <div class="card">
+      <h4 class="card__title" style="margin-bottom:14px"><%= t('content.pages_211') %></h4>
+      <ul class="check-list">
+        <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_212') %></li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_213') %></li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_214') %></li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_215') %></li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_216') %></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 class="card__title" style="margin-bottom:14px"><%= t('content.pages_217') %></h4>
+      <ul class="check-list">
+        <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_218') %></li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_219') %></li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_220') %></li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_221') %></li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_222') %></li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_223') %></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 class="card__title" style="margin-bottom:14px"><%= t('content.pages_224') %></h4>
+      <ul class="check-list">
+        <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_225') %></li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg>SKIN1004</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg>Purito</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg>Orjena</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg>Herb Earth</li>
+      </ul>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:center;margin-top:26px"><a class="btn btn--dark" href="<%= locale_path("company/contact") %>"><%= t('content.pages_226') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></span></a></div>
+  <p class="foot-note" style="text-align:center"><%= t('content.pages_227') %></p>
+</div></section>
+

@@ -1,28 +1,23 @@
-# Serves the migrated static frontend (Arabic + English) until sections of
-# the site are made dynamic. Views live under app/views/pages/{ar,en}/ and
-# are regenerated from tools/build-views.mjs; the two home pages are
-# standalone hand-maintained documents (rendered without a layout).
+# Serves the bilingual frontend. Content views live as per-locale templates
+# (app/views/pages/**.{ar,en}.html.erb) resolved by Rails via I18n.locale;
+# the shared chrome is app/views/layouts/site.html.erb driven by
+# config/locales/site.{ar,en}.yml. Views are regenerated from
+# tools/build-views.mjs; the home pages are hand-maintained full documents.
 class PagesController < ApplicationController
-  ALLOWED_LOCALES = %w[ar en].freeze
   PATH_FORMAT = %r{\A[a-z0-9\-/]+\z}
 
-  def home_en
-    render "pages/en/home", layout: false
-  end
-
-  def home_ar
-    render "pages/ar/home", layout: false
+  def home
+    render "pages/home", layout: false
   end
 
   def show
-    locale = params[:locale]
-    path   = params[:path].to_s.chomp("/")
-    template = "pages/#{locale}/#{path}"
+    path = params[:path].to_s.chomp("/")
+    template = "pages/#{path}"
 
-    unless ALLOWED_LOCALES.include?(locale) && path.match?(PATH_FORMAT) && lookup_context.exists?(template)
-      raise ActionController::RoutingError, "No such page: #{locale}/#{path}"
+    unless path.match?(PATH_FORMAT) && lookup_context.exists?(template)
+      raise ActionController::RoutingError, "No such page: #{path}"
     end
 
-    render template: template, layout: "site_#{locale}"
+    render template: template, layout: "site"
   end
 end
