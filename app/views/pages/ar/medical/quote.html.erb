@@ -8,8 +8,8 @@
 <div class="crumbs">
   <a href="/ar/">الرئيسية</a><span class="sep">←</span><a href="/ar/medical/">المعلومات الطبية</a><span class="sep">←</span><span class="here">طلب عرض سعر</span>
 </div>
-  <h1 class="page-title">طلب عرض سعر — نموذج واحد</h1>
-  <p class="page-hero__lead">النموذج يجمع الأساسي فقط، وفريق المبيعات يتواصل ويكمل التفاصيل ويصدر عرضًا رسميًا. مستندات فتح الحساب لا تُطلب هنا — يطلبها الفريق بعد أول تواصل.</p>
+  <h1 class="page-title">طلب عرض سعر — نموذج التوريد الموحد</h1>
+  <p class="page-hero__lead">قناة الاستفسار الرسمية للمنشآت الصحية والصيدليات ومراكز العناية المرخصة في المملكة. مستندات فتح الحساب لا تُطلب هنا — يطلبها الفريق بعد أول تواصل.</p>
   
 </div></div></section>
 
@@ -27,7 +27,8 @@
           <div class="field">
             <label>نوع المنشأة <span class="req">*</span></label>
             <div class="choice-chips">
-              <button type="button" class="cchip is-on">عيادة</button>
+              <button type="button" class="cchip is-on">عيادة تجميل</button>
+              <button type="button" class="cchip">مجمع طبي / مستشفى</button>
               <button type="button" class="cchip">صيدلية</button>
               <button type="button" class="cchip">مركز عناية</button>
             </div>
@@ -55,22 +56,22 @@
           <div class="field field--wide">
             <label>المنتجات محل الاهتمام — اختيار متعدد <span class="req">*</span></label>
             <div class="choice-chips" data-multi>
-              <button type="button" class="cchip">ReMedium Fine</button>
-              <button type="button" class="cchip">ReMedium Mid</button>
-              <button type="button" class="cchip">ReMedium Sub-Q</button>
-              <button type="button" class="cchip">HA Filler</button>
-              <button type="button" class="cchip">تشكيلات العناية بالبشرة</button>
+              <button type="button" class="cchip">ReMedium® Fine</button>
+              <button type="button" class="cchip">ReMedium® Mid</button>
+              <button type="button" class="cchip">ReMedium® Sub-Q</button>
+              <button type="button" class="cchip">فيلر جراحات العيون HA</button>
+              <button type="button" class="cchip">مستحضرات العناية الكورية</button>
             </div>
           </div>
         </div>
         <h3 style="margin-top:28px">حقول اختيارية</h3>
         <div class="form-grid">
           <div class="field">
-            <label>الكمية التقريبية — شرائح لا رقم دقيق</label>
+            <label>الكمية التقديرية للطلب الأول</label>
             <div class="choice-chips">
-              <button type="button" class="cchip">١–١٠</button>
-              <button type="button" class="cchip">١١–٥٠</button>
-              <button type="button" class="cchip">+٥٠</button>
+              <button type="button" class="cchip">طلب تجريبي (١–١٠ عبوات)</button>
+              <button type="button" class="cchip">شريحة متوسطة (١١–٥٠ عبوة)</button>
+              <button type="button" class="cchip">توريد كميات كبرى (+٥٠ عبوة)</button>
             </div>
           </div>
           <div class="field">
@@ -80,7 +81,7 @@
               <button type="button" class="cchip">لا</button>
             </div>
           </div>
-          <label class="checkbox-row field--wide"><input type="checkbox" name="visit">أفضّل زيارة المندوب لمنشأتنا</label>
+          <label class="checkbox-row field--wide"><input type="checkbox" name="visit">أود جدولة زيارة ممثل المبيعات للمنشأة</label>
           
 <div class="field field--wide">
   <label for="notes">ملاحظات</label>
@@ -88,14 +89,14 @@
 </div>
         </div>
         <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line);padding-top:22px">
-          <label class="checkbox-row"><input type="checkbox" data-consent>أوافق على <a href="/ar/legal/privacy/" style="color:var(--green-600);font-weight:700">سياسة الخصوصية</a> ومعالجة البيانات لغرض إعداد عرض السعر والتواصل.</label>
-          <p style="font-size:12px;font-weight:700;color:var(--green-900)">التوريد للمنشآت الصحية المرخّصة والمعتمدة فقط.</p>
+          <label class="checkbox-row"><input type="checkbox" data-consent>أوافق على <a href="/ar/legal/privacy/" style="color:var(--green-600);font-weight:700">سياسة الخصوصية</a> ومعالجة بيانات المنشأة.</label>
+          <label class="checkbox-row"><input type="checkbox" name="eligibility">أقر بأن المنشأة مرخصة نظامًا، وأن التوريد الطبي مخصص للمنشآت الصحية المعتمدة فقط.</label>
           <div><button type="submit" class="btn btn--green">إرسال الطلب<span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></span></button></div>
         </div>
       </div>
       <div class="thanks" data-form-thanks hidden>
-        <b>وصل طلبكم — شكرًا لكم.</b>
-        <p>يتواصل فريق المبيعات خلال يوم عمل واحد ويصدر عرض السعر الرسمي. وصلتكم رسالة تأكيد على البريد المُدخل.</p>
+        <b>شكرًا لتواصلكم — تم استلام طلبكم بنجاح.</b>
+        <p>سيقوم فريق المبيعات الطبية بمراجعة التفاصيل وإصدار عرض السعر الرسمي خلال 24 ساعة عمل.</p>
         <p style="margin-top:10px;font-size:11.5px;color:var(--warn-ink)">ملاحظة تقنية: هذا النموذج واجهة فقط حاليًا — الإرسال الفعلي (بريد + جدول طلبات) يُوصل في مرحلة الربط الخلفي.</p>
       </div>
     </form>
@@ -103,7 +104,7 @@
       <div class="dark-strip" style="padding:28px 30px">
         <h3 style="font-size:16px;margin-bottom:14px">بعد الإرسال</h3>
         <ul style="display:flex;flex-direction:column;gap:11px">
-          <li style="display:flex;gap:9px;align-items:flex-start;font-size:12.5px;line-height:1.9;color:rgba(255,255,255,.8)"><span style="color:#7FE3BE;margin-top:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg></span><span>شاشة شكر تؤكد الرد خلال يوم عمل واحد.</span></li><li style="display:flex;gap:9px;align-items:flex-start;font-size:12.5px;line-height:1.9;color:rgba(255,255,255,.8)"><span style="color:#7FE3BE;margin-top:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg></span><span>رسالة تأكيد تلقائية إلى بريد مُرسِل الطلب.</span></li><li style="display:flex;gap:9px;align-items:flex-start;font-size:12.5px;line-height:1.9;color:rgba(255,255,255,.8)"><span style="color:#7FE3BE;margin-top:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg></span><span>إشعار فوري إلى بريد فريق المبيعات ورقمه.</span></li>
+          <li style="display:flex;gap:9px;align-items:flex-start;font-size:12.5px;line-height:1.9;color:rgba(255,255,255,.8)"><span style="color:#7FE3BE;margin-top:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg></span><span>شاشة شكر تؤكد إصدار عرض السعر خلال 24 ساعة عمل.</span></li><li style="display:flex;gap:9px;align-items:flex-start;font-size:12.5px;line-height:1.9;color:rgba(255,255,255,.8)"><span style="color:#7FE3BE;margin-top:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg></span><span>رسالة تأكيد تلقائية إلى بريد مُرسِل الطلب.</span></li><li style="display:flex;gap:9px;align-items:flex-start;font-size:12.5px;line-height:1.9;color:rgba(255,255,255,.8)"><span style="color:#7FE3BE;margin-top:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg></span><span>إشعار فوري إلى بريد فريق المبيعات ورقمه.</span></li>
         </ul>
         <div style="margin-top:18px"><a class="btn btn--green" href="https://wa.me/966562017170">ولمن يستعجل: واتساب<span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2zm4.8 13.9c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.6-.1 1.2z"></path></svg></span></a></div>
       </div>

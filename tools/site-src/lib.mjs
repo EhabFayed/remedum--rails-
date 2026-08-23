@@ -53,26 +53,36 @@ export const durBar = (ctx, label, from, to, color) => `
   <div class="dur__scale"><span>0</span><span>6</span><span>12</span><span>18</span><span>${ctx.T('24 شهرًا', '24 mo')}</span></div>
 </div>`;
 
-/* ---------- localized product data ---------- */
+/* ---------- localized product data (copy source: client deck, Aug 2026) ---------- */
 export const products = ({ T }) => ({
   fine: {
     slug: 'fine', name: 'ReMedium Fine', color: 'var(--fine)', swatch: 'fine',
-    sub: T('للخطوط الدقيقة', 'For fine lines'),
-    subLong: T('للخطوط الدقيقة — حول العين والجبهة والرقبة', 'For fine lines — around the eyes, forehead and neck'),
-    areas: T('الخطوط حول العين · خطوط الجبهة · خطوط الرقبة', 'Lines around the eyes · forehead lines · neck lines'),
+    sub: T('للخطوط الدقيقة والسطحية', 'For delicate superficial lines'),
+    subLong: T('فيلر هيالورونيك أسيد ناعم وعالي النقاء — لمعالجة الخطوط السطحية واستعادة حيوية الأنسجة الرقيقة.',
+      'High-purity, soft-viscoelastic hyaluronic acid filler formulated for delicate, superficial tissue restoration.'),
+    areas: T('الخطوط الدقيقة حول العين · خطوط الجبهة · خطوط الرقبة', 'Periorbital lines · Forehead lines · Neck lines'),
     dur: T('٩ – ١٢ شهرًا', '9–12 months'), from: 9, to: 12,
-    why: T('جل أحادي الطور خفيف القوام، ينساب بتوزيع متساوٍ تحت الجلد فيصحّح الخط دون أن يغيّر ملامح المنطقة.',
-      'A light monophasic gel that flows evenly under the skin — correcting the line without changing the character of the area.'),
-    where: T('الخطوط حول العين · خطوط الجبهة · خطوط الرقبة — يختار الطبيب المنطقة والعمق والكمية المناسبة لكل حالة.',
-      'Lines around the eyes · forehead lines · neck lines — the physician selects the area, depth and volume for each case.'),
-    expect: T('ثباتية النتيجة ٩–١٢ شهرًا كمدى معلن — لا وعد بنتيجة ولا ضمان، والقرار النهائي مع طبيبك المرخّص.',
-      'Result longevity of 9–12 months is a declared range — no promised outcome and no guarantee; the final decision rests with your licensed physician.'),
-    problem: T('الخطوط الرقيقة تحتاج جلًا خفيف القوام يندمج مع الجلد دون أن يُثقل الملامح. Fine هو أخفّ كثافات التشكيلة، مصمَّم للمناطق التي يظهر فيها أي فائض.',
-      'Fine lines call for a light gel that blends with the skin without weighing features down. Fine is the lightest density in the range, designed for areas where any excess shows.'),
+    why: T('جل ناعم بتقنية الترابط MDM: قوة ضغط منخفضة تمنح حقنًا سلسًا بدقة القطرات الدقيقة، واندماجًا نسيجيًا متجانسًا في مناطق الجلد الرقيقة — دون تكتلات ودون أثر السائل تحت الجلد.',
+      'A soft MDM cross-linked gel: low extrusion force for smooth, micro-droplet precision and seamless adaptation to thin-skin zones — no lumps and no Tyndall effect.'),
+    where: T('الخطوط الدقيقة حول العين (Crow’s Feet)، والتجاعيد التعبيرية الخفيفة حول الفم، وخطوط الجبهة السطحية، وتحسين نضارة الرقبة — والطبيب يحدد المنطقة والعمق والكمية.',
+      'Periorbital lines (crow’s feet), light perioral lines, superficial forehead wrinkles and neck revitalization — the physician selects the area, depth and volume.'),
+    expect: T('نقاوة عالية تحد من التورم والاحمرار وتمنح فترة تعافٍ سريعة، بثباتية معلنة ٩–١٢ شهرًا كمدى تقريبي يتفاوت بحسب الحالة — لا وعد بنتيجة ولا ضمان.',
+      'A purified formulation that minimizes swelling and downtime, with a declared 9–12 month indicative range that varies by case — no promised outcome and no guarantee.'),
+    problem: T('صُمم ReMedium® Fine لاستهداف التجاعيد الدقيقة والطبقات السطحية من الأدمة وتحسين مرونة الجلد. وبفضل تقنية الترابط المتقدمة MDM، يمنح الطبيب حقنًا سلسًا وتجانسًا متكاملًا داخل الأنسجة مع تقليل فرص التورم بعد الإجراء.',
+      'ReMedium® Fine is designed for fine lines, superficial dermis corrections, and skin revitalization. Utilising MDM cross-linking technology, it delivers a smooth injection force and uniform tissue integration with minimal swelling.'),
+    layer: T('الطبقة السطحية من الأدمة (Superficial Dermis)', 'Superficial dermis'),
+    needle: T('إبرة 30G فائقة الدقة', '30G ultra-thin needle'),
+    specAreas: T('الخطوط الدقيقة حول العين (Crow’s Feet) · التجاعيد التعبيرية الخفيفة حول الفم · خطوط الجبهة السطحية · تحسين نضارة الرقبة',
+      'Periorbital lines (crow’s feet) · perioral superficial lines · forehead fine wrinkles · neck revitalization'),
+    adv: [
+      [T('اندماج نسيجي متجانس', 'Smooth tissue spread'), T('انتشار مثالي في مناطق الجلد الرقيقة دون تكتلات أو ظهور أثر السائل تحت الجلد.', 'Seamless adaptation to thin skin zones without Tyndall effect.')],
+      [T('سلاسة فائقة في الحقن', 'Low extrusion force'), T('قوة ضغط منخفضة تتيح دقة التحكم بالجرعات الدقيقة (Micro-droplets).', 'Consistent glide for micro-droplet accuracy.')],
+      [T('فترة تعافٍ سريعة', 'Rapid recovery'), T('نقاوة عالية تحد من التورم والاحمرار وتضمن استعادة المظهر الطبيعي سريعًا.', 'Purified formulation minimizes post-procedure downtime.')],
+    ],
     zones: [
-      [T('الخطوط حول العين', 'Around the eyes'), T('شبكة الخطوط الرقيقة عند الزاوية الخارجية للعين.', 'The network of fine lines at the outer corner of the eye.')],
-      [T('خطوط الجبهة', 'Forehead lines'), T('الخطوط الأفقية الناتجة عن تعابير الوجه المتكررة.', 'Horizontal lines formed by repeated facial expressions.')],
-      [T('خطوط الرقبة', 'Neck lines'), T('الخطوط الأفقية الدقيقة على امتداد الرقبة.', 'The fine horizontal lines along the neck.')],
+      [T('الخطوط حول العين', 'Around the eyes'), T('الخطوط الدقيقة عند الزاوية الخارجية للعين (Crow’s Feet) والخطوط الخفيفة حول الفم.', 'Fine lines at the outer corner of the eye (crow’s feet) and light perioral lines.')],
+      [T('خطوط الجبهة', 'Forehead lines'), T('خطوط الجبهة السطحية الناتجة عن تعابير الوجه المتكررة.', 'Superficial forehead wrinkles formed by repeated expression.')],
+      [T('الرقبة', 'Neck'), T('تحسين نضارة الرقبة وخطوطها الأفقية الدقيقة.', 'Neck revitalization and its fine horizontal lines.')],
     ],
     dots: [['48%', '30%'], ['50%', '13%'], ['50%', '86%']],
     posts: [T('كم يدوم الفيلر حول العين؟ وما الذي يغيّر المدة؟', 'How long does filler around the eyes last — and what changes that?'),
@@ -80,22 +90,32 @@ export const products = ({ T }) => ({
   },
   mid: {
     slug: 'mid', name: 'ReMedium Mid', color: 'var(--mid)', swatch: 'mid',
-    sub: T('للملامح المتوسطة', 'For mid-face features'),
-    subLong: T('للملامح المتوسطة — الشفاه والذقن وخطوط الابتسامة', 'For mid-face features — lips, chin and smile lines'),
-    areas: T('الشفاه · الذقن · خطوط الابتسامة', 'Lips · chin · smile lines'),
+    sub: T('للطبقات المتوسطة والشفاه', 'For mid-dermis & lips'),
+    subLong: T('فيلر هيالورونيك أسيد بلزوجة ومرونة متوازنة — للطبقات المتوسطة وتحديد الشفاه وتصحيح الثنايا المعتدلة.',
+      'Balanced-viscosity hyaluronic acid filler engineered for medium dermis corrections, lip contouring, and moderate dynamic folds.'),
+    areas: T('الشفاه · تحديد الذقن · خطوط الابتسامة', 'Lips · Chin · Nasolabial folds'),
     dur: T('١٢ – ١٨ شهرًا', '12–18 months'), from: 12, to: 18,
-    why: T('كثافة متوسطة تمنح الملامح تحديدًا متوازنًا: دعم كافٍ للشكل مع قوام يبقى طبيعيًا في الحركة والتعبير.',
-      'A medium density that gives features balanced definition: enough structural support, with a texture that stays natural in movement and expression.'),
-    where: T('الشفاه · الذقن · خطوط الابتسامة — يختار الطبيب المنطقة والعمق والكمية المناسبة لكل حالة.',
-      'Lips · chin · smile lines — the physician selects the area, depth and volume for each case.'),
-    expect: T('ثباتية النتيجة ١٢–١٨ شهرًا كمدى معلن — لا وعد بنتيجة ولا ضمان، والقرار النهائي مع طبيبك المرخّص.',
-      'Result longevity of 12–18 months is a declared range — no promised outcome and no guarantee; the final decision rests with your licensed physician.'),
-    problem: T('ملامح منتصف الوجه تحتاج توازنًا بين التحديد والليونة. Mid هو الكثافة الوسطى في التشكيلة، مصمَّم للشفاه والذقن وخطوط الابتسامة.',
-      'Mid-face features need a balance of definition and softness. Mid is the middle density in the range, designed for the lips, chin and smile lines.'),
+    why: T('توازن مثالي بين الرفع والمرونة بتقنية MDM: حجم متناسق مع الحفاظ على التعبير الطبيعي للوجه وحركة الشفاه، وتحكم دقيق في امتصاص الماء يحد من التورم المفرط بعد الإجراء.',
+      'An optimal viscoelastic balance powered by MDM: lift capacity with soft natural mobility for expressive areas, and precise hydrophilic control that reduces excessive post-injection swelling.'),
+    where: T('الخطوط الأنفية الشفوية (Nasolabial)، وخطوط الابتسامة وزوايا الفم (Marionette)، وتحديد وتعبئة الشفاه، وتجاعيد ما بين الحاجبين — والطبيب يحدد المنطقة والعمق والكمية.',
+      'Nasolabial folds, marionette lines and oral commissures, lip augmentation and contouring, and glabella lines — the physician selects the area, depth and volume.'),
+    expect: T('ثبات متماسك وتحلل تدريجي يحتفظ بالشكل دون هجرة، بثباتية معلنة ١٢–١٨ شهرًا كمدى تقريبي يتفاوت بحسب الحالة — لا وعد بنتيجة ولا ضمان.',
+      'Cohesive shape retention with uniform degradation, at a declared 12–18 month indicative range that varies by case — no promised outcome and no guarantee.'),
+    problem: T('طُوّر ReMedium® Mid لملء التجاعيد المتوسطة، وتحديد وتعبئة الشفاه، واستعادة توازن خطوط الوجه التعبيرية بحركة طبيعية وثبات متماسك. يعتمد المنتج على تقنية الترابط المتقدمة MDM ليوفر للطبيب مرونة تشكيل عالية وتجانسًا متوازنًا داخل طبقات الجلد.',
+      'ReMedium® Mid is formulated to treat moderate wrinkles, restore localized mid-face contours, and define lips with natural movement and structure. Powered by MDM cross-linking technology, it offers balanced moldability and predictable tissue integration.'),
+    layer: T('الطبقة المتوسطة إلى العميقة من الأدمة (Mid to Deep Dermis)', 'Mid to deep dermis'),
+    needle: T('إبرة 27G — مناسب للحقن بالإبر أو الكانيولا', '27G needle / cannula compatible'),
+    specAreas: T('الخطوط الأنفية الشفوية (Nasolabial Folds) · خطوط الابتسامة وزوايا الفم (Marionette Lines) · تحديد وتعبئة الشفاه · تجاعيد ما بين الحاجبين',
+      'Nasolabial folds · marionette lines · lip augmentation/contouring · oral commissures · glabella lines'),
+    adv: [
+      [T('توازن مثالي بين الرفع والمرونة', 'Optimal viscoelastic balance'), T('يمنح حجمًا متناسقًا مع الحفاظ على التعبير الطبيعي للوجه وحركة الشفاه.', 'Combines lift capacity with soft natural mobility for expressive areas.')],
+      [T('تحكم دقيق في امتصاص الماء', 'Precise hydrophilic control'), T('تركيبة منقاة تحد من التورم المفرط الناتج عن جذب السوائل بعد الإجراء.', 'Formulated to reduce excessive post-injection water absorption and unexpected swelling.')],
+      [T('ثبات متماسك وتحلل تدريجي', 'Uniform degradation'), T('يحتفظ بشكله وموضعه داخل النسيج دون هجرة طوال فترة بقائه.', 'Retains cohesive shape consistently over the treatment lifespan.')],
+    ],
     zones: [
-      [T('الشفاه', 'Lips'), T('تحديد الحواف والامتلاء بدرجة يحددها الطبيب.', 'Edge definition and volume, to the degree the physician sets.')],
-      [T('الذقن', 'Chin'), T('تحديد شكل الذقن وموازنة الملامح.', 'Shaping the chin and balancing the features.')],
-      [T('خطوط الابتسامة', 'Smile lines'), T('الخطوط الممتدة من الأنف إلى زاويتي الفم.', 'The lines running from the nose to the corners of the mouth.')],
+      [T('الشفاه', 'Lips'), T('تحديد الحواف وتعبئة الشفاه بحركة طبيعية وبدرجة يحددها الطبيب.', 'Lip contouring and augmentation with natural movement, to the degree the physician sets.')],
+      [T('خطوط الابتسامة', 'Nasolabial folds'), T('الخطوط الأنفية الشفوية الممتدة من الأنف إلى زاويتي الفم.', 'The folds running from the nose to the corners of the mouth.')],
+      [T('زوايا الفم وما بين الحاجبين', 'Marionette & glabella'), T('خطوط الماريونيت وزوايا الفم، وتجاعيد ما بين الحاجبين.', 'Marionette lines, oral commissures and glabella lines.')],
     ],
     dots: [['50%', '58%'], ['50%', '72%'], ['38%', '62%']],
     posts: [T('كم يدوم فيلر الشفاه؟ وما الذي يغيّر المدة؟', 'How long does lip filler last — and what changes that?'),
@@ -103,22 +123,32 @@ export const products = ({ T }) => ({
   },
   'sub-q': {
     slug: 'sub-q', name: 'ReMedium Sub-Q', color: 'var(--subq)', swatch: 'subq',
-    sub: T('للتحجيم العميق والنحت', 'For deep volumising & contouring'),
-    subLong: T('للتحجيم العميق والنحت — الخدود والأصداغ وخط الفك', 'For deep volumising and contouring — cheeks, temples and jawline'),
-    areas: T('الخدود · الأصداغ · الذقن · خط الفك (Jawline)', 'Cheeks · temples · chin · jawline'),
+    sub: T('للبناء الحجمي العميق والنحت', 'For deep contouring & volume'),
+    subLong: T('فيلر هيالورونيك أسيد عالي اللزوجة والمرونة — للبناء الحجمي العميق وتحديد الملامح ونحت زوايا الوجه.',
+      'High-viscoelasticity hyaluronic acid filler engineered for deep tissue projection, structural contouring, and volume restoration.'),
+    areas: T('الوجنتان · الصدغان · استعادة حجم الذقن · نحت خط الفك', 'Cheeks · Temples · Chin · Jawline contouring'),
     dur: T('١٨ – ٢٤ شهرًا', '18–24 months'), from: 18, to: 24,
-    why: T('أعلى كثافات التشكيلة: قوام داعم للتحجيم العميق ونحت الملامح، بثباتية هي الأطول في التشكيلة.',
-      'The highest density in the range: a supportive texture for deep volumising and contouring, with the longest longevity in the line.'),
-    where: T('الخدود · الأصداغ · الذقن · خط الفك — يختار الطبيب المنطقة والعمق والكمية المناسبة لكل حالة.',
-      'Cheeks · temples · chin · jawline — the physician selects the area, depth and volume for each case.'),
-    expect: T('ثباتية النتيجة ١٨–٢٤ شهرًا كمدى معلن — لا وعد بنتيجة ولا ضمان، والقرار النهائي مع طبيبك المرخّص.',
-      'Result longevity of 18–24 months is a declared range — no promised outcome and no guarantee; the final decision rests with your licensed physician.'),
-    problem: T('استعادة الحجم ونحت الملامح يحتاجان قوامًا داعمًا يثبت في العمق. Sub-Q هو أعلى كثافات التشكيلة، مصمَّم للخدود والأصداغ وخط الفك.',
-      'Restoring volume and contouring features call for a supportive texture that holds at depth. Sub-Q is the highest density in the range, designed for the cheeks, temples and jawline.'),
+    why: T('قوة رفع وتشكيل فائقة (High G′) بتقنية الترابط الكثيفة MDM: دعم هيكلي بارز وثابت للملامح دون هبوط، ومصفوفة هلامية مترابطة تمنع هجرة المادة وتحافظ على حواف التحديد واضحة.',
+      'High structural lifting (high G′) from dense MDM cross-linking: robust mechanical support and distinct projection without displacement, with a cohesive elastic matrix that prevents migration and holds sharp definition.'),
+    where: T('تعبئة ونحت الوجنتين، وإبراز وتحديد الذقن، ونحت خط وزاوية الفك (Jawline)، ومنطقة الصدغين، وتصحيح ضمور الأنسجة العميق — والطبيب يحدد المنطقة والعمق والكمية.',
+      'Malar (cheekbone) augmentation, chin projection, mandibular angle and jawline definition, temples, and deep structural corrections — the physician selects the area, depth and volume.'),
+    expect: T('ديمومة سريرية ممتدة بتحلل بطيء ومتجانس، بثباتية معلنة ١٨–٢٤ شهرًا كمدى تقريبي يتفاوت بحسب الحالة — لا وعد بنتيجة ولا ضمان.',
+      'Extended clinical durability through uniform, controlled degradation, at a declared 18–24 month indicative range that varies by case — no promised outcome and no guarantee.'),
+    problem: T('صُمم ReMedium® Sub-Q لاستعادة الأحجام المفقودة وبناء الهيكل النسيجي العميق للوجه. وبفضل تقنية الترابط الكثيفة MDM، يوفر المنتج قوة رفع ميكانيكية استثنائية (G-prime) ومرونة عالية تضمن ثبات الحجم ومقاومة قوى الضغط النسيجي.',
+      'ReMedium® Sub-Q is formulated for profound volumetric augmentation and structural facial framing. Utilizing dense MDM cross-linking technology, it delivers strong G-prime elasticity, high lifting capacity, and reliable resistance to tissue deformation.'),
+    layer: T('الطبقة العميقة تحت الجلد وفوق مستوى العظم مباشرة (Deep Subcutaneous / Supraperiosteal)', 'Deep subcutaneous / pre-periosteal layer (above bone level)'),
+    needle: T('كانيولا أو إبرة 25G – 27G', '25G–27G cannula / needle'),
+    specAreas: T('تعبئة ونحت الوجنتين (Cheekbones) · إبراز وتحديد الذقن · نحت خط وزاوية الفك (Jawline Definition) · منطقة الصدغين · تصحيح ضمور الأنسجة العميق',
+      'Malar area (cheekbones) · chin augmentation · mandibular angle & jawline definition · temples · deep structural facial defects'),
+    adv: [
+      [T('قوة رفع وتشكيل فائقة (High G′)', 'High structural lifting (high G′)'), T('يمنح دعمًا هيكليًا بارزًا وثابتًا للملامح دون هبوط أو ترهل.', 'Provides robust mechanical support and distinct projection without displacement.')],
+      [T('تماسك جزيئي قوي', 'Cohesive elastic matrix'), T('مصفوفة هلامية مترابطة تمنع هجرة المادة وتحافظ على حواف التحديد واضحة.', 'Dense particle integration prevents product migration and holds sharp definition.')],
+      [T('ديمومة سريرية ممتدة', 'Extended clinical durability'), T('تحلل بطيء ومتجانس يضمن استمرار الامتلاء والنتائج لفترات طويلة.', 'Retains volume and structural integrity through uniform, controlled degradation.')],
+    ],
     zones: [
-      [T('الخدود', 'Cheeks'), T('استعادة الحجم في منتصف الوجه.', 'Restoring mid-face volume.')],
-      [T('الأصداغ', 'Temples'), T('تعويض الفراغ في منطقة الصدغين.', 'Compensating hollowness in the temple area.')],
-      [T('خط الفك', 'Jawline'), T('تحديد الخط الممتد من الذقن إلى الأذن.', 'Defining the line running from the chin to the ear.')],
+      [T('الوجنتان', 'Cheeks (malar)'), T('تعبئة ونحت الوجنتين واستعادة حجم منتصف الوجه.', 'Malar augmentation and mid-face volume restoration.')],
+      [T('الذقن والصدغان', 'Chin & temples'), T('إبراز وتحديد الذقن، وتعويض الفراغ في منطقة الصدغين.', 'Chin projection and definition, and temple hollow correction.')],
+      [T('خط الفك', 'Jawline'), T('نحت خط وزاوية الفك من الذقن إلى الأذن.', 'Mandibular angle and jawline definition from chin to ear.')],
     ],
     dots: [['24%', '52%'], ['72%', '64%'], ['50%', '72%']],
     posts: [T('نحت خط الفك: ماذا يفعل الفيلر وماذا لا يفعل؟', 'Jawline contouring: what filler does — and what it doesn’t'),
@@ -146,12 +176,12 @@ export const productCard = (ctx, p) => `
 </div>`;
 
 export const ACCRED = (T) => [
+  ['SFDA', T('تسجيل الغذاء والدواء السعودية', 'Saudi FDA approval')],
+  ['MFDS', T('اعتماد الرقابة الكورية', 'Korean regulatory clearance')],
+  ['GMP', T('ممارسات التصنيع الجيد', 'Good manufacturing standards')],
+  ['MDSAP', T('التدقيق الدولي الموحد', 'Multi-country audit approval')],
+  ['ISO 13485', T('إدارة جودة الأجهزة الطبية', 'Medical devices quality system')],
   ['CE', T('المطابقة الأوروبية', 'European conformity')],
-  ['ISO 13485', T('جودة تصنيع الأجهزة الطبية', 'Medical-device quality system')],
-  ['MDSAP', T('تدقيق موحّد متعدد الجهات', 'Multi-authority single audit')],
-  ['GMP', T('ممارسات التصنيع الجيد', 'Good manufacturing practice')],
-  ['MFDS', T('ترخيص بلد المنشأ', 'Country-of-origin licence')],
-  ['SFDA', T('شرط التداول في المملكة', 'Required for KSA circulation')],
 ];
 
 export const accredStrip = (ctx) => `
@@ -163,28 +193,43 @@ export const accredStrip = (ctx) => `
   </a>`).join('')}
 </div>`;
 
+// Copy source: client deck (Aug 2026) — criterion / regulated channel / unregulated sources
 export const COMPARE_ROWS = (T) => [
-  T('ملف منتج مسجّل ومعتمد لدى الهيئة', 'A product file registered and approved with the SFDA'),
-  T('رقم تشغيلة قابل للتتبّع حتى المصنع', 'A lot number traceable back to the factory'),
-  T('جهة مسؤولة محددة عند وقوع مشكلة', 'A named responsible party when something goes wrong'),
-  T('إجراء استدعاء موثّق', 'A documented recall procedure'),
-  T('ظروف تخزين مراقبة وموثقة', 'Monitored, documented storage conditions'),
-  T('فاتورة ضريبية ومستندات رسمية', 'A tax invoice and official documents'),
-  T('دعم فني وتحديثات من المصنّع', 'Technical support and manufacturer updates'),
+  [T('تسجيل المنتج', 'Product Registration'),
+    T('ملف منتج مسجّل ومعتمد لدى الهيئة (SFDA)', 'Registered & approved by SFDA'),
+    T('غير مسجّل أو بضائع سوق موازية', 'Unregistered / grey-market stock')],
+  [T('تتبّع التشغيلة', 'Traceability'),
+    T('رقم تشغيلة قابل للتتبّع المباشر حتى المصنع', 'Batch number traceable to the manufacturer'),
+    T('تعذّر تتبّع المصدر أو مسار الشحنة', 'Untraceable origin & custody')],
+  [T('المسؤولية القانونية', 'Accountability'),
+    T('جهة مسؤولة ومعتمدة نظاميًا عند أي طارئ', 'Designated legal entity accountable for quality'),
+    T('غياب أي جهة مسؤولة نظاميًا', 'No identifiable liability')],
+  [T('إجراء الاستدعاء', 'Product Recall'),
+    T('إجراء استدعاء موثّق ومعتمد لحماية المرضى', 'Documented, systematic recall procedure'),
+    T('انعدام آلية الاستدعاء عند وجود خلل', 'No recall path or patient protection')],
+  [T('ظروف التخزين', 'Storage Conditions'),
+    T('تخزين مراقب وموثّق في مستودع مرّخص', 'Monitored, licensed warehousing (< 25°C)'),
+    T('ظروف حفظ مجهولة وغير خاضعة للرقابة', 'Unmonitored & compromised storage')],
+  [T('المستندات والفوترة', 'Official Paperwork'),
+    T('فاتورة ضريبية نظامية ومستندات رسمية كاملة', 'Certified tax invoice & regulatory files'),
+    T('غياب الفواتير الضريبية والمستندات', 'Missing or unverified documents')],
+  [T('الدعم والتدريب', 'Technical Support'),
+    T('دعم فني، تدريب سريري، وتحديثات المصنّع', 'Clinical training & manufacturer updates'),
+    T('ينتهي التعامل بمجرد تسليم العبوة', 'None once the unit is handed over')],
 ];
 
 export const compareTable = (ctx) => `
 <div class="compare">
   <div class="row row--head">
-    <span>${ctx.T('البند', 'Item')}</span>
+    <span>${ctx.T('معيار المقارنة', 'Criteria')}</span>
     <span class="us">${ctx.T('القناة النظامية', 'The regulated channel')}<em>${ctx.T('جذور الجمال', 'Beauty Roots')}</em></span>
-    <span>${ctx.T('التوريد غير النظامي', 'Unregulated supply')}</span>
+    <span>${ctx.T('التوريد غير النظامي', 'Unregulated sources')}</span>
   </div>
-  ${COMPARE_ROWS(ctx.T).map((t) => `
+  ${COMPARE_ROWS(ctx.T).map(([crit, us, them]) => `
   <div class="row">
-    <span class="crit">${t}</span>
-    <span class="us"><i class="mark mark--yes">${I.check(12)}</i>${ctx.T('متوفر', 'Provided')}</span>
-    <span class="them"><i class="mark mark--no">${I.xmark(11)}</i>${ctx.T('غير متوفر', 'Not provided')}</span>
+    <span class="crit">${crit}</span>
+    <span class="us"><i class="mark mark--yes">${I.check(12)}</i>${us}</span>
+    <span class="them"><i class="mark mark--no">${I.xmark(11)}</i>${them}</span>
   </div>`).join('')}
 </div>`;
 
@@ -220,6 +265,8 @@ export const NAV = (ctx) => [
     label: ctx.T('المعلومات الطبية', 'Medical Information'), key: 'medical', items: [
       [ctx.T('بوابة القسم الطبي', 'Medical section gate'), ctx.u('medical')],
       [ctx.T('نموذج الخدمة والشروط التجارية', 'Service Model & Commercial Terms'), ctx.u('medical/service-model')],
+      [ctx.T('الأدلة المخبرية وبروتوكولات الحقن', 'Laboratory Evidence & Protocols'), ctx.u('medical/evidence')],
+      [ctx.T('معرض النتائج السريرية', 'Clinical Results Gallery'), ctx.u('medical/results')],
       [ctx.T('طلب عرض سعر', 'Request a Quote'), ctx.u('medical/quote')],
     ],
   },

@@ -20,24 +20,25 @@ export default function pagesA(ctx) {
      BRANDS HUB — brands
   ============================================================ */
   add('brands',
-    T('العلامات والمنتجات', 'Brands & Products'),
-    T('محفظة جذور الجمال: ReMedium بوكالة حصرية، HA Filler، وأربع علامات عناية بالبشرة — كلها مسجّلة لدى الهيئة.', 'The Beauty Roots portfolio: ReMedium under exclusive agency, HA Filler, and four skincare brands — all SFDA-registered.'),
+    T('حلول التجميل الطبي والمنتجات المعتمدة', 'Regulated Aesthetic & Medical Solutions'),
+    T('محفظة موثوقة من منتجات التجميل الطبي، الأجهزة الطبية المتخصصة، ومستحضرات العناية المتقدمة بالبشرة — كلها مسجّلة لدى الهيئة.', 'An authorized portfolio of clinically proven medical aesthetic lines, specialized healthcare devices, and advanced skincare — all SFDA-registered.'),
     'brands', `
 ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات والمنتجات', 'Brands & Products')]],
-    T('العلامات والمنتجات', 'Brands & Products'),
-    T('بوابة متخصصة لنقل التشكيلات العالمية إلى السوق السعودي. كل علامة صفحة أم ومنتجاتها تظهر تحتها — ولا يُطرح أي منتج قبل اكتمال متطلبات تسجيله لدى الهيئة العامة للغذاء والدواء.',
-      'A specialised gateway bringing global portfolios to the Saudi market. Every brand is a parent page with its products beneath it — and no product is listed before its SFDA registration requirements are complete.'))}
+    T('حلول التجميل الطبي والمنتجات المعتمدة', 'Regulated Aesthetic & Medical Solutions'),
+    T('محفظة موثوقة من منتجات التجميل الطبي، الأجهزة الطبية المتخصصة، ومستحضرات العناية المتقدمة بالبشرة.',
+      'An authorized portfolio of clinically proven medical aesthetic lines, specialized healthcare devices, and advanced skincare.'),
+    `<div class="page-hero__chips">${chip(T('محفظتنا الطبية', 'Our Portfolio'))}</div>`)}
 
 <section class="section"><div class="container">
   <div class="dark-panel" style="padding:44px 46px;display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center;box-shadow:var(--shadow-card)">
     <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start">
-      ${chip(T('وكالة حصرية في المملكة', 'Exclusive agency in Saudi Arabia'), 'green')}
-      <h2 class="lat" dir="ltr" style="font-size:44px;font-weight:800;letter-spacing:-.02em">ReMedium</h2>
+      ${chip(T('الوكيل الحصري والموزّع المعتمد في المملكة', 'Exclusive Agent & Authorized Distributor in Saudi Arabia'), 'green')}
+      <h2 class="lat" dir="ltr" style="font-size:44px;font-weight:800;letter-spacing:-.02em">ReMedium&reg;</h2>
       <p style="font-size:14px;line-height:2;color:rgba(255,255,255,.78)">${T(
-      'فيلر هيالورونيك أسيد كوري من إنتاج <span class="lat" dir="ltr">Forever 18 INTERNATIONAL</span> في سيول، يُصنَّع في مرافق معتمدة بشهادة ممارسات التصنيع الجيد (GMP). «جذور الجمال» هي الوكيل الحصري المعتمد في المملكة وتتولى التوريد والتوزيع والدعم الفني المباشر للعيادات.',
-      'A Korean hyaluronic-acid filler produced by <span class="lat" dir="ltr">Forever 18 INTERNATIONAL</span> in Seoul, manufactured in GMP-certified facilities. Beauty Roots is the authorised exclusive agent in Saudi Arabia, handling import, distribution and direct technical support to clinics.')}</p>
+      'فيلر ReMedium® للهيالورونيك أسيد — فيلر كوري عالي النقاء من إنتاج شركة <span class="lat" dir="ltr">Forever 18 INTERNATIONAL</span> في سيول، مصنَّع بتقنية <span class="lat" dir="ltr">MDM</span> المبتكرة ومطابق لمعايير التصنيع الجيد GMP. التشكيلة: ReMedium Fine، وReMedium Mid، وReMedium Sub-Q.',
+      'ReMedium® HA Dermal Fillers — high-purity hyaluronic acid fillers manufactured in Seoul by <span class="lat" dir="ltr">Forever 18 INTERNATIONAL</span> under strict GMP standards and patented <span class="lat" dir="ltr">MDM</span> technology. Product range: ReMedium Fine, ReMedium Mid, ReMedium Sub-Q.')}</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px">${ACCRED(T).map(([b]) => chip(`<span class="lat" dir="ltr">${b}</span>`, 'dark')).join('')}</div>
-      <div style="margin-top:6px">${btn(T('صفحة العلامة', 'Brand page'), u('brands/remedium'), 'white')}</div>
+      <div style="margin-top:6px">${btn(T('استكشف تشكيلة ReMedium', 'Explore ReMedium Range'), u('brands/remedium'), 'white')}</div>
     </div>
     <div style="position:relative;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.13)">
       <img src="/assets/img/clinic.jpg" alt="${T('علاج تجميلي داخل عيادة', 'Aesthetic treatment in a clinic')}" style="width:100%;height:330px;object-fit:cover">
@@ -58,28 +59,28 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
       <span class="icon-tile" style="width:56px;height:56px;border-radius:16px">${I.eye(24)}</span>
       <div style="flex:1;min-width:260px">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;flex-wrap:wrap">
-          <b class="lat" dir="ltr" style="font-size:19px;font-weight:800">HA Filler</b>
-          ${chip(T('جهاز طبي — جراحات العيون', 'Medical device — ophthalmic surgery'))}
+          <b style="font-family:var(--ff-d);font-size:19px;font-weight:800">${T('هيالورونيك أسيد لجراحات العيون', 'Ophthalmic Hyaluronic Acid Solutions')}</b>
+          ${chip(T('توزيع مرخّص للأجهزة الطبية', 'Licensed Medical Device Distribution'))}
           ${chip(T('مسجّل لدى <span class="lat" dir="ltr">SFDA</span>', '<span class="lat" dir="ltr">SFDA</span>-registered'), 'green')}
         </div>
-        <p style="font-size:13px">${T('هيالورونيك أسيد يُستخدم في جراحات العيون — صفحة مستقلة بلغة طبية بحتة، خارج مسار التجميل.', 'Hyaluronic acid used in ophthalmic surgery — a standalone page in strictly medical language, outside the aesthetics track.')} ${T('يُعرض بالتسمية التجارية الواردة في شهادة تسجيل الهيئة.', 'Listed under the trade name stated on its SFDA registration certificate.')}</p>
+        <p style="font-size:13px">${T('محاليل هيالورونيك أسيد بمواصفات طبية دقيقة ومخصصة للعمليات والتدخلات الجراحية للعيون — صفحة مستقلة بلغة طبية بحتة، خارج مسار التجميل.', 'Medical-grade ophthalmic hyaluronic acid formulations engineered specifically for clinical eye surgeries and specialized ophthalmic procedures — a standalone page in strictly medical language, outside the aesthetics track.')}</p>
       </div>
-      <a href="${u('brands/ha-filler')}" style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--green-600);white-space:nowrap">${T('الصفحة الطبية', 'Medical page')} ${I.arrow(13)}</a>
+      <a href="${u('brands/ha-filler')}" style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--green-600);white-space:nowrap">${T('المواصفات الطبية للمنتج', 'Clinical Specifications')} ${I.arrow(13)}</a>
     </div>
   </div>
 </div></section>
 
 <section class="section--mint" id="skincare-external"><div class="container">
-  ${secHead(T('الإحالة الخارجية', 'External referral'), T('العناية بالبشرة', 'Skincare'),
-    T('أربع علامات عناية مسجّلة لدى الهيئة تبقى ظاهرة هنا كمحفظة — ومحتواها الكامل يعيش في موقعها القائم. لا صفحات منتجات ولا أسعار ولا نص منقول هنا؛ ويُسمح بصورة واحدة معتمدة.',
-      'Four SFDA-registered skincare brands stay visible here as portfolio — their full content lives on their existing site. No product pages, no prices, no copied text here; one approved image is allowed.'))}
+  ${secHead(T('العناية المخصصة بالبشرة', 'Dermatological Care'), T('مستحضرات العناية الكورية المتقدمة', 'Korean Skincare Innovations'),
+    T('توفر «جذور الجمال» تشكيلات مختارة من أبرز علامات العناية الكورية المعروفة بنقاء مكوناتها وفاعليتها في تهدئة البشرة وترميمها. نستورد هذه المنتجات مباشرة من المعامل الكورية المعتمدة لتكون مكملًا مثاليًا بعد الإجراءات الطبية ولروتين العناية اليومي.',
+      'Beauty Roots distributes curated Korean skincare lines recognized for their gentle formulations, clinically tested botanicals, and high efficacy. Sourced directly from certified Korean laboratories, these formulations complement professional clinical treatments and daily skin restoration routines.'))}
   <div class="grid" style="grid-template-columns:.85fr repeat(4,minmax(0,1fr))">
     <div class="arch-media arch-media--card" style="min-height:180px"><img src="/assets/img/skincare.jpg" alt="${T('تشكيلة عناية بالبشرة', 'Skincare range')}"></div>
     ${[
-      ['SKIN1004', T('خط Madagascar Centella', 'Madagascar Centella line')],
-      ['Purito', T('خط Wonder Releaf Centella', 'Wonder Releaf Centella line')],
-      ['Orjena', T('منتجات التنظيف والعناية', 'Cleansing & care products')],
-      ['Herb Earth', T('العناية بالبشرة والشعر', 'Skin & hair care')],
+      ['SKIN1004', T('تركيبات السنتيلا الآسيوية (Centella Asiatica) لتهدئة البشرة الحساسة وترميم الحاجز الجلدي.', 'Centella Asiatica soothing formulations for sensitive and compromised skin barriers.')],
+      ['Purito', T('حلول عناية آمنة بمكونات نقية وواضحة تركز على صحة وتوازن طبقات الجلد.', 'Minimalist, safe, and transparent derm-care essentials powered by clean active ingredients.')],
+      ['Orjena', T('مستخلصات نباتية فعالة لترطيب عميق، وتعزيز النضارة، وحيوية البشرة اليومية.', 'Functional botanical extracts delivering deep hydration, radiance, and daily skin vitality.')],
+      ['Herb Earth', T('توليفات عشبية طبيعية تمنح البشرة تغذية لطيفة وتوازنًا مستدامًا.', 'Natural herbal complexes formulated for gentle nourishment and restorative skin wellness.')],
     ].map(([n, d]) => `
     <div class="card" style="display:flex;flex-direction:column;gap:10px;padding:24px">
       <div style="display:flex;align-items:center;justify-content:space-between">
@@ -91,15 +92,15 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
     </div>`).join('')}
   </div>
   <div style="margin-top:22px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
-    ${btn(T('زيارة موقع العناية بالبشرة', 'Visit the skincare site'), 'https://beautyrooots.com', 'green', I.ext(14), ' target="_blank" rel="noopener"')}
-    <p style="font-size:12px;color:var(--muted);max-width:560px">${T('الرابط يفتح في تبويب جديد — وتُقاس النقرات لمعرفة كم زائرًا ينتقل بين الموقعين.', 'The link opens in a new tab — clicks are measured to see how many visitors cross between the two sites.')}</p>
+    ${btn(T('تصفح التشكيلة الكاملة', 'View Complete Collection'), 'https://reemncream.com/ar/collections/all', 'green', I.ext(14), ' target="_blank" rel="noopener"')}
+    <p style="font-size:12px;color:var(--muted);max-width:560px">${T('للاطلاع على كافة المنتجات والتشكيلات المتوفرة من علامات العناية المعتمدة — الرابط يفتح في تبويب جديد.', 'Explore the complete range of authorized formulations and product lines — the link opens in a new tab.')}</p>
   </div>
 </div></section>
 
 <section class="section section--last"><div class="container">
-  ${darkStrip(T('قاعدة المحفظة', 'The portfolio rule'),
-    T('جميع المنتجات المدرجة في المحفظة مسجّلة لدى الهيئة العامة للغذاء والدواء، ولا يُطرح أي منتج قبل اكتمال متطلبات تسجيله وتداوله. أي علامة تُضاف لاحقًا تأخذ القالب نفسه: صفحة أم ومنتجاتها تحتها، وتظهر تلقائيًا في القائمة وفي هذه الصفحة دون تعديل في البنية.',
-      'Every product in the portfolio is registered with the Saudi Food & Drug Authority, and nothing is listed before its registration and circulation requirements are complete. Any brand added later takes the same template — a parent page with its products beneath it — and appears automatically in the menu and on this page with no structural change.'))}
+  ${darkStrip(T('إشعار ضمان الجودة', 'Quality assurance'),
+    T('كافة العلامات المندرجة في محفظتنا مسجّلة نظاميًا لدى الهيئة العامة للغذاء والدواء (SFDA) وتُدار عبر سلسلة إمداد وتخزين مبرّدة ومراقبة بدقة.',
+      'Every product line represented by Beauty Roots is fully registered with the Saudi Food and Drug Authority (SFDA) and managed through our temperature-monitored supply chain.'))}
 </div></section>
 `);
 
@@ -107,17 +108,17 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
      REMEDIUM BRAND — brands/remedium
   ============================================================ */
   add('brands/remedium',
-    T('ReMedium — الوكالة الحصرية', 'ReMedium — Exclusive Agency'),
-    T('فيلر هيالورونيك أسيد كوري من Forever 18 INTERNATIONAL — جذور الجمال الوكيل الحصري المعتمد في السعودية.', 'A Korean hyaluronic-acid filler by Forever 18 INTERNATIONAL — Beauty Roots is the authorised exclusive agent in Saudi Arabia.'),
+    T('فيلر ReMedium® للهيالورونيك أسيد', 'ReMedium® Dermal Fillers'),
+    T('الجيل المتقدم من الفيلر الكوري المصنّع بتقنية MDM الحاصلة على براءة اختراع — جذور الجمال الوكيل الحصري والموزّع المعتمد في المملكة.', 'Next-generation Korean hyaluronic acid fillers engineered with patented MDM technology — Beauty Roots is the exclusive agent and authorized distributor in Saudi Arabia.'),
     'brands', `
 <section class="page-hero"><div class="container"><div class="page-hero__inner hero-split">
   <div>
     ${crumbs(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات والمنتجات', 'Brands & Products'), u('brands')], ['<span class="lat" dir="ltr">ReMedium</span>']])}
-    <h1 class="page-title"><span class="lat" dir="ltr" style="letter-spacing:-.02em">ReMedium</span> — ${T('الوكالة الحصرية', 'Exclusive Agency')}</h1>
+    <h1 class="page-title">${T('فيلر <span class="lat" dir="ltr" style="letter-spacing:-.02em">ReMedium&reg;</span> للهيالورونيك أسيد', '<span class="lat" dir="ltr" style="letter-spacing:-.02em">ReMedium&reg;</span> Dermal Fillers')}</h1>
     <p class="page-hero__lead">${T(
-      'فيلر هيالورونيك أسيد كوري من إنتاج Forever 18 INTERNATIONAL في سيول، يُصنَّع في مرافق معتمدة بشهادة ممارسات التصنيع الجيد. «جذور الجمال» هي الوكيل الحصري المعتمد في المملكة العربية السعودية.',
-      'A Korean hyaluronic-acid filler produced by Forever 18 INTERNATIONAL in Seoul, manufactured in GMP-certified facilities. Beauty Roots is the authorised exclusive agent in the Kingdom of Saudi Arabia.')}</p>
-    <div class="page-hero__chips">${chip(T('وكالة حصرية في المملكة', 'Exclusive agency in KSA'), 'green')}${chip(T('مسجّل لدى الهيئة العامة للغذاء والدواء', 'Registered with the SFDA'))}${chip(T('سجل سريري ممتد منذ 2009', 'Clinical record since 2009'))}</div>
+      'الجيل المتقدم من الفيلر الكوري المصنّع بتقنية MDM الحاصلة على براءة اختراع، لنتائج طبيعية ومستدامة.',
+      'Next-generation Korean hyaluronic acid fillers engineered with patented MDM technology for natural, durable clinical results.')}</p>
+    <div class="page-hero__chips">${chip(T('الوكالة الحصرية', 'Exclusive Representation'), 'green')}${chip(T('مسجّل وممتثل بالكامل لاشتراطات الهيئة (SFDA)', 'Registered & fully SFDA-compliant'))}${chip(T('مرافق معتمدة وفق GMP', 'Certified GMP facility'))}</div>
   </div>
   <div class="arch-media">
     <img src="/assets/img/inject.jpg" alt="${T('علاج فيلر هيالورونيك أسيد', 'Hyaluronic-acid filler treatment')}" style="height:380px">
@@ -127,12 +128,12 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
 </div></div></section>
 
 <section class="section"><div class="container">
-  ${secHead(T('المنشأ والمصنّع', 'Origin & manufacturer'), T('من أين يأتي المنتج؟', 'Where does the product come from?'))}
+  ${secHead(T('بيانات المنشأ والاعتماد', 'Brand authority & origins'), T('من أين يأتي المنتج؟', 'Where does the product come from?'))}
   <div class="grid grid-3" style="gap:18px">
     ${[
-      [I.pin(20), T('بلد المنشأ', 'Country of origin'), T('كوريا الجنوبية — سيول. ترخيص الجهة الرقابية الكورية <span class="lat" dir="ltr">MFDS</span> في بلد المنشأ: المنتج معتمد للتداول في موطن تصنيعه.', 'South Korea — Seoul. Licensed by the Korean regulator <span class="lat" dir="ltr">MFDS</span> in its country of origin: the product is approved for circulation where it is made.')],
-      [I.box(20), T('المصنّع', 'Manufacturer'), T('<span class="lat" dir="ltr">Forever 18 INTERNATIONAL</span> — مرافق معتمدة بشهادة ممارسات التصنيع الجيد (GMP) وخاضعة لتدقيق <span class="lat" dir="ltr">MDSAP</span> متعدد الجهات.', '<span class="lat" dir="ltr">Forever 18 INTERNATIONAL</span> — GMP-certified facilities under multi-authority <span class="lat" dir="ltr">MDSAP</span> audit.')],
-      [I.shield(20), T('التقنية', 'Technology'), T('منصة <span class="lat" dir="ltr">MDM</span>: بنية جزيئية دقيقة موحّدة وتنقية متعددة المراحل. سجل سريري ممتد منذ 2009 بعد تجارب أُجريت في مستشفى جامعة سيول الوطنية.', 'The <span class="lat" dir="ltr">MDM</span> platform: a uniform micro-particle structure with multi-stage purification. Clinical record since 2009, following trials at Seoul National University Hospital.')],
+      [I.box(20), T('الشركة المصنّعة', 'Manufacturer'), T('<span class="lat" dir="ltr">Forever 18 INTERNATIONAL</span> (سيول، كوريا الجنوبية) — مصنَّع في منشآت معتمدة وفق أعلى اشتراطات التصنيع الجيد (GMP).', '<span class="lat" dir="ltr">Forever 18 INTERNATIONAL</span> (Seoul, South Korea) — manufactured in a certified Good Manufacturing Practice (GMP) facility.')],
+      [I.pin(20), T('صفة التوزيع', 'Distributor status'), T('شركة «جذور الجمال» هي الوكيل الحصري والموزّع المعتمد في المملكة العربية السعودية.', 'Beauty Roots is the exclusive agent and authorized distributor across the Kingdom of Saudi Arabia.')],
+      [I.shield(20), T('الامتثال الرقابي', 'Regulatory approval'), T('مسجّل وممتثل بالكامل لاشتراطات ومعايير الهيئة العامة للغذاء والدواء (<span class="lat" dir="ltr">SFDA</span>).', 'Registered and fully compliant with Saudi Food and Drug Authority (<span class="lat" dir="ltr">SFDA</span>) requirements.')],
     ].map(([ic, t, d]) => `
     <div class="card">
       <span class="icon-tile" style="margin-bottom:14px">${ic}</span>
@@ -153,22 +154,21 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
 </div></section>
 
 <section class="section"><div class="container">
-  ${secHead(T('التشكيلة الرئيسية', 'The core range'), T('ثلاث كثافات — من الخطوط الدقيقة إلى التحجيم العميق', 'Three densities — from fine lines to deep volumising'),
-    T('ثلاثة منتجات بتركيز 20 mg/mL، جل أحادي الطور (Monophasic)، ومادة ربط DVS. كل بطاقة تفتح صفحة منتج مستقلة بتبويبَي الجمال والعلم.',
-      'Three products at 20 mg/mL — a monophasic gel with DVS cross-linking. Each card opens a standalone product page with Beauty and Science tabs.'))}
+  ${secHead(T('تشكيلة منتجات ReMedium', 'The ReMedium product range'), T('ثلاث كثافات — من الخطوط الدقيقة إلى البناء الحجمي العميق', 'Three densities — from delicate superficial lines to deep structural contouring'),
+    T('ReMedium Fine للخطوط السطحية الدقيقة وحول العين وتحسين نضارة البشرة · ReMedium Mid للطبقات المتوسطة وتعبئة الشفاه والخطوط التعبيرية المعتدلة · ReMedium Sub-Q لبناء الحجم العميق وتحديد الفك ونحت الخدود. اضغط على أي بطاقة لتفاصيل المواصفات السريرية.',
+      'ReMedium Fine for delicate superficial wrinkles, periorbital lines and skin revitalization · ReMedium Mid for mid-dermal placement, lip enhancement and moderate facial folds · ReMedium Sub-Q for deep subcutaneous contouring, malar augmentation and jawline definition. Select a product to view its clinical details.'))}
   <div class="grid grid-3" style="gap:18px">
     ${Object.values(P).map((p) => productCard(ctx, p)).join('')}
   </div>
 </div></section>
 
 <section class="section"><div class="container">
-  ${secHead(T('الخصائص المميّزة', 'What sets the gel apart'), T('ما الذي يميّز الجل؟', 'Key characteristics'), T('تُعتمد الصياغة النهائية من العميل بما يطابق ملف المنتج المسجَّل.', 'Final wording to be approved against the registered product file.'))}
-  <div class="grid grid-4">
+  ${secHead(T('المزايا التقنية المبتكرة', 'Key clinical technology'), T('تقنية MDM — ما الذي يميّز الجل؟', 'MDM Tech — what sets the gel apart'))}
+  <div class="grid grid-3">
     ${[
-      [T('جل أحادي الطور', 'Monophasic gel'), T('قوام متجانس يمنح انسيابية في الحقن وتوزيعًا متساويًا تحت الجلد.', 'A homogeneous texture that injects smoothly and distributes evenly under the skin.')],
-      [T('تنقية متعددة المراحل', 'Multi-stage purification'), T('تقليل المتبقيات لرفع درجة نقاء المنتج.', 'Reduced residuals for a higher degree of product purity.')],
-      [T('ثبات نتيجة متدرّج', 'Graduated longevity'), T('ثلاث كثافات تغطي الخطوط الدقيقة والملامح المتوسطة والتحجيم العميق.', 'Three densities covering fine lines, mid-face features and deep volumising.')],
-      [T('سهولة التخزين', 'Simple storage'), T('لا يحتاج سلسلة تبريد، ما يبسّط الحفظ داخل العيادة.', 'No cold chain required — simplifying in-clinic storage.')],
+      [T('ترابط متعدد المراحل', 'Multi-staged cross-linking'), T('يمنح الجل لزوجة ومرونة متوازنة تضمن سلاسة الحقن ودقة التشكيل داخل الأنسجة.', 'Provides optimal viscoelasticity for smooth extrusion and precise structural placement.')],
+      [T('نقاء وتوافق حيوي عالٍ', 'High biocompatibility'), T('هيالورونيك أسيد منقّى بأعلى المعايير للحد من التورم وتفاعلات الأنسجة بعد الإجراء.', 'Ultra-purified hyaluronic acid formulation designed to minimize post-procedure swelling and tissue reactivity.')],
+      [T('ثبات متوقع', 'Predictable longevity'), T('تحلل تدريجي متجانس يحافظ على الحجم والنتائج الطبيعية لفترات ممتدة.', 'Engineered degradation curve delivering consistent volume retention and patient satisfaction.')],
     ].map(([t, d]) => `<div class="card"><h4 class="card__title">${t}</h4><p>${d}</p></div>`).join('')}
   </div>
 </div></section>
@@ -192,9 +192,12 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
 </div></section>
 
 <section class="section section--last"><div class="container">
-  <div style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap">
-    ${btn(T('للمنشآت: طلب عرض سعر', 'Facilities: request a quote'), u('medical/quote'), 'dark')}
-    ${btn(T('التدريب والدعم الفني', 'Training & technical support'), u('medical/service-model') + '#training', 'ghost')}
+  <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
+    <h3 style="font-family:var(--ff-d);font-size:19px;font-weight:800;text-align:center">${T('ترغب في اعتماد فيلر ReMedium® في مجمعك الطبي؟', 'Introduce ReMedium® to your medical facility')}</h3>
+    <div style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap">
+      ${btn(T('طلب الملف الفني وقائمة الأسعار', 'Request Product Dossier & Pricing'), u('medical/quote'), 'dark')}
+      ${btn(T('التدريب والدعم الفني', 'Training & technical support'), u('medical/service-model') + '#training', 'ghost')}
+    </div>
   </div>
 </div></section>
 `);
@@ -218,7 +221,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
     <p class="page-hero__lead" style="margin-bottom:24px">${p.problem}</p>
     <div style="max-width:480px;margin-bottom:26px">${durBar(ctx, p.dur, p.from, p.to, p.color)}</div>
     <div style="display:flex;gap:12px;flex-wrap:wrap">
-      ${btn(T('للمنشآت: طلب عرض سعر', 'Facilities: request a quote'), u('medical/quote'), 'dark')}
+      ${btn(T('طلب الملف الفني وعرض السعر', 'Request Product Specifications & Quote'), u('medical/quote'), 'dark')}
       ${btn(T('للجمهور: اسألي طبيبك', 'Public: ask your doctor'), WA, 'ghost', I.wa(15))}
     </div>
   </div>
@@ -247,15 +250,23 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
     <div class="grid grid-2" style="gap:18px;align-items:start">
       <div class="spec-table">
         ${[
-          [T('التركيز', 'Concentration'), T('20 mg/mL — جل أحادي الطور (Monophasic)', '20 mg/mL — monophasic gel')],
-          [T('مادة الربط', 'Cross-linking agent'), 'DVS (Divinyl Sulfone)'],
-          [T('منصة التصنيع', 'Manufacturing platform'), T('MDM — بنية جزيئية دقيقة موحّدة، تنقية متعددة المراحل', 'MDM — uniform micro-particle structure, multi-stage purification')],
+          [T('المادة الفعالة', 'Composition'), T('حمض الهيالورونيك المترابط (Cross-linked HA) — بتقنية MDM', 'Cross-linked hyaluronic acid — MDM technology')],
+          [T('التركيز', 'HA concentration'), T('20 mg/mL', '20 mg/mL')],
+          [T('مستوى الحقن المستهدف', 'Target layer'), p.layer],
+          [T('مناطق الاستخدام', 'Injection areas'), p.specAreas],
+          [T('قياس الإبرة الموصى به', 'Needle size'), p.needle],
+          [T('مدة الثبات التقديرية', 'Duration'), T(`${p.dur} — تختلف حسب طبيعة الحالة والتقنية المتبعة`, `${p.dur} — variable based on patient profile and technique`)],
           [T('العبوة', 'Presentation'), T('سيرنج مملوء مسبقًا 1.0 mL لكل عبوة', '1 × 1.0 mL pre-filled syringe per box')],
-          [T('الحفظ', 'Storage'), T('أقل من 25° مئوية — لا يحتاج سلسلة تبريد', 'Below 25°C — no cold chain required')],
-          [T('الصلاحية', 'Shelf life'), T('حتى 36 شهرًا من تاريخ الإنتاج', 'Up to 36 months from date of manufacture')],
+          [T('الحفظ والصلاحية', 'Storage & shelf life'), T('أقل من 25° مئوية دون سلسلة تبريد — حتى 36 شهرًا من تاريخ الإنتاج', 'Below 25°C, no cold chain — up to 36 months from date of manufacture')],
         ].map(([k, v]) => `<div class="row"><span>${k}</span><span>${v}</span></div>`).join('')}
       </div>
       <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="card">
+          <h4 class="card__title">${T('أبرز المزايا السريرية', 'Key clinical advantages')}</h4>
+          <ul class="check-list" style="margin-top:8px">
+            ${p.adv.map(([t, d]) => `<li>${I.check(13)}<span><b style="color:var(--ink)">${t}:</b> ${d}</span></li>`).join('')}
+          </ul>
+        </div>
         ${noteStrip(T('الصياغة التقنية النهائية تُعتمد بما يطابق الملف التقني المسجَّل (IFU) لدى الهيئة العامة للغذاء والدواء.', 'Final technical wording to be approved against the registered technical file (IFU) with the SFDA.'))}
         <div class="card card--mint">
           <h4 class="card__title">${T('للممارسين المرخّصين', 'For licensed practitioners')}</h4>
@@ -304,7 +315,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
       T('سجل سريري منذ 2009', 'Clinical record since 2009'),
     ].map((t) => `<span style="display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600"><i style="width:6px;height:6px;border-radius:50%;background:#7FE3BE"></i>${t}</span>`).join('')}
   </div>
-  <p class="foot-note">${T('المنتج يُصرف ويُحقن عن طريق الطبيب فقط، ولا يُباع للأفراد. الملاحظة موحّدة أسفل كل صفحة منتج.', 'The product is dispensed and injected by a physician only, and is never sold to individuals. This note is repeated beneath every product page.')}</p>
+  <p class="foot-note">${T('مدة ثبات النتيجة تقريبية وتتفاوت بحسب طبيعة المنطقة المحقونة، والكمية المستخدمة، وطبيعة استجابة الجسم من شخص لآخر. اختيار نوع المنتج وعمق الحقن يخضع لقرار الطبيب المعالج حصرًا — والمنتج يُصرف ويُحقن عن طريق الطبيب فقط، ولا يُباع للأفراد.', 'Duration is indicative and varies depending on the treated area, injected volume, and individual biological response. Product selection and injection depth are determined strictly by the treating physician — the product is dispensed and injected by a physician only, and is never sold to individuals.')}</p>
 </div></section>
 
 <section class="section section--last"><div class="container">
@@ -330,38 +341,54 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
      HA FILLER — brands/ha-filler
   ============================================================ */
   add('brands/ha-filler',
-    T('HA Filler — جهاز طبي', 'HA Filler — Medical Device'),
-    T('HA Filler: هيالورونيك أسيد يُستخدم في جراحات العيون — جهاز طبي مسجّل لدى الهيئة العامة للغذاء والدواء.', 'HA Filler: hyaluronic acid used in ophthalmic surgery — an SFDA-registered medical device.'),
+    T('هيالورونيك أسيد لجراحات وعمليات العيون', 'Ophthalmic Viscoelastic Hyaluronic Acid'),
+    T('محاليل هيالورونيك أسيد لزجة بمواصفات طبية دقيقة — جهاز طبي جراحي للعيون (OVD) مسجّل لدى الهيئة العامة للغذاء والدواء.', 'Medical-grade viscoelastic hyaluronic acid solutions — an SFDA-registered ophthalmic viscosurgical device (OVD).'),
     'brands', `
-${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات والمنتجات', 'Brands & Products'), u('brands')], ['<span class="lat" dir="ltr">HA Filler</span>']],
-    `<span class="lat" dir="ltr">HA Filler</span> — ${T('جهاز طبي', 'Medical Device')}`,
-    T('هيالورونيك أسيد يُستخدم في جراحات العيون. صفحة مستقلة بلغة طبية بحتة، خارج مسار التجميل — موجّهة للممارسين والمنشآت الصحية.',
-      'Hyaluronic acid used in ophthalmic surgery. A standalone page in strictly medical language, outside the aesthetics track — addressed to practitioners and healthcare facilities.'),
-    `<div class="page-hero__chips">${chip(T('مسجّل لدى <span class="lat" dir="ltr">SFDA</span>', '<span class="lat" dir="ltr">SFDA</span>-registered'), 'green')}${chip(T('جهاز طبي', 'Medical device'))}</div>`)}
+${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات والمنتجات', 'Brands & Products'), u('brands')], [T('هيالورونيك أسيد لجراحات العيون', 'Ophthalmic HA')]],
+    T('هيالورونيك أسيد لجراحات وعمليات العيون', 'Ophthalmic Viscoelastic Hyaluronic Acid'),
+    T('محاليل هيالورونيك أسيد لزجة بمواصفات طبية دقيقة، مصممة كجهاز طبي لحماية أنسجة العين وتسهيل الجراحات المتقدمة بالعيون.',
+      'Medical-grade hyaluronic acid solutions formulated as an essential viscoelastic device for intraocular surgeries and clinical ophthalmic procedures.'),
+    `<div class="page-hero__chips">${chip(T('الأجهزة والحلول الجراحية الطبية', 'Medical Devices & Surgical Solutions'))}${chip(T('مسجّل لدى <span class="lat" dir="ltr">SFDA</span>', '<span class="lat" dir="ltr">SFDA</span>-registered'), 'green')}</div>`)}
 
 <section class="section"><div class="container">
   <div class="grid grid-2" style="gap:18px;align-items:start">
     <div class="card">
-      <h3 class="card__title" style="font-size:17px">${T('الاستخدام', 'Intended use')}</h3>
-      <p style="font-size:13px;line-height:2">${T('جهاز طبي من الهيالورونيك أسيد يُستخدم في جراحات العيون من قِبل ممارسين مرخّصين داخل المنشآت الصحية المعتمدة.', 'A hyaluronic-acid medical device used in ophthalmic surgery by licensed practitioners within accredited healthcare facilities.')} ${T('تُعرض التسمية التجارية ودواعي الاستخدام كما وردت في شهادة تسجيل الهيئة والملف التقني.', 'The trade name and indications are shown exactly as stated on the SFDA registration certificate and technical file.')}</p>
+      <h3 class="card__title" style="font-size:17px">${T('نبذة سريرية عن المنتج', 'Clinical overview')}</h3>
+      <p style="font-size:13px;line-height:2">${T('مادة لزجة مرنة (OVD) مخصصة للعمليات الجراحية داخل العين، تعمل على حماية الخلايا البطانية للقرنية، والحفاظ على استقرار وعمق الغرفة الأمامية للعين أثناء الجراحة، مما يمنح الجراحين رؤية واضحة ومجال عمل آمن ودقيق.',
+        'Formulated to meet rigorous surgical standards, this ophthalmic viscoelastic device (OVD) provides mechanical protection for corneal endothelial cells, maintains deep anterior chamber stability, and facilitates precise intraocular surgical maneuvers.')}</p>
+      <h4 class="card__title" style="font-size:15px;margin-top:18px">${T('دواعي الاستخدام والتدخلات الجراحية', 'Surgical indications')}</h4>
+      <ul class="check-list" style="margin-top:8px">
+        <li>${I.check(13)}${T('عمليات إزالة الساد (المياه البيضاء) وزراعة العدسات داخل العين (IOL).', 'Cataract extraction and intraocular lens (IOL) implantation.')}</li>
+        <li>${I.check(13)}${T('عمليات زراعة ورأب القرنية (Keratoplasty).', 'Corneal transplantation procedures (keratoplasty).')}</li>
+        <li>${I.check(13)}${T('جراحات معالجة المياه الزرقاء (الجلوكوما).', 'Glaucoma filtration surgery.')}</li>
+        <li>${I.check(13)}${T('معالجة إصابات الجزء الأمامي من العين والمناورات الجراحية المجهرية.', 'Anterior segment trauma management and intraocular tissue manipulation.')}</li>
+      </ul>
     </div>
     <div class="card">
-      <h3 class="card__title" style="font-size:17px">${T('المستندات المتاحة عند الطلب', 'Documents available on request')}</h3>
+      <h3 class="card__title" style="font-size:17px">${T('المواصفات الفنية والمزايا السريرية', 'Key clinical specifications & performance')}</h3>
       <ul class="check-list" style="margin-top:8px">
-        <li>${I.check(13)}${T('شهادة تسجيل المنتج لدى الهيئة العامة للغذاء والدواء', 'SFDA product registration certificate')}</li>
-        <li>${I.check(13)}${T('الملف التقني وتعليمات الاستخدام (IFU) من المصنّع', 'Technical file and instructions for use (IFU) from the manufacturer')}</li>
-        <li>${I.check(13)}${T('بيانات التشغيلة مع كل شحنة، وفاتورة ضريبية نظامية', 'Lot data with every shipment, plus a compliant tax invoice')}</li>
+        <li>${I.check(13)}${T('تصنيف المنتج: جهاز طبي جراحي للعيون (Ophthalmic Viscosurgical Device).', 'Product category: ophthalmic viscosurgical device (OVD) / medical device.')}</li>
+        <li>${I.check(13)}${T('المادة: هيالورونات الصوديوم عالية النقاء وذات وزن جزيئي مرتفع.', 'Composition: high-molecular-weight, ultra-purified sodium hyaluronate.')}</li>
+        <li>${I.check(13)}${T('حماية بطانة القرنية: لزوجة متماسكة تحمي الأنسجة الحساسة من أثر الأدوات الجراحية وسوائل الغسيل.', 'Endothelial cell protection: superior cohesive viscosity shielding delicate ocular tissues from mechanical surgical stress.')}</li>
+        <li>${I.check(13)}${T('تثبيت حيز الغرفة الأمامية: ثبات هيكلي ممتاز يمنع انكماش الحجرة الأمامية أثناء التدخل الجراحي.', 'Space maintenance: excellent anterior chamber depth retention during high-flow irrigation and aspiration.')}</li>
+        <li>${I.check(13)}${T('شفافية بصرية تامة: تركيبة فائقة النقاء تضمن للجراح مجال رؤية مجهري واضح تمامًا دون أي عتامة.', 'Optical clarity: fully transparent formulation ensuring an unobstructed surgical field of view.')}</li>
+        <li>${I.check(13)}${T('سهولة الشفط والإزالة: إخلاء سريع وكامل في نهاية العملية لمنع أي ارتفاع مؤقت في ضغط العين بعد الجراحة.', 'Clean washout: easy, complete removal at the conclusion of surgery to minimize post-operative IOP spikes.')}</li>
       </ul>
     </div>
   </div>
 </div></section>
 
+<section class="section"><div class="container">
+  ${noteStrip(T('الوضع النظامي وسلسلة التوريد: يُورَّد بترخيص رسمي لتوزيع الأجهزة والمستلزمات الطبية من الهيئة العامة للغذاء والدواء (IDL-2024-MD-0095)، عبر سلسلة إمداد مبرّدة ومراقبة بدقة تضمن وصول الشحنات للمستشفيات ومراكز جراحة العيون بكامل وثائق التتبع.',
+    'Regulatory & distribution status: distributed under Beauty Roots’ SFDA-licensed medical device framework (IDL-2024-MD-0095), with verified cold-chain, temperature-monitored traceability directly to hospital surgical units and specialized eye centers.'))}
+</div></section>
+
 <section class="section section--last"><div class="container">
-  ${darkStrip(T('للمنشآت الصحية', 'For healthcare facilities'),
-    T('لطلب عرض سعر أو الاطلاع على مستندات التسجيل والملف التقني — تواصلوا معنا مباشرة أو عبر نموذج طلب عرض السعر. المنتج يُورَّد للمنشآت الصحية المرخّصة فقط.',
-      'To request a quote or review the registration documents and technical file, contact us directly or use the quote request form. The product is supplied to licensed healthcare facilities only.'))}
+  ${darkStrip(T('التوريد للمستشفيات والمراكز', 'Institutional supply'),
+    T('لطلب الملف الطبي أو ترتيبات التوريد للمستشفيات ومراكز جراحة العيون — تواصلوا معنا مباشرة أو عبر نموذج طلب عرض السعر. المنتج يُورَّد للمنشآت الصحية المرخّصة فقط.',
+      'For the clinical dossier or hospital supply arrangements for surgical units and specialized eye centers — contact us directly or use the quote request form. The product is supplied to licensed healthcare facilities only.'))}
   <div style="display:flex;gap:14px;justify-content:center;margin-top:24px;flex-wrap:wrap">
-    ${btn(T('طلب عرض سعر', 'Request a quote'), u('medical/quote'), 'dark')}
+    ${btn(T('طلب الملف الطبي وعروض التوريد', 'Request Hospital Supply & Clinical Dossier'), u('medical/quote'), 'dark')}
     ${btn(T('تواصل معنا', 'Contact us'), u('company/contact'), 'ghost')}
   </div>
 </div></section>
