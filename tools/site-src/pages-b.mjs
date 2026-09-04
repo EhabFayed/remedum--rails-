@@ -20,12 +20,12 @@ export default function pagesB(ctx) {
   ============================================================ */
   add('company/about',
     T('عن جذور الجمال', 'About Beauty Roots'),
-    T('شريككم المعتمد لحلول التجميل الطبي في المملكة — سلسلة إمداد مرخصة ومطابقة لاشتراطات الهيئة العامة للغذاء والدواء.', 'The Kingdom’s trusted partner for medical aesthetic solutions — a licensed, SFDA-compliant supply chain.'),
+    T('جذور الجمال… خبرة سعودية في المجال الطبي — منتجات مختارة، شراكات موثوقة، ومنظومة عمل تمتد إلى ما بعد وصول المنتج.', 'Beauty Roots — Saudi expertise in the medical sector: selected products, trusted partnerships, and an operating system that extends beyond product delivery.'),
     'company', `
 ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('الشركة', 'Company'), u('company/about')], [T('عن جذور الجمال', 'About Beauty Roots')]],
-    T('شريككم المعتمد لحلول التجميل الطبي في المملكة', 'The Kingdom’s Trusted Partner for Medical Aesthetic Solutions'),
-    T('نجمع بين ابتكارات التجميل الطبي العالمية والامتثال للاشتراطات الرقابية السعودية.',
-      'Bridging global medical aesthetics with Saudi regulatory standards.'))}
+    T('جذور الجمال… خبرة سعودية في المجال الطبي', 'Beauty Roots… Saudi Expertise in the Medical Sector'),
+    T('منتجات مختارة، شراكات موثوقة، ومنظومة عمل تمتد إلى ما بعد وصول المنتج.',
+      'Selected products, trusted partnerships, and an operating system that extends beyond product delivery.'))}
 
 <section class="section"><div class="container">
   <div class="hero-split" style="grid-template-columns:.72fr 1.28fr;margin-bottom:40px">
@@ -34,15 +34,15 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('الشركة', 'Com
       <span class="media-tag">${T('صورة مؤقتة — تُستبدل بصور المنشأة', 'Placeholder — to be replaced by company photography')}</span>
     </div>
     <div>
-      ${secHead(T('من نحن', 'Who we are'), T('سلسلة إمداد مرخصة — من المصنع مباشرة حتى عيادتكم', 'A fully controlled, SFDA-compliant supply chain'))}
+      ${secHead(T('من نحن', 'Who we are'), T('خبرة في المجال الطبي تبدأ من اختيار المنتج وتستمر بعد وصوله', 'Medical-sector expertise that starts with product selection and continues after delivery'))}
       <p style="margin-top:-18px;font-size:14px;line-height:2.1;color:var(--muted)">${T(
-      '«جذور الجمال» شركة سعودية في الرياض، متخصصة في استيراد وتوزيع منتجات التجميل الطبي والأجهزة الطبية ومستحضرات العناية. نخدم العيادات والصيدليات في كافة مناطق المملكة عبر سلسلة إمداد مرخصة ومطابقة لاشتراطات الهيئة العامة للغذاء والدواء تبدأ من المصنع مباشرة حتى عيادتكم.',
-      'Beauty Roots is a licensed Saudi distributor in Riyadh specializing in medical aesthetics, ophthalmic devices, and advanced skincare. We serve clinics, pharmacies, and specialists across the Kingdom through a fully controlled, SFDA-compliant supply chain from global manufacturers to your facility.')}</p>
+      '«جذور الجمال» شركة سعودية تعمل في المجال الطبي، وتتعاون مع المستشفيات والعيادات والمراكز الطبية في مختلف مناطق المملكة. ومن خلال محفظة مختارة من المنتجات والعلامات المتخصصة، تجمع الشركة بين اختيار المنتجات والمصانع المؤهلة وإدارة الاستيراد والتخزين والتوزيع، إلى جانب الدعم الفني والمتابعة التي تستمر مع المنشآت الطبية بعد وصول المنتج.',
+      'Beauty Roots is a Saudi company operating in the medical sector, working with hospitals, clinics and medical centres across the Kingdom. Through a selected portfolio of specialised products and brands, the company combines the selection of products and qualified manufacturers with the management of import, storage and distribution — alongside technical support and follow-up that continue with medical facilities after the product arrives.')}</p>
     </div>
   </div>
   <div class="grid grid-2" style="gap:14px">
     ${[
-      [T('الامتثال لاشتراطات الهيئة (SFDA)', 'Full SFDA compliance'), T('التزام كامل باشتراطات التسجيل والتخزين والتتبع لضمان أمان كل شحنة.', 'Rigorous adherence to national registration, storage, and traceability standards.'), 'card--mint'],
+      [T('الامتثال لمتطلبات الهيئة العامة للغذاء والدواء (SFDA)', 'Compliance with SFDA requirements'), T('التزام بمتطلبات تسجيل المنتجات وتخزينها وتوزيعها، بما يدعم جودة المنتج وسلامة تداوله.', 'Commitment to product registration, storage and distribution requirements — supporting product quality and safe handling.'), 'card--mint'],
       [T('الانتقاء الدقيق للمحفظة', 'A selective portfolio'), T('محفظة مختارة بعناية من مصانع عالمية مؤهلة لتوفير نتائج علاجية آمنة ومثبتة سريريًا.', 'Clinically proven products sourced directly from accredited global manufacturers.'), ''],
     ].map(([t, d, mod]) => `
     <div class="card ${mod}" style="padding:24px 26px">
@@ -232,13 +232,13 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('الشركة', 'Com
      COMPLIANCE — quality/compliance
   ============================================================ */
   add('quality/compliance',
-    T('الالتزام واليقظة', 'Compliance & Vigilance'),
-    T('تسجيل المنتجات ومراجعة الملصقات وقناة الإبلاغ وإجراء الاستدعاء — والقناة النظامية مقابل غيرها.', 'Product registration, label review, the reporting channel and the recall procedure — plus the regulated channel vs everything else.'),
+    T('الجودة والالتزام', 'Quality & Compliance'),
+    T('نعمل وفق متطلبات الهيئة العامة للغذاء والدواء (SFDA)، ضمن منظومة واضحة تشمل تسجيل المنتجات واستيرادها وتخزينها وتوزيعها.', 'We operate per SFDA requirements, within a clear system covering product registration, import, storage and distribution.'),
     'quality', `
-${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('الجودة والالتزام', 'Quality & Compliance'), u('quality/compliance')], [T('الالتزام واليقظة', 'Compliance & Vigilance')]],
-    T('الالتزام واليقظة', 'Compliance & Vigilance'),
-    T('معايير تشغيلية صارمة متوافقة مع اشتراطات الهيئة العامة للغذاء والدواء لضمان مأمونية المنتجات وتتبعها وأعلى درجات الأمان السريري — وتُدار شؤون التسجيل والالتزام داخليًا في «جذور الجمال».',
-      'Operating strictly within SFDA frameworks to ensure product authenticity, end-to-end traceability, and patient safety across the Kingdom — with registration and compliance managed in-house at Beauty Roots.'))}
+${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('الجودة والالتزام', 'Quality & Compliance'), u('quality/compliance')], [T('الجودة والالتزام', 'Quality & Compliance')]],
+    T('الجودة والالتزام', 'Quality & Compliance'),
+    T('نعمل وفق متطلبات الهيئة العامة للغذاء والدواء (SFDA)، ضمن منظومة واضحة تشمل تسجيل المنتجات واستيرادها وتخزينها وتوزيعها، مع الحفاظ على التتبع في مختلف مراحل تداول المنتج.',
+      'We operate per the requirements of the Saudi Food and Drug Authority (SFDA), within a clear system covering product registration, import, storage and distribution — maintaining traceability across every stage of the product’s journey.'))}
 
 <section class="section"><div class="container">
   <div class="grid" style="grid-template-columns:.5fr 1fr 1fr;gap:18px">
@@ -269,11 +269,10 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('الجودة وال
 </div></section>
 
 <section class="section"><div class="container">
-  ${secHead(T('وثيقة أمان العيادة والمريض', 'The clinical safety matrix'), T('القناة النظامية المعتمدة مقابل التوريد غير النظامي', 'Authorized vs. unauthorized supply channels'),
-    T('الفرق يظهر في المستندات التي تُطلب من منشأتكم عند أول مراجعة رقابية. مقارنة محايدة بين القناة الرسمية النظامية والقنوات غير النظامية والسوق الموازي — دون ذكر أي منافس بالاسم.',
-      'The difference shows in the documents your facility is asked for at its first regulatory inspection — a neutral comparison between the authorized official channel and unofficial grey-market channels, with no competitor named.'))}
+  ${secHead(T('منظومة التوريد', 'The supply system'), T('ما وراء المنتج… مسار كامل من المسؤولية والتتبع', 'Beyond the product… a complete path of responsibility and traceability'),
+    T('وصول المنتج للمنشأة هو جزء من الرحلة. في جذور الجمال، تمتد المنظومة لتشمل التتبع والتخزين والتوثيق والدعم، بما يوضح مصدر المنتج ومساره في مختلف مراحل التوريد.',
+      'The product reaching your facility is only part of the journey. At Beauty Roots, the system extends to traceability, storage, documentation and support — making the product’s source and path clear across every stage of supply.'))}
   ${compareTable(ctx)}
-  <p class="foot-note">${T('البلوك نفسه يظهر مختصرًا في الصفحة الرئيسية، ويعيش هنا بنسخته الكاملة.', 'A condensed version of this block appears on the homepage; the full version lives here.')}</p>
 </div></section>
 
 <section class="section section--last"><div class="container">
@@ -319,7 +318,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('الجودة وال
 </div></section>
 
 <section class="section--mint"><div class="container">
-  ${secHead(T('التخزين وظروف الحفظ', 'Storage & conditions'), T('مستودع مرخّص تحت إشراف الهيئة', 'A licensed warehouse under SFDA supervision'))}
+  ${secHead(T('التخزين وظروف الحفظ', 'Storage & conditions'), T('مستودعات مرخصة وفق متطلبات الهيئة', 'Licensed warehouses per SFDA requirements'))}
   <div class="grid" style="grid-template-columns:.8fr 1.2fr;gap:18px;align-items:stretch">
     <div class="arch-media arch-media--card" style="min-height:420px">
       <img src="/assets/img/warehouse.jpg" alt="${T('مستودع مرخّص', 'Licensed warehouse')}">
@@ -328,9 +327,9 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('الجودة وال
     </div>
     <div style="display:grid;grid-template-rows:repeat(3,minmax(0,1fr));gap:14px">
       ${[
-        [I.box(20), T('مستودع مرّخص بالرياض', 'Licensed Riyadh facility'), T('منشأة تخزين مركزية مرخصة للمستلزمات الطبية ومستحضرات التجميل، مطابقة لاشتراطات الهيئة العامة للغذاء والدواء وخاضعة لتفتيشها.', 'A fully compliant, SFDA-inspected central facility for medical and cosmetic storage in Riyadh.')],
-        [I.thermo(20), T('بيئة حفظ مراقبة', 'Controlled environment'), T('ضبط ومراقبة مستمرة لدرجات الحرارة والرطوبة، مع فصل وتصنيف دقيق لكل فئة علاجية.', 'Validated temperature and humidity monitoring with strict zoning by product classification.')],
-        [I.check(20), T('صرف الأقدم صلاحيةً أولًا (FEFO)', 'FEFO inventory rotation'), T('إدارة مخزون منضبطة تضمن تدوير المنتجات وصرف الأسبق صلاحية أولًا بأول.', 'Strict First-Expired, First-Out dispensing methodology across the inventory.')],
+        [I.box(20), T('مستودعات مرخصة', 'Licensed warehouses'), T('منشآت تخزين مرخصة للمنتجات الطبية ومستحضرات التجميل، وفق متطلبات الهيئة العامة للغذاء والدواء (SFDA) وممارسات التخزين الجيد (GSP).', 'Licensed storage facilities for medical products and cosmetics, per Saudi Food and Drug Authority (SFDA) requirements and Good Storage Practice (GSP).')],
+        [I.thermo(20), T('بيئة حفظ مراقبة', 'Monitored storage environment'), T('متابعة ظروف التخزين من درجات الحرارة والرطوبة بما يتوافق مع متطلبات الحفظ الخاصة بكل منتج.', 'Ongoing monitoring of temperature and humidity in line with each product’s own storage requirements.')],
+        [I.check(20), T('إدارة المخزون', 'Inventory management'), T('إدارة منظمة للمخزون تدعم تتبع المنتجات والتشغيلات وتنظيم حركة الصرف والتوريد.', 'Organised inventory management supporting product and batch traceability and orderly dispatch and supply.')],
       ].map(([ic, t, d]) => `
       <div class="card" style="display:flex;gap:16px;align-items:flex-start;padding:22px 24px">
         <span class="icon-tile icon-tile--sm">${ic}</span>
@@ -348,7 +347,8 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('الجودة وال
 </div></section>
 
 <section class="section section--last"><div class="container">
-  ${secHead(T('التوزيع والتغطية', 'Distribution & coverage'), T('جميع مناطق ومحافظات المملكة', 'Every region and governorate of the Kingdom'))}
+  ${secHead(T('التوزيع والتغطية', 'Distribution & coverage'), T('جميع مناطق ومحافظات المملكة', 'Every region and governorate of the Kingdom'),
+    T('الشحن والتوصيل عبر قنوات معتمدة حسب معايير التوصيل الجيد (GDP).', 'Shipping and delivery through approved channels per Good Distribution Practice (GDP).'))}
   <div class="grid grid-2">
     ${[
       [I.pin(20), T('داخل مدينة الرياض', 'Within Riyadh'), T('أسطول توصيل مباشر ومبرَّد عبر مندوبينا المتخصصين للتسليم للمجمعات الطبية والعيادات.', 'Direct, climate-controlled delivery by our own dedicated fleet and specialised representatives.')],
@@ -433,96 +433,30 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('الجودة وال
 `);
 
   /* ============================================================
-     MEDICAL GATE + HUB — medical
-  ============================================================ */
-  add('medical',
-    T('المعلومات الطبية', 'Medical Information'),
-    T('القسم الموجّه للكادر الطبي: بوابة إقرار واحدة قبل الأدلة والبروتوكولات وصور النتائج ونموذج طلب عرض السعر.', 'The practitioner section: one attestation gate before the evidence, protocols, result photos and the quote form.'),
-    'medical', `
-${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات الطبية', 'Medical Information')]],
-    T('المعلومات الطبية', 'Medical Information'),
-    T('القسم الموجّه للكادر الطبي: ما يحتاجه قبل أن يقرّر، وما يحتاجه بعد أن يبدأ. شاشة إقرار واحدة قبل الدخول إلى الأقسام المحمية — بدل التسجيل.',
-      'The section for medical staff: what they need before deciding, and what they need once they start. A single attestation screen before the protected areas — instead of registration.'))}
-
-<section class="section"><div class="container">
-  <div class="dark-panel gate" data-gate>
-    <span class="icon-badge">${I.lock(24)}</span>
-    <h2>${T('بوابة الإقرار المهني', 'Professional attestation gate')}</h2>
-    <p>${T('«المحتوى التالي موجّه للممارسين الصحيين المرخّصين، ويتضمن مواد ومعلومات سريرية.»', '“The following content is intended for licensed healthcare practitioners and includes clinical material and information.”')}</p>
-    <label>
-      <input type="checkbox">
-      <span>${T('أُقرّ بأنني طبيب أو ممارس صحي مرخّص، وأطّلع على هذا المحتوى بصفة مهنية.', 'I confirm that I am a licensed physician or healthcare practitioner, accessing this content in a professional capacity.')}</span>
-    </label>
-    <div style="display:flex;justify-content:center">
-      <button class="btn btn--green" data-gate-enter disabled>${T('دخول القسم', 'Enter the section')}<span class="btn__circle">${I.arrow()}</span></button>
-    </div>
-    <p class="small">${T('الموقع لا يتحقق من الترخيص — التحقق الفعلي يحدث في مكانه الطبيعي عند فتح الحساب: ترخيص المنشأة الصحية · السجل التجاري · الشهادة الضريبية · بيانات التواصل.', 'The site does not verify licences — real verification happens where it belongs, at account opening: facility licence · commercial registration · VAT certificate · contact details.')}</p>
-  </div>
-</div></section>
-
-<section class="section gated" hidden><div class="container">
-  ${secHead(T('محتويات القسم', 'What’s inside'), T('ستة مداخل — والفعل التجاري الوحيد هو طلب عرض السعر', 'Six entries — and the only commercial action is the quote request'))}
-  <div class="grid grid-3">
-    ${[
-      [I.user(19), T('نموذج الخدمة للعيادات', 'Service model for clinics'), T('خمس خطوات من فتح الحساب إلى المتابعة.', 'Five steps from account opening to follow-up.'), u('medical/service-model'), false],
-      [I.doc(19), T('الشروط التجارية وسياسة الصلاحية', 'Commercial terms & shelf-life policy'), T('الدفع والفوترة والصلاحية عند التسليم والاستبدال.', 'Payment, invoicing, shelf life at delivery, and replacement.'), u('medical/service-model') + '#terms', false],
-      [I.search(19), T('الأدلة المخبرية وبروتوكولات الحقن', 'Laboratory evidence & injection protocols'), T('بيانات انسيابية موثقة، دراسات منشورة، وبروتوكولات الحقن المعتمدة من المصنّع.', 'Validated rheological data, published studies, and standardized manufacturer injection protocols.'), u('medical/evidence'), false],
-      [I.eye(19), T('معرض النتائج السريرية', 'Clinical results gallery'), T('حالات قبل وبعد خلف بوابة التحقق المهني وبطبقة الحماية.', 'Before/after cases behind the professional verification gate and protection layer.'), u('medical/results'), false],
-      [I.shield(19), T('مكتبة التدريب والفيديوهات', 'Training modules & videos'), T('فيديوهات الحقن التوضيحية وإدارة الآثار الجانبية — ضمن صفحة الأدلة المخبرية.', 'Clinical demonstration videos and complication management — within the laboratory evidence page.'), u('medical/evidence') + '#training', false],
-      [I.arrow(17), T('طلب عرض سعر', 'Request a quote'), T('نموذج واحد — هو الفعل التجاري الوحيد في القسم.', 'One form — the section’s only commercial action.'), u('medical/quote'), false],
-    ].map(([ic, t, d, href, locked]) => `
-    <a class="card" href="${href}" style="display:block">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-        <span class="icon-tile icon-tile--sm" style="width:44px;height:44px">${ic}</span>
-        ${locked ? chip(`${I.lock(11)} ${T('المحتوى قيد الإعداد', 'Content in preparation')}`) : ''}
-      </div>
-      <h4 class="card__title">${t}</h4>
-      <p>${d}</p>
-    </a>`).join('')}
-  </div>
-</div></section>
-
-<section class="section section--last gated" hidden><div class="container">
-  ${secHead(T('حماية صور قبل وبعد', 'Before/after photo protection'), T('ثلاث طبقات — والقاعدة: لا صور قبل وبعد على أي صفحة عامة', 'Three layers — and the rule: no before/after photos on any public page'))}
-  <div class="grid grid-3">
-    ${[
-      [T('الطبقة الأولى — المنع والإخفاء', 'Layer one — prevention & concealment'), T('الصور خلف الإقرار فقط · روابط موقّعة قصيرة العمر · تعطيل النسخ والسحب · نسخة منخفضة الدقة بلا تحميل ولا تكبير · noindex.', 'Photos behind the attestation only · short-lived signed URLs · copy/drag disabled · a low-resolution version with no download or zoom · noindex.'), 'card--mint'],
-      [T('الطبقة الثانية — العلامة والتتبع', 'Layer two — watermarking & tracing'), T('علامة مائية ظاهرة بشعار جذور الجمال فوق الصورة كلها · علامة ديناميكية بوقت الاطلاع ورقم الجلسة · بصمة مخفية داخل الملف · بحث دوري بالصورة العكسي.', 'A visible Beauty Roots watermark across the whole image · a dynamic mark with view time and session ID · a hidden fingerprint inside the file · periodic reverse-image searches.'), ''],
-      [T('الطبقة الثالثة — السند القانوني', 'Layer three — legal grounding'), T('بند صريح في شروط الاستخدام: الصور ملك جذور الجمال ويُمنع نسخها أو إعادة نشرها · إقرار الدخول يُسجَّل بتاريخه ووقته · موافقة خطية موثّقة من كل حالة.', 'An explicit clause in the Terms of Use: photos are Beauty Roots property and may not be copied or republished · the attestation is logged with date and time · documented written consent from every case.'), ''],
-    ].map(([t, d, mod]) => `
-    <div class="card ${mod}" style="padding:24px">
-      <h4 class="card__title" style="color:var(--green-900);font-size:15px;margin-bottom:10px">${t}</h4>
-      <p style="line-height:2">${d}</p>
-    </div>`).join('')}
-  </div>
-  <p class="foot-note">${T('التوصية المعتمدة في الهيكل: الطبقة الأولى مع العلامة المائية الديناميكية تغطيان الغالبية العملية من الحالات — وهما ما نوصي بتنفيذه في الإطلاق.', 'The structure’s adopted recommendation: layer one plus the dynamic watermark cover the practical majority of cases — and are what we recommend implementing at launch.')}</p>
-</div></section>
-`);
-
-  /* ============================================================
      SERVICE MODEL — medical/service-model
   ============================================================ */
   add('medical/service-model',
     T('نموذج الخدمة والشروط التجارية', 'Service Model & Commercial Terms'),
-    T('خمس خطوات من فتح الحساب إلى المتابعة، والشروط التجارية وسياسة الصلاحية، والتدريب والدعم الفني.', 'Five steps from account opening to follow-up, the commercial terms and shelf-life policy, and training & technical support.'),
+    T('ست خطوات من التواصل إلى المتابعة، والشروط التجارية وسياسة الصلاحية، والتدريب والدعم الفني.', 'Six steps from first contact to follow-up, the commercial terms and shelf-life policy, and training & technical support.'),
     'medical', `
-${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات الطبية', 'Medical Information'), u('medical')], [T('نموذج الخدمة والشروط التجارية', 'Service Model & Commercial Terms')]],
+${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات الطبية', 'Medical Information'), u('medical/evidence')], [T('نموذج الخدمة والشروط التجارية', 'Service Model & Commercial Terms')]],
     T('نموذج الخدمة والشروط التجارية للعيادات', 'Clinic Partnership & Commercial Framework'),
     T('مسار تشغيلي منضبط، وفوترة مؤسسية واضحة، وبروتوكولات توريد مخصصة للمنشآت الصحية المرخصة.',
       'Transparent operational workflows, institutional billing, and structured supply protocols tailored for licensed medical facilities.'))}
 
 <section class="section"><div class="container">
-  ${secHead(T('نموذج الخدمة للعيادات', 'The service model for clinics'), T('خطوة بخطوة', 'Step by step'))}
-  <div class="grid grid-5" style="gap:14px">
+  ${secHead(T('نموذج خدمة المنشآت الطبية', 'Service model for medical facilities'), T('خطوة بخطوة', 'Step by step'))}
+  <div class="grid grid-3" style="gap:14px">
     ${[
-      [T('فتح الحساب', 'Account opening'), T('تقديم ترخيص المنشأة الصحية، والسجل التجاري، والشهادة الضريبية، وبيانات التواصل المعتمدة.', 'Submission of the verified health facility licence, Commercial Registration (CR), VAT certificate, and authorized contact information.')],
-      [T('الطلب والتسعير', 'Order & formal quote'), T('عبر زيارة المندوب، أو البريد الرسمي، أو واتساب الأعمال — مع عرض سعر رسمي وموثّق.', 'Via a dedicated sales-rep visit, official email, or business WhatsApp — with a formal, documented quotation.')],
-      [T('التسليم المضبوط', 'Controlled dispatch'), T('استلام الشحنة مرفقة ببيان التسليم، وبيانات التشغيلة الكاملة، وفاتورة ضريبية نظامية.', 'Delivery receipt, complete batch records, and a certified ZATCA-compliant tax invoice with every dispatch.')],
-      [T('التدريب السريري', 'Clinical training'), T('تدريب عملي ميداني للطاقم الطبي وتوفير عينات للتجربة عند أول تعامل.', 'On-site practical application training for the medical team, with trial demonstration units at initial onboarding.')],
-      [T('المتابعة المستمرة', 'Consumption follow-up'), T('متابعة دورية لمعدل الاستهلاك لضمان جدولة وإعادة الطلب في وقته دون انقطاع.', 'Proactive stock replenishment monitoring to prevent clinical supply disruption.')],
+      [T('التواصل', 'Contact'), T('عبر الهاتف، البريد الإلكتروني، أو من خلال ممثل الشركة.', 'By phone, email, or through a company representative.')],
+      [T('فتح الحساب', 'Account opening'), T('تزويدنا ببيانات المنشأة والمستندات المطلوبة.', 'Providing us with the facility details and required documents.')],
+      [T('إجراء عملية الشراء', 'Placing the purchase'), T('تحديد المنتجات المطلوبة واستكمال إجراءات الشراء.', 'Selecting the required products and completing the purchase process.')],
+      [T('الشحن والتوصيل', 'Shipping & delivery'), T('الشحن والتوصيل عبر قنوات معتمدة حسب معايير التوصيل الجيد (GDP).', 'Shipping and delivery through approved channels per Good Distribution Practice (GDP).')],
+      [T('التدريب والدعم', 'Training & support'), T('توفير المواد التدريبية والدعم الفني المرتبط بالمنتج.', 'Providing product-related training materials and technical support.')],
+      [T('المتابعة', 'Follow-up'), T('متابعة احتياجات المنشأة وإعادة الطلب لضمان استمرارية التوريد.', 'Following up on the facility’s needs and reordering to keep supply continuous.')],
     ].map(([t, d], i) => `
     <div class="card step-card${i === 0 ? ' is-first' : ''}">
-      <span class="step-no">${T(['١', '٢', '٣', '٤', '٥'][i], String(i + 1))}</span>
+      <span class="step-no">${T(['١', '٢', '٣', '٤', '٥', '٦'][i], String(i + 1))}</span>
       <h4 class="card__title" style="font-size:14.5px;margin-bottom:7px">${t}</h4>
       <p style="font-size:12px">${d}</p>
     </div>`).join('')}
@@ -579,7 +513,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات 
     T('الأدلة المخبرية وبروتوكولات الحقن', 'Laboratory Evidence & Injection Protocols'),
     T('بيانات انسيابية وفيزيائية موثقة، دراسات مقارنة منشورة، وتوجيهات الحقن المعتمدة من المصنع للكوادر الطبية.', 'Validated rheological data, published comparative studies, and standardized manufacturer injection techniques for medical practitioners.'),
     'medical', `
-${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات الطبية', 'Medical Information'), u('medical')], [T('الأدلة المخبرية وبروتوكولات الحقن', 'Laboratory Evidence & Injection Protocols')]],
+${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات الطبية', 'Medical Information'), u('medical/evidence')], [T('الأدلة المخبرية وبروتوكولات الحقن', 'Laboratory Evidence & Injection Protocols')]],
     T('الأدلة المخبرية وبروتوكولات الحقن السريرية', 'Laboratory Evidence & Injection Protocols'),
     T('بيانات انسيابية وفيزيائية موثقة، دراسات مقارنة منشورة، وتوجيهات الحقن المعتمدة من المصنع للكوادر الطبية.',
       'Validated rheological data, published comparative studies, and standardized manufacturer injection techniques for medical practitioners.'),
@@ -637,7 +571,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات 
     T('معرض النتائج السريرية', 'Clinical Results Gallery'),
     T('حالات قبل وبعد موثقة — خلف بوابة التحقق المهني وبطبقة حماية كاملة للخصوصية.', 'Documented before/after cases — behind the professional verification gate with full confidentiality protection.'),
     'medical', `
-${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات الطبية', 'Medical Information'), u('medical')], [T('معرض النتائج السريرية', 'Clinical Results Gallery')]],
+${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات الطبية', 'Medical Information'), u('medical/evidence')], [T('معرض النتائج السريرية', 'Clinical Results Gallery')]],
     T('التحقق المهني وسرية الحالات السريرية', 'Professional Verification & Clinical Confidentiality'),
     T('هذا القسم مخصص حصريًا للكوادر الطبية والممارسين الصحيين المرخصين في المملكة العربية السعودية.',
       'This clinical gallery is strictly restricted to licensed medical practitioners and dermatologists within the Kingdom of Saudi Arabia.'),
@@ -696,7 +630,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات 
     T('طلب عرض سعر', 'Request a Quote'),
     T('نموذج واحد يجمع الأساسي — وفريق المبيعات يتواصل ويكمل التفاصيل ويصدر عرضًا رسميًا.', 'One form collects the essentials — the sales team follows up, completes the details and issues an official quote.'),
     'medical', `
-${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات الطبية', 'Medical Information'), u('medical')], [T('طلب عرض سعر', 'Request a Quote')]],
+${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات الطبية', 'Medical Information'), u('medical/evidence')], [T('طلب عرض سعر', 'Request a Quote')]],
     T('طلب عرض سعر — نموذج التوريد الموحد', 'Request a Formal Quotation'),
     T('قناة الاستفسار الرسمية للمنشآت الصحية والصيدليات ومراكز العناية المرخصة في المملكة. مستندات فتح الحساب لا تُطلب هنا — يطلبها الفريق بعد أول تواصل.',
       'The unified direct inquiry channel for licensed healthcare facilities, pharmacies, and aesthetic centers across the Kingdom. Account-opening documents are not requested here — the team asks for them after first contact.'))}

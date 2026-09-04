@@ -628,3 +628,6 @@ html[dir="ltr"] .post:hover .post__btn{transform:rotate(45deg)}
   html[dir="ltr"] .nav{inset:0 0 0 auto;box-shadow:-20px 0 60px -30px rgba(0,0,0,.4)}
   .nav.is-open{transform:none}
 }
+
+/* client revision (Sep 2026): simple two-column supply table */
+.compare--simple .row{grid-template-columns:minmax(0,.85fr) minmax(0,1.75fr)}

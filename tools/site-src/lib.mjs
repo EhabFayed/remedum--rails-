@@ -54,7 +54,7 @@ export const durBar = (ctx, label, from, to, color) => `
 </div>`;
 
 /* ---------- localized product data (copy source: client deck, Aug 2026) ---------- */
-export const products = ({ T }) => ({
+const productsData = ({ T }) => ({
   fine: {
     slug: 'fine', name: 'ReMedium Fine', color: 'var(--fine)', swatch: 'fine',
     sub: T('للخطوط الدقيقة والسطحية', 'For delicate superficial lines'),
@@ -156,6 +156,12 @@ export const products = ({ T }) => ({
   },
 });
 
+// Client note (Sep 2026): order reversed — Sub-Q first, Fine last.
+export const products = (ctx) => {
+  const d = productsData(ctx);
+  return { 'sub-q': d['sub-q'], mid: d.mid, fine: d.fine };
+};
+
 export const miniProduct = (ctx, p) => `
 <a class="mini-product" href="${ctx.u('brands/remedium/' + p.slug)}">
   <span class="swatch swatch--${p.swatch}"></span>
@@ -193,43 +199,35 @@ export const accredStrip = (ctx) => `
   </a>`).join('')}
 </div>`;
 
-// Copy source: client deck (Aug 2026) — criterion / regulated channel / unregulated sources
+// Client revision (Sep 2026): the vs-unregulated column removed — a simple
+// two-column "criterion | what Beauty Roots provides" table (compliance-page wording).
 export const COMPARE_ROWS = (T) => [
-  [T('تسجيل المنتج', 'Product Registration'),
-    T('ملف منتج مسجّل ومعتمد لدى الهيئة (SFDA)', 'Registered & approved by SFDA'),
-    T('غير مسجّل أو بضائع سوق موازية', 'Unregistered / grey-market stock')],
-  [T('تتبّع التشغيلة', 'Traceability'),
-    T('رقم تشغيلة قابل للتتبّع المباشر حتى المصنع', 'Batch number traceable to the manufacturer'),
-    T('تعذّر تتبّع المصدر أو مسار الشحنة', 'Untraceable origin & custody')],
-  [T('المسؤولية القانونية', 'Accountability'),
-    T('جهة مسؤولة ومعتمدة نظاميًا عند أي طارئ', 'Designated legal entity accountable for quality'),
-    T('غياب أي جهة مسؤولة نظاميًا', 'No identifiable liability')],
-  [T('إجراء الاستدعاء', 'Product Recall'),
-    T('إجراء استدعاء موثّق ومعتمد لحماية المرضى', 'Documented, systematic recall procedure'),
-    T('انعدام آلية الاستدعاء عند وجود خلل', 'No recall path or patient protection')],
-  [T('ظروف التخزين', 'Storage Conditions'),
-    T('تخزين مراقب وموثّق في مستودع مرّخص', 'Monitored, licensed warehousing (< 25°C)'),
-    T('ظروف حفظ مجهولة وغير خاضعة للرقابة', 'Unmonitored & compromised storage')],
-  [T('المستندات والفوترة', 'Official Paperwork'),
-    T('فاتورة ضريبية نظامية ومستندات رسمية كاملة', 'Certified tax invoice & regulatory files'),
-    T('غياب الفواتير الضريبية والمستندات', 'Missing or unverified documents')],
-  [T('الدعم والتدريب', 'Technical Support'),
-    T('دعم فني، تدريب سريري، وتحديثات المصنّع', 'Clinical training & manufacturer updates'),
-    T('ينتهي التعامل بمجرد تسليم العبوة', 'None once the unit is handed over')],
+  [T('بيانات المنتج', 'Product data'),
+    T('مستندات وبيانات المنتج وفق المتطلبات المعتمدة', 'Product documents and data per the approved requirements')],
+  [T('تتبع التشغيلات', 'Batch traceability'),
+    T('بيانات تشغيلات تتيح تتبع المنتج ومصدره', 'Batch data enabling product and source tracing')],
+  [T('جهة التوريد', 'Supplying entity'),
+    T('جهة واضحة للتواصل والمتابعة عند الحاجة', 'A clear entity for contact and follow-up when needed')],
+  [T('إجراءات الاستدعاء', 'Recall procedures'),
+    T('آلية موثقة للتعامل مع حالات استدعاء المنتجات', 'A documented mechanism for handling product recalls')],
+  [T('التخزين', 'Storage'),
+    T('تخزين في مستودعات مرخصة وفق ممارسات التخزين الجيد (GSP)', 'Storage in licensed warehouses per Good Storage Practice (GSP)')],
+  [T('الفوترة والتوثيق', 'Invoicing & documentation'),
+    T('فواتير ضريبية ومستندات مرتبطة بعملية التوريد', 'Tax invoices and documents tied to each supply')],
+  [T('الدعم والمتابعة', 'Support & follow-up'),
+    T('دعم فني ومتابعة لاحتياجات المنشأة والمنتجات', 'Technical support and follow-up for facility and product needs')],
 ];
 
 export const compareTable = (ctx) => `
-<div class="compare">
+<div class="compare compare--simple">
   <div class="row row--head">
-    <span>${ctx.T('معيار المقارنة', 'Criteria')}</span>
-    <span class="us">${ctx.T('القناة النظامية', 'The regulated channel')}<em>${ctx.T('جذور الجمال', 'Beauty Roots')}</em></span>
-    <span>${ctx.T('التوريد غير النظامي', 'Unregulated sources')}</span>
+    <span>${ctx.T('المعيار', 'Criteria')}</span>
+    <span class="us">${ctx.T('ما نقدمه في جذور الجمال', 'What Beauty Roots provides')}<em>${ctx.T('جذور الجمال', 'Beauty Roots')}</em></span>
   </div>
-  ${COMPARE_ROWS(ctx.T).map(([crit, us, them]) => `
+  ${COMPARE_ROWS(ctx.T).map(([crit, us]) => `
   <div class="row">
     <span class="crit">${crit}</span>
     <span class="us"><i class="mark mark--yes">${I.check(12)}</i>${us}</span>
-    <span class="them"><i class="mark mark--no">${I.xmark(11)}</i>${them}</span>
   </div>`).join('')}
 </div>`;
 
@@ -247,23 +245,25 @@ export const NAV = (ctx) => [
     label: ctx.T('العلامات والمنتجات', 'Brands & Products'), key: 'brands', items: [
       [ctx.T('كل العلامات', 'All brands'), ctx.u('brands')],
       [ctx.T('ReMedium — وكالة حصرية', 'ReMedium — exclusive agency'), ctx.u('brands/remedium')],
-      ['ReMedium Fine', ctx.u('brands/remedium/fine')],
-      ['ReMedium Mid', ctx.u('brands/remedium/mid')],
       ['ReMedium Sub-Q', ctx.u('brands/remedium/sub-q')],
+      ['ReMedium Mid', ctx.u('brands/remedium/mid')],
+      ['ReMedium Fine', ctx.u('brands/remedium/fine')],
       ['HA Filler', ctx.u('brands/ha-filler')],
+      ['Hairont', ctx.u('brands/hairont')],
+      ['GynWell', ctx.u('brands/gynwell')],
+      ['OVDs', ctx.u('brands/ovds')],
       [ctx.T('العناية بالبشرة ↗', 'Skincare ↗'), ctx.u('brands') + '#skincare-external'],
     ],
   },
   {
     label: ctx.T('الجودة والالتزام', 'Quality & Compliance'), key: 'quality', items: [
-      [ctx.T('الالتزام واليقظة', 'Compliance & Vigilance'), ctx.u('quality/compliance')],
+      [ctx.T('الجودة والالتزام', 'Quality & Compliance'), ctx.u('quality/compliance')],
       [ctx.T('سلسلة الإمداد والتخزين والتوزيع', 'Supply Chain, Storage & Distribution'), ctx.u('quality/supply')],
       [ctx.T('الشهادات والاعتمادات', 'Certifications & Accreditations'), ctx.u('quality/certifications')],
     ],
   },
   {
     label: ctx.T('المعلومات الطبية', 'Medical Information'), key: 'medical', items: [
-      [ctx.T('بوابة القسم الطبي', 'Medical section gate'), ctx.u('medical')],
       [ctx.T('نموذج الخدمة والشروط التجارية', 'Service Model & Commercial Terms'), ctx.u('medical/service-model')],
       [ctx.T('الأدلة المخبرية وبروتوكولات الحقن', 'Laboratory Evidence & Protocols'), ctx.u('medical/evidence')],
       [ctx.T('معرض النتائج السريرية', 'Clinical Results Gallery'), ctx.u('medical/results')],

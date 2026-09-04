@@ -12,10 +12,13 @@ module SiteHelper
     { key: "brands", path: "brands", items: [
       %w[brands_all brands],
       %w[brands_remedium brands/remedium],
-      %w[brands_fine brands/remedium/fine],
-      %w[brands_mid brands/remedium/mid],
       %w[brands_subq brands/remedium/sub-q],
+      %w[brands_mid brands/remedium/mid],
+      %w[brands_fine brands/remedium/fine],
       %w[brands_ha brands/ha-filler],
+      %w[brands_hairont brands/hairont],
+      %w[brands_gynwell brands/gynwell],
+      %w[brands_ovds brands/ovds],
       %w[brands_skincare brands#skincare-external],
     ] },
     { key: "quality", path: "quality/compliance", items: [
@@ -23,8 +26,7 @@ module SiteHelper
       %w[quality_supply quality/supply],
       %w[quality_certifications quality/certifications],
     ] },
-    { key: "medical", path: "medical", items: [
-      %w[medical_gate medical],
+    { key: "medical", path: "medical/service-model", items: [
       %w[medical_service medical/service-model],
       %w[medical_evidence medical/evidence],
       %w[medical_results medical/results],
