@@ -1,0 +1,24 @@
+<% content_for :title, "إعدادات الموقع" %>
+<%= page_header "إعدادات الموقع", "القيم التي تظهر في الهيدر والفوتر وصفحة التواصل — تتغيّر بلا نشر جديد." %>
+
+<%= form_with url: admin_settings_path, method: :patch do |f| %>
+  <div style="display:flex;flex-direction:column;gap:18px;max-width:56rem">
+    <% Setting.grouped_definitions.each do |group, fields| %>
+      <div class="card">
+        <h2 class="card__title" style="margin-bottom:14px"><%= group %></h2>
+        <div class="grid-2">
+          <% fields.each do |field| %>
+            <div class="field">
+              <label class="label" for="setting-<%= field[:key] %>"><%= field[:label] %></label>
+              <%= text_field_tag "settings[#{field[:key]}]", @values[field[:key]],
+                                 id: "setting-#{field[:key]}", class: "inp#{" inp--mono" if field[:ltr]}",
+                                 dir: (field[:ltr] ? "ltr" : nil) %>
+              <% if field[:hint] %><p class="hint"><%= field[:hint] %></p><% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <div><%= f.submit "حفظ الإعدادات", class: "btn btn--primary pressable" %></div>
+  </div>
+<% end %>

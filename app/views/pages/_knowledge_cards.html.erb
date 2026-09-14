@@ -1,0 +1,29 @@
+<%# Article cards for the knowledge centre — published rows, newest first. %>
+<% if @posts.blank? %>
+  <p class="foot-note" style="grid-column:1/-1;text-align:center">
+    <%= rtl? ? "لا مقالات منشورة بعد." : "No published articles yet." %>
+  </p>
+<% else %>
+  <% @posts.each do |post| %>
+    <% cover = post.cover_for(I18n.locale) %>
+    <article class="post">
+      <a class="post__img" href="<%= post.path_for(I18n.locale) %>">
+        <% if cover %>
+          <%= tag.img src: cover[:url], alt: cover[:alt], loading: "lazy",
+                      width: cover[:width], height: cover[:height] %>
+        <% end %>
+        <span class="post__btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></span>
+      </a>
+      <div class="post__meta">
+        <% if post.category %>
+          <span class="chip"><%= post.category.name_for(I18n.locale) %></span>
+        <% end %>
+        <% if post.medically_reviewed %>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= rtl? ? "مراجعة طبية" : "Medically reviewed" %></span>
+        <% end %>
+      </div>
+      <h3><a href="<%= post.path_for(I18n.locale) %>"><%= post.title_for(I18n.locale) %></a></h3>
+      <p><%= post.byline_for(I18n.locale).presence || post.excerpt_for(I18n.locale) %></p>
+    </article>
+  <% end %>
+<% end %>

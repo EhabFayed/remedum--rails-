@@ -30,8 +30,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('الشركة', 'Com
 <section class="section"><div class="container">
   <div class="hero-split" style="grid-template-columns:.72fr 1.28fr;margin-bottom:40px">
     <div class="arch-media arch-media--soft">
-      <img src="/assets/img/team.jpg" alt="${T('فريق العمل', 'Our team')}" style="height:420px">
-      <span class="media-tag">${T('صورة مؤقتة — تُستبدل بصور المنشأة', 'Placeholder — to be replaced by company photography')}</span>
+      <img src="/assets/img/company-about.jpg" alt="${T('جذور الجمال', 'Beauty Roots')}" style="height:420px">
     </div>
     <div>
       ${secHead(T('من نحن', 'Who we are'), T('خبرة في المجال الطبي تبدأ من اختيار المنتج وتستمر بعد وصوله', 'Medical-sector expertise that starts with product selection and continues after delivery'))}
@@ -243,7 +242,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('الجودة وال
 <section class="section"><div class="container">
   <div class="grid" style="grid-template-columns:.5fr 1fr 1fr;gap:18px">
     <div class="arch-media arch-media--card" style="min-height:360px">
-      <img src="/assets/img/docs.jpg" alt="${T('مراجعة مستندات التسجيل', 'Reviewing registration documents')}">
+      <img src="/assets/img/quality-compliance.jpg" alt="${T('الجودة والالتزام', 'Quality & compliance')}">
       <span class="media-shade"></span>
       <span style="position:absolute;bottom:14px;inset-inline:14px;color:#fff;font-size:12px;font-weight:700;line-height:1.7">${T('التسجيل والالتزام يُداران داخليًا — دون مستشارين خارجيين', 'Registration and compliance are managed in-house — no external consultants')}</span>
     </div>
@@ -321,9 +320,8 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('الجودة وال
   ${secHead(T('التخزين وظروف الحفظ', 'Storage & conditions'), T('مستودعات مرخصة وفق متطلبات الهيئة', 'Licensed warehouses per SFDA requirements'))}
   <div class="grid" style="grid-template-columns:.8fr 1.2fr;gap:18px;align-items:stretch">
     <div class="arch-media arch-media--card" style="min-height:420px">
-      <img src="/assets/img/warehouse.jpg" alt="${T('مستودع مرخّص', 'Licensed warehouse')}">
+      <img src="/assets/img/quality-warehouse.jpg" alt="${T('مستودع مرخّص', 'Licensed warehouse')}">
       <span class="media-shade"></span>
-      <span class="media-tag">${T('صورة مؤقتة — تُستبدل بصور المستودع الفعلي', 'Placeholder — to be replaced by photos of the actual warehouse')}</span>
     </div>
     <div style="display:grid;grid-template-rows:repeat(3,minmax(0,1fr));gap:14px">
       ${[
@@ -380,22 +378,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('الجودة وال
 
 <section class="section"><div class="container">
   ${secHead(T('الاعتمادات الدولية', 'International accreditations'), T('ماذا يعني كل اعتماد عمليًا؟', 'What does each one mean in practice?'))}
-  <div style="display:flex;flex-direction:column;gap:12px">
-    ${[
-      ['CE', 'European Conformity', T('علامة المطابقة الأوروبية: تفيد استيفاء المنتج لمتطلبات السلامة والأداء المعمول بها في السوق الأوروبي.', 'The European conformity mark: the product meets the safety and performance requirements applicable in the European market.')],
-      ['ISO 13485', 'Medical Devices — Quality Management Systems', T('المواصفة الدولية لنظام إدارة الجودة الخاص بتصنيع الأجهزة الطبية — تضمن انضباط عمليات التصنيع والتوثيق.', 'The international standard for medical-device quality management — ensuring disciplined manufacturing and documentation.')],
-      ['MDSAP', 'Medical Device Single Audit Program', T('برنامج تدقيق موحّد تقبله جهات رقابية في عدة دول بتدقيق واحد — أي خضوع المصنع لرقابة متعددة الجهات.', 'A single audit accepted by regulators in several countries — meaning the factory answers to multiple authorities at once.')],
-      ['GMP', 'Good Manufacturing Practice', T('ممارسات التصنيع الجيد: اشتراطات تضمن ثبات جودة الإنتاج من دفعة إلى أخرى.', 'Good manufacturing practice: requirements that keep production quality consistent from batch to batch.')],
-      ['MFDS', T('Ministry of Food and Drug Safety — سابقًا KFDA', 'Ministry of Food and Drug Safety — formerly KFDA'), T('ترخيص الجهة الرقابية الكورية في بلد المنشأ — أي أن المنتج معتمد للتداول في موطن تصنيعه.', 'The Korean regulator’s licence in the country of origin — the product is approved for circulation where it is made.')],
-    ].map(([b, full, d]) => `
-    <div style="display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px 26px" class="cert-row">
-      <b class="lat" dir="ltr" style="font-size:21px;font-weight:800;color:var(--green-900);text-align:center;background:var(--mint);border-radius:14px;padding:16px 8px">${b}</b>
-      <div>
-        <span class="lat" dir="ltr" style="display:block;font-size:12px;font-weight:700;color:var(--muted-2);margin-bottom:4px;text-align:start">${full}</span>
-        <p style="font-size:13.5px;line-height:1.95;color:var(--muted)">${d}</p>
-      </div>
-    </div>`).join('')}
-  </div>
+  ${'<%= render "pages/certification_rows" %>'}
 </div></section>
 
 <section class="section"><div class="container">
@@ -644,7 +627,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات 
           ${field(T('الاسم', 'Name'), 'name', T('الاسم الكامل', 'Full name'))}
           <div class="field">
             <label>${T('نوع المنشأة', 'Facility type')} <span class="req">*</span></label>
-            <div class="choice-chips">
+            <div class="choice-chips" data-field="facility_type">
               <button type="button" class="cchip is-on">${T('عيادة تجميل', 'Aesthetic clinic')}</button>
               <button type="button" class="cchip">${T('مجمع طبي / مستشفى', 'Polyclinic / hospital')}</button>
               <button type="button" class="cchip">${T('صيدلية', 'Retail pharmacy')}</button>
@@ -657,7 +640,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات 
           ${field(T('البريد الإلكتروني', 'Email'), 'email', 'name@clinic.sa', true, false, 'email')}
           <div class="field field--wide">
             <label>${T('المنتجات محل الاهتمام — اختيار متعدد', 'Products of interest — multi-select')} <span class="req">*</span></label>
-            <div class="choice-chips" data-multi>
+            <div class="choice-chips" data-multi data-field="products">
               <button type="button" class="cchip">ReMedium® Fine</button>
               <button type="button" class="cchip">ReMedium® Mid</button>
               <button type="button" class="cchip">ReMedium® Sub-Q</button>
@@ -670,7 +653,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات 
         <div class="form-grid">
           <div class="field">
             <label>${T('الكمية التقديرية للطلب الأول', 'Estimated initial volume')}</label>
-            <div class="choice-chips">
+            <div class="choice-chips" data-field="volume">
               <button type="button" class="cchip">${T('طلب تجريبي (١–١٠ عبوات)', 'Trial order (1–10 units)')}</button>
               <button type="button" class="cchip">${T('شريحة متوسطة (١١–٥٠ عبوة)', 'Small batch (11–50 units)')}</button>
               <button type="button" class="cchip">${T('توريد كميات كبرى (+٥٠ عبوة)', 'Bulk supply (50+ units)')}</button>
@@ -678,7 +661,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات 
           </div>
           <div class="field">
             <label>${T('هل تتعاملون معنا حاليًا؟', 'Do you already work with us?')}</label>
-            <div class="choice-chips">
+            <div class="choice-chips" data-field="existing">
               <button type="button" class="cchip">${T('نعم', 'Yes')}</button>
               <button type="button" class="cchip">${T('لا', 'No')}</button>
             </div>
@@ -689,13 +672,16 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات 
         <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line);padding-top:22px">
           <label class="checkbox-row"><input type="checkbox" data-consent>${T('أوافق على', 'I agree to the')} <a href="${u('legal/privacy')}" style="color:var(--green-600);font-weight:700">${T('سياسة الخصوصية', 'Privacy Policy')}</a> ${T('ومعالجة بيانات المنشأة.', 'and processing of facility data.')}</label>
           <label class="checkbox-row"><input type="checkbox" name="eligibility">${T('أقر بأن المنشأة مرخصة نظامًا، وأن التوريد الطبي مخصص للمنشآت الصحية المعتمدة فقط.', 'I acknowledge that supply and wholesale medical orders are strictly restricted to licensed healthcare entities and accredited facilities.')}</label>
+          <div style="position:absolute;left:-9999px" aria-hidden="true">
+            <label>${T('اترك هذا الحقل فارغًا', 'Leave this field empty')}<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label>
+          </div>
+          <p data-form-error hidden style="font-size:12.5px;line-height:1.8"></p>
           <div><button type="submit" class="btn btn--green">${T('إرسال الطلب', 'Send request')}<span class="btn__circle">${I.arrow()}</span></button></div>
         </div>
       </div>
       <div class="thanks" data-form-thanks hidden>
         <b>${T('شكرًا لتواصلكم — تم استلام طلبكم بنجاح.', 'Thank you — your request has been received.')}</b>
         <p>${T('سيقوم فريق المبيعات الطبية بمراجعة التفاصيل وإصدار عرض السعر الرسمي خلال 24 ساعة عمل.', 'A Beauty Roots medical sales representative will review your inquiry and provide a formal quotation within 24 business hours.')}</p>
-        <p style="margin-top:10px;font-size:11.5px;color:var(--warn-ink)">${T('ملاحظة تقنية: هذا النموذج واجهة فقط حاليًا — الإرسال الفعلي (بريد + جدول طلبات) يُوصل في مرحلة الربط الخلفي.', 'Technical note: this form is front-end only for now — actual submission (email + request log) is wired in the backend phase.')}</p>
       </div>
     </form>
     <div style="display:flex;flex-direction:column;gap:14px">
@@ -742,25 +728,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات 
 </div></div></section>
 
 <section class="section"><div class="container">
-  <div class="grid grid-3" style="gap:22px">
-    ${[
-      [T('الأنظمة والتراخيص', 'Regulatory'), T('كيف تتحقق المنشأة الصحية من تسجيل الفيلر واعتماده رسميًا لدى الهيئة؟', 'How to Verify That a Dermal Filler Is Fully SFDA-Approved'), T('بقلم فريق الشؤون التنظيمية', 'By the Regulatory Affairs Team'), 'docs.jpg'],
-      [T('الجودة والتخزين', 'Storage & Quality'), T('ظروف الحفظ والتخزين: كيف تؤثر درجات الحرارة على أمان الفيلر ونتيجة الحقن؟', 'Storage Conditions: How Temperature Directly Affects Filler Longevity & Safety'), T('بقلم فريق الإمداد واللوجستيات', 'By the Supply Chain Team'), 'warehouse.jpg'],
-      [T('العلوم الطبية', 'Clinical Science'), T('جل الهيالورونيك أحادي الطور: كيف تضمن تقنية ReMedium ثباتًا ومظهرًا طبيعيًا؟', 'Monophasic Hyaluronic Acid: The Science Behind ReMedium’s Natural Integration'), T('بقلم الفريق الطبي والسريري', 'By the Medical Advisory Team'), 'inject.jpg'],
-    ].map(([cat, t, d, img]) => `
-    <article class="post">
-      <a class="post__img" href="#">
-        <img src="/assets/img/${img}" alt="${t}">
-        <span class="post__btn">${I.arrow(14)}</span>
-      </a>
-      <div class="post__meta">
-        ${chip(cat)}
-        <span>${I.check(12)}${T('مراجعة طبية', 'Medically reviewed')}</span>
-      </div>
-      <h3><a href="#">${t}</a></h3>
-      <p>${d}</p>
-    </article>`).join('')}
-  </div>
+  ${'<%= render "pages/knowledge_cards" %>'}
   <p class="foot-note">${T('تصنيفات ثابتة: أساسيات · مناطق · أمان · للأطباء — ومقال مخصّص لكل منطقة علاج يربط بمنتجها وبسيكشن المنطقة ذي الصلة. كل مقال يمر على مراجعة طبية قبل النشر.', 'Fixed categories: basics · areas · safety · for physicians — with a dedicated article per treatment area linking to its product and the relevant area section. Every article passes medical review before publishing.')}</p>
 </div></section>
 

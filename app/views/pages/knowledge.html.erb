@@ -5,96 +5,58 @@
 <section class="page-hero"><div class="container"><div class="page-hero__inner" style="text-align:center;display:flex;flex-direction:column;align-items:center">
   
 <div class="crumbs">
-  <a href="<%= locale_path("") %>"><%= t('content.brands_76') %></a><span class="sep"><%= t('content.brands_80') %></span><span class="here"><%= t('content.pages_367') %></span>
+  <a href="<%= locale_path("") %>"><%= t('content.brands_76') %></a><span class="sep"><%= t('content.brands_80') %></span><span class="here"><%= t('content.pages_358') %></span>
 </div>
-  <h1 class="page-title"><%= t('content.pages_365') %></h1>
-  <p class="page-hero__lead" style="margin-bottom:26px"><%= t('content.pages_368') %></p>
+  <h1 class="page-title"><%= t('content.pages_356') %></h1>
+  <p class="page-hero__lead" style="margin-bottom:26px"><%= t('content.pages_359') %></p>
   <div class="search-pill">
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
-    <input type="search" placeholder="<%= t('content.pages_369') %>" aria-label="<%= t('content.pages_370') %>">
-    <button type="button"><%= t('content.pages_370') %></button>
+    <input type="search" placeholder="<%= t('content.pages_360') %>" aria-label="<%= t('content.pages_361') %>">
+    <button type="button"><%= t('content.pages_361') %></button>
   </div>
   <div class="choice-chips" style="margin-top:18px;justify-content:center">
-    <button type="button" class="cchip is-on"><%= t('content.pages_371') %></button>
-    <button type="button" class="cchip"><%= t('content.pages_372') %></button>
-    <button type="button" class="cchip"><%= t('content.pages_373') %></button>
-    <button type="button" class="cchip"><%= t('content.pages_374') %></button>
-    <button type="button" class="cchip"><%= t('content.pages_375') %></button>
+    <button type="button" class="cchip is-on"><%= t('content.pages_362') %></button>
+    <button type="button" class="cchip"><%= t('content.pages_363') %></button>
+    <button type="button" class="cchip"><%= t('content.pages_364') %></button>
+    <button type="button" class="cchip"><%= t('content.pages_365') %></button>
+    <button type="button" class="cchip"><%= t('content.pages_366') %></button>
   </div>
 </div></div></section>
 
 <section class="section"><div class="container">
-  <div class="grid grid-3" style="gap:22px">
-    
-    <article class="post">
-      <a class="post__img" href="#">
-        <img src="/assets/img/docs.jpg" alt="<%= t('content.pages_377') %>">
-        <span class="post__btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></span>
-      </a>
-      <div class="post__meta">
-        <span class="chip"><%= t('content.pages_376') %></span>
-        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_385') %></span>
-      </div>
-      <h3><a href="#"><%= t('content.pages_377') %></a></h3>
-      <p><%= t('content.pages_378') %></p>
-    </article>
-    <article class="post">
-      <a class="post__img" href="#">
-        <img src="/assets/img/warehouse.jpg" alt="<%= t('content.pages_380') %>">
-        <span class="post__btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></span>
-      </a>
-      <div class="post__meta">
-        <span class="chip"><%= t('content.pages_379') %></span>
-        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_385') %></span>
-      </div>
-      <h3><a href="#"><%= t('content.pages_380') %></a></h3>
-      <p><%= t('content.pages_381') %></p>
-    </article>
-    <article class="post">
-      <a class="post__img" href="#">
-        <img src="/assets/img/inject.jpg" alt="<%= t('content.pages_383') %>">
-        <span class="post__btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></span>
-      </a>
-      <div class="post__meta">
-        <span class="chip"><%= t('content.pages_382') %></span>
-        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_385') %></span>
-      </div>
-      <h3><a href="#"><%= t('content.pages_383') %></a></h3>
-      <p><%= t('content.pages_384') %></p>
-    </article>
-  </div>
-  <p class="foot-note"><%= t('content.pages_386') %></p>
+  <%= render "pages/knowledge_cards" %>
+  <p class="foot-note"><%= t('content.pages_367') %></p>
 </div></section>
 
 <section class="section"><div class="container">
-  <div class="dark-strip"><h3><%= t('content.pages_387') %></h3><p><%= t('content.pages_388') %></p></div>
+  <div class="dark-strip"><h3><%= t('content.pages_368') %></h3><p><%= t('content.pages_369') %></p></div>
 </div></section>
 
 <section class="section section--last"><div class="container">
   
 <div class="sec-head">
-  <span class="eyebrow"><i></i><%= t('content.pages_389') %></span>
-  <h2 class="sec-title"><%= t('content.pages_390') %></h2>
+  <span class="eyebrow"><i></i><%= t('content.pages_370') %></span>
+  <h2 class="sec-title"><%= t('content.pages_371') %></h2>
   
 </div>
   <div class="grid grid-3">
     <div class="card">
-      <h4 class="card__title"><%= t('content.pages_391') %></h4>
-      <p><%= t('content.pages_392') %></p>
+      <h4 class="card__title"><%= t('content.pages_372') %></h4>
+      <p><%= t('content.pages_373') %></p>
       <div class="quote-card">
-        <p><%= t('content.pages_393') %></p>
-        <span class="who"><img src="/assets/img/portrait.jpg" alt=""><b><%= t('content.pages_394') %></b></span>
+        <p><%= t('content.pages_374') %></p>
+        <span class="who"><img src="/assets/img/portrait.jpg" alt=""><b><%= t('content.pages_375') %></b></span>
       </div>
     </div>
     <div class="card">
-      <h4 class="card__title"><%= t('content.pages_395') %></h4>
-      <p><%= t('content.pages_396') %></p>
-      <div class="stars" style="margin-top:14px"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.5 5.8 21l1.4-7L2 9.3l7-.8z"></path></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.5 5.8 21l1.4-7L2 9.3l7-.8z"></path></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.5 5.8 21l1.4-7L2 9.3l7-.8z"></path></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.5 5.8 21l1.4-7L2 9.3l7-.8z"></path></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.5 5.8 21l1.4-7L2 9.3l7-.8z"></path></svg><a href="https://maps.google.com/?q=Beauty+Roots+Trading+Riyadh" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:var(--green-600)"><%= t('content.pages_397') %> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5h5v5"></path><path d="M19 5l-8 8"></path><path d="M9 5H5v14h14v-4"></path></svg></a></div>
+      <h4 class="card__title"><%= t('content.pages_376') %></h4>
+      <p><%= t('content.pages_377') %></p>
+      <div class="stars" style="margin-top:14px"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.5 5.8 21l1.4-7L2 9.3l7-.8z"></path></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.5 5.8 21l1.4-7L2 9.3l7-.8z"></path></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.5 5.8 21l1.4-7L2 9.3l7-.8z"></path></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.5 5.8 21l1.4-7L2 9.3l7-.8z"></path></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.5 5.8 21l1.4-7L2 9.3l7-.8z"></path></svg><a href="https://maps.google.com/?q=Beauty+Roots+Trading+Riyadh" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:var(--green-600)"><%= t('content.pages_378') %> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5h5v5"></path><path d="M19 5l-8 8"></path><path d="M9 5H5v14h14v-4"></path></svg></a></div>
     </div>
     <div class="card">
-      <h4 class="card__title"><%= t('content.pages_398') %></h4>
-      <p><%= t('content.pages_399') %></p>
-      <div style="margin-top:14px"><span class="chip"><%= t('content.pages_400') %></span></div>
+      <h4 class="card__title"><%= t('content.pages_379') %></h4>
+      <p><%= t('content.pages_380') %></p>
+      <div style="margin-top:14px"><span class="chip"><%= t('content.pages_381') %></span></div>
     </div>
   </div>
 </div></section>

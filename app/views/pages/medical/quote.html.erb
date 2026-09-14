@@ -6,10 +6,10 @@
 <section class="page-hero"><div class="container"><div class="page-hero__inner">
   
 <div class="crumbs">
-  <a href="<%= locale_path("") %>"><%= t('content.brands_76') %></a><span class="sep"><%= t('content.brands_80') %></span><a href="<%= locale_path("medical/evidence") %>"><%= t('content.pages_221') %></a><span class="sep"><%= t('content.brands_80') %></span><span class="here"><%= t('content.pages_320') %></span>
+  <a href="<%= locale_path("") %>"><%= t('content.brands_76') %></a><span class="sep"><%= t('content.brands_80') %></span><a href="<%= locale_path("medical/evidence") %>"><%= t('content.pages_212') %></a><span class="sep"><%= t('content.brands_80') %></span><span class="here"><%= t('content.pages_311') %></span>
 </div>
-  <h1 class="page-title"><%= t('content.pages_322') %></h1>
-  <p class="page-hero__lead"><%= t('content.pages_323') %></p>
+  <h1 class="page-title"><%= t('content.pages_313') %></h1>
+  <p class="page-hero__lead"><%= t('content.pages_314') %></p>
   
 </div></div></section>
 
@@ -17,98 +17,101 @@
   <div class="grid" style="grid-template-columns:1.3fr .7fr;gap:18px;align-items:start">
     <form class="form-card" data-quote-form novalidate>
       <div data-form-body>
-        <h3><%= t('content.pages_324') %></h3>
+        <h3><%= t('content.pages_315') %></h3>
         <div class="form-grid">
           
 <div class="field">
-  <label for="name"><%= t('content.pages_325') %> <span class="req">*</span></label>
-  <input type="text" id="name" name="name" placeholder="<%= t('content.pages_326') %>" required>
+  <label for="name"><%= t('content.pages_316') %> <span class="req">*</span></label>
+  <input type="text" id="name" name="name" placeholder="<%= t('content.pages_317') %>" required>
 </div>
           <div class="field">
-            <label><%= t('content.pages_327') %> <span class="req">*</span></label>
-            <div class="choice-chips">
-              <button type="button" class="cchip is-on"><%= t('content.pages_328') %></button>
-              <button type="button" class="cchip"><%= t('content.pages_329') %></button>
-              <button type="button" class="cchip"><%= t('content.pages_330') %></button>
-              <button type="button" class="cchip"><%= t('content.pages_331') %></button>
+            <label><%= t('content.pages_318') %> <span class="req">*</span></label>
+            <div class="choice-chips" data-field="facility_type">
+              <button type="button" class="cchip is-on"><%= t('content.pages_319') %></button>
+              <button type="button" class="cchip"><%= t('content.pages_320') %></button>
+              <button type="button" class="cchip"><%= t('content.pages_321') %></button>
+              <button type="button" class="cchip"><%= t('content.pages_322') %></button>
             </div>
           </div>
           
 <div class="field">
-  <label for="facility"><%= t('content.pages_332') %> <span class="req">*</span></label>
-  <input type="text" id="facility" name="facility" placeholder="<%= t('content.pages_333') %>" required>
+  <label for="facility"><%= t('content.pages_323') %> <span class="req">*</span></label>
+  <input type="text" id="facility" name="facility" placeholder="<%= t('content.pages_324') %>" required>
 </div>
           
 <div class="field">
-  <label for="city"><%= t('content.pages_334') %> <span class="req">*</span></label>
-  <input type="text" id="city" name="city" placeholder="<%= t('content.pages_335') %>" required>
+  <label for="city"><%= t('content.pages_325') %> <span class="req">*</span></label>
+  <input type="text" id="city" name="city" placeholder="<%= t('content.pages_326') %>" required>
 </div>
           
 <div class="field">
-  <label for="phone"><%= t('content.pages_336') %> <span class="req">*</span></label>
+  <label for="phone"><%= t('content.pages_327') %> <span class="req">*</span></label>
   <input type="tel" id="phone" name="phone" placeholder="+966 5X XXX XXXX" required>
 </div>
           
 <div class="field">
-  <label for="email"><%= t('content.pages_91') %> <span class="req">*</span></label>
+  <label for="email"><%= t('content.pages_90') %> <span class="req">*</span></label>
   <input type="email" id="email" name="email" placeholder="name@clinic.sa" required>
 </div>
           <div class="field field--wide">
-            <label><%= t('content.pages_337') %> <span class="req">*</span></label>
-            <div class="choice-chips" data-multi>
+            <label><%= t('content.pages_328') %> <span class="req">*</span></label>
+            <div class="choice-chips" data-multi data-field="products">
               <button type="button" class="cchip">ReMedium® Fine</button>
               <button type="button" class="cchip">ReMedium® Mid</button>
               <button type="button" class="cchip">ReMedium® Sub-Q</button>
-              <button type="button" class="cchip"><%= t('content.pages_338') %></button>
-              <button type="button" class="cchip"><%= t('content.pages_339') %></button>
+              <button type="button" class="cchip"><%= t('content.pages_329') %></button>
+              <button type="button" class="cchip"><%= t('content.pages_330') %></button>
             </div>
           </div>
         </div>
-        <h3 style="margin-top:28px"><%= t('content.pages_340') %></h3>
+        <h3 style="margin-top:28px"><%= t('content.pages_331') %></h3>
         <div class="form-grid">
           <div class="field">
-            <label><%= t('content.pages_341') %></label>
-            <div class="choice-chips">
-              <button type="button" class="cchip"><%= t('content.pages_342') %></button>
-              <button type="button" class="cchip"><%= t('content.pages_343') %></button>
-              <button type="button" class="cchip"><%= t('content.pages_344') %></button>
+            <label><%= t('content.pages_332') %></label>
+            <div class="choice-chips" data-field="volume">
+              <button type="button" class="cchip"><%= t('content.pages_333') %></button>
+              <button type="button" class="cchip"><%= t('content.pages_334') %></button>
+              <button type="button" class="cchip"><%= t('content.pages_335') %></button>
             </div>
           </div>
           <div class="field">
-            <label><%= t('content.pages_345') %></label>
-            <div class="choice-chips">
-              <button type="button" class="cchip"><%= t('content.pages_346') %></button>
-              <button type="button" class="cchip"><%= t('content.pages_347') %></button>
+            <label><%= t('content.pages_336') %></label>
+            <div class="choice-chips" data-field="existing">
+              <button type="button" class="cchip"><%= t('content.pages_337') %></button>
+              <button type="button" class="cchip"><%= t('content.pages_338') %></button>
             </div>
           </div>
-          <label class="checkbox-row field--wide"><input type="checkbox" name="visit"><%= t('content.pages_348') %></label>
+          <label class="checkbox-row field--wide"><input type="checkbox" name="visit"><%= t('content.pages_339') %></label>
           
 <div class="field field--wide">
-  <label for="notes"><%= t('content.pages_349') %></label>
-  <textarea id="notes" name="notes" placeholder="<%= t('content.pages_350') %>"></textarea>
+  <label for="notes"><%= t('content.pages_340') %></label>
+  <textarea id="notes" name="notes" placeholder="<%= t('content.pages_341') %>"></textarea>
 </div>
         </div>
         <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line);padding-top:22px">
-          <label class="checkbox-row"><input type="checkbox" data-consent><%= t('content.pages_351') %> <a href="<%= locale_path("legal/privacy") %>" style="color:var(--green-600);font-weight:700"><%= t('content.pages_352') %></a> <%= t('content.pages_353') %></label>
-          <label class="checkbox-row"><input type="checkbox" name="eligibility"><%= t('content.pages_354') %></label>
-          <div><button type="submit" class="btn btn--green"><%= t('content.pages_355') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></span></button></div>
+          <label class="checkbox-row"><input type="checkbox" data-consent><%= t('content.pages_342') %> <a href="<%= locale_path("legal/privacy") %>" style="color:var(--green-600);font-weight:700"><%= t('content.pages_343') %></a> <%= t('content.pages_344') %></label>
+          <label class="checkbox-row"><input type="checkbox" name="eligibility"><%= t('content.pages_345') %></label>
+          <div style="position:absolute;left:-9999px" aria-hidden="true">
+            <label><%= t('content.pages_346') %><input type="text" name="company_website" tabindex="-1" autocomplete="off"></label>
+          </div>
+          <p data-form-error hidden style="font-size:12.5px;line-height:1.8"></p>
+          <div><button type="submit" class="btn btn--green"><%= t('content.pages_347') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></span></button></div>
         </div>
       </div>
       <div class="thanks" data-form-thanks hidden>
-        <b><%= t('content.pages_356') %></b>
-        <p><%= t('content.pages_357') %></p>
-        <p style="margin-top:10px;font-size:11.5px;color:var(--warn-ink)"><%= t('content.pages_358') %></p>
+        <b><%= t('content.pages_348') %></b>
+        <p><%= t('content.pages_349') %></p>
       </div>
     </form>
     <div style="display:flex;flex-direction:column;gap:14px">
       <div class="dark-strip" style="padding:28px 30px">
-        <h3 style="font-size:16px;margin-bottom:14px"><%= t('content.pages_359') %></h3>
+        <h3 style="font-size:16px;margin-bottom:14px"><%= t('content.pages_350') %></h3>
         <ul style="display:flex;flex-direction:column;gap:11px">
-          <li style="display:flex;gap:9px;align-items:flex-start;font-size:12.5px;line-height:1.9;color:rgba(255,255,255,.8)"><span style="color:#7FE3BE;margin-top:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg></span><span><%= t('content.pages_360') %></span></li><li style="display:flex;gap:9px;align-items:flex-start;font-size:12.5px;line-height:1.9;color:rgba(255,255,255,.8)"><span style="color:#7FE3BE;margin-top:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg></span><span><%= t('content.pages_361') %></span></li><li style="display:flex;gap:9px;align-items:flex-start;font-size:12.5px;line-height:1.9;color:rgba(255,255,255,.8)"><span style="color:#7FE3BE;margin-top:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg></span><span><%= t('content.pages_362') %></span></li>
+          <li style="display:flex;gap:9px;align-items:flex-start;font-size:12.5px;line-height:1.9;color:rgba(255,255,255,.8)"><span style="color:#7FE3BE;margin-top:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg></span><span><%= t('content.pages_351') %></span></li><li style="display:flex;gap:9px;align-items:flex-start;font-size:12.5px;line-height:1.9;color:rgba(255,255,255,.8)"><span style="color:#7FE3BE;margin-top:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg></span><span><%= t('content.pages_352') %></span></li><li style="display:flex;gap:9px;align-items:flex-start;font-size:12.5px;line-height:1.9;color:rgba(255,255,255,.8)"><span style="color:#7FE3BE;margin-top:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg></span><span><%= t('content.pages_353') %></span></li>
         </ul>
-        <div style="margin-top:18px"><a class="btn btn--green" href="https://wa.me/966562017170"><%= t('content.pages_363') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2zm4.8 13.9c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.6-.1 1.2z"></path></svg></span></a></div>
+        <div style="margin-top:18px"><a class="btn btn--green" href="https://wa.me/966562017170"><%= t('content.pages_354') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2zm4.8 13.9c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.6-.1 1.2z"></path></svg></span></a></div>
       </div>
-      <div class="note-strip"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"></path><path d="M9 12l2 2 4-4"></path></svg><p><%= t('content.pages_364') %></p></div>
+      <div class="note-strip"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"></path><path d="M9 12l2 2 4-4"></path></svg><p><%= t('content.pages_355') %></p></div>
     </div>
   </div>
 </div></section>

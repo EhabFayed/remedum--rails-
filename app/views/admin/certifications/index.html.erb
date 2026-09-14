@@ -1,0 +1,42 @@
+<% content_for :title, "الاعتمادات" %>
+<%= page_header "الشهادات والاعتمادات", "الشريط الذي يظهر أسفل الصفحة الرئيسية وفي صفحة الشهادات." %>
+
+<div class="split">
+  <div>
+    <% if @certifications.empty? %>
+      <p class="empty">لا اعتمادات بعد.</p>
+    <% else %>
+      <div class="tablewrap"><div class="tablescroll">
+        <table class="tbl tbl--auto">
+          <thead><tr><th>الرمز</th><th>عربي</th><th>English</th><th>الترتيب</th><th>الحالة</th><th></th></tr></thead>
+          <tbody>
+            <% @certifications.each do |cert| %>
+              <tr>
+                <td class="lat" style="font-weight:700"><%= cert.code %></td>
+                <td style="color:var(--muted)"><%= cert.name_ar %></td>
+                <td dir="ltr" style="color:var(--muted)"><%= cert.name_en %></td>
+                <td class="lat" style="color:var(--faint)"><%= cert.position %></td>
+                <td><%= status_pill(cert.published ? "published" : "draft") %></td>
+                <td>
+                  <div class="tbl__acts">
+                    <a class="btn btn--sm pressable" href="<%= edit_admin_certification_path(cert) %>">تحرير</a>
+                    <%= render "admin/shared/delete_button", path: admin_certification_path(cert), label: "حذف" %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div></div>
+    <% end %>
+  </div>
+
+  <aside class="card">
+    <h2 class="card__title" style="margin-bottom:12px">اعتماد جديد</h2>
+    <%= form_with model: [:admin, @certification] do |f| %>
+      <%= render "admin/shared/errors", record: @certification %>
+      <%= render "fields", form: f %>
+      <%= f.submit "إضافة", class: "btn btn--primary btn--full pressable" %>
+    <% end %>
+  </aside>
+</div>

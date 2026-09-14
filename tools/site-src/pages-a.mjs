@@ -43,8 +43,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
       <div style="margin-top:6px">${btn(T('استكشف تشكيلة ReMedium', 'Explore ReMedium Range'), u('brands/remedium'), 'white')}</div>
     </div>
     <div style="position:relative;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.13)">
-      <img src="/assets/img/clinic.jpg" alt="${T('علاج تجميلي داخل عيادة', 'Aesthetic treatment in a clinic')}" style="width:100%;height:330px;object-fit:cover">
-      <span class="media-tag">${T('صورة مؤقتة — تُستبدل بصورة المنتج المعتمدة من المصنّع', 'Placeholder — to be replaced by the manufacturer’s approved product image')}</span>
+      <img src="/assets/img/brand-remedium.jpg" alt="${T('تشكيلة ReMedium', 'The ReMedium range')}" style="width:100%;height:330px;object-fit:cover">
     </div>
   </div>
 </div></section>
@@ -95,7 +94,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
     T('توفر «جذور الجمال» تشكيلات مختارة من أبرز علامات العناية الكورية المعروفة بنقاء مكوناتها وفاعليتها في تهدئة البشرة وترميمها. نستورد هذه المنتجات مباشرة من المعامل الكورية المعتمدة لتكون مكملًا مثاليًا بعد الإجراءات الطبية ولروتين العناية اليومي.',
       'Beauty Roots distributes curated Korean skincare lines recognized for their gentle formulations, clinically tested botanicals, and high efficacy. Sourced directly from certified Korean laboratories, these formulations complement professional clinical treatments and daily skin restoration routines.'))}
   <div class="grid" style="grid-template-columns:.85fr repeat(4,minmax(0,1fr))">
-    <div class="arch-media arch-media--card" style="min-height:180px"><img src="/assets/img/skincare.jpg" alt="${T('تشكيلة عناية بالبشرة', 'Skincare range')}"></div>
+    <div class="arch-media arch-media--card" style="min-height:180px"><img src="/assets/img/brand-skincare.jpg" alt="${T('تشكيلة عناية بالبشرة', 'Skincare range')}"></div>
     ${[
       ['SKIN1004', T('تركيبات السنتيلا الآسيوية (Centella Asiatica) لتهدئة البشرة الحساسة وترميم الحاجز الجلدي.', 'Centella Asiatica soothing formulations for sensitive and compromised skin barriers.')],
       ['Purito', T('حلول عناية آمنة بمكونات نقية وواضحة تركز على صحة وتوازن طبقات الجلد.', 'Minimalist, safe, and transparent derm-care essentials powered by clean active ingredients.')],
@@ -141,9 +140,8 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
     <div class="page-hero__chips">${chip(T('الوكالة الحصرية', 'Exclusive Representation'), 'green')}${chip(T('مسجّل وممتثل بالكامل لاشتراطات الهيئة (SFDA)', 'Registered & fully SFDA-compliant'))}${chip(T('مرافق معتمدة وفق GMP', 'Certified GMP facility'))}</div>
   </div>
   <div class="arch-media">
-    <img src="/assets/img/inject.jpg" alt="${T('علاج فيلر هيالورونيك أسيد', 'Hyaluronic-acid filler treatment')}" style="height:380px">
+    <img src="/assets/img/brand-remedium.jpg" alt="${T('تشكيلة فيلر ReMedium', 'The ReMedium filler range')}" style="height:380px">
     <span class="media-shade"></span>
-    <span class="media-tag">${T('صورة مؤقتة — تُستبدل بصور المصنّع المعتمدة', 'Placeholder — to be replaced by approved manufacturer imagery')}</span>
   </div>
 </div></div></section>
 
@@ -246,9 +244,8 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
     </div>
   </div>
   <div class="arch-media">
-    <img src="/assets/img/clinic.jpg" alt="${T('جلسة علاج تجميلي', 'Aesthetic treatment session')}" style="height:420px">
+    <img src="/assets/img/brand-${p.slug === 'sub-q' ? 'subq' : p.slug}.jpg" alt="${p.name}" style="height:420px">
     <span class="media-shade"></span>
-    <span class="media-tag">${T('صورة مؤقتة — تُستبدل بصورة المنتج المعتمدة من المصنّع', 'Placeholder — to be replaced by the manufacturer’s approved product image')}</span>
   </div>
 </div></div></section>
 

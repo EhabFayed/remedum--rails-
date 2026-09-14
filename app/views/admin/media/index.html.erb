@@ -1,0 +1,56 @@
+<% content_for :title, "مكتبة الصور" %>
+<%= page_header "مكتبة الصور", "#{@assets.size} صورة. كل رفع يُحوَّل إلى WebP بعرض أقصاه 1600 بكسل." do %>
+  <label class="btn btn--primary pressable" style="cursor:pointer">
+    ⬆ رفع صورة
+    <input type="file" class="sr-only" data-bulk-upload accept="image/jpeg,image/png,image/webp,image/avif,image/gif" multiple>
+  </label>
+<% end %>
+
+<p class="flash" data-bulk-status hidden></p>
+
+<% if @assets.empty? %>
+  <p class="empty">لا صور بعد. ارفع أول صورة، أو ارفع من داخل محرر المقال مباشرة.</p>
+<% else %>
+  <div class="medgrid">
+    <% @assets.each do |asset| %>
+      <figure class="medcard">
+        <img src="<%= asset.url %>" alt="<%= asset.alt_ar %>" loading="lazy">
+        <figcaption class="medcard__body">
+          <p class="medcard__name" dir="ltr"><%= asset.filename %></p>
+          <p class="medcard__meta" dir="ltr">
+            <span class="lat"><%= asset.dimensions || "—" %></span>
+            <span class="lat"><%= asset.human_size %></span>
+          </p>
+        </figcaption>
+        <div class="medcard__foot">
+          <a class="btn btn--sm pressable" href="<%= asset.url %>" target="_blank" rel="noopener">فتح</a>
+          <%= render "admin/shared/delete_button", path: admin_medium_path(asset), label: "حذف" %>
+        </div>
+      </figure>
+    <% end %>
+  </div>
+<% end %>
+
+<script>
+  (function () {
+    var input = document.querySelector('[data-bulk-upload]');
+    var status = document.querySelector('[data-bulk-status]');
+    if (!input) return;
+    input.addEventListener('change', function () {
+      var files = Array.prototype.slice.call(input.files);
+      if (!files.length) return;
+      status.hidden = false;
+      status.textContent = 'جارٍ رفع ' + files.length + ' صورة…';
+      var token = document.querySelector('meta[name="csrf-token"]').content;
+      Promise.all(files.map(function (f) {
+        var fd = new FormData(); fd.append('file', f);
+        return fetch('/admin/media', { method: 'POST', body: fd, credentials: 'same-origin',
+          headers: { 'X-CSRF-Token': token, 'Accept': 'application/json' } }).then(function (r) { return r.json(); });
+      })).then(function (all) {
+        var bad = all.filter(function (d) { return !d.ok; });
+        if (bad.length) { status.className = 'flash flash--alert'; status.textContent = bad[0].message || 'تعذّر رفع بعض الصور.'; }
+        else location.reload();
+      });
+    });
+  })();
+</script>

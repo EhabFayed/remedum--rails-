@@ -1,0 +1,56 @@
+<% content_for :title, "الطلبات" %>
+<%= page_header "الطلبات الواردة", "#{@leads.size} طلب — من نموذج عرض السعر وصفحة التواصل." do %>
+  <a class="btn pressable" href="<%= export_admin_leads_path(status: @status) %>">⬇ تصدير CSV</a>
+<% end %>
+
+<div class="filters">
+  <% [["", "الكل", @counts[:all]], ["new", "جديد", @counts[:new]],
+      ["contacted", "تم التواصل", @counts[:contacted]], ["closed", "مغلق", @counts[:closed]]].each do |value, label, n| %>
+    <a class="filter pressable<%= " is-on" if @status == value %>"
+       href="<%= value.present? ? admin_leads_path(status: value) : admin_leads_path %>">
+      <%= label %><span class="filter__n"><%= n %></span>
+    </a>
+  <% end %>
+</div>
+
+<% if @leads.empty? %>
+  <p class="empty">لا طلبات في هذه الحالة.</p>
+<% else %>
+  <div class="rows">
+    <% @leads.each do |lead| %>
+      <div class="card card--tight" style="<%= "border-color:rgba(28,169,124,.45)" if lead.new_request? %>">
+        <div class="row__bar" style="margin-bottom:8px">
+          <a class="tbl__title" href="<%= admin_lead_path(lead) %>" style="font-size:15px">
+            <% if lead.new_request? %><span class="dot" aria-hidden="true"></span><% end %><%= lead.name %>
+          </a>
+          <%= status_pill lead.status %>
+          <span class="row__note"><%= lead.source == "quote" ? "طلب عرض سعر" : "رسالة تواصل" %></span>
+          <div class="row__acts">
+            <span class="lat" style="font-size:11.5px;color:var(--faint)"><%= admin_date lead.created_at %></span>
+          </div>
+        </div>
+
+        <p style="font-size:13.5px;color:var(--muted)">
+          <%= [lead.facility, lead.facility_type, lead.city].compact_blank.join(" · ").presence || "بلا بيانات منشأة" %>
+        </p>
+        <p class="lat" dir="ltr" style="font-size:12.5px;color:var(--muted);margin-top:3px">
+          <%= [lead.phone, lead.email].compact_blank.join("  ·  ") %>
+        </p>
+        <% if lead.products.any? %>
+          <div class="taglist" style="margin-top:9px">
+            <% lead.products.each do |p| %><span class="pill pill--off"><%= p %></span><% end %>
+          </div>
+        <% end %>
+
+        <div class="tbl__acts" style="margin-top:12px">
+          <a class="btn btn--sm pressable" href="<%= admin_lead_path(lead) %>">فتح</a>
+          <% Lead::STATUSES.reject { |s| s == lead.status }.each do |s| %>
+            <%= button_to Lead::STATUS_LABELS[s], admin_lead_path(lead), method: :patch,
+                          params: { lead: { status: s } }, class: "btn btn--sm pressable" %>
+          <% end %>
+          <%= render "admin/shared/delete_button", path: admin_lead_path(lead), label: "حذف" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -19,9 +19,16 @@
   --fine:#4FD3A5;
   --mid:#1CA97C;
   --subq:#0B4432;
-  --warn-bg:#FBF3E4;
-  --warn-ink:#8A6A2E;
-  --warn-line:#E4CF9C;
+  /* brand brown — the “Roots” half of the logo (company profile 2026) */
+  --brown:#8A5B1E;
+  --brown-600:#6F4915;
+  --brown-300:#C9A46A;
+  --sand:#F8F2E8;
+  --sand-2:#FBF7F1;
+  --sand-line:#EADFCB;
+  --warn-bg:var(--sand);
+  --warn-ink:var(--brown);
+  --warn-line:var(--sand-line);
 
   --ff:'IBM Plex Sans Arabic','Segoe UI',system-ui,sans-serif;
   --ff-d:'Cairo','IBM Plex Sans Arabic',sans-serif;
@@ -73,7 +80,7 @@ button{background:none;border:0;cursor:pointer}
 /* ---------- 3. TYPE ---------- */
 .eyebrow{
   display:inline-flex;align-items:center;gap:8px;
-  font-size:13px;font-weight:700;color:var(--green);
+  font-size:13px;font-weight:700;color:var(--brown);
 }
 .eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--green);flex:none}
 .eyebrow--light{color:#7FE3BE}
@@ -134,6 +141,7 @@ button{background:none;border:0;cursor:pointer}
 .chip--green{background:var(--green);color:#fff}
 .chip--dark{background:rgba(255,255,255,.09);color:#fff;border:1px solid rgba(255,255,255,.16)}
 .chip--warn{background:var(--warn-bg);color:var(--warn-ink)}
+.chip--brown{background:var(--sand);color:var(--brown);border:1px solid var(--sand-line)}
 
 /* «يُستكمل من العميل» */
 .ph{
@@ -164,7 +172,8 @@ button{background:none;border:0;cursor:pointer}
 }
 .logo__text{display:flex;flex-direction:column;line-height:1.2}
 .logo__text b{font-family:var(--ff-d);font-size:16.5px;font-weight:800}
-.logo__text i{font-style:normal;font-family:var(--ff-lat);font-size:8px;letter-spacing:.22em;color:var(--muted-2);font-weight:700}
+.logo__text i{font-style:normal;font-family:var(--ff-lat);font-size:8px;letter-spacing:.22em;color:var(--brown);font-weight:700}
+.site-footer .logo__text i{color:var(--brown-300)}
 
 .nav__list{
   display:flex;align-items:center;gap:2px;
@@ -218,7 +227,7 @@ button{background:none;border:0;cursor:pointer}
 .crumbs a{color:var(--muted-2);transition:color .3s}
 .crumbs a:hover{color:var(--green-900)}
 .crumbs .sep{opacity:.6}
-.crumbs .here{color:var(--green-900);font-weight:700}
+.crumbs .here{color:var(--brown);font-weight:700}
 .page-title{
   font-family:var(--ff-d);
   font-size:clamp(30px,3.2vw,42px);
@@ -535,7 +544,7 @@ button{background:none;border:0;cursor:pointer}
   transition:.4s var(--ease);
 }
 .cta-box:hover{background:rgba(255,255,255,.11);transform:translateY(-3px)}
-.cta-box .tag{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--green)}
+.cta-box .tag{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--brown-300)}
 .cta-box strong{font-family:var(--ff-d);font-size:16px;font-weight:700}
 .cta-box p{font-size:12px;line-height:1.7;color:rgba(255,255,255,.6)}
 .cta-box i{
@@ -631,3 +640,53 @@ html[dir="ltr"] .post:hover .post__btn{transform:rotate(45deg)}
 
 /* client revision (Sep 2026): simple two-column supply table */
 .compare--simple .row{grid-template-columns:minmax(0,.85fr) minmax(0,1.75fr)}
+
+/* ---------- 20. ARTICLE PAGE ----------
+   Long-form reading: one column, a measure that stays comfortable, and
+   headings that separate sections without shouting. */
+.article-body{max-width:70ch;margin-inline:auto}
+.article-body h2{
+  font-family:var(--ff-d);font-size:clamp(20px,2.2vw,27px);font-weight:800;
+  line-height:1.5;color:var(--ink);margin:42px 0 14px;
+}
+.article-body h2:first-child{margin-top:0}
+.article-body h3{
+  font-family:var(--ff-d);font-size:18px;font-weight:700;
+  line-height:1.6;color:var(--ink);margin:30px 0 10px;
+}
+.article-body p{font-size:15.5px;line-height:2.05;color:var(--muted);margin:0 0 16px}
+.article-body strong{color:var(--ink);font-weight:700}
+.article-body a{color:var(--green-600);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.article-body ul,.article-body ol{margin:0 0 18px;padding-inline-start:1.5rem;color:var(--muted)}
+.article-body li{font-size:15px;line-height:2;margin-bottom:8px}
+.article-body ul li{list-style:none;position:relative}
+.article-body ul li::before{
+  content:"";position:absolute;inset-inline-start:-1.15rem;top:.82em;
+  width:6px;height:6px;border-radius:50%;background:var(--green);
+}
+.article-body ol{list-style:decimal}
+.article-body blockquote{
+  margin:26px 0;padding:18px 22px;border-radius:var(--r-md);
+  border-inline-start:3px solid var(--green);background:var(--mint-2);color:var(--ink);
+}
+.article-body blockquote p{margin:0;color:var(--ink-2)}
+.article-body figure{margin:28px 0}
+.article-body figure img{width:100%;border-radius:var(--r-lg);border:1px solid var(--line)}
+.article-body figcaption{margin-top:9px;font-size:12.5px;color:var(--muted-2);text-align:center}
+.article-body img{border-radius:var(--r-md)}
+
+.faq-list{max-width:70ch;margin-inline:auto;display:flex;flex-direction:column;gap:10px}
+.faq{
+  border:1px solid var(--line);border-radius:var(--r-md);
+  background:#fff;padding:16px 20px;transition:border-color .3s var(--ease);
+}
+.faq[open]{border-color:var(--green)}
+.faq summary{
+  cursor:pointer;list-style:none;font-family:var(--ff-d);
+  font-size:15.5px;font-weight:700;color:var(--ink);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--green);font-size:20px;font-weight:400;line-height:1;flex:none}
+.faq[open] summary::after{content:"−"}
+.faq p{margin-top:12px;font-size:14.5px;line-height:1.95;color:var(--muted)}

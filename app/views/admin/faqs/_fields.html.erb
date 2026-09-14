@@ -1,0 +1,25 @@
+<div class="field">
+  <label class="label">السؤال بالعربية <span class="req">*</span></label>
+  <%= form.text_field :question_ar, class: "inp" %>
+</div>
+<div class="field" dir="ltr">
+  <label class="label">Question in English <span class="req">*</span></label>
+  <%= form.text_field :question_en, class: "inp" %>
+</div>
+<div class="field">
+  <label class="label">الإجابة بالعربية <span class="req">*</span></label>
+  <%= form.text_area :answer_ar, class: "txt", rows: 3 %>
+</div>
+<div class="field" dir="ltr">
+  <label class="label">Answer in English <span class="req">*</span></label>
+  <%= form.text_area :answer_en, class: "txt", rows: 3 %>
+</div>
+<div class="grid-2">
+  <div class="field">
+    <label class="label">الترتيب</label>
+    <%= form.number_field :position, class: "inp" %>
+  </div>
+  <div class="field" style="display:flex;align-items:flex-end">
+    <label class="check"><%= form.check_box :published %><span>منشور</span></label>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<% content_for :title, "المنتجات" %>
+<%= page_header "المنتجات", "#{@products.size} منتج." do %>
+  <a class="btn btn--primary pressable" href="<%= new_admin_product_path %>">+ منتج جديد</a>
+<% end %>
+
+<% if @products.empty? %>
+  <p class="empty">لا منتجات بعد.</p>
+<% else %>
+  <div class="tablewrap"><div class="tablescroll">
+    <table class="tbl">
+      <thead><tr><th>المنتج</th><th>العلامة</th><th>ثبات النتيجة</th><th>اللون</th><th>الحالة</th><th>إجراءات</th></tr></thead>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td>
+              <a class="tbl__title" href="<%= edit_admin_product_path(product) %>"><%= product.name_ar %></a>
+              <p class="tbl__sub"><%= product.subtitle_ar %></p>
+            </td>
+            <td style="color:var(--muted)"><%= product.brand&.name_ar || "—" %></td>
+            <td class="lat" style="color:var(--muted)"><%= product.duration_label(:en) || "—" %></td>
+            <td>
+              <% if product.accent_color.present? %>
+                <span style="display:inline-block;width:16px;height:16px;border-radius:4px;vertical-align:middle;background:<%= product.accent_color %>"></span>
+                <span class="lat" style="font-size:11px;color:var(--faint)"><%= product.accent_color %></span>
+              <% else %>—<% end %>
+            </td>
+            <td><%= status_pill product.status %></td>
+            <td>
+              <div class="tbl__acts">
+                <a class="btn btn--sm pressable" href="<%= edit_admin_product_path(product) %>">تحرير</a>
+                <%= render "admin/shared/delete_button", path: admin_product_path(product), label: "حذف" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div></div>
+<% end %>

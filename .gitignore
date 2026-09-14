@@ -30,3 +30,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Media uploaded through the dashboard.
+/public/uploads/*
+!/public/uploads/.keep

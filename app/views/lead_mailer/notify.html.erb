@@ -1,0 +1,16 @@
+<div dir="rtl" style="font-family:system-ui,sans-serif;line-height:1.9;color:#0C1A14">
+  <h2 style="font-size:18px;margin:0 0 14px">طلب جديد من <%= @lead.name %></h2>
+  <table cellpadding="6" style="border-collapse:collapse;font-size:14px">
+    <tr><td style="color:#6E8079">المنشأة</td><td><%= @lead.facility.presence || "—" %></td></tr>
+    <tr><td style="color:#6E8079">النوع</td><td><%= @lead.facility_type.presence || "—" %></td></tr>
+    <tr><td style="color:#6E8079">المدينة</td><td><%= @lead.city.presence || "—" %></td></tr>
+    <tr><td style="color:#6E8079">الجوال</td><td dir="ltr"><%= @lead.phone.presence || "—" %></td></tr>
+    <tr><td style="color:#6E8079">البريد</td><td dir="ltr"><%= @lead.email.presence || "—" %></td></tr>
+    <tr><td style="color:#6E8079">المنتجات</td><td><%= @lead.products.join("، ").presence || "—" %></td></tr>
+    <tr><td style="color:#6E8079">الكمية</td><td><%= @lead.volume.presence || "—" %></td></tr>
+    <tr><td style="color:#6E8079">زيارة مندوب</td><td><%= @lead.visit_requested ? "نعم" : "لا" %></td></tr>
+  </table>
+  <% if @lead.message.present? %>
+    <p style="margin-top:14px;white-space:pre-wrap"><%= @lead.message %></p>
+  <% end %>
+</div>

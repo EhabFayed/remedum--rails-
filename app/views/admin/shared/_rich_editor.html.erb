@@ -1,0 +1,32 @@
+<%#
+  Formatted text. Paste from Word or Google Docs keeps its structure; the output
+  is cleaned again on the server before it is stored.
+%>
+<div class="rich" data-rich data-rich-hint="<%= hint %>">
+  <div class="rich__bar">
+    <button type="button" class="rich__btn pressable" data-cmd="formatBlock" data-value="h2" data-state="format:h2" title="عنوان">عنوان</button>
+    <button type="button" class="rich__btn pressable" data-cmd="formatBlock" data-value="h3" data-state="format:h3" title="عنوان فرعي">فرعي</button>
+    <button type="button" class="rich__btn pressable" data-cmd="formatBlock" data-value="p" data-state="format:p" title="فقرة">فقرة</button>
+    <span class="rich__sep" aria-hidden="true"></span>
+    <button type="button" class="rich__btn pressable" data-cmd="bold" data-state="bold" title="عريض"><b>ع</b></button>
+    <button type="button" class="rich__btn pressable" data-cmd="italic" data-state="italic" title="مائل"><i>م</i></button>
+    <button type="button" class="rich__btn pressable" data-cmd="link" title="رابط">🔗</button>
+    <span class="rich__sep" aria-hidden="true"></span>
+    <button type="button" class="rich__btn pressable" data-cmd="insertUnorderedList" data-state="insertUnorderedList" title="قائمة نقطية">• قائمة</button>
+    <button type="button" class="rich__btn pressable" data-cmd="insertOrderedList" data-state="insertOrderedList" title="قائمة مرقّمة">١. قائمة</button>
+    <button type="button" class="rich__btn pressable" data-cmd="formatBlock" data-value="blockquote" data-state="format:blockquote" title="اقتباس">❝</button>
+    <span class="rich__sep" aria-hidden="true"></span>
+    <button type="button" class="rich__btn pressable" data-cmd="image" title="إدراج صورة داخل النص">🖼 صورة</button>
+    <button type="button" class="rich__btn pressable" data-cmd="alt" title="النص البديل للصورة المحددة">alt</button>
+    <span class="rich__sep" aria-hidden="true"></span>
+    <button type="button" class="rich__btn pressable" data-cmd="undo" title="تراجع">↶</button>
+    <button type="button" class="rich__btn pressable" data-cmd="redo" title="إعادة">↷</button>
+  </div>
+
+  <div class="rich__body" data-rich-body contenteditable="true" role="textbox" aria-multiline="true"
+       dir="<%= dir %>" data-placeholder="<%= placeholder %>"></div>
+
+  <%= form.hidden_field field, data: { rich_input: true } %>
+  <input type="file" class="sr-only" data-rich-file accept="image/jpeg,image/png,image/webp,image/avif,image/gif">
+  <p class="rich__err" data-rich-error hidden></p>
+</div>

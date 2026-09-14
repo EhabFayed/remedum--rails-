@@ -1,0 +1,11 @@
+<% content_for :title, "سؤال جديد" %>
+<%= page_header "سؤال جديد" do %>
+  <a class="btn btn--sm pressable" href="<%= admin_faqs_path %>">رجوع</a>
+<% end %>
+<div class="card" style="max-width:46rem">
+  <%= form_with model: [:admin, @faq] do |f| %>
+    <%= render "admin/shared/errors", record: @faq %>
+    <%= render "fields", form: f %>
+    <%= f.submit "إضافة", class: "btn btn--primary pressable" %>
+  <% end %>
+</div>

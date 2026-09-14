@@ -1,0 +1,5 @@
+<% content_for :title, "تحرير المنتج" %>
+<%= page_header "تحرير المنتج", @product.name_ar do %>
+  <a class="btn btn--sm pressable" href="<%= admin_products_path %>">رجوع</a>
+<% end %>
+<%= render "form", product: @product %>

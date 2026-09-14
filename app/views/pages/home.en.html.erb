@@ -226,15 +226,13 @@
       <div class="header__inner">
         <a href="#" class="logo">
           <span class="logo__mark">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M12 2.5c1.9 5.6 4.4 8.1 10 10-5.6 1.9-8.1 4.4-10 10-1.9-5.6-4.4-8.1-10-10 5.6-1.9 8.1-4.4 10-10Z"
-                fill="currentColor"
-              />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 19C5 9 11 4 20 4c0 9-5 15-15 15z" />
+              <path d="M5 19c3-6 6-9 10-11" />
             </svg>
           </span>
           <span class="logo__text"
-            >BEAUTY <span class="logo__u">ROOTS</span></span
+            ><span class="logo__u">BEAUTY</span> <span class="logo__r">ROOTS</span></span
           >
         </a>
 
@@ -447,14 +445,14 @@
 
               <div class="collage__img collage__img--arch">
                 <img
-                  src="https://images.unsplash.com/photo-1580281658223-9b93f18ae9ae?auto=format&fit=crop&w=700&q=85"
+                  src="/assets/img/about-1.jpg"
                   alt="Licensed stock released under controlled conditions"
                 />
               </div>
 
               <div class="collage__img collage__img--arch-alt">
                 <img
-                  src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=85"
+                  src="/assets/img/about-2.jpg"
                   alt="Regulatory affairs lead"
                 />
               </div>
@@ -548,7 +546,7 @@
             <div class="acc__panel">
               <div class="acc__media">
                 <img
-                  src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=1200&q=85"
+                  src="/assets/img/home-remedium-range.jpg"
                   alt="ReMedium regenerative treatment"
                 />
                 <ul class="acc__chips">
@@ -584,7 +582,7 @@
             <div class="acc__panel">
               <div class="acc__media">
                 <img
-                  src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=1200&q=85"
+                  src="/assets/img/inject.jpg"
                   alt="HA dermal filler treatment"
                 />
               </div>
@@ -605,7 +603,7 @@
             <div class="acc__panel">
               <div class="acc__media">
                 <img
-                  src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=1200&q=85"
+                  src="/assets/img/brand-skincare.jpg"
                   alt="Professional skincare range"
                 />
               </div>
@@ -961,7 +959,7 @@
           <article class="why-card">
             <div class="why-card__img">
               <img
-                src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=85"
+                src="/assets/img/why-sfda.jpg"
                 alt="Regulatory documentation"
               />
               <i class="why-card__btn"
@@ -979,7 +977,7 @@
           <article class="why-card is-active">
             <div class="why-card__img">
               <img
-                src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=600&q=85"
+                src="/assets/img/why-storage.jpg"
                 alt="Licensed temperature-controlled storage"
               />
               <i class="why-card__btn"
@@ -995,7 +993,7 @@
           <article class="why-card">
             <div class="why-card__img">
               <img
-                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=600&q=85"
+                src="/assets/img/why-training.jpg"
                 alt="Clinical training session"
               />
               <i class="why-card__btn"
@@ -1012,7 +1010,7 @@
           <article class="why-card">
             <div class="why-card__img">
               <img
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=85"
+                src="/assets/img/why-exclusive.jpg"
                 alt="Exclusive agency agreement"
               />
               <i class="why-card__btn"
@@ -1041,109 +1039,122 @@
           <h2 class="sec-title">Beyond the Product &mdash; A Complete Path of Responsibility &amp; Traceability</h2>
         </div>
 
-        <div class="compare__table">
-          <div class="compare__row compare__row--head">
-            <span class="compare__crit">Criteria</span>
-            <span class="compare__us">Beauty Roots</span>
-            <span class="compare__them">Unregulated Sources</span>
+        <!-- one criterion at a time — tabs + stage -->
+        <div class="cmp" id="cmp">
+          <div class="cmp__tabs" role="tablist" aria-label="Comparison criteria">
+            <button class="cmp__tab is-active" type="button" role="tab" id="cmp-tab-0" aria-controls="cmp-panel-0" aria-selected="true"><i></i>Product Registration</button>
+            <button class="cmp__tab" type="button" role="tab" id="cmp-tab-1" aria-controls="cmp-panel-1" aria-selected="false"><i></i>Batch Traceability</button>
+            <button class="cmp__tab" type="button" role="tab" id="cmp-tab-2" aria-controls="cmp-panel-2" aria-selected="false"><i></i>Legal Accountability</button>
+            <button class="cmp__tab" type="button" role="tab" id="cmp-tab-3" aria-controls="cmp-panel-3" aria-selected="false"><i></i>Recall Procedure</button>
+            <button class="cmp__tab" type="button" role="tab" id="cmp-tab-4" aria-controls="cmp-panel-4" aria-selected="false"><i></i>Storage Conditions</button>
+            <button class="cmp__tab" type="button" role="tab" id="cmp-tab-5" aria-controls="cmp-panel-5" aria-selected="false"><i></i>Invoicing &amp; Documentation</button>
+            <button class="cmp__tab" type="button" role="tab" id="cmp-tab-6" aria-controls="cmp-panel-6" aria-selected="false"><i></i>Post-Supply Support</button>
           </div>
-
-          <div class="compare__row">
-            <span class="compare__crit">Product Registration</span>
-            <span class="compare__us"
-              ><i class="mark mark--yes"
-                ><svg class="ico ico--xs"><use href="#i-check" /></svg></i
-              >Products registered with the Saudi Food &amp; Drug Authority (SFDA)</span
-            >
-            <span class="compare__them"
-              ><i class="mark mark--no"
-                ><svg class="ico ico--xs"><use href="#i-close" /></svg></i
-              >Unregistered / grey-market stock</span
-            >
-          </div>
-
-          <div class="compare__row">
-            <span class="compare__crit">Batch Traceability</span>
-            <span class="compare__us"
-              ><i class="mark mark--yes"
-                ><svg class="ico ico--xs"><use href="#i-check" /></svg></i
-              >Batch numbers traceable back to their source</span
-            >
-            <span class="compare__them"
-              ><i class="mark mark--no"
-                ><svg class="ico ico--xs"><use href="#i-close" /></svg></i
-              >Untraceable origin &amp; custody</span
-            >
-          </div>
-
-          <div class="compare__row">
-            <span class="compare__crit">Legal Accountability</span>
-            <span class="compare__us"
-              ><i class="mark mark--yes"
-                ><svg class="ico ico--xs"><use href="#i-check" /></svg></i
-              >A responsible, licensed entity to follow up when needed</span
-            >
-            <span class="compare__them"
-              ><i class="mark mark--no"
-                ><svg class="ico ico--xs"><use href="#i-close" /></svg></i
-              >No identifiable liability</span
-            >
-          </div>
-
-          <div class="compare__row">
-            <span class="compare__crit">Recall Procedure</span>
-            <span class="compare__us"
-              ><i class="mark mark--yes"
-                ><svg class="ico ico--xs"><use href="#i-check" /></svg></i
-              >Documented product-recall procedures when required</span
-            >
-            <span class="compare__them"
-              ><i class="mark mark--no"
-                ><svg class="ico ico--xs"><use href="#i-close" /></svg></i
-              >No recall path or patient protection</span
-            >
-          </div>
-
-          <div class="compare__row">
-            <span class="compare__crit">Storage Conditions</span>
-            <span class="compare__us"
-              ><i class="mark mark--yes"
-                ><svg class="ico ico--xs"><use href="#i-check" /></svg></i
-              >Storage in licensed warehouses in line with Good Storage Practice (GSP)</span
-            >
-            <span class="compare__them"
-              ><i class="mark mark--no"
-                ><svg class="ico ico--xs"><use href="#i-close" /></svg></i
-              >Unmonitored &amp; compromised storage</span
-            >
-          </div>
-
-          <div class="compare__row">
-            <span class="compare__crit">Invoicing &amp; Documentation</span>
-            <span class="compare__us"
-              ><i class="mark mark--yes"
-                ><svg class="ico ico--xs"><use href="#i-check" /></svg></i
-              >Tax invoices and documented records with every shipment</span
-            >
-            <span class="compare__them"
-              ><i class="mark mark--no"
-                ><svg class="ico ico--xs"><use href="#i-close" /></svg></i
-              >Missing or unverified documents</span
-            >
-          </div>
-
-          <div class="compare__row">
-            <span class="compare__crit">Post-Supply Support</span>
-            <span class="compare__us"
-              ><i class="mark mark--yes"
-                ><svg class="ico ico--xs"><use href="#i-check" /></svg></i
-              >Technical support, training materials &amp; ongoing follow-up</span
-            >
-            <span class="compare__them"
-              ><i class="mark mark--no"
-                ><svg class="ico ico--xs"><use href="#i-close" /></svg></i
-              >None once the unit is handed over</span
-            >
+          <div class="cmp__stage">
+            <article class="cmp__panel is-active" role="tabpanel" id="cmp-panel-0" aria-labelledby="cmp-tab-0">
+              <div class="cmp__media"><img src="/assets/img/why-sfda.jpg" alt="" loading="lazy" /></div>
+              <div class="cmp__body">
+                <h3 class="cmp__crit">Product Registration</h3>
+                <div class="cmp__side cmp__side--us">
+                  <span class="cmp__who"><i class="mark mark--yes"><svg class="ico ico--xs"><use href="#i-check" /></svg></i>Beauty Roots</span>
+                  <p>Products registered with the Saudi Food &amp; Drug Authority (SFDA)</p>
+                </div>
+                <div class="cmp__side cmp__side--them">
+                  <span class="cmp__who"><i class="mark mark--no"><svg class="ico ico--xs"><use href="#i-close" /></svg></i>Unregulated Sources</span>
+                  <p>Unregistered / grey-market stock</p>
+                </div>
+              </div>
+            </article>
+            <article class="cmp__panel" role="tabpanel" id="cmp-panel-1" aria-labelledby="cmp-tab-1">
+              <div class="cmp__media"><img src="/assets/img/kb-regulations.jpg" alt="" loading="lazy" /></div>
+              <div class="cmp__body">
+                <h3 class="cmp__crit">Batch Traceability</h3>
+                <div class="cmp__side cmp__side--us">
+                  <span class="cmp__who"><i class="mark mark--yes"><svg class="ico ico--xs"><use href="#i-check" /></svg></i>Beauty Roots</span>
+                  <p>Batch numbers traceable back to their source</p>
+                </div>
+                <div class="cmp__side cmp__side--them">
+                  <span class="cmp__who"><i class="mark mark--no"><svg class="ico ico--xs"><use href="#i-close" /></svg></i>Unregulated Sources</span>
+                  <p>Untraceable origin &amp; custody</p>
+                </div>
+              </div>
+            </article>
+            <article class="cmp__panel" role="tabpanel" id="cmp-panel-2" aria-labelledby="cmp-tab-2">
+              <div class="cmp__media"><img src="/assets/img/why-exclusive.jpg" alt="" loading="lazy" /></div>
+              <div class="cmp__body">
+                <h3 class="cmp__crit">Legal Accountability</h3>
+                <div class="cmp__side cmp__side--us">
+                  <span class="cmp__who"><i class="mark mark--yes"><svg class="ico ico--xs"><use href="#i-check" /></svg></i>Beauty Roots</span>
+                  <p>A responsible, licensed entity to follow up when needed</p>
+                </div>
+                <div class="cmp__side cmp__side--them">
+                  <span class="cmp__who"><i class="mark mark--no"><svg class="ico ico--xs"><use href="#i-close" /></svg></i>Unregulated Sources</span>
+                  <p>No identifiable liability</p>
+                </div>
+              </div>
+            </article>
+            <article class="cmp__panel" role="tabpanel" id="cmp-panel-3" aria-labelledby="cmp-tab-3">
+              <div class="cmp__media"><img src="/assets/img/step-followup.jpg" alt="" loading="lazy" /></div>
+              <div class="cmp__body">
+                <h3 class="cmp__crit">Recall Procedure</h3>
+                <div class="cmp__side cmp__side--us">
+                  <span class="cmp__who"><i class="mark mark--yes"><svg class="ico ico--xs"><use href="#i-check" /></svg></i>Beauty Roots</span>
+                  <p>Documented product-recall procedures when required</p>
+                </div>
+                <div class="cmp__side cmp__side--them">
+                  <span class="cmp__who"><i class="mark mark--no"><svg class="ico ico--xs"><use href="#i-close" /></svg></i>Unregulated Sources</span>
+                  <p>No recall path or patient protection</p>
+                </div>
+              </div>
+            </article>
+            <article class="cmp__panel" role="tabpanel" id="cmp-panel-4" aria-labelledby="cmp-tab-4">
+              <div class="cmp__media"><img src="/assets/img/quality-warehouse.jpg" alt="" loading="lazy" /></div>
+              <div class="cmp__body">
+                <h3 class="cmp__crit">Storage Conditions</h3>
+                <div class="cmp__side cmp__side--us">
+                  <span class="cmp__who"><i class="mark mark--yes"><svg class="ico ico--xs"><use href="#i-check" /></svg></i>Beauty Roots</span>
+                  <p>Storage in licensed warehouses in line with Good Storage Practice (GSP)</p>
+                </div>
+                <div class="cmp__side cmp__side--them">
+                  <span class="cmp__who"><i class="mark mark--no"><svg class="ico ico--xs"><use href="#i-close" /></svg></i>Unregulated Sources</span>
+                  <p>Unmonitored &amp; compromised storage</p>
+                </div>
+              </div>
+            </article>
+            <article class="cmp__panel" role="tabpanel" id="cmp-panel-5" aria-labelledby="cmp-tab-5">
+              <div class="cmp__media"><img src="/assets/img/step-purchase.jpg" alt="" loading="lazy" /></div>
+              <div class="cmp__body">
+                <h3 class="cmp__crit">Invoicing &amp; Documentation</h3>
+                <div class="cmp__side cmp__side--us">
+                  <span class="cmp__who"><i class="mark mark--yes"><svg class="ico ico--xs"><use href="#i-check" /></svg></i>Beauty Roots</span>
+                  <p>Tax invoices and documented records with every shipment</p>
+                </div>
+                <div class="cmp__side cmp__side--them">
+                  <span class="cmp__who"><i class="mark mark--no"><svg class="ico ico--xs"><use href="#i-close" /></svg></i>Unregulated Sources</span>
+                  <p>Missing or unverified documents</p>
+                </div>
+              </div>
+            </article>
+            <article class="cmp__panel" role="tabpanel" id="cmp-panel-6" aria-labelledby="cmp-tab-6">
+              <div class="cmp__media"><img src="/assets/img/why-training.jpg" alt="" loading="lazy" /></div>
+              <div class="cmp__body">
+                <h3 class="cmp__crit">Post-Supply Support</h3>
+                <div class="cmp__side cmp__side--us">
+                  <span class="cmp__who"><i class="mark mark--yes"><svg class="ico ico--xs"><use href="#i-check" /></svg></i>Beauty Roots</span>
+                  <p>Technical support, training materials &amp; ongoing follow-up</p>
+                </div>
+                <div class="cmp__side cmp__side--them">
+                  <span class="cmp__who"><i class="mark mark--no"><svg class="ico ico--xs"><use href="#i-close" /></svg></i>Unregulated Sources</span>
+                  <p>None once the unit is handed over</p>
+                </div>
+              </div>
+            </article>
+            <div class="cmp__nav">
+              <button class="cmp__arrow" type="button" data-dir="-1" aria-label="Previous"><svg class="ico ico--sm"><use href="#i-arrow-l" /></svg></button>
+              <div class="cmp__dots"></div>
+              <span class="cmp__count" dir="ltr">1 / 7</span>
+              <button class="cmp__arrow" type="button" data-dir="1" aria-label="Next"><svg class="ico ico--sm"><use href="#i-arrow-r" /></svg></button>
+            </div>
           </div>
         </div>
       </div>
@@ -1161,12 +1172,9 @@
             <h3>Accreditations behind every unit we release</h3>
           </div>
           <ul class="certs__list">
-            <li><b>SFDA</b><span>Saudi FDA approval</span></li>
-            <li><b>MFDS</b><span>Korean regulatory clearance</span></li>
-            <li><b>GMP</b><span>Good manufacturing standards</span></li>
-            <li><b>MDSAP</b><span>Multi-country audit approval</span></li>
-            <li><b>ISO 13485</b><span>Medical devices quality system</span></li>
-            <li><b>CE</b><span>European conformity</span></li>
+            <% @certifications.each do |cert| %>
+            <li><b><%= cert.code %></b><span><%= cert.name_for(I18n.locale) %></span></li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -1220,14 +1228,14 @@
             <div class="step__media">
               <div class="step__img step__img--pill">
                 <img
-                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=500&q=85"
+                  src="/assets/img/step-contact.jpg"
                   alt="Contacting our team"
                 />
                 <span class="step__cap">By phone, email, or through a company representative.</span>
               </div>
               <div class="step__img step__img--circle">
                 <img
-                  src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=300&q=85"
+                  src="/assets/img/step-contact.jpg"
                   alt=""
                 />
               </div>
@@ -1238,14 +1246,14 @@
             <div class="step__media">
               <div class="step__img step__img--pill">
                 <img
-                  src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=500&q=85"
+                  src="/assets/img/step-account.jpg"
                   alt="Facility documents"
                 />
                 <span class="step__cap">Provide your facility details and the required documents.</span>
               </div>
               <div class="step__img step__img--circle">
                 <img
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=85"
+                  src="/assets/img/step-account.jpg"
                   alt=""
                 />
               </div>
@@ -1256,14 +1264,14 @@
             <div class="step__media">
               <div class="step__img step__img--pill">
                 <img
-                  src="https://images.unsplash.com/photo-1580281658223-9b93f18ae9ae?auto=format&fit=crop&w=500&q=85"
+                  src="/assets/img/step-purchase.jpg"
                   alt="Preparing the order"
                 />
                 <span class="step__cap">Choose the required products and complete the purchase process.</span>
               </div>
               <div class="step__img step__img--circle">
                 <img
-                  src="https://images.unsplash.com/photo-1631248055158-edec7a3c072b?auto=format&fit=crop&w=300&q=85"
+                  src="/assets/img/step-purchase.jpg"
                   alt=""
                 />
               </div>
@@ -1274,14 +1282,14 @@
             <div class="step__media">
               <div class="step__img step__img--pill">
                 <img
-                  src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=500&q=85"
+                  src="/assets/img/step-shipping.jpg"
                   alt="Shipping and delivery"
                 />
                 <span class="step__cap">Through approved channels, in line with Good Distribution Practice (GDP).</span>
               </div>
               <div class="step__img step__img--circle">
                 <img
-                  src="https://images.unsplash.com/photo-1512678080530-7760d81faba6?auto=format&fit=crop&w=300&q=85"
+                  src="/assets/img/step-shipping.jpg"
                   alt=""
                 />
               </div>
@@ -1292,14 +1300,14 @@
             <div class="step__media">
               <div class="step__img step__img--pill">
                 <img
-                  src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=500&q=85"
+                  src="/assets/img/step-training.jpg"
                   alt="Training and support"
                 />
                 <span class="step__cap">We provide training materials and product-related technical support.</span>
               </div>
               <div class="step__img step__img--circle">
                 <img
-                  src="https://images.unsplash.com/photo-1612277795421-9bc7706a4a34?auto=format&fit=crop&w=300&q=85"
+                  src="/assets/img/step-training.jpg"
                   alt=""
                 />
               </div>
@@ -1310,14 +1318,14 @@
             <div class="step__media">
               <div class="step__img step__img--pill">
                 <img
-                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=500&q=85"
+                  src="/assets/img/step-followup.jpg"
                   alt="Ongoing follow-up"
                 />
                 <span class="step__cap">We follow up on your facility&rsquo;s needs and reordering to keep supply continuous.</span>
               </div>
               <div class="step__img step__img--circle">
                 <img
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=85"
+                  src="/assets/img/step-followup.jpg"
                   alt=""
                 />
               </div>
@@ -1339,86 +1347,27 @@
         </div>
 
         <div class="blog__grid">
+          <% @posts.each do |post| %>
+          <% cover = post.cover_for(I18n.locale) %>
           <article class="post">
             <div class="post__img">
-              <img
-                src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=700&q=85"
-                alt="Verifying registration"
-              />
-              <span class="post__date"><b>25</b><small>Aug</small></span>
-              <a href="/en/knowledge/" class="post__btn" aria-label="Read"
+              <% if cover %>
+              <img src="<%= cover[:url] %>" alt="<%= cover[:alt] %>" loading="lazy" />
+              <% end %>
+              <span class="post__date"><b><%= (post.published_at || post.created_at).day %></b><small><%= l((post.published_at || post.created_at).to_date, format: "%B") %></small></span>
+              <a href="<%= post.path_for(I18n.locale) %>" class="post__btn" aria-label="<%= post.title_for(I18n.locale) %>"
                 ><svg class="ico ico--sm"><use href="#i-arrow-ur" /></svg
               ></a>
             </div>
             <div class="post__meta">
-              <span class="post__cat">Regulatory</span>
-              <span class="post__author"
-                ><img
-                  src="https://randomuser.me/api/portraits/women/44.jpg"
-                  alt=""
-                />Regulatory Affairs Team</span
-              >
+              <% if post.category %><span class="post__cat"><%= post.category.name_for(I18n.locale) %></span><% end %>
+              <span class="post__author"><%= post.byline_for(I18n.locale) %></span>
             </div>
             <h3 class="post__title">
-              <a href="/en/knowledge/">How to Verify That a Dermal Filler Is Fully SFDA-Approved</a>
+              <a href="<%= post.path_for(I18n.locale) %>"><%= post.title_for(I18n.locale) %></a>
             </h3>
           </article>
-
-          <article class="post">
-            <div class="post__img">
-              <img
-                src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=700&q=85"
-                alt="Cold chain storage"
-              />
-              <span class="post__date"><b>30</b><small>Aug</small></span>
-              <a href="/en/knowledge/" class="post__btn" aria-label="Read"
-                ><svg class="ico ico--sm"><use href="#i-arrow-ur" /></svg
-              ></a>
-            </div>
-            <div class="post__meta">
-              <span class="post__cat">Storage &amp; Quality</span>
-              <span class="post__author"
-                ><img
-                  src="https://randomuser.me/api/portraits/men/32.jpg"
-                  alt=""
-                />Supply Chain Team</span
-              >
-            </div>
-            <h3 class="post__title">
-              <a href="/en/knowledge/"
-                >Storage Conditions: How Temperature Directly Affects Filler
-                Longevity &amp; Safety</a
-              >
-            </h3>
-          </article>
-
-          <article class="post">
-            <div class="post__img">
-              <img
-                src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=700&q=85"
-                alt="Product science"
-              />
-              <span class="post__date"><b>08</b><small>Sep</small></span>
-              <a href="/en/knowledge/" class="post__btn" aria-label="Read"
-                ><svg class="ico ico--sm"><use href="#i-arrow-ur" /></svg
-              ></a>
-            </div>
-            <div class="post__meta">
-              <span class="post__cat">Clinical Science</span>
-              <span class="post__author"
-                ><img
-                  src="https://randomuser.me/api/portraits/women/68.jpg"
-                  alt=""
-                />Medical Advisory Team</span
-              >
-            </div>
-            <h3 class="post__title">
-              <a href="/en/knowledge/"
-                >Monophasic Hyaluronic Acid: The Science Behind ReMedium&#8217;s
-                Natural Integration</a
-              >
-            </h3>
-          </article>
+          <% end %>
         </div>
       </div>
     </section>

@@ -1,0 +1,129 @@
+<% loc = I18n.locale
+   cover = @post.cover_for(loc)
+   published_faqs = @post.faqs.select(&:published) %>
+<% content_for :title, @post.meta_title_for(loc) %>
+<% content_for :description, @post.meta_description_for(loc) %>
+<% content_for :nav_active, "knowledge" %>
+
+<section class="page-hero"><div class="container"><div class="page-hero__inner">
+  <div class="crumbs">
+    <a href="<%= locale_path("") %>"><%= rtl? ? "الرئيسية" : "Home" %></a>
+    <span class="sep">/</span>
+    <a href="<%= locale_path("knowledge") %>"><%= rtl? ? "مركز المعرفة" : "Knowledge Center" %></a>
+    <span class="sep">/</span>
+    <span class="here"><%= @post.category&.name_for(loc) || (rtl? ? "مقال" : "Article") %></span>
+  </div>
+
+  <h1 class="page-title"><%= @post.title_for(loc) %></h1>
+  <% if @post.excerpt_for(loc).present? %>
+    <p class="page-hero__lead"><%= @post.excerpt_for(loc) %></p>
+  <% end %>
+
+  <div class="page-hero__chips">
+    <% if @post.category %><span class="chip chip--green"><%= @post.category.name_for(loc) %></span><% end %>
+    <% if @post.medically_reviewed %>
+      <span class="chip"><%= rtl? ? "مراجعة طبية" : "Medically reviewed" %></span>
+    <% end %>
+    <span class="chip"><%= rtl? ? "#{@post.read_minutes} دقائق قراءة" : "#{@post.read_minutes} min read" %></span>
+    <span class="chip"><%= @post.display_date(loc) %></span>
+  </div>
+  <% if @post.byline_for(loc).present? %>
+    <p class="foot-note" style="margin-top:14px"><%= @post.byline_for(loc) %></p>
+  <% end %>
+</div></div></section>
+
+<% if cover %>
+  <section class="section" style="padding-bottom:0"><div class="container">
+    <div class="arch-media" style="max-width:900px;margin-inline:auto">
+      <%= tag.img src: cover[:url], alt: cover[:alt],
+                  width: cover[:width], height: cover[:height] %>
+    </div>
+  </div></section>
+<% end %>
+
+<section class="section"><div class="container">
+  <article class="article-body">
+    <% @post.sections.each do |section| %>
+      <% title = section.title_for(loc)
+         image = section.image_for(loc) %>
+      <% if title.present? %><h2><%= title %></h2><% end %>
+      <%= raw section.body_for(loc) %>
+      <% if image %>
+        <figure>
+          <%= tag.img src: image[:url], alt: image[:alt], loading: "lazy",
+                      width: image[:width], height: image[:height] %>
+          <% if image[:caption].present? %><figcaption><%= image[:caption] %></figcaption><% end %>
+        </figure>
+      <% end %>
+    <% end %>
+  </article>
+</div></section>
+
+<% if published_faqs.any? %>
+  <section class="section"><div class="container">
+    <div class="sec-head">
+      <span class="eyebrow"><i></i><%= rtl? ? "أسئلة شائعة" : "Frequently asked" %></span>
+      <h2 class="sec-title"><%= rtl? ? "أسئلة حول هذا الموضوع" : "Questions on this topic" %></h2>
+    </div>
+    <div class="faq-list">
+      <% published_faqs.each do |faq| %>
+        <details class="faq">
+          <summary><%= faq.question_for(loc) %></summary>
+          <p><%= faq.answer_for(loc) %></p>
+        </details>
+      <% end %>
+    </div>
+  </div></section>
+<% end %>
+
+<section class="section section--last"><div class="container">
+  <% if @related.any? %>
+    <div class="sec-head">
+      <span class="eyebrow"><i></i><%= rtl? ? "اقرأ أيضًا" : "Read next" %></span>
+    </div>
+    <div class="grid grid-3" style="gap:22px;margin-bottom:26px">
+      <% @related.each do |other| %>
+        <% c = other.cover_for(loc) %>
+        <article class="post">
+          <a class="post__img" href="<%= other.path_for(loc) %>">
+            <% if c %><img src="<%= c[:url] %>" alt="<%= c[:alt] %>" loading="lazy"><% end %>
+          </a>
+          <h3><a href="<%= other.path_for(loc) %>"><%= other.title_for(loc) %></a></h3>
+        </article>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="dark-strip">
+    <h3><%= rtl? ? "هل تحتاج عرض سعر رسميًا؟" : "Need a formal quotation?" %></h3>
+    <p><%= site_setting("quote_sla_#{loc}", rtl? ? "يراجع فريق المبيعات الطبية التفاصيل ويصدر عرض السعر خلال 24 ساعة عمل." : "The medical sales team reviews the details and issues a formal quotation within 24 business hours.") %></p>
+    <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
+      <a class="btn btn--green" href="<%= locale_path("medical/quote") %>"><%= rtl? ? "طلب عرض سعر" : "Request a quote" %></a>
+      <a class="btn btn--ghost" href="<%= whatsapp_url %>" target="_blank" rel="noopener"><%= rtl? ? "واتساب" : "WhatsApp" %></a>
+    </div>
+  </div>
+</div></section>
+
+<%# Structured data: the article itself, and its questions if it has any. %>
+<script type="application/ld+json"><%= raw({
+  "@context" => "https://schema.org",
+  "@type" => "Article",
+  "headline" => @post.title_for(loc),
+  "description" => @post.meta_description_for(loc),
+  "inLanguage" => loc.to_s,
+  "datePublished" => @post.published_at&.iso8601,
+  "dateModified" => @post.updated_at.iso8601,
+  "image" => cover && request.base_url + cover[:url],
+  "author" => { "@type" => "Organization", "name" => site_setting("company_name_#{loc}", "Beauty Roots") },
+  "publisher" => { "@type" => "Organization", "name" => site_setting("company_name_#{loc}", "Beauty Roots") }
+}.compact.to_json) %></script>
+
+<% if published_faqs.any? %>
+  <script type="application/ld+json"><%= raw({
+    "@context" => "https://schema.org", "@type" => "FAQPage",
+    "mainEntity" => published_faqs.map { |f|
+      { "@type" => "Question", "name" => f.question_for(loc),
+        "acceptedAnswer" => { "@type" => "Answer", "text" => f.answer_for(loc) } }
+    }
+  }.to_json) %></script>
+<% end %>

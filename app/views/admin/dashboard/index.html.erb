@@ -1,0 +1,96 @@
+<% content_for :title, "نظرة عامة" %>
+<%= page_header "أهلًا، #{current_user.name}", "حالة الموقع في لمحة." %>
+
+<% cards = [
+     ["مقالات منشورة", @counts[:published_posts], admin_posts_path + "?status=published", false],
+     ["مسوّدات",       @counts[:draft_posts],     admin_posts_path + "?status=draft", false],
+     ["طلبات جديدة",   @counts[:new_leads],       admin_leads_path + "?status=new", @counts[:new_leads].positive?],
+     ["العلامات",      @counts[:brands],          admin_brands_path, false],
+     ["المنتجات",      @counts[:products],        admin_products_path, false],
+     ["صور المكتبة",   @counts[:media],           admin_media_path, false]
+   ] %>
+<div class="stats">
+  <% cards.each do |label, value, path, hot| %>
+    <a class="stat pressable<%= " stat--hot" if hot %>" href="<%= path %>">
+      <span class="stat__label"><%= label %></span>
+      <span class="stat__value"><%= value %></span>
+    </a>
+  <% end %>
+</div>
+
+<% if @missing.any? %>
+  <section style="margin-top:34px">
+    <h2 class="sechead">يحتاج انتباهك</h2>
+    <div class="grid-3">
+      <% @missing.each do |w| %>
+        <a class="card card--tight pressable" href="<%= w[:path] %>" style="border-color:rgba(201,164,106,.4)">
+          <p style="font-size:13.5px;color:var(--brown)"><%= w[:text] %></p>
+        </a>
+      <% end %>
+    </div>
+  </section>
+<% end %>
+
+<section style="margin-top:34px">
+  <div class="phead" style="margin-bottom:14px">
+    <h2 class="sechead" style="margin:0">أحدث الطلبات</h2>
+    <a class="btn btn--sm pressable" href="<%= admin_leads_path %>">عرض الكل</a>
+  </div>
+
+  <% if @recent_leads.empty? %>
+    <p class="empty">لا توجد طلبات بعد. أول طلب من نموذج عرض السعر سيظهر هنا.</p>
+  <% else %>
+    <div class="tablewrap"><div class="tablescroll">
+      <table class="tbl">
+        <thead><tr>
+          <th>الاسم</th><th>المنشأة</th><th>المدينة</th><th>وسيلة التواصل</th><th>الحالة</th><th>التاريخ</th>
+        </tr></thead>
+        <tbody>
+          <% @recent_leads.each do |lead| %>
+            <tr>
+              <td>
+                <% if lead.new_request? %><span class="dot" aria-hidden="true"></span><% end %>
+                <a class="tbl__title" href="<%= admin_lead_path(lead) %>"><%= lead.name %></a>
+              </td>
+              <td style="color:var(--muted)"><%= lead.facility.presence || "—" %></td>
+              <td style="color:var(--muted)"><%= lead.city.presence || "—" %></td>
+              <td class="lat" dir="ltr" style="font-size:12px"><%= lead.phone.presence || lead.email.presence || "—" %></td>
+              <td><%= status_pill lead.status %></td>
+              <td class="lat" style="font-size:11.5px;color:var(--faint)"><%= admin_date lead.created_at %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div></div>
+  <% end %>
+</section>
+
+<section style="margin-top:34px">
+  <div class="phead" style="margin-bottom:14px">
+    <h2 class="sechead" style="margin:0">آخر ما عُدّل</h2>
+    <a class="btn btn--sm btn--primary pressable" href="<%= new_admin_post_path %>">+ مقال جديد</a>
+  </div>
+
+  <% if @recent_posts.empty? %>
+    <p class="empty">لا مقالات بعد. ابدأ بأول مقال في مركز المعرفة.</p>
+  <% else %>
+    <div class="tablewrap"><div class="tablescroll">
+      <table class="tbl">
+        <thead><tr><th>العنوان</th><th>التصنيف</th><th>الحالة</th><th>آخر تعديل</th></tr></thead>
+        <tbody>
+          <% @recent_posts.each do |post| %>
+            <tr>
+              <td>
+                <a class="tbl__title" href="<%= edit_admin_post_path(post) %>"><%= post.title_ar %></a>
+                <p class="tbl__sub" dir="ltr">/<%= post.slug_en %></p>
+              </td>
+              <td style="color:var(--muted)"><%= post.category&.name_ar || "—" %></td>
+              <td><%= status_pill post.status %></td>
+              <td class="lat" style="font-size:11.5px;color:var(--faint)"><%= admin_date post.updated_at %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div></div>
+  <% end %>
+</section>

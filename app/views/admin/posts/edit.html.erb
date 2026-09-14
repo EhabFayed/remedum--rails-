@@ -1,0 +1,8 @@
+<% content_for :title, "تحرير المقال" %>
+<%= page_header "تحرير المقال", @post.title_ar do %>
+  <% if @post.published? %>
+    <a class="btn btn--sm pressable" href="<%= @post.path_for(:ar) %>" target="_blank" rel="noopener">عرض بالعربية ↗</a>
+    <a class="btn btn--sm pressable" href="<%= @post.path_for(:en) %>" target="_blank" rel="noopener">English ↗</a>
+  <% end %>
+<% end %>
+<%= render "form", post: @post %>

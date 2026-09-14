@@ -1,0 +1,11 @@
+<% content_for :title, "تحرير المستخدم" %>
+<%= page_header "تحرير المستخدم" do %>
+  <a class="btn btn--sm pressable" href="<%= admin_users_path %>">رجوع</a>
+<% end %>
+<div class="card" style="max-width:48rem">
+  <%= form_with model: [:admin, @user] do |f| %>
+    <%= render "admin/shared/errors", record: @user %>
+    <%= render "fields", form: f %>
+    <%= f.submit "حفظ", class: "btn btn--primary pressable" %>
+  <% end %>
+</div>

@@ -1,0 +1,34 @@
+<div class="grid-2">
+  <div class="field">
+    <label class="label">الاسم بالعربية <span class="req">*</span></label>
+    <%= form.text_field :name_ar, class: "inp" %>
+  </div>
+  <div class="field" dir="ltr">
+    <label class="label">Name in English <span class="req">*</span></label>
+    <%= form.text_field :name_en, class: "inp" %>
+  </div>
+</div>
+<div class="grid-2">
+  <div class="field">
+    <label class="label">الرابط بالعربية — يُولَّد تلقائيًا</label>
+    <%= form.text_field :slug_ar, class: "inp inp--mono", dir: "ltr" %>
+  </div>
+  <div class="field" dir="ltr">
+    <label class="label">English slug — generated automatically</label>
+    <%= form.text_field :slug_en, class: "inp inp--mono" %>
+  </div>
+</div>
+<div class="grid-2">
+  <div class="field">
+    <label class="label">وصف مختصر (عربي)</label>
+    <%= form.text_area :description_ar, class: "txt", rows: 2 %>
+  </div>
+  <div class="field" dir="ltr">
+    <label class="label">Short description (English)</label>
+    <%= form.text_area :description_en, class: "txt", rows: 2 %>
+  </div>
+</div>
+<div class="field" style="max-width:9rem">
+  <label class="label">الترتيب</label>
+  <%= form.number_field :position, class: "inp" %>
+</div>

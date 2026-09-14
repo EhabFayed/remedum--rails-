@@ -1,0 +1,24 @@
+<div class="row" data-row>
+  <div class="row__bar">
+    <span class="row__no" data-row-no>سؤال</span>
+    <div class="row__acts">
+      <button type="button" class="iconbtn pressable" data-row-up title="أعلى">↑</button>
+      <button type="button" class="iconbtn pressable" data-row-down title="أسفل">↓</button>
+      <button type="button" class="iconbtn iconbtn--danger pressable" data-row-remove title="حذف السؤال">✕</button>
+    </div>
+  </div>
+
+  <%= form.hidden_field :position, data: { row_position: true } %>
+  <% if form.object.persisted? %>
+    <%= form.hidden_field :_destroy, value: "0", data: { row_destroy: true } %>
+  <% end %>
+
+  <div data-lang-pane="ar" dir="rtl">
+    <div class="field"><%= form.text_field :question_ar, class: "inp", placeholder: "السؤال" %></div>
+    <div class="field"><%= form.text_area :answer_ar, class: "txt", rows: 3, placeholder: "الإجابة" %></div>
+  </div>
+  <div data-lang-pane="en" dir="ltr" hidden>
+    <div class="field"><%= form.text_field :question_en, class: "inp", placeholder: "Question" %></div>
+    <div class="field"><%= form.text_area :answer_en, class: "txt", rows: 3, placeholder: "Answer" %></div>
+  </div>
+</div>
