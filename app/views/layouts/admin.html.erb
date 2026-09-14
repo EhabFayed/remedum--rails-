@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="/assets/admin/admin.css">
+  <link rel="stylesheet" href="<%= static_asset("/assets/admin/admin.css") %>">
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -24,6 +24,6 @@
     </main>
   </div>
 
-  <script src="/assets/admin/admin.js" defer></script>
+  <script src="<%= static_asset("/assets/admin/admin.js") %>" defer></script>
 </body>
 </html>
