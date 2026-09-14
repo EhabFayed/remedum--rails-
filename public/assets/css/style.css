@@ -611,9 +611,9 @@ button{background:none;border:0;cursor:pointer}
 .acc__chips b{font-family:var(--ff-d);font-size:14px;font-weight:700;color:#fff}
 .acc__chips span{font-size:11px;color:rgba(255,255,255,.66)}
 .acc__media img{
-  width:100%;height:clamp(190px,20vw,280px);object-fit:cover;
+  width:100%;height:clamp(240px,31vw,460px);object-fit:cover;object-position:center;
   border-radius:0 0 var(--r-md) var(--r-md);
-  transform:scale(1.04);transition:transform .8s var(--ease);
+  transition:transform .8s var(--ease);
 }
 
 .acc.is-open{background:transparent}

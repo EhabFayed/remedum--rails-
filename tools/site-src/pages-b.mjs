@@ -728,7 +728,9 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات 
 </div></div></section>
 
 <section class="section"><div class="container">
-  ${'<%= render "pages/knowledge_cards" %>'}
+  <div class="grid grid-3" style="gap:22px">
+    ${'<%= render "pages/knowledge_cards" %>'}
+  </div>
   <p class="foot-note">${T('تصنيفات ثابتة: أساسيات · مناطق · أمان · للأطباء — ومقال مخصّص لكل منطقة علاج يربط بمنتجها وبسيكشن المنطقة ذي الصلة. كل مقال يمر على مراجعة طبية قبل النشر.', 'Fixed categories: basics · areas · safety · for physicians — with a dedicated article per treatment area linking to its product and the relevant area section. Every article passes medical review before publishing.')}</p>
 </div></section>
 
