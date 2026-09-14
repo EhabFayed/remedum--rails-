@@ -240,8 +240,8 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('الجودة وال
       'We operate per the requirements of the Saudi Food and Drug Authority (SFDA), within a clear system covering product registration, import, storage and distribution — maintaining traceability across every stage of the product’s journey.'))}
 
 <section class="section"><div class="container">
-  <div class="grid" style="grid-template-columns:.5fr 1fr 1fr;gap:18px">
-    <div class="arch-media arch-media--card" style="min-height:360px">
+  <div class="grid" style="grid-template-columns:1.15fr 1fr 1fr;gap:18px">
+    <div class="arch-media arch-media--card" style="min-height:260px">
       <img src="/assets/img/quality-compliance.jpg" alt="${T('الجودة والالتزام', 'Quality & compliance')}">
       <span class="media-shade"></span>
       <span style="position:absolute;bottom:14px;inset-inline:14px;color:#fff;font-size:12px;font-weight:700;line-height:1.7">${T('التسجيل والالتزام يُداران داخليًا — دون مستشارين خارجيين', 'Registration and compliance are managed in-house — no external consultants')}</span>

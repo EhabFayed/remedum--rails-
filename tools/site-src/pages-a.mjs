@@ -77,7 +77,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
     <div class="card" style="display:flex;flex-direction:column;gap:12px">
       <div style="display:flex;align-items:center;justify-content:space-between">
         <span class="icon-tile" style="width:52px;height:52px;border-radius:15px">${ic}</span>
-        <span class="lat" dir="ltr" style="font-family:var(--ff-d);font-size:13px;font-weight:800;color:var(--green-600);opacity:.55">${n}</span>
+        <span class="lat" dir="ltr" style="font-family:var(--ff-d);font-size:13px;font-weight:800;color:var(--brown);opacity:.8">${n}</span>
       </div>
       <div>
         <b class="lat" dir="ltr" style="display:block;font-family:var(--ff-d);font-size:19px;font-weight:800">${name}</b>
@@ -302,7 +302,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
       'A standalone section outside the tabs, visible to both audiences. Each area is reachable by a stable link from the homepage face map and from articles.'))}
   <div class="hero-split" style="grid-template-columns:.9fr 1.1fr;gap:36px">
     <div class="face-wrap" style="max-width:440px;margin:0 auto">
-      <img src="/assets/img/face.jpg" alt="${T('خريطة الوجه', 'Face map')} — ${p.name}" style="height:480px">
+      <img src="/assets/img/face-model.jpg" alt="${T('خريطة الوجه', 'Face map')} — ${p.name}" style="height:480px">
       ${p.dots.map(([x, y], i) => `
       <span class="face-dot face-dot--${p.swatch}" style="inset-inline-start:${x};top:${y}">
         <i></i><b>${p.zones[i][0]}</b>

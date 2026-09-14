@@ -265,7 +265,28 @@ button{background:none;border:0;cursor:pointer}
   background:var(--mint);color:var(--green-900);
 }
 .icon-tile--sm{width:42px;height:42px;border-radius:12px}
-.num{display:block;font-family:var(--ff-lat);font-size:24px;font-weight:800;color:var(--green);margin-bottom:10px}
+.num{display:block;font-family:var(--ff-lat);font-size:24px;font-weight:800;color:var(--brown);margin-bottom:10px}
+
+/* ---------- 21. RHYTHM IN CARD GRIDS ----------
+   A row of identical white boxes reads as one flat block. Every third card
+   picks up a tint and a matching accent, which is enough to separate them
+   without turning the page into a colour chart. */
+.grid > .card:nth-child(3n+2){background:var(--mint-2);border-color:#DCEBE3}
+.grid > .card:nth-child(3n+3){background:var(--sand-2);border-color:var(--sand-line)}
+.grid > .card:nth-child(3n+3) .icon-tile{background:var(--sand);color:var(--brown)}
+.grid > .card:nth-child(3n+3) .num{color:var(--brown-600)}
+.grid > .card:nth-child(3n+2) .icon-tile{background:#DCEFE5}
+
+/* A hairline along the top edge, alternating green and brown, so the eye has
+   something to travel along. */
+.grid > .card{position:relative;overflow:hidden}
+.grid > .card::before{
+  content:"";position:absolute;inset-inline:0;top:0;height:3px;
+  background:var(--green);opacity:.55;
+}
+.grid > .card:nth-child(3n+3)::before{background:var(--brown-300);opacity:.75}
+.grid > .card:nth-child(3n+2)::before{background:var(--green-600);opacity:.4}
+
 
 .fact-tile{background:var(--mint-2);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
 .fact-tile span{display:block;font-size:11px;font-weight:700;color:var(--muted-2);margin-bottom:6px}
@@ -496,7 +517,7 @@ button{background:none;border:0;cursor:pointer}
   padding:10px 22px;border-radius:999px;
   background:var(--ink);color:#fff;font-size:13px;font-weight:700;flex:none;
 }
-.post .post__img{position:relative;border-radius:20px;overflow:hidden;margin-bottom:16px;height:210px}
+.post .post__img{display:block;position:relative;border-radius:20px;overflow:hidden;margin-bottom:16px;height:210px}
 .post .post__img img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
 .post:hover .post__img img{transform:scale(1.04)}
 .post .post__btn{
@@ -690,3 +711,25 @@ html[dir="ltr"] .post:hover .post__btn{transform:rotate(45deg)}
 .faq summary::after{content:"+";color:var(--green);font-size:20px;font-weight:400;line-height:1;flex:none}
 .faq[open] summary::after{content:"−"}
 .faq p{margin-top:12px;font-size:14.5px;line-height:1.95;color:var(--muted)}
+
+/* ---------- 22. WHERE THE BROWN CARRIES WEIGHT ----------
+   Last in the file on purpose: each of these extends a rule defined earlier,
+   and a `border` shorthand further up would otherwise win. */
+.note-strip{border-inline-start:3px solid var(--brown-300)}
+.fact-tile{border-inline-start:3px solid var(--brown-300)}
+.page-hero{border-top:3px solid var(--brown-300)}
+.page-title::after{
+  content:"";display:block;width:56px;height:3px;border-radius:2px;
+  background:var(--brown-300);margin-top:16px;
+}
+.sec-head .sec-title::after{
+  content:"";display:block;width:44px;height:3px;border-radius:2px;
+  background:var(--brown-300);margin-top:14px;opacity:.85;
+}
+.sec-head--center .sec-title::after{margin-inline:auto}
+
+/* WhatsApp reads as WhatsApp wherever it appears, including on the dark strip
+   where the ghost button's near-black ink was invisible. */
+.btn--wa{background:#25D366;color:#0A1A12;font-weight:700}
+.btn--wa:hover{background:#1EBE5A;color:#0A1A12}
+.btn--wa svg{flex:none}
