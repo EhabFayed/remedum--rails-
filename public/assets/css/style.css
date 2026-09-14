@@ -471,7 +471,14 @@ button{background:none;border:0;cursor:pointer}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 .collage__img{position:absolute;overflow:hidden;box-shadow:var(--shadow-card)}
-.collage__img img{width:100%;height:100%;object-fit:cover}
+.collage__img img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+/* Both photos are 3:2 landscape dropped into tall arches, so a frame only ever
+   shows about 47% of the image width. Centred, that sliced the woman's face at
+   one edge and left the man's face outside the frame completely. Each image is
+   pinned to its own subject instead. The values are physical percentages and
+   the photos are never mirrored, so RTL needs no override. */
+.collage__img--arch img{object-position:20% center}
+.collage__img--arch-alt img{object-position:88% center}
 /* arch: semicircular top, square bottom-left */
 .collage__img--arch{
   left:50%;top:0;width:50%;height:69.5%;
@@ -1677,3 +1684,93 @@ button{background:none;border:0;cursor:pointer}
 
 /* client revision (Sep 2026): simple two-column supply table on the homes */
 .compare--simple .compare__row{grid-template-columns:minmax(0,.85fr) minmax(0,1.75fr)}
+
+/* ---------- 17. HOVER ----------
+   Same language as the inner pages: green means state, brown means hover.
+   Whatever the page has selected or opened keeps its green; whatever the
+   pointer is only resting on warms to the logo's brown. Scoped to a real
+   pointer, because on a phone :hover sticks after a tap. */
+@media (hover:hover) and (pointer:fine){
+
+  .stats-card,.certs__list li,.why-card,.post,.exp-badge,.collage__img,
+  .cmp__side,.compare__row,.acc,.testi__photo{
+    transition:
+      transform .38s var(--ease),
+      box-shadow .38s var(--ease),
+      border-color .38s var(--ease),
+      background-color .38s var(--ease);
+  }
+
+  /* --- hero --- */
+  .stats-card:hover{
+    transform:translateY(-4px);
+    border-color:var(--brown-300);
+    box-shadow:0 30px 60px -28px rgba(138,91,30,.38);
+  }
+
+  /* --- about collage --- */
+  /* the photos answer the pointer by opening up slightly rather than moving,
+     so the arches stay locked to each other */
+  .collage__img:hover img{transform:scale(1.045)}
+  .collage__img:hover{box-shadow:0 30px 64px -26px rgba(138,91,30,.45)}
+  .exp-badge:hover{transform:translateY(-3px);box-shadow:0 22px 44px -22px rgba(138,91,30,.4)}
+
+  /* --- services accordion --- */
+  /* a closed row warms up; an open one is already dark and stays that way */
+  .acc:not(.is-open):hover{background:var(--sand-2)}
+  .acc:not(.is-open):hover .acc__no{color:var(--brown-600)}
+  .acc:not(.is-open):hover .acc__btn{background:var(--brown);border-color:var(--brown);color:#fff}
+
+  /* --- why choose us --- */
+  .why-card:hover{transform:translateY(-4px)}
+  .why-card__img img{transition:transform .7s var(--ease),box-shadow .38s var(--ease)}
+  .why-card:hover .why-card__img img{box-shadow:0 24px 46px -22px rgba(138,91,30,.42)}
+  .why-card:not(.is-active):hover .why-card__btn{background:var(--brown);color:#fff}
+  .why-card h4{transition:color .3s var(--ease)}
+  .why-card:not(.is-active):hover h4{color:var(--brown-600)}
+
+  /* --- comparison --- */
+  .compare__row:not(.compare__row--head):hover{box-shadow:inset 0 0 0 100vmax rgba(138,91,30,.055)}
+  .compare__table:hover{border-color:var(--brown-300);box-shadow:0 26px 56px -28px rgba(138,91,30,.3)}
+  .cmp__tab:not(.is-active):hover{border-color:var(--brown-300);color:var(--brown-600)}
+  .cmp__tab:not(.is-active):hover i{background:var(--brown-300)}
+  .cmp__stage{transition:border-color .38s var(--ease),box-shadow .38s var(--ease)}
+  .cmp__stage:hover{border-color:var(--brown-300);box-shadow:0 26px 56px -28px rgba(138,91,30,.3)}
+  .cmp__arrow:hover{background:var(--brown);border-color:var(--brown);color:#fff}
+
+  /* --- certifications strip --- */
+  /* six identical white boxes in a row: the warm edge is what separates them */
+  .certs__list li:hover{
+    transform:translateY(-4px);
+    border-color:var(--brown-300);
+    background:var(--sand-2);
+    box-shadow:0 20px 40px -20px rgba(138,91,30,.4);
+  }
+  .certs__list b{transition:color .3s var(--ease)}
+  .certs__list li:hover b{color:var(--brown-600)}
+
+  /* --- blog --- */
+  .post:hover{transform:translateY(-4px)}
+  .post__img{transition:box-shadow .38s var(--ease)}
+  .post:hover .post__img{box-shadow:0 26px 48px -22px rgba(138,91,30,.45)}
+  .post:hover .post__btn{background:var(--brown)}
+  .post__cat{transition:background .3s var(--ease),color .3s var(--ease)}
+  .post:hover .post__cat{background:var(--brown);color:#fff}
+  .post:hover .post__title a{color:var(--brown-600)}
+
+  /* --- testimonials --- */
+  .testi__photo img{transition:transform .8s var(--ease)}
+  .testi__photo:hover img{transform:scale(1.035)}
+
+  .btn--dark:hover,.btn--green:hover{box-shadow:0 14px 30px -14px rgba(10,46,34,.55)}
+}
+
+/* Less motion by request still gets the colour change, just not the movement.
+   The wildcard rule further up already flattens every duration; this only has
+   to cancel the lift and the image zoom. */
+@media (prefers-reduced-motion:reduce){
+  .stats-card:hover,.certs__list li:hover,.why-card:hover,.post:hover,
+  .exp-badge:hover,.btn:hover{transform:none}
+  .collage__img:hover img,.testi__photo:hover img,
+  .why-card:hover .why-card__img img{transform:none}
+}

@@ -733,3 +733,136 @@ html[dir="ltr"] .post:hover .post__btn{transform:rotate(45deg)}
 .btn--wa{background:#25D366;color:#0A1A12;font-weight:700}
 .btn--wa:hover{background:#1EBE5A;color:#0A1A12}
 .btn--wa svg{flex:none}
+
+/* ---------- 23. HOVER ----------
+   One hover language for the whole site, and the place where the logo's brown
+   gets to do real work.
+
+   The rule is: green means state, brown means hover. Anything the user has
+   chosen or the page has activated (.is-active, .is-on, :focus) stays green;
+   anything the pointer is merely resting on warms to brown. That keeps the
+   green identity untouched while the brown finally appears on every page
+   instead of only in a few static accents.
+
+   Everything here is scoped to a real pointer. On a phone :hover sticks after
+   a tap, which would leave a card lit up until the next tap somewhere else. */
+@media (hover:hover) and (pointer:fine){
+
+  .card,.fact-tile,.stat-tile,.note-strip,.quote-card,.mini-product,
+  .list-row,.timeline > div,.post,.tab,.form-card,.dark-strip,.gate label,
+  .lic-table,.spec-table,.compare,.search-pill{
+    transition:
+      transform .38s var(--ease),
+      box-shadow .38s var(--ease),
+      border-color .38s var(--ease),
+      background-color .38s var(--ease);
+  }
+
+  /* --- cards ------------------------------------------------------------ */
+  .card:hover{
+    transform:translateY(-4px);
+    border-color:var(--brown-300);
+    box-shadow:0 22px 46px -24px rgba(138,91,30,.34);
+  }
+  /* the icon and the serial number pick up the same warmth, so the whole card
+     shifts together instead of just its outline */
+  .card .icon-tile,.card .num{transition:background .38s var(--ease),color .38s var(--ease)}
+  .card:hover .icon-tile{background:var(--sand);color:var(--brown)}
+  .card:hover .num{color:var(--brown-600)}
+  .card:hover .card__title{color:var(--green-900)}
+
+  /* the 3px hairline along the top edge is the card's tell — it thickens and
+     turns brown whatever tint the card started with. It is absolutely
+     positioned, so nothing below it moves. */
+  .grid > .card::before{transition:height .38s var(--ease),background .38s var(--ease),opacity .38s var(--ease)}
+  .grid > .card:hover::before{height:5px;background:var(--brown);opacity:1}
+  .grid > .card:nth-child(3n+3):hover{background:var(--sand)}
+  .grid > .card:nth-child(3n+2):hover{background:#E4F3EB}
+
+  /* --- tiles and strips -------------------------------------------------- */
+  /* these already carry a brown edge; hover deepens the colour but never the
+     width, so the text inside does not shift by a pixel */
+  .fact-tile:hover,.note-strip:hover{
+    border-inline-start-color:var(--brown);
+    background:var(--sand-2);
+    transform:translateY(-2px);
+    box-shadow:0 16px 32px -20px rgba(138,91,30,.38);
+  }
+  .note-strip svg{transition:color .38s var(--ease)}
+  .note-strip:hover svg{color:var(--brown)}
+
+  .stat-tile:hover{
+    transform:translateY(-4px);
+    border-color:var(--brown-300);
+    box-shadow:0 22px 46px -24px rgba(138,91,30,.34);
+  }
+  .quote-card:hover{background:var(--sand-2)}
+
+  .mini-product:hover{
+    border-color:var(--brown-300);
+    transform:translateY(-3px);
+    box-shadow:0 18px 36px -20px rgba(138,91,30,.34);
+  }
+  .mini-product__dur{transition:background .38s var(--ease),color .38s var(--ease)}
+  .mini-product:hover .mini-product__dur{background:var(--sand);color:var(--brown-600)}
+
+  /* --- table rows -------------------------------------------------------- */
+  /* an inset shadow with a huge spread tints the row uniformly, whatever
+     background each cell already has — mint, mint-2 or nothing */
+  .lic-table .row:not(.row--head),
+  .spec-table .row,
+  .compare .row:not(.row--head){transition:box-shadow .3s var(--ease)}
+  .lic-table .row:not(.row--head):hover,
+  .spec-table .row:hover,
+  .compare .row:not(.row--head):hover{box-shadow:inset 0 0 0 100vmax rgba(138,91,30,.055)}
+
+  /* --- lists, steps, timeline -------------------------------------------- */
+  .list-row:hover{background:var(--sand-2)}
+  .list-row b{transition:color .3s var(--ease)}
+  .list-row:hover b{color:var(--brown-600)}
+
+  .timeline .t-dot,.timeline h4{transition:.35s var(--ease)}
+  .timeline > div:hover .t-dot{background:var(--brown);border-color:var(--brown);color:#fff}
+  .timeline > div:hover h4{color:var(--brown-600)}
+
+  .step-card .step-no{transition:background .35s var(--ease),color .35s var(--ease)}
+  .step-card:not(.is-first):hover .step-no{background:var(--sand);color:var(--brown)}
+
+  /* --- tabs and chips ---------------------------------------------------- */
+  /* the selected tab keeps its dark pill; only the idle ones warm up */
+  .tab:not(.is-active):hover{border-color:var(--brown-300);color:var(--brown-600)}
+  .choice-chips .cchip:not(.is-on):hover{border-color:var(--brown-300);color:var(--brown-600)}
+
+  /* --- knowledge cards ---------------------------------------------------- */
+  .post:hover{transform:translateY(-4px)}
+  .post .post__img{transition:box-shadow .38s var(--ease)}
+  .post:hover .post__img{box-shadow:0 24px 44px -22px rgba(138,91,30,.45)}
+  .post .post__btn{transition:.4s var(--ease)}
+  .post:hover .post__btn{background:var(--brown)}
+  .post h3 a{transition:color .3s var(--ease)}
+  .post:hover h3 a{color:var(--brown-600)}
+
+  /* --- whole panels ------------------------------------------------------- */
+  /* the big framed blocks answer to the pointer too, just far more quietly —
+     a warmer edge and a deeper shadow, no movement */
+  .form-card:hover,.lic-table:hover,.spec-table:hover,.compare:hover{
+    border-color:var(--brown-300);
+    box-shadow:0 26px 56px -28px rgba(138,91,30,.32);
+  }
+  .dark-strip:hover{box-shadow:0 26px 56px -26px rgba(10,46,34,.6)}
+  .gate label:hover{background:rgba(255,255,255,.1);border-color:rgba(201,164,106,.5)}
+
+  /* search keeps green, because typing in it is a state, not a hover */
+  .search-pill:hover{border-color:var(--brown-300)}
+  .search-pill:focus-within{border-color:var(--green)}
+
+  .btn--dark:hover,.btn--green:hover{box-shadow:0 14px 30px -14px rgba(10,46,34,.55)}
+}
+
+/* Someone who has asked their system for less motion still gets the colour
+   change — they just do not get the movement. The wildcard rule further up
+   already flattens every duration; this only has to cancel the lift. */
+@media (prefers-reduced-motion:reduce){
+  .card:hover,.stat-tile:hover,.fact-tile:hover,.note-strip:hover,
+  .mini-product:hover,.post:hover,.btn:hover{transform:none}
+}
