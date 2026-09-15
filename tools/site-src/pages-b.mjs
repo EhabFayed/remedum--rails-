@@ -672,7 +672,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات 
         <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line);padding-top:22px">
           <label class="checkbox-row"><input type="checkbox" data-consent>${T('أوافق على', 'I agree to the')} <a href="${u('legal/privacy')}" style="color:var(--green-600);font-weight:700">${T('سياسة الخصوصية', 'Privacy Policy')}</a> ${T('ومعالجة بيانات المنشأة.', 'and processing of facility data.')}</label>
           <label class="checkbox-row"><input type="checkbox" name="eligibility">${T('أقر بأن المنشأة مرخصة نظامًا، وأن التوريد الطبي مخصص للمنشآت الصحية المعتمدة فقط.', 'I acknowledge that supply and wholesale medical orders are strictly restricted to licensed healthcare entities and accredited facilities.')}</label>
-          <div style="position:absolute;left:-9999px" aria-hidden="true">
+          <div class="honeypot" aria-hidden="true">
             <label>${T('اترك هذا الحقل فارغًا', 'Leave this field empty')}<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label>
           </div>
           <p data-form-error hidden style="font-size:12.5px;line-height:1.8"></p>
@@ -712,8 +712,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات 
 <section class="page-hero"><div class="container"><div class="page-hero__inner" style="text-align:center;display:flex;flex-direction:column;align-items:center">
   ${crumbs(ctx, [[T('الرئيسية', 'Home'), u('')], [T('مركز المعرفة', 'Knowledge Center')]])}
   <h1 class="page-title">${T('مركز المعرفة والآراء', 'Knowledge Center & Reviews')}</h1>
-  <p class="page-hero__lead" style="margin-bottom:26px">${T('المستخدمة لا تبحث عن أسماء المنتجات، بل عن سؤالها: كم يدوم فيلر الشفاه؟ هل يمكن إزالة الفيلر؟ — والمقالات هي ما تجذبها للموقع.', 'Users don’t search for product names — they search their question: how long does lip filler last? Can filler be dissolved? The articles are what draw them to the site.')}</p>
-  <div class="search-pill">
+  <div class="search-pill" style="margin-top:20px">
     ${I.search(17)}
     <input type="search" placeholder="${T('كم يدوم فيلر الشفاه؟', 'How long does lip filler last?')}" aria-label="${T('بحث', 'Search')}">
     <button type="button">${T('بحث', 'Search')}</button>

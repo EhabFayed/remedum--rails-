@@ -291,7 +291,7 @@ export const header = (ctx, active, altHref) => `
     </nav>
     <div class="header__actions">
       ${btn(ctx.T('طلب عرض سعر', 'Request a Quote'), ctx.u('medical/quote'), 'dark', I.arrow(14))}
-      <a class="wa-btn" href="${WA}" target="_blank" rel="noopener">${I.wa(17)}${ctx.T('واتساب', 'WhatsApp')}</a>
+      <a class="wa-btn" href="${WA}" target="_blank" rel="noopener" aria-label="${ctx.T('واتساب', 'WhatsApp')}">${I.wa(17)}<span class="wa-btn__txt">${ctx.T('واتساب', 'WhatsApp')}</span></a>
       <a class="lang-pill" href="${altHref}" lang="${ctx.L === 'ar' ? 'en' : 'ar'}" dir="${ctx.L === 'ar' ? 'ltr' : 'rtl'}">${ctx.T('EN', 'عربي')}</a>
       <button class="burger" aria-label="${ctx.T('القائمة', 'Menu')}"><span></span><span></span><span></span></button>
     </div>

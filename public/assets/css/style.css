@@ -1663,6 +1663,14 @@ button{background:none;border:0;cursor:pointer}
 @media (max-width:520px){
   .container{padding-inline:18px}
   .header__inner{padding-inline:18px}
+  /* On a 360px screen the English wordmark plus the three controls came to
+     411px and the row ran off the right edge; the Arabic wordmark is narrower
+     so only English broke. The search icon has no handler — it is decoration —
+     so it is the first thing to go. */
+  .header__inner{gap:10px;padding-inline:14px}
+  .header__actions{gap:8px}
+  .icon-btn--light{display:none}
+  .logo__text{font-size:16px}
   .hero__title{font-size:29px}
   .stats-card__list{grid-template-columns:1fr;gap:12px}
   .footer__ctas{grid-template-columns:1fr}

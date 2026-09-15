@@ -91,7 +91,7 @@
         <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line);padding-top:22px">
           <label class="checkbox-row"><input type="checkbox" data-consent><%= t('content.pages_342') %> <a href="<%= locale_path("legal/privacy") %>" style="color:var(--green-600);font-weight:700"><%= t('content.pages_343') %></a> <%= t('content.pages_344') %></label>
           <label class="checkbox-row"><input type="checkbox" name="eligibility"><%= t('content.pages_345') %></label>
-          <div style="position:absolute;left:-9999px" aria-hidden="true">
+          <div class="honeypot" aria-hidden="true">
             <label><%= t('content.pages_346') %><input type="text" name="company_website" tabindex="-1" autocomplete="off"></label>
           </div>
           <p data-form-error hidden style="font-size:12.5px;line-height:1.8"></p>
