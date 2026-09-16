@@ -684,21 +684,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات 
         <p>${T('سيقوم فريق المبيعات الطبية بمراجعة التفاصيل وإصدار عرض السعر الرسمي خلال 24 ساعة عمل.', 'A Beauty Roots medical sales representative will review your inquiry and provide a formal quotation within 24 business hours.')}</p>
       </div>
     </form>
-    <div style="display:flex;flex-direction:column;gap:14px">
-      <div class="dark-strip" style="padding:28px 30px">
-        <h3 style="font-size:16px;margin-bottom:14px">${T('بعد الإرسال', 'After you send')}</h3>
-        <ul style="display:flex;flex-direction:column;gap:11px">
-          ${[
-            T('شاشة شكر تؤكد إصدار عرض السعر خلال 24 ساعة عمل.', 'A thank-you screen confirming a formal quotation within 24 business hours.'),
-            T('رسالة تأكيد تلقائية إلى بريد مُرسِل الطلب.', 'An automatic confirmation email to the sender.'),
-            T('إشعار فوري إلى بريد فريق المبيعات ورقمه.', 'An instant notification to the sales team’s email and number.'),
-          ].map((t) => `<li style="display:flex;gap:9px;align-items:flex-start;font-size:12.5px;line-height:1.9;color:rgba(255,255,255,.8)"><span style="color:#7FE3BE;margin-top:4px">${I.check(12)}</span><span>${t}</span></li>`).join('')}
-        </ul>
-        <div style="margin-top:18px">${btn(T('ولمن يستعجل: واتساب', 'In a hurry? WhatsApp'), WA, 'green', I.wa(15))}</div>
-      </div>
-      ${noteStrip(T('خلف الكواليس: كل الطلبات في جدول واحد قابل للتصدير بحالة لكل طلب (جديد · تم التواصل · مغلق)، ويُسجَّل مصدر الزيارة مع كل طلب لنعرف أي صفحة تجلب الطلبات فعلًا — مع حماية من الإرسال الآلي دون كابتشا مزعجة.', 'Behind the scenes: all requests land in one exportable table with a status per request (new · contacted · closed), and the visit source is logged with each request so we know which pages actually bring leads — with bot protection and no intrusive captcha.'))}
-    </div>
-  </div>
+
 </div></section>
 `);
 
