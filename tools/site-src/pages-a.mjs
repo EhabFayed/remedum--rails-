@@ -43,8 +43,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
       <div style="margin-top:6px">${btn(T('استكشف تشكيلة ReMedium', 'Explore ReMedium Range'), u('brands/remedium'), 'white')}</div>
     </div>
     <div style="position:relative;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.13)">
-      <img src="/assets/img/clinic.jpg" alt="${T('علاج تجميلي داخل عيادة', 'Aesthetic treatment in a clinic')}" style="width:100%;height:330px;object-fit:cover">
-      <span class="media-tag">${T('صورة مؤقتة — تُستبدل بصورة المنتج المعتمدة من المصنّع', 'Placeholder — to be replaced by the manufacturer’s approved product image')}</span>
+      <img src="/assets/img/brand-remedium.jpg" alt="${T('تشكيلة ReMedium', 'The ReMedium range')}" style="width:100%;height:330px;object-fit:cover">
     </div>
   </div>
 </div></section>
@@ -78,7 +77,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
     <div class="card" style="display:flex;flex-direction:column;gap:12px">
       <div style="display:flex;align-items:center;justify-content:space-between">
         <span class="icon-tile" style="width:52px;height:52px;border-radius:15px">${ic}</span>
-        <span class="lat" dir="ltr" style="font-family:var(--ff-d);font-size:13px;font-weight:800;color:var(--green-600);opacity:.55">${n}</span>
+        <span class="lat" dir="ltr" style="font-family:var(--ff-d);font-size:13px;font-weight:800;color:var(--brown);opacity:.8">${n}</span>
       </div>
       <div>
         <b class="lat" dir="ltr" style="display:block;font-family:var(--ff-d);font-size:19px;font-weight:800">${name}</b>
@@ -95,7 +94,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
     T('توفر «جذور الجمال» تشكيلات مختارة من أبرز علامات العناية الكورية المعروفة بنقاء مكوناتها وفاعليتها في تهدئة البشرة وترميمها. نستورد هذه المنتجات مباشرة من المعامل الكورية المعتمدة لتكون مكملًا مثاليًا بعد الإجراءات الطبية ولروتين العناية اليومي.',
       'Beauty Roots distributes curated Korean skincare lines recognized for their gentle formulations, clinically tested botanicals, and high efficacy. Sourced directly from certified Korean laboratories, these formulations complement professional clinical treatments and daily skin restoration routines.'))}
   <div class="grid" style="grid-template-columns:.85fr repeat(4,minmax(0,1fr))">
-    <div class="arch-media arch-media--card" style="min-height:180px"><img src="/assets/img/skincare.jpg" alt="${T('تشكيلة عناية بالبشرة', 'Skincare range')}"></div>
+    <div class="arch-media arch-media--card" style="min-height:180px"><img src="/assets/img/brand-skincare.jpg" alt="${T('تشكيلة عناية بالبشرة', 'Skincare range')}"></div>
     ${[
       ['SKIN1004', T('تركيبات السنتيلا الآسيوية (Centella Asiatica) لتهدئة البشرة الحساسة وترميم الحاجز الجلدي.', 'Centella Asiatica soothing formulations for sensitive and compromised skin barriers.')],
       ['Purito', T('حلول عناية آمنة بمكونات نقية وواضحة تركز على صحة وتوازن طبقات الجلد.', 'Minimalist, safe, and transparent derm-care essentials powered by clean active ingredients.')],
@@ -141,9 +140,8 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
     <div class="page-hero__chips">${chip(T('الوكالة الحصرية', 'Exclusive Representation'), 'green')}${chip(T('مسجّل وممتثل بالكامل لاشتراطات الهيئة (SFDA)', 'Registered & fully SFDA-compliant'))}${chip(T('مرافق معتمدة وفق GMP', 'Certified GMP facility'))}</div>
   </div>
   <div class="arch-media">
-    <img src="/assets/img/inject.jpg" alt="${T('علاج فيلر هيالورونيك أسيد', 'Hyaluronic-acid filler treatment')}" style="height:380px">
+    <img src="/assets/img/brand-remedium.jpg" alt="${T('تشكيلة فيلر ReMedium', 'The ReMedium filler range')}" style="height:380px">
     <span class="media-shade"></span>
-    <span class="media-tag">${T('صورة مؤقتة — تُستبدل بصور المصنّع المعتمدة', 'Placeholder — to be replaced by approved manufacturer imagery')}</span>
   </div>
 </div></div></section>
 
@@ -246,9 +244,8 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
     </div>
   </div>
   <div class="arch-media">
-    <img src="/assets/img/clinic.jpg" alt="${T('جلسة علاج تجميلي', 'Aesthetic treatment session')}" style="height:420px">
+    <img src="/assets/img/brand-${p.slug === 'sub-q' ? 'subq' : p.slug}.jpg" alt="${p.name}" style="height:420px">
     <span class="media-shade"></span>
-    <span class="media-tag">${T('صورة مؤقتة — تُستبدل بصورة المنتج المعتمدة من المصنّع', 'Placeholder — to be replaced by the manufacturer’s approved product image')}</span>
   </div>
 </div></div></section>
 
@@ -305,7 +302,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
       'A standalone section outside the tabs, visible to both audiences. Each area is reachable by a stable link from the homepage face map and from articles.'))}
   <div class="hero-split" style="grid-template-columns:.9fr 1.1fr;gap:36px">
     <div class="face-wrap" style="max-width:440px;margin:0 auto">
-      <img src="/assets/img/face.jpg" alt="${T('خريطة الوجه', 'Face map')} — ${p.name}" style="height:480px">
+      <img src="/assets/img/face-model.jpg" alt="${T('خريطة الوجه', 'Face map')} — ${p.name}" style="height:480px">
       ${p.dots.map(([x, y], i) => `
       <span class="face-dot face-dot--${p.swatch}" style="inset-inline-start:${x};top:${y}">
         <i></i><b>${p.zones[i][0]}</b>

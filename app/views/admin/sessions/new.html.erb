@@ -1,0 +1,30 @@
+<% content_for :title, "دخول" %>
+<div class="login">
+  <div class="login__head">
+    <span class="brand">
+      <span class="brand__mark">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 19C5 9 11 4 20 4c0 9-5 15-15 15z"></path><path d="M5 19c3-6 6-9 10-11"></path>
+        </svg>
+      </span>
+      <span class="brand__text"><b><i>جذور</i> الجمال</b><span>DASHBOARD</span></span>
+    </span>
+  </div>
+
+  <div class="login__card">
+    <%= render "admin/shared/flash" %>
+    <%= form_with url: admin_login_path, method: :post do |f| %>
+      <div class="field">
+        <label class="label" for="email">البريد الإلكتروني</label>
+        <%= f.email_field :email, id: "email", value: @email, class: "inp", dir: "ltr",
+                          required: true, autocomplete: "username", autofocus: true %>
+      </div>
+      <div class="field">
+        <label class="label" for="password">كلمة المرور</label>
+        <%= f.password_field :password, id: "password", class: "inp", dir: "ltr",
+                             required: true, autocomplete: "current-password" %>
+      </div>
+      <%= f.submit "دخول", class: "btn btn--primary btn--full pressable" %>
+    <% end %>
+  </div>
+</div>

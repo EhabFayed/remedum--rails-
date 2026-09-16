@@ -1,0 +1,11 @@
+<% content_for :title, "اعتماد جديد" %>
+<%= page_header "اعتماد جديد" do %>
+  <a class="btn btn--sm pressable" href="<%= admin_certifications_path %>">رجوع</a>
+<% end %>
+<div class="card" style="max-width:40rem">
+  <%= form_with model: [:admin, @certification] do |f| %>
+    <%= render "admin/shared/errors", record: @certification %>
+    <%= render "fields", form: f %>
+    <%= f.submit "إضافة", class: "btn btn--primary pressable" %>
+  <% end %>
+</div>

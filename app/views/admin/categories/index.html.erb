@@ -1,0 +1,44 @@
+<% content_for :title, "التصنيفات" %>
+<%= page_header "تصنيفات المقالات", "#{@categories.size} تصنيف. الترتيب الأصغر يظهر أولًا." %>
+
+<div class="split">
+  <div>
+    <% if @categories.empty? %>
+      <p class="empty">لا تصنيفات بعد. أضف أول تصنيف من النموذج المجاور.</p>
+    <% else %>
+      <div class="tablewrap"><div class="tablescroll">
+        <table class="tbl">
+          <thead><tr><th>الاسم</th><th>English</th><th>المقالات</th><th>الترتيب</th><th>إجراءات</th></tr></thead>
+          <tbody>
+            <% @categories.each do |category| %>
+              <tr>
+                <td>
+                  <a class="tbl__title" href="<%= edit_admin_category_path(category) %>"><%= category.name_ar %></a>
+                  <p class="tbl__sub" dir="ltr">/<%= category.slug_en %></p>
+                </td>
+                <td dir="ltr" style="color:var(--muted)"><%= category.name_en %></td>
+                <td class="lat" style="color:var(--muted)"><%= category.posts.count %></td>
+                <td class="lat" style="color:var(--faint)"><%= category.position %></td>
+                <td>
+                  <div class="tbl__acts">
+                    <a class="btn btn--sm pressable" href="<%= edit_admin_category_path(category) %>">تحرير</a>
+                    <%= render "admin/shared/delete_button", path: admin_category_path(category), label: "حذف" %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div></div>
+    <% end %>
+  </div>
+
+  <aside class="card">
+    <h2 class="card__title" style="margin-bottom:12px">تصنيف جديد</h2>
+    <%= form_with model: [:admin, @category] do |f| %>
+      <%= render "admin/shared/errors", record: @category %>
+      <%= render "fields", form: f %>
+      <%= f.submit "إضافة", class: "btn btn--primary btn--full pressable" %>
+    <% end %>
+  </aside>
+</div>

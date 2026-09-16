@@ -1,0 +1,37 @@
+<% content_for :title, "الأسئلة الشائعة" %>
+<%= page_header "الأسئلة الشائعة العامة", "أسئلة لا تخص مقالًا بعينه. أسئلة المقالات تُحرَّر داخل المقال نفسه." %>
+
+<div class="split">
+  <div>
+    <% if @faqs.empty? %>
+      <p class="empty">لا أسئلة عامة بعد.</p>
+    <% else %>
+      <div class="rows">
+        <% @faqs.each do |faq| %>
+          <div class="row">
+            <div class="row__bar">
+              <span class="row__no">#<%= faq.position %></span>
+              <%= status_pill(faq.published ? "published" : "draft") %>
+              <div class="row__acts">
+                <a class="btn btn--sm pressable" href="<%= edit_admin_faq_path(faq) %>">تحرير</a>
+                <%= render "admin/shared/delete_button", path: admin_faq_path(faq), label: "حذف" %>
+              </div>
+            </div>
+            <p style="font-weight:600"><%= faq.question_ar %></p>
+            <p style="font-size:13px;color:var(--muted);margin-top:4px"><%= faq.answer_ar.truncate(190) %></p>
+            <p style="font-size:12.5px;color:var(--faint);margin-top:8px" dir="ltr"><%= faq.question_en %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <aside class="card">
+    <h2 class="card__title" style="margin-bottom:12px">سؤال جديد</h2>
+    <%= form_with model: [:admin, @faq] do |f| %>
+      <%= render "admin/shared/errors", record: @faq %>
+      <%= render "fields", form: f %>
+      <%= f.submit "إضافة", class: "btn btn--primary btn--full pressable" %>
+    <% end %>
+  </aside>
+</div>

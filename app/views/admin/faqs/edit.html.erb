@@ -1,0 +1,11 @@
+<% content_for :title, "تحرير السؤال" %>
+<%= page_header "تحرير السؤال" do %>
+  <a class="btn btn--sm pressable" href="<%= admin_faqs_path %>">رجوع</a>
+<% end %>
+<div class="card" style="max-width:46rem">
+  <%= form_with model: [:admin, @faq] do |f| %>
+    <%= render "admin/shared/errors", record: @faq %>
+    <%= render "fields", form: f %>
+    <%= f.submit "حفظ", class: "btn btn--primary pressable" %>
+  <% end %>
+</div>

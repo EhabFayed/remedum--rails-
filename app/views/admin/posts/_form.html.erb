@@ -1,0 +1,188 @@
+<%= form_with model: [:admin, post], data: { lang_scope: true, guard: true }, html: { novalidate: true } do |f| %>
+  <%= render "admin/shared/errors", record: post %>
+
+  <div class="split">
+    <div>
+      <div class="langtabs" data-langtabs role="tablist" aria-label="لغة التحرير">
+        <button type="button" class="langtab is-on" data-lang="ar" role="tab" aria-selected="true">العربية</button>
+        <button type="button" class="langtab" data-lang="en" role="tab" aria-selected="false">English</button>
+      </div>
+
+      <%# ---------------- headline fields ---------------- %>
+      <div class="card" style="margin-bottom:18px">
+        <div data-lang-pane="ar" dir="rtl">
+          <div class="field">
+            <label class="label">العنوان <span class="req">*</span></label>
+            <%= f.text_field :title_ar, class: "inp" %>
+          </div>
+          <div class="field">
+            <label class="label">الرابط (slug) — يُولَّد من العنوان إن تُرك فارغًا</label>
+            <%= f.text_field :slug_ar, class: "inp inp--mono", dir: "ltr" %>
+          </div>
+          <div class="field">
+            <label class="label">المقتطف — يظهر في البطاقات وأعلى المقال</label>
+            <%= f.text_area :excerpt_ar, class: "txt", rows: 3 %>
+          </div>
+          <div class="field">
+            <label class="label">سطر الكاتب</label>
+            <%= f.text_field :byline_ar, class: "inp", placeholder: "بقلم فريق الشؤون التنظيمية" %>
+          </div>
+        </div>
+
+        <div data-lang-pane="en" dir="ltr" hidden>
+          <div class="field">
+            <label class="label">Title <span class="req">*</span></label>
+            <%= f.text_field :title_en, class: "inp" %>
+          </div>
+          <div class="field">
+            <label class="label">Slug — generated from the title if left empty</label>
+            <%= f.text_field :slug_en, class: "inp inp--mono" %>
+          </div>
+          <div class="field">
+            <label class="label">Excerpt — shown on cards and above the article</label>
+            <%= f.text_area :excerpt_en, class: "txt", rows: 3 %>
+          </div>
+          <div class="field">
+            <label class="label">Byline</label>
+            <%= f.text_field :byline_en, class: "inp", placeholder: "By the Regulatory Affairs Team" %>
+          </div>
+        </div>
+      </div>
+
+      <%# ---------------- sections ---------------- %>
+      <div class="card" style="margin-bottom:18px" data-rows data-rows-noun="قسم">
+        <div class="phead" style="margin-bottom:6px">
+          <div>
+            <h2 class="sechead" style="margin:0">أقسام المقال</h2>
+            <p class="card__note">كل قسم: عنوان + نص منسّق + صورة بالعربي وأخرى بالإنجليزي. الصق من Word أو Google Docs وسيبقى التنسيق.</p>
+          </div>
+          <button type="button" class="btn btn--sm pressable" data-rows-add>+ قسم</button>
+        </div>
+
+        <p class="empty" data-rows-empty hidden style="margin-bottom:14px">لا أقسام بعد — أضف أول قسم.</p>
+
+        <div class="rows" data-rows-list>
+          <%= f.fields_for :sections do |sf| %>
+            <%= render "section_fields", form: sf %>
+          <% end %>
+        </div>
+
+        <template data-rows-template>
+          <%= f.fields_for :sections, PostSection.new, child_index: "NEW_RECORD" do |sf| %>
+            <%= render "section_fields", form: sf %>
+          <% end %>
+        </template>
+
+        <button type="button" class="btn btn--full pressable" style="margin-top:14px" data-rows-add>+ قسم جديد</button>
+      </div>
+
+      <%# ---------------- FAQs ---------------- %>
+      <div class="card" data-rows data-rows-noun="سؤال">
+        <div class="phead" style="margin-bottom:6px">
+          <div>
+            <h2 class="sechead" style="margin:0">أسئلة شائعة للمقال</h2>
+            <p class="card__note">تُنشر كبيانات منظّمة (FAQPage) ويمكن أن تظهر في نتائج البحث.</p>
+          </div>
+          <button type="button" class="btn btn--sm pressable" data-rows-add>+ سؤال</button>
+        </div>
+
+        <p class="empty" data-rows-empty hidden style="margin-bottom:0">لا أسئلة — اختياري تمامًا.</p>
+
+        <div class="rows" data-rows-list>
+          <%= f.fields_for :faqs do |ff| %>
+            <%= render "faq_fields", form: ff %>
+          <% end %>
+        </div>
+
+        <template data-rows-template>
+          <%= f.fields_for :faqs, Faq.new, child_index: "NEW_RECORD" do |ff| %>
+            <%= render "faq_fields", form: ff %>
+          <% end %>
+        </template>
+      </div>
+    </div>
+
+    <%# ---------------- sidebar ---------------- %>
+    <aside style="display:flex;flex-direction:column;gap:16px">
+      <div class="card">
+        <h2 class="card__title">النشر</h2>
+        <p class="card__note" style="margin-bottom:14px">
+          الحالة الحالية: <%= status_pill post.status %>
+          <% if post.published_at %><br>نُشر في <%= admin_date post.published_at %><% end %>
+        </p>
+
+        <div class="field">
+          <%= f.select :status, [["مسوّدة", "draft"], ["منشور", "published"]], {}, class: "sel" %>
+        </div>
+        <%= f.submit "حفظ", class: "btn btn--primary btn--full pressable" %>
+      </div>
+
+      <div class="card">
+        <div class="field">
+          <label class="label">التصنيف</label>
+          <%= f.collection_select :category_id, Category.ordered, :id, :name_ar,
+                                  { include_blank: "بدون تصنيف" }, class: "sel" %>
+          <p class="hint">يحدد المقالات المقترحة أسفل المقال وبطاقة التصنيف على الغلاف.</p>
+        </div>
+        <label class="check">
+          <%= f.check_box :medically_reviewed %>
+          <span>عليه شارة «مراجعة طبية»</span>
+        </label>
+      </div>
+
+      <div class="card" data-media-group>
+        <h2 class="card__title" style="margin-bottom:10px">صورة الغلاف</h2>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <%= render "admin/shared/image_picker", form: f, label: "النسخة العربية", hint: "cover-ar",
+                     url_field: :cover_url_ar, width_field: :cover_width_ar, height_field: :cover_height_ar %>
+          <%= render "admin/shared/image_picker", form: f, label: "English version", hint: "cover-en",
+                     url_field: :cover_url_en, width_field: :cover_width_en, height_field: :cover_height_en %>
+        </div>
+        <p class="hint">إن تُركت النسخة الإنجليزية فارغة تُستخدم الصورة العربية. ارفع بديلًا فقط إن كانت تحمل نصًا عربيًا.</p>
+
+        <p class="altwarn" data-altwarn hidden>النص البديل ناقص في إحدى اللغتين.</p>
+
+        <div class="field" style="margin-top:12px">
+          <label class="label">النص البديل (عربي)</label>
+          <%= f.text_field :cover_alt_ar, class: "inp", data: { alt_input: true } %>
+        </div>
+        <div class="field" dir="ltr">
+          <label class="label">Alt text (English)</label>
+          <%= f.text_field :cover_alt_en, class: "inp", data: { alt_input: true } %>
+        </div>
+      </div>
+
+      <div class="card" data-seo data-seo-prefix="post">
+        <h2 class="card__title">تحسين محركات البحث</h2>
+        <p class="card__note" style="margin-bottom:14px">معاينة تقريبية لظهور الصفحة في جوجل — تتبع تبويب اللغة أعلاه.</p>
+
+        <div class="serp">
+          <p class="serp__url" data-seo-url dir="ltr"></p>
+          <p class="serp__title" data-seo-title></p>
+          <p class="serp__desc" data-seo-desc></p>
+        </div>
+
+        <div data-lang-pane="ar" dir="rtl">
+          <div class="field">
+            <label class="label">عنوان الميتا <span class="counter" data-count="title"></span></label>
+            <%= f.text_field :meta_title_ar, class: "inp" %>
+          </div>
+          <div class="field">
+            <label class="label">وصف الميتا <span class="counter" data-count="desc"></span></label>
+            <%= f.text_area :meta_description_ar, class: "txt", rows: 3 %>
+          </div>
+        </div>
+        <div data-lang-pane="en" dir="ltr" hidden>
+          <div class="field">
+            <label class="label">Meta title <span class="counter" data-count="title"></span></label>
+            <%= f.text_field :meta_title_en, class: "inp" %>
+          </div>
+          <div class="field">
+            <label class="label">Meta description <span class="counter" data-count="desc"></span></label>
+            <%= f.text_area :meta_description_en, class: "txt", rows: 3 %>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+<% end %>

@@ -1,0 +1,5 @@
+<% { notice: "notice", alert: "alert" }.each do |key, kind| %>
+  <% if flash[key].present? %>
+    <p class="flash flash--<%= kind %>" role="status"><%= flash[key] %></p>
+  <% end %>
+<% end %>

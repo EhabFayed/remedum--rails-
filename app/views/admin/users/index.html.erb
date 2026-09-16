@@ -1,0 +1,31 @@
+<% content_for :title, "المستخدمون" %>
+<%= page_header "المستخدمون", "#{@users.size} حساب له وصول للوحة التحكم." do %>
+  <a class="btn btn--primary pressable" href="<%= new_admin_user_path %>">+ مستخدم جديد</a>
+<% end %>
+
+<div class="tablewrap"><div class="tablescroll">
+  <table class="tbl">
+    <thead><tr><th>الاسم</th><th>البريد</th><th>الصلاحية</th><th>آخر دخول</th><th>إجراءات</th></tr></thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <a class="tbl__title" href="<%= edit_admin_user_path(user) %>"><%= user.name %></a>
+            <% if user == current_user %><span class="pill pill--on" style="margin-inline-start:6px">أنت</span><% end %>
+          </td>
+          <td class="lat" dir="ltr" style="color:var(--muted);font-size:12.5px"><%= user.email %></td>
+          <td><%= user.display_role %></td>
+          <td class="lat" style="font-size:11.5px;color:var(--faint)"><%= admin_date user.last_login_at %></td>
+          <td>
+            <div class="tbl__acts">
+              <a class="btn btn--sm pressable" href="<%= edit_admin_user_path(user) %>">تحرير</a>
+              <% unless user == current_user %>
+                <%= render "admin/shared/delete_button", path: admin_user_path(user), label: "حذف" %>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div></div>

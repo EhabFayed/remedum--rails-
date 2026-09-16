@@ -7,7 +7,7 @@ module SiteHelper
     { key: "company", path: "company/about", items: [
       %w[company_about company/about],
       %w[company_identity company/identity],
-      %w[company_contact company/contact],
+      %w[company_contact company/contact]
     ] },
     { key: "brands", path: "brands", items: [
       %w[brands_all brands],
@@ -19,20 +19,20 @@ module SiteHelper
       %w[brands_hairont brands/hairont],
       %w[brands_gynwell brands/gynwell],
       %w[brands_ovds brands/ovds],
-      %w[brands_skincare brands#skincare-external],
+      %w[brands_skincare brands#skincare-external]
     ] },
     { key: "quality", path: "quality/compliance", items: [
       %w[quality_compliance quality/compliance],
       %w[quality_supply quality/supply],
-      %w[quality_certifications quality/certifications],
+      %w[quality_certifications quality/certifications]
     ] },
     { key: "medical", path: "medical/service-model", items: [
       %w[medical_service medical/service-model],
       %w[medical_evidence medical/evidence],
       %w[medical_results medical/results],
-      %w[medical_quote medical/quote],
+      %w[medical_quote medical/quote]
     ] },
-    { key: "knowledge", path: "knowledge" },
+    { key: "knowledge", path: "knowledge" }
   ].freeze
 
   FOOTER_LINKS = [
@@ -41,10 +41,21 @@ module SiteHelper
     %w[link_quality quality/compliance],
     %w[link_certs quality/certifications],
     %w[link_knowledge knowledge],
-    %w[link_contact company/contact],
+    %w[link_contact company/contact]
   ].freeze
 
   WHATSAPP_URL = "https://wa.me/966562017170"
+
+  # Values the client edits in the dashboard. The literal the page shipped with
+  # stays as the fallback, so an unfilled setting can never blank out the footer.
+  def site_setting(key, fallback = nil)
+    Setting[key].presence || fallback
+  end
+
+  def whatsapp_url
+    number = Setting["whatsapp_number"].to_s.gsub(/\D/, "")
+    number.present? ? "https://wa.me/#{number}" : WHATSAPP_URL
+  end
 
   # "" → the locale home ("/" for en — the landing, "/ar/" for ar).
   # "brands#skincare-external" → "/en/brands/#skincare-external"

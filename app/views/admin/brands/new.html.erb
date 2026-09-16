@@ -1,0 +1,5 @@
+<% content_for :title, "علامة جديدة" %>
+<%= page_header "علامة جديدة" do %>
+  <a class="btn btn--sm pressable" href="<%= admin_brands_path %>">رجوع</a>
+<% end %>
+<%= render "form", brand: @brand %>

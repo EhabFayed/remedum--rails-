@@ -1,0 +1,35 @@
+<%#
+  One image: upload from the device or reuse one from the library.
+  Alt text is not here — it is shared between the two language versions and is
+  shown once, next to both, so it cannot be skipped.
+%>
+<div class="pick" data-picker data-picker-hint="<%= hint %>">
+  <div class="pick__bar">
+    <span class="pick__label"><%= label %></span>
+    <div class="pick__acts">
+      <button type="button" class="btn btn--sm pressable" data-picker-upload>⬆ رفع</button>
+      <button type="button" class="btn btn--sm pressable" data-picker-lib>🗂 المكتبة</button>
+      <button type="button" class="btn btn--sm btn--danger pressable" data-picker-remove hidden>إزالة</button>
+    </div>
+  </div>
+
+  <%= form.hidden_field url_field, data: { picker_url: true } %>
+  <% if defined?(width_field) && width_field %>
+    <%= form.hidden_field width_field, data: { picker_w: true } %>
+    <%= form.hidden_field height_field, data: { picker_h: true } %>
+  <% end %>
+  <input type="file" class="sr-only" data-picker-file accept="image/jpeg,image/png,image/webp,image/avif,image/gif">
+
+  <p class="pick__err" data-picker-error hidden></p>
+  <div class="pick__lib" data-picker-library hidden></div>
+
+  <div class="pick__prev" data-picker-preview hidden>
+    <img src="" alt="">
+    <p class="pick__meta" data-picker-meta dir="ltr"></p>
+  </div>
+
+  <button type="button" class="pick__drop pressable" data-picker-drop
+          data-idle="لا صورة — اضغط للرفع، أو اسحب صورة هنا، أو اختر من المكتبة">
+    لا صورة — اضغط للرفع، أو اسحب صورة هنا، أو اختر من المكتبة
+  </button>
+</div>

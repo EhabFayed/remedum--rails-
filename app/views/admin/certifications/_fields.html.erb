@@ -1,0 +1,35 @@
+<div class="field">
+  <label class="label">الرمز <span class="req">*</span></label>
+  <%= form.text_field :code, class: "inp inp--mono", dir: "ltr", placeholder: "SFDA" %>
+  <p class="hint">يظهر كبيرًا في شريط الاعتمادات — SFDA · GMP · ISO 13485 …</p>
+</div>
+<div class="field">
+  <label class="label">الوصف بالعربية <span class="req">*</span></label>
+  <%= form.text_field :name_ar, class: "inp", placeholder: "تسجيل الغذاء والدواء السعودية" %>
+</div>
+<div class="field" dir="ltr">
+  <label class="label">Description in English <span class="req">*</span></label>
+  <%= form.text_field :name_en, class: "inp", placeholder: "Saudi Food & Drug Authority registration" %>
+</div>
+<div class="field">
+  <label class="label">الاسم الكامل بالإنجليزية</label>
+  <%= form.text_field :full_name, class: "inp", dir: "ltr", placeholder: "Medical Device Single Audit Program" %>
+  <p class="hint">يظهر في صفحة الشهادات تحت الرمز مباشرة.</p>
+</div>
+<div class="field">
+  <label class="label">المعنى العملي (عربي)</label>
+  <%= form.text_area :meaning_ar, class: "txt", rows: 3 %>
+</div>
+<div class="field" dir="ltr">
+  <label class="label">What it means in practice (English)</label>
+  <%= form.text_area :meaning_en, class: "txt", rows: 3 %>
+</div>
+<div class="grid-2">
+  <div class="field">
+    <label class="label">الترتيب</label>
+    <%= form.number_field :position, class: "inp" %>
+  </div>
+  <div class="field" style="display:flex;align-items:flex-end">
+    <label class="check"><%= form.check_box :published %><span>يظهر على الموقع</span></label>
+  </div>
+</div>

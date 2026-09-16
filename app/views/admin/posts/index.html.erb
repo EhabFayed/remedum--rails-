@@ -1,0 +1,47 @@
+<% content_for :title, "المقالات" %>
+<%= page_header "المقالات", "#{@posts.size} مقال في مركز المعرفة." do %>
+  <a class="btn btn--primary pressable" href="<%= new_admin_post_path %>">+ مقال جديد</a>
+<% end %>
+
+<div class="filters">
+  <% [["", "الكل", @counts[:all]], ["published", "منشور", @counts[:published]], ["draft", "مسوّدة", @counts[:draft]]].each do |value, label, n| %>
+    <a class="filter pressable<%= " is-on" if @status == value %>"
+       href="<%= value.present? ? admin_posts_path(status: value) : admin_posts_path %>">
+      <%= label %><span class="filter__n"><%= n %></span>
+    </a>
+  <% end %>
+</div>
+
+<% if @posts.empty? %>
+  <p class="empty">لا مقالات هنا بعد. <a href="<%= new_admin_post_path %>" style="color:var(--green)">ابدأ بأول مقال</a>.</p>
+<% else %>
+  <div class="tablewrap"><div class="tablescroll">
+    <table class="tbl">
+      <thead><tr><th>العنوان</th><th>التصنيف</th><th>الحالة</th><th>آخر تعديل</th><th>إجراءات</th></tr></thead>
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td>
+              <a class="tbl__title" href="<%= edit_admin_post_path(post) %>"><%= post.title_ar %></a>
+              <p class="tbl__sub" dir="ltr">/<%= post.slug_en %> · <%= post.read_minutes %> min</p>
+            </td>
+            <td style="color:var(--muted)"><%= post.category&.name_ar || "—" %></td>
+            <td><%= status_pill post.status %></td>
+            <td class="lat" style="font-size:11.5px;color:var(--faint)"><%= admin_date post.updated_at %></td>
+            <td>
+              <div class="tbl__acts">
+                <%= button_to (post.published? ? "إلغاء النشر" : "نشر"),
+                              toggle_status_admin_post_path(post), method: :patch,
+                              class: "btn btn--sm pressable" %>
+                <% if post.published? %>
+                  <a class="btn btn--sm pressable" href="<%= post.path_for(:ar) %>" target="_blank" rel="noopener">عرض ↗</a>
+                <% end %>
+                <%= render "admin/shared/delete_button", path: admin_post_path(post), label: "حذف" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div></div>
+<% end %>

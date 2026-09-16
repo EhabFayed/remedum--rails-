@@ -1,0 +1,34 @@
+<% content_for :title, "العلامات" %>
+<%= page_header "العلامات التجارية", "#{@brands.size} علامة في المحفظة." do %>
+  <a class="btn btn--primary pressable" href="<%= new_admin_brand_path %>">+ علامة جديدة</a>
+<% end %>
+
+<% if @brands.empty? %>
+  <p class="empty">لا علامات بعد.</p>
+<% else %>
+  <div class="tablewrap"><div class="tablescroll">
+    <table class="tbl">
+      <thead><tr><th>العلامة</th><th>English</th><th>المنتجات</th><th>الوكالة</th><th>الحالة</th><th>إجراءات</th></tr></thead>
+      <tbody>
+        <% @brands.each do |brand| %>
+          <tr>
+            <td>
+              <a class="tbl__title" href="<%= edit_admin_brand_path(brand) %>"><%= brand.name_ar %></a>
+              <p class="tbl__sub" dir="ltr">/<%= brand.slug %></p>
+            </td>
+            <td dir="ltr" style="color:var(--muted)"><%= brand.name_en %></td>
+            <td class="lat" style="color:var(--muted)"><%= brand.products.size %></td>
+            <td><%= brand.exclusive ? tag.span("حصرية", class: "pill pill--hot") : "—" %></td>
+            <td><%= status_pill brand.status %></td>
+            <td>
+              <div class="tbl__acts">
+                <a class="btn btn--sm pressable" href="<%= new_admin_product_path(brand_id: brand.id) %>">+ منتج</a>
+                <%= render "admin/shared/delete_button", path: admin_brand_path(brand), label: "حذف" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div></div>
+<% end %>

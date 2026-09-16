@@ -19,6 +19,14 @@
   --line-dark:rgba(255,255,255,.14);
   --white:#fff;
 
+  /* brand brown — the “Roots” half of the logo (company profile 2026) */
+  --brown:#8A5B1E;
+  --brown-600:#6F4915;
+  --brown-300:#C9A46A;
+  --sand:#F8F2E8;
+  --sand-2:#FBF7F1;
+  --sand-line:#EADFCB;
+
   --ff:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
   --ff-d:'Archivo','Plus Jakarta Sans',system-ui,sans-serif;
 
@@ -62,7 +70,7 @@ button{background:none;border:0;cursor:pointer}
 /* ---------- 3. SHARED TYPE / HEADINGS ---------- */
 .eyebrow{
   display:inline-flex;align-items:center;gap:8px;
-  font-size:14px;font-weight:600;color:var(--green);
+  font-size:14px;font-weight:600;color:var(--brown);
   letter-spacing:.01em;
 }
 .eyebrow svg{color:var(--green)}
@@ -167,6 +175,7 @@ button{background:none;border:0;cursor:pointer}
   color:var(--ink);white-space:nowrap;
 }
 .logo__u{color:var(--green)}
+.logo__r{color:var(--brown)}
 .header.is-stuck .logo__text{color:var(--ink)}
 
 /* nav pill */
@@ -219,9 +228,11 @@ button{background:none;border:0;cursor:pointer}
 /* ---------- 6. HERO ---------- */
 .hero{
   position:relative;
-  padding:142px 0 64px;
+  padding:142px 0 44px;
   overflow:hidden;
-  background:#fff;
+  background:
+    radial-gradient(46% 38% at 88% 78%, rgba(201,164,106,.10), transparent 70%),
+    linear-gradient(180deg,#fff 0%, #fff 42%, var(--mint-2) 100%);
 }
 .hero__panel{
   position:absolute;top:0;right:0;bottom:0;
@@ -332,7 +343,7 @@ button{background:none;border:0;cursor:pointer}
 .hero__figure{
   align-self:end;
   position:relative;
-  margin:0 -6px -64px -26px;
+  margin:0 -6px -44px -26px;
 }
 .hero__figure img,
 .hero__figure video{
@@ -401,7 +412,13 @@ button{background:none;border:0;cursor:pointer}
 }
 
 /* ---------- 7. ABOUT ---------- */
-.about{position:relative;padding:104px 0 76px;background:#fff;overflow:hidden}
+.about{
+  position:relative;padding:72px 0 76px;overflow:hidden;
+  background:
+    radial-gradient(58% 44% at 8% 12%, rgba(28,169,124,.07), transparent 62%),
+    radial-gradient(52% 40% at 96% 88%, rgba(201,164,106,.11), transparent 64%),
+    linear-gradient(180deg,var(--mint-2) 0%, #F4FAF6 38%, #FBF8F2 100%);
+}
 .side-word{
   position:absolute;right:14px;top:50%;
   transform:translateY(-50%);
@@ -420,7 +437,7 @@ button{background:none;border:0;cursor:pointer}
 /* --- collage --- */
 .collage{
   position:relative;
-  width:100%;max-width:470px;
+  width:100%;max-width:560px;
   aspect-ratio:470/482;
   margin-inline:auto;
 }
@@ -454,7 +471,14 @@ button{background:none;border:0;cursor:pointer}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 .collage__img{position:absolute;overflow:hidden;box-shadow:var(--shadow-card)}
-.collage__img img{width:100%;height:100%;object-fit:cover}
+.collage__img img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+/* Both photos are 3:2 landscape dropped into tall arches, so a frame only ever
+   shows about 47% of the image width. Centred, that sliced the woman's face at
+   one edge and left the man's face outside the frame completely. Each image is
+   pinned to its own subject instead. The values are physical percentages and
+   the photos are never mirrored, so RTL needs no override. */
+.collage__img--arch img{object-position:20% center}
+.collage__img--arch-alt img{object-position:88% center}
 /* arch: semicircular top, square bottom-left */
 .collage__img--arch{
   left:50%;top:0;width:50%;height:69.5%;
@@ -564,7 +588,7 @@ button{background:none;border:0;cursor:pointer}
 }
 .acc__no{
   font-family:var(--ff-d);
-  font-size:19px;font-weight:700;color:var(--ink);
+  font-size:19px;font-weight:700;color:var(--brown);
   transition:color .35s;
 }
 .acc__title{
@@ -602,9 +626,9 @@ button{background:none;border:0;cursor:pointer}
 .acc__chips b{font-family:var(--ff-d);font-size:14px;font-weight:700;color:#fff}
 .acc__chips span{font-size:11px;color:rgba(255,255,255,.66)}
 .acc__media img{
-  width:100%;height:clamp(190px,20vw,280px);object-fit:cover;
+  width:100%;height:clamp(240px,31vw,460px);object-fit:cover;object-position:center;
   border-radius:0 0 var(--r-md) var(--r-md);
-  transform:scale(1.04);transition:transform .8s var(--ease);
+  transition:transform .8s var(--ease);
 }
 
 .acc.is-open{background:transparent}
@@ -1241,6 +1265,65 @@ button{background:none;border:0;cursor:pointer}
 }
 .compare__row--head .compare__them{color:var(--ink)}
 
+/* ---------- 12c. COMPARISON — one criterion at a time ---------- */
+.cmp{max-width:1040px;margin:0 auto}
+.cmp__tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:26px}
+.cmp__tab{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 16px;border-radius:999px;
+  border:1px solid var(--line);background:#fff;
+  font:inherit;font-size:13px;font-weight:600;color:var(--muted);
+  cursor:pointer;transition:.3s var(--ease);
+}
+.cmp__tab i{width:7px;height:7px;border-radius:50%;background:var(--line);flex:none;transition:.3s}
+.cmp__tab:hover{border-color:var(--green);color:var(--ink)}
+.cmp__tab.is-active{background:var(--green);border-color:var(--green);color:#fff;box-shadow:0 10px 24px -12px rgba(28,169,124,.6)}
+.cmp__tab.is-active i{background:#fff}
+.cmp__stage{
+  position:relative;
+  border:1px solid var(--line);border-radius:var(--r-lg);
+  background:#fff;box-shadow:var(--shadow-soft);overflow:hidden;
+}
+.cmp__panel{display:none;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:stretch}
+.cmp__panel.is-active{display:grid;animation:cmpIn .55s var(--ease) both}
+@keyframes cmpIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.cmp__media{position:relative;min-height:340px;background:var(--mint-2)}
+.cmp__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cmp__body{padding:34px 36px 30px;display:flex;flex-direction:column;gap:14px}
+.cmp__crit{
+  font-family:var(--ff-d);font-size:clamp(20px,1.8vw,26px);font-weight:600;
+  letter-spacing:-.02em;color:var(--ink);margin-bottom:6px;
+}
+.cmp__side{border-radius:var(--r-md);padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.cmp__side--us{background:var(--mint);border:1px solid #D5EDE1}
+.cmp__side--them{background:var(--sand);border:1px solid var(--sand-line)}
+.cmp__who{display:flex;align-items:center;gap:9px;font-family:var(--ff-d);font-size:14.5px;font-weight:700;color:var(--ink)}
+.cmp__side--them .cmp__who{color:var(--brown)}
+.cmp__side--them .mark--no{background:#F1E4D2;color:var(--brown)}
+.cmp__side p{font-size:13.5px;line-height:1.7;color:var(--ink-2)}
+.cmp__side--them p{color:var(--muted)}
+.cmp__nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;border-top:1px solid var(--line)}
+.cmp__arrow{
+  width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid var(--line);background:#fff;color:var(--ink);
+  cursor:pointer;transition:.3s var(--ease);
+}
+.cmp__arrow:hover{background:var(--green);border-color:var(--green);color:#fff}
+.cmp__dots{display:flex;align-items:center;gap:6px}
+.cmp__dot{width:6px;height:6px;border-radius:3px;background:var(--line);border:0;padding:0;cursor:pointer;transition:.3s var(--ease)}
+.cmp__dot.is-active{width:22px;background:var(--green)}
+.cmp__count{font-size:12px;font-weight:600;color:var(--muted-2);font-variant-numeric:tabular-nums;min-width:38px;text-align:center}
+.step__img--circle img{transform:scale(1.6)}
+@media (max-width:860px){
+  .cmp__panel.is-active{grid-template-columns:1fr}
+  .cmp__media{order:0}
+  .cmp__media{min-height:220px}
+  .cmp__body{padding:22px 20px 18px}
+  .cmp__tabs{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding:4px 4px 10px;margin:0 -4px 18px;scrollbar-width:none}
+  .cmp__tabs::-webkit-scrollbar{display:none}
+  .cmp__tab{flex:none}
+}
+
 .mark{
   width:22px;height:22px;border-radius:50%;flex:none;
   display:grid;place-items:center;
@@ -1307,8 +1390,8 @@ button{background:none;border:0;cursor:pointer}
   margin-bottom:12px;
 }
 .post__cat{
-  font-size:11.5px;font-weight:600;color:var(--green);
-  background:var(--mint);border-radius:999px;padding:4px 12px;
+  font-size:11.5px;font-weight:600;color:var(--brown);
+  background:var(--sand);border-radius:999px;padding:4px 12px;
 }
 .post__author{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:500;color:var(--muted)}
 .post__author img{width:22px;height:22px;border-radius:50%;object-fit:cover}
@@ -1580,6 +1663,14 @@ button{background:none;border:0;cursor:pointer}
 @media (max-width:520px){
   .container{padding-inline:18px}
   .header__inner{padding-inline:18px}
+  /* On a 360px screen the English wordmark plus the three controls came to
+     411px and the row ran off the right edge; the Arabic wordmark is narrower
+     so only English broke. The search icon has no handler — it is decoration —
+     so it is the first thing to go. */
+  .header__inner{gap:10px;padding-inline:14px}
+  .header__actions{gap:8px}
+  .icon-btn--light{display:none}
+  .logo__text{font-size:16px}
   .hero__title{font-size:29px}
   .stats-card__list{grid-template-columns:1fr;gap:12px}
   .footer__ctas{grid-template-columns:1fr}
@@ -1601,3 +1692,93 @@ button{background:none;border:0;cursor:pointer}
 
 /* client revision (Sep 2026): simple two-column supply table on the homes */
 .compare--simple .compare__row{grid-template-columns:minmax(0,.85fr) minmax(0,1.75fr)}
+
+/* ---------- 17. HOVER ----------
+   Same language as the inner pages: green means state, brown means hover.
+   Whatever the page has selected or opened keeps its green; whatever the
+   pointer is only resting on warms to the logo's brown. Scoped to a real
+   pointer, because on a phone :hover sticks after a tap. */
+@media (hover:hover) and (pointer:fine){
+
+  .stats-card,.certs__list li,.why-card,.post,.exp-badge,.collage__img,
+  .cmp__side,.compare__row,.acc,.testi__photo{
+    transition:
+      transform .38s var(--ease),
+      box-shadow .38s var(--ease),
+      border-color .38s var(--ease),
+      background-color .38s var(--ease);
+  }
+
+  /* --- hero --- */
+  .stats-card:hover{
+    transform:translateY(-4px);
+    border-color:var(--brown-300);
+    box-shadow:0 30px 60px -28px rgba(138,91,30,.38);
+  }
+
+  /* --- about collage --- */
+  /* the photos answer the pointer by opening up slightly rather than moving,
+     so the arches stay locked to each other */
+  .collage__img:hover img{transform:scale(1.045)}
+  .collage__img:hover{box-shadow:0 30px 64px -26px rgba(138,91,30,.45)}
+  .exp-badge:hover{transform:translateY(-3px);box-shadow:0 22px 44px -22px rgba(138,91,30,.4)}
+
+  /* --- services accordion --- */
+  /* a closed row warms up; an open one is already dark and stays that way */
+  .acc:not(.is-open):hover{background:var(--sand-2)}
+  .acc:not(.is-open):hover .acc__no{color:var(--brown-600)}
+  .acc:not(.is-open):hover .acc__btn{background:var(--brown);border-color:var(--brown);color:#fff}
+
+  /* --- why choose us --- */
+  .why-card:hover{transform:translateY(-4px)}
+  .why-card__img img{transition:transform .7s var(--ease),box-shadow .38s var(--ease)}
+  .why-card:hover .why-card__img img{box-shadow:0 24px 46px -22px rgba(138,91,30,.42)}
+  .why-card:not(.is-active):hover .why-card__btn{background:var(--brown);color:#fff}
+  .why-card h4{transition:color .3s var(--ease)}
+  .why-card:not(.is-active):hover h4{color:var(--brown-600)}
+
+  /* --- comparison --- */
+  .compare__row:not(.compare__row--head):hover{box-shadow:inset 0 0 0 100vmax rgba(138,91,30,.055)}
+  .compare__table:hover{border-color:var(--brown-300);box-shadow:0 26px 56px -28px rgba(138,91,30,.3)}
+  .cmp__tab:not(.is-active):hover{border-color:var(--brown-300);color:var(--brown-600)}
+  .cmp__tab:not(.is-active):hover i{background:var(--brown-300)}
+  .cmp__stage{transition:border-color .38s var(--ease),box-shadow .38s var(--ease)}
+  .cmp__stage:hover{border-color:var(--brown-300);box-shadow:0 26px 56px -28px rgba(138,91,30,.3)}
+  .cmp__arrow:hover{background:var(--brown);border-color:var(--brown);color:#fff}
+
+  /* --- certifications strip --- */
+  /* six identical white boxes in a row: the warm edge is what separates them */
+  .certs__list li:hover{
+    transform:translateY(-4px);
+    border-color:var(--brown-300);
+    background:var(--sand-2);
+    box-shadow:0 20px 40px -20px rgba(138,91,30,.4);
+  }
+  .certs__list b{transition:color .3s var(--ease)}
+  .certs__list li:hover b{color:var(--brown-600)}
+
+  /* --- blog --- */
+  .post:hover{transform:translateY(-4px)}
+  .post__img{transition:box-shadow .38s var(--ease)}
+  .post:hover .post__img{box-shadow:0 26px 48px -22px rgba(138,91,30,.45)}
+  .post:hover .post__btn{background:var(--brown)}
+  .post__cat{transition:background .3s var(--ease),color .3s var(--ease)}
+  .post:hover .post__cat{background:var(--brown);color:#fff}
+  .post:hover .post__title a{color:var(--brown-600)}
+
+  /* --- testimonials --- */
+  .testi__photo img{transition:transform .8s var(--ease)}
+  .testi__photo:hover img{transform:scale(1.035)}
+
+  .btn--dark:hover,.btn--green:hover{box-shadow:0 14px 30px -14px rgba(10,46,34,.55)}
+}
+
+/* Less motion by request still gets the colour change, just not the movement.
+   The wildcard rule further up already flattens every duration; this only has
+   to cancel the lift and the image zoom. */
+@media (prefers-reduced-motion:reduce){
+  .stats-card:hover,.certs__list li:hover,.why-card:hover,.post:hover,
+  .exp-badge:hover,.btn:hover{transform:none}
+  .collage__img:hover img,.testi__photo:hover img,
+  .why-card:hover .why-card__img img{transform:none}
+}

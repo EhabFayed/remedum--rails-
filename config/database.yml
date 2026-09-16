@@ -22,7 +22,7 @@ default: &default
 
 development:
   <<: *default
-  database: app_development
+  database: remedium_development
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -56,7 +56,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: app_test
+  database: remedium_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -79,20 +79,9 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  primary: &primary_production
-    <<: *default
-    database: app_production
-    username: app
-    password: <%= ENV["APP_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: app_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: app_production_queue
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: app_production_cable
-    migrations_paths: db/cable_migrate
+  <<: *default
+  # One database, addressed by DATABASE_URL from the compose file. The
+  # generated cache/queue/cable databases were removed: solid_cache,
+  # solid_queue and solid_cable are installed but not wired up as adapters,
+  # so preparing three empty databases only created things to go wrong.
+  url: <%= ENV["DATABASE_URL"] %>

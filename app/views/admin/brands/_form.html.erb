@@ -1,0 +1,81 @@
+<%= form_with model: [:admin, brand], data: { lang_scope: true } do |f| %>
+  <%= render "admin/shared/errors", record: brand %>
+
+  <div class="langtabs" data-langtabs role="tablist" aria-label="لغة التحرير">
+    <button type="button" class="langtab is-on" data-lang="ar" role="tab" aria-selected="true">العربية</button>
+    <button type="button" class="langtab" data-lang="en" role="tab" aria-selected="false">English</button>
+  </div>
+
+  <div class="split">
+    <div class="card">
+      <div data-lang-pane="ar" dir="rtl">
+        <div class="field">
+          <label class="label">اسم العلامة <span class="req">*</span></label>
+          <%= f.text_field :name_ar, class: "inp" %>
+        </div>
+        <div class="field">
+          <label class="label">سطر تعريفي قصير</label>
+          <%= f.text_field :tagline_ar, class: "inp" %>
+        </div>
+        <div class="field">
+          <label class="label">الوصف</label>
+          <%= f.text_area :body_ar, class: "txt", rows: 5 %>
+        </div>
+      </div>
+
+      <div data-lang-pane="en" dir="ltr" hidden>
+        <div class="field">
+          <label class="label">Brand name <span class="req">*</span></label>
+          <%= f.text_field :name_en, class: "inp" %>
+        </div>
+        <div class="field">
+          <label class="label">Tagline</label>
+          <%= f.text_field :tagline_en, class: "inp" %>
+        </div>
+        <div class="field">
+          <label class="label">Description</label>
+          <%= f.text_area :body_en, class: "txt", rows: 5 %>
+        </div>
+      </div>
+    </div>
+
+    <aside style="display:flex;flex-direction:column;gap:16px">
+      <div class="card">
+        <div class="field">
+          <label class="label">الحالة</label>
+          <%= f.select :status, [["منشور", "published"], ["مسوّدة", "draft"]], {}, class: "sel" %>
+        </div>
+        <div class="field">
+          <label class="label">المعرّف (slug)</label>
+          <%= f.text_field :slug, class: "inp inp--mono", dir: "ltr" %>
+        </div>
+        <div class="field">
+          <label class="label">مسار الصفحة على الموقع</label>
+          <%= f.text_field :page_path, class: "inp inp--mono", dir: "ltr", placeholder: "brands/remedium" %>
+          <p class="hint">بدون لغة وبدون شرطة في البداية — تُضاف تلقائيًا.</p>
+        </div>
+        <div class="field" style="max-width:8rem">
+          <label class="label">الترتيب</label>
+          <%= f.number_field :position, class: "inp" %>
+        </div>
+        <label class="check"><%= f.check_box :exclusive %><span>وكالة حصرية</span></label>
+      </div>
+
+      <div class="card" data-media-group>
+        <h2 class="card__title" style="margin-bottom:10px">صورة العلامة</h2>
+        <%= render "admin/shared/image_picker", form: f, label: "الصورة", hint: "brand",
+                   url_field: :image_url, width_field: nil, height_field: nil %>
+        <div class="field" style="margin-top:12px">
+          <label class="label">النص البديل (عربي)</label>
+          <%= f.text_field :image_alt_ar, class: "inp" %>
+        </div>
+        <div class="field" dir="ltr">
+          <label class="label">Alt text (English)</label>
+          <%= f.text_field :image_alt_en, class: "inp" %>
+        </div>
+      </div>
+
+      <%= f.submit "حفظ", class: "btn btn--primary btn--full pressable" %>
+    </aside>
+  </div>
+<% end %>

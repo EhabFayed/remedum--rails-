@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title><%= content_for(:title).presence || "لوحة التحكم" %> — جذور الجمال</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="<%= static_asset("/assets/admin/admin.css") %>">
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="shell">
+    <%= render "admin/shared/sidebar" %>
+
+    <main class="main">
+      <div class="main__inner">
+        <%= render "admin/shared/flash" %>
+        <%= yield %>
+      </div>
+    </main>
+  </div>
+
+  <script src="<%= static_asset("/assets/admin/admin.js") %>" defer></script>
+</body>
+</html>

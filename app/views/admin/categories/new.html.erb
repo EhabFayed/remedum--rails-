@@ -1,0 +1,9 @@
+<% content_for :title, "تصنيف جديد" %>
+<%= page_header "تصنيف جديد" %>
+<div class="card" style="max-width:46rem">
+  <%= form_with model: [:admin, @category] do |f| %>
+    <%= render "admin/shared/errors", record: @category %>
+    <%= render "fields", form: f %>
+    <%= f.submit "إضافة", class: "btn btn--primary pressable" %>
+  <% end %>
+</div>

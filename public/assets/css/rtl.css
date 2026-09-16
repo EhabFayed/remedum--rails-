@@ -169,3 +169,7 @@ html[dir="rtl"] .cta-box:hover i{transform:rotate(-45deg)}
   html[dir="rtl"] .process__flower--tl{left:auto;right:-64px}
   html[dir="rtl"] .process__flower--br{right:auto;left:-58px}
 }
+
+/* ---------- comparison tabs: image sits on the left in RTL ---------- */
+html[dir="rtl"] .cmp__media{order:2}
+@media (max-width:860px){html[dir="rtl"] .cmp__media{order:0}}

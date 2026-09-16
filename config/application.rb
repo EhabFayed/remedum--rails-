@@ -17,7 +17,7 @@ module App
     config.autoload_lib(ignore: %w[assets tasks])
 
     # Bilingual frontend: locale comes from the URL (/ar, /en)
-    config.i18n.available_locales = [:en, :ar]
+    config.i18n.available_locales = [ :en, :ar ]
     config.i18n.default_locale = :en
 
     # Configuration for the application, engines, and railties goes here.

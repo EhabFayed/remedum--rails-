@@ -1,0 +1,11 @@
+<% content_for :title, "تحرير التصنيف" %>
+<%= page_header "تحرير التصنيف", @category.name_ar do %>
+  <a class="btn btn--sm pressable" href="<%= admin_categories_path %>">رجوع</a>
+<% end %>
+<div class="card" style="max-width:46rem">
+  <%= form_with model: [:admin, @category] do |f| %>
+    <%= render "admin/shared/errors", record: @category %>
+    <%= render "fields", form: f %>
+    <%= f.submit "حفظ", class: "btn btn--primary pressable" %>
+  <% end %>
+</div>

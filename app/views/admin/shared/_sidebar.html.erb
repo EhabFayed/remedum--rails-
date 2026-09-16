@@ -1,0 +1,39 @@
+<aside class="side">
+  <div class="side__top">
+    <a class="brand pressable" href="<%= admin_root_path %>">
+      <span class="brand__mark">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 19C5 9 11 4 20 4c0 9-5 15-15 15z"></path><path d="M5 19c3-6 6-9 10-11"></path>
+        </svg>
+      </span>
+      <span class="brand__text">
+        <b><i>جذور</i> الجمال</b>
+        <span>DASHBOARD</span>
+      </span>
+    </a>
+    <button class="burger pressable" data-burger aria-expanded="false" aria-label="القائمة">☰</button>
+  </div>
+
+  <nav class="side__nav" data-sidenav aria-label="أقسام لوحة التحكم">
+    <% nav_items.each do |item| %>
+      <a class="navlink<%= " is-active" if nav_active?(item) %>" href="<%= send(item[:path]) %>">
+        <%= admin_icon item[:icon] %>
+        <span><%= item[:label] %></span>
+        <% if item[:badge] == :new_leads && (n = Lead.open_requests.count).positive? %>
+          <span class="navlink__badge"><%= n %></span>
+        <% end %>
+      </a>
+    <% end %>
+
+    <div class="side__foot">
+      <div class="side__who">
+        <b><%= current_user.name %></b>
+        <span><%= current_user.display_role %></span>
+      </div>
+      <div class="side__acts">
+        <a href="/ar/" target="_blank" rel="noopener">عرض الموقع ↗</a>
+        <%= button_to "تسجيل الخروج", admin_logout_path, method: :delete, form_class: "", class: "pressable" %>
+      </div>
+    </div>
+  </nav>
+</aside>

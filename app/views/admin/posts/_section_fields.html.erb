@@ -1,0 +1,75 @@
+<div class="row" data-row>
+  <div class="row__bar">
+    <span class="row__no" data-row-no>قسم</span>
+    <span class="row__note">عنوان اختياري — أول قسم بلا عنوان يعمل كمقدمة.</span>
+    <div class="row__acts">
+      <button type="button" class="iconbtn pressable" data-row-up title="أعلى">↑</button>
+      <button type="button" class="iconbtn pressable" data-row-down title="أسفل">↓</button>
+      <button type="button" class="iconbtn iconbtn--danger pressable" data-row-remove title="حذف القسم">✕</button>
+    </div>
+  </div>
+
+  <%= form.hidden_field :position, data: { row_position: true } %>
+  <% if form.object.persisted? %>
+    <%= form.hidden_field :_destroy, value: "0", data: { row_destroy: true } %>
+  <% end %>
+
+  <div data-lang-pane="ar" dir="rtl">
+    <div class="field">
+      <label class="label">عنوان القسم</label>
+      <%= form.text_field :title_ar, class: "inp", placeholder: "مثال: كيف تتحقق المنشأة من التسجيل؟" %>
+    </div>
+    <div class="field">
+      <label class="label">نص القسم</label>
+      <%= render "admin/shared/rich_editor", form: form, field: :body_ar, dir: "rtl",
+                 placeholder: "اكتب أو الصق نص القسم هنا…", hint: "section" %>
+    </div>
+  </div>
+
+  <div data-lang-pane="en" dir="ltr" hidden>
+    <div class="field">
+      <label class="label">Section title</label>
+      <%= form.text_field :title_en, class: "inp", placeholder: "e.g. How to verify SFDA registration" %>
+    </div>
+    <div class="field">
+      <label class="label">Section body</label>
+      <%= render "admin/shared/rich_editor", form: form, field: :body_en, dir: "ltr",
+                 placeholder: "Write or paste the section text here…", hint: "section" %>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid var(--line);margin-top:14px;padding-top:14px" data-media-group>
+    <p class="card__title" style="margin-bottom:10px">صورة القسم</p>
+    <div class="grid-2">
+      <%= render "admin/shared/image_picker", form: form, label: "النسخة العربية", hint: "section-ar",
+                 url_field: :image_url_ar, width_field: :image_width_ar, height_field: :image_height_ar %>
+      <%= render "admin/shared/image_picker", form: form, label: "English version", hint: "section-en",
+                 url_field: :image_url_en, width_field: :image_width_en, height_field: :image_height_en %>
+    </div>
+
+    <p class="altwarn" data-altwarn hidden>
+      النص البديل ناقص في إحدى اللغتين. بدونه لا يقرأ قارئ الشاشة الصورة ولا يفهمها محرك البحث.
+    </p>
+
+    <div class="grid-2" style="margin-top:12px">
+      <div class="field">
+        <label class="label">النص البديل (عربي) — ما تُظهره الصورة</label>
+        <%= form.text_field :alt_ar, class: "inp", data: { alt_input: true }, placeholder: "مستودع مرخّص بدرجة حرارة مضبوطة" %>
+      </div>
+      <div class="field" dir="ltr">
+        <label class="label">Alt text (English)</label>
+        <%= form.text_field :alt_en, class: "inp", data: { alt_input: true }, placeholder: "Licensed temperature-controlled warehouse" %>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="field">
+        <label class="label">تسمية مرئية تحت الصورة (اختيارية)</label>
+        <%= form.text_field :caption_ar, class: "inp" %>
+      </div>
+      <div class="field" dir="ltr">
+        <label class="label">Caption (optional)</label>
+        <%= form.text_field :caption_en, class: "inp" %>
+      </div>
+    </div>
+  </div>
+</div>

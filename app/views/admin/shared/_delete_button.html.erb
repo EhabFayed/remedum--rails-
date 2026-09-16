@@ -1,0 +1,9 @@
+<%#
+  Hold to delete. Everything destructive in this dashboard goes through here so
+  the gesture is the same everywhere and never becomes a reflex click.
+%>
+<%= button_to path, method: :delete, class: "btn btn--sm btn--danger holddel pressable",
+              form: { class: "tbl__form", data: { turbo: false } },
+              aria: { label: "#{label} — اضغط مطوّلًا للتأكيد" } do %>
+  <span class="holddel__fill" aria-hidden="true"></span><span><%= label %></span>
+<% end %>
