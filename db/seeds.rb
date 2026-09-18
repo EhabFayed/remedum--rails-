@@ -155,7 +155,7 @@ ARTICLES = [
   {
     slug_en: "verify-sfda-approved-dermal-filler",
     category: "regulatory",
-    cover: "/assets/img/knowledge-regulations.jpg",
+    cover: "/assets/img/knowledge-regulations.jpg", cover_w: nil, cover_h: nil,
     title_ar: "كيف تتحقق المنشأة الصحية من تسجيل الفيلر واعتماده رسميًا لدى الهيئة؟",
     title_en: "How to Verify That a Dermal Filler Is Fully SFDA-Approved",
     byline_ar: "بقلم فريق الشؤون التنظيمية", byline_en: "By the Regulatory Affairs Team",
@@ -189,7 +189,7 @@ ARTICLES = [
   {
     slug_en: "storage-conditions-filler-safety",
     category: "storage-quality",
-    cover: "/assets/img/knowledge-storage.jpg",
+    cover: "/assets/img/knowledge-storage.jpg", cover_w: nil, cover_h: nil,
     title_ar: "ظروف الحفظ والتخزين: كيف تؤثر درجات الحرارة على أمان الفيلر ونتيجة الحقن؟",
     title_en: "Storage Conditions: How Temperature Affects Filler Safety and Outcome",
     byline_ar: "بقلم فريق الإمداد واللوجستيات", byline_en: "By the Supply Chain Team",
@@ -216,13 +216,13 @@ ARTICLES = [
   {
     slug_en: "monophasic-hyaluronic-acid-science",
     category: "clinical-science",
-    cover: "/assets/img/knowledge-science.jpg",
+    cover: "/assets/img/knowledge-science.webp", cover_w: 1600, cover_h: 1067,
     title_ar: "جل الهيالورونيك أحادي الطور: كيف تضمن تقنية ReMedium ثباتًا ومظهرًا طبيعيًا؟",
     title_en: "Monophasic Hyaluronic Acid: The Science Behind ReMedium's Natural Integration",
     byline_ar: "بقلم الفريق الطبي والسريري", byline_en: "By the Medical Advisory Team",
     excerpt_ar: "الفرق بين الجل أحادي الطور ومتعدد الأطوار، وما الذي تضيفه تقنية التشبيك في الاندماج مع الأنسجة.",
     excerpt_en: "The difference between monophasic and biphasic gels, and what the cross-linking technology adds to tissue integration.",
-    alt_ar: "الفريق الطبي داخل المختبر", alt_en: "The medical team in the laboratory",
+    alt_ar: "مختصة مختبر تفحص عيّنة داخل معمل تحاليل", alt_en: "A laboratory specialist examining a sample",
     sections: [
       [ nil, nil,
        "<p>«أحادي الطور» وصف لبنية الجل لا شعار تسويقي: كتلة متجانسة واحدة بدل جسيمات معلّقة في سائل حامل. هذا الفارق البنيوي هو ما ينعكس على ملمس النتيجة وانسيابها تحت الجلد.</p>",
@@ -250,6 +250,8 @@ ARTICLES.each_with_index do |a, idx|
     excerpt_ar: a[:excerpt_ar], excerpt_en: a[:excerpt_en],
     byline_ar: a[:byline_ar], byline_en: a[:byline_en],
     cover_url_ar: a[:cover], cover_alt_ar: a[:alt_ar], cover_alt_en: a[:alt_en],
+    cover_url_en: a[:cover], cover_width_ar: a[:cover_w], cover_height_ar: a[:cover_h],
+    cover_width_en: a[:cover_w], cover_height_en: a[:cover_h],
     category: Category.find_by(slug_en: a[:category]),
     author: admin, status: "published", medically_reviewed: true,
     published_at: post.published_at || (Time.current - (idx * 6).days)

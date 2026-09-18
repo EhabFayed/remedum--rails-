@@ -30,7 +30,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('الشركة', 'Com
 <section class="section"><div class="container">
   <div class="hero-split" style="grid-template-columns:.72fr 1.28fr;margin-bottom:40px">
     <div class="arch-media arch-media--soft">
-      <img src="/assets/img/company-about.jpg" alt="${T('جذور الجمال', 'Beauty Roots')}" style="height:420px">
+      <img src="/assets/img/about-2016.webp" alt="${T('جذور الجمال', 'Beauty Roots')}" style="height:420px">
     </div>
     <div>
       ${secHead(T('من نحن', 'Who we are'), T('خبرة في المجال الطبي تبدأ من اختيار المنتج وتستمر بعد وصوله', 'Medical-sector expertise that starts with product selection and continues after delivery'))}
@@ -99,7 +99,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('الشركة', 'Com
     T('خبرات متخصصة، شراكة موثوقة، ودعم مستمر لمنشآتكم.', 'Specialized expertise and trusted support, empowering your healthcare practice.'))}
   <div class="grid grid-3" style="gap:18px">
     ${[
-      [T('ماهر بن عبدالله بن علي الجاسر', 'Maher bin Abdullah bin Ali Al-Jasser'), T('المدير العام', 'General Manager'), T('الإشراف التشغيلي الشامل، والصلاحيات الاستراتيجية والمالية.', 'Comprehensive operational oversight, strategic development, and corporate financial authorities.'), 'leader1.jpg'],
+      [T('ماهر بن عبدالله بن علي الجاسر', 'Maher bin Abdullah bin Ali Al-Jasser'), T('المدير العام', 'General Manager'), T('الإشراف التشغيلي الشامل، والصلاحيات الاستراتيجية والمالية.', 'Comprehensive operational oversight, strategic development, and corporate financial authorities.'), 'leader1.webp'],
       [T('الدكتور محمود عادل', 'Dr. Mahmoud Adel'), T('مدير مبيعات منتجات التجميل الطبي', 'Sales Manager — Medical Aesthetics'), T('الإشراف والتشغيل الشامل لجميع منتجات التجميل الطبي.', 'Comprehensive supervision and commercial operations for all medical aesthetic product lines.'), 'leader3.jpg'],
       [T('الأستاذ عبدالفتاح عطا محمود', 'Mr. Abdelfattah Atta Mahmoud'), T('مدير مبيعات منتجات التجميل والعناية', 'Sales Manager — Skincare & Cosmetics'), T('الإشراف والتشغيل الشامل لجميع منتجات العناية والتجميل.', 'Comprehensive supervision and commercial operations for all skincare and cosmetic product lines.'), 'leader2.jpg'],
     ].map(([n, r, d, img]) => `
