@@ -30,7 +30,7 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('الشركة', 'Com
 <section class="section"><div class="container">
   <div class="hero-split" style="grid-template-columns:.72fr 1.28fr;margin-bottom:40px">
     <div class="arch-media arch-media--soft">
-      <img src="/assets/img/about-2016.webp" alt="${T('جذور الجمال', 'Beauty Roots')}" style="height:420px">
+      <img src="/assets/img/about-company.webp" alt="${T('جذور الجمال', 'Beauty Roots')}" style="height:420px">
     </div>
     <div>
       ${secHead(T('من نحن', 'Who we are'), T('خبرة في المجال الطبي تبدأ من اختيار المنتج وتستمر بعد وصوله', 'Medical-sector expertise that starts with product selection and continues after delivery'))}
