@@ -916,3 +916,55 @@ html[dir="ltr"] .post:hover .post__btn{transform:rotate(45deg)}
   transition:background .25s,transform .25s;
 }
 .site-footer__socials a:hover{background:var(--green);transform:translateY(-2px)}
+
+/* ---------- certification rows (quality/certifications) ---------- */
+.cert-rows{display:flex;flex-direction:column;gap:12px}
+.cert-row{
+  display:grid;
+  grid-template-columns:4fr 8fr;   /* fixed ratio: every description starts on the same line */
+  gap:24px;
+  align-items:center;
+  padding:20px 26px;
+}
+.cert-row__code{
+  display:flex;flex-direction:column;gap:3px;
+  padding-inline-end:24px;
+  border-inline-end:1px solid var(--line);
+  min-height:100%;
+  justify-content:center;
+}
+.cert-row__mark{
+  font-family:var(--ff-lat);font-size:19px;font-weight:800;
+  letter-spacing:.02em;color:var(--ink);line-height:1.25;
+}
+.cert-row__full{
+  font-size:11px;line-height:1.6;color:var(--muted-2);
+}
+.cert-row__title{
+  display:block;font-family:var(--ff-d);
+  font-size:14.5px;font-weight:800;margin-bottom:5px;
+}
+.cert-row__text{
+  font-size:13px;line-height:1.95;color:var(--muted);margin:0;
+}
+@media (max-width:760px){
+  .cert-row{grid-template-columns:1fr;gap:12px;padding:18px 20px}
+  .cert-row__code{
+    padding-inline-end:0;border-inline-end:0;
+    padding-bottom:12px;border-bottom:1px solid var(--line);
+  }
+}
+
+/* badge variant used by the static build of the certifications page */
+.cert-row--badge .cert-row__badge{
+  font-size:21px;font-weight:800;color:var(--green-900);
+  text-align:center;background:var(--mint);
+  border-radius:14px;padding:16px 8px;
+  align-self:center;
+}
+.cert-row--badge .cert-row__code,
+.cert-row--badge > .cert-row__badge{border-inline-end:0;padding-inline-end:0}
+.cert-row--badge .cert-row__full{
+  display:block;font-size:12px;font-weight:700;
+  color:var(--muted-2);margin-bottom:4px;text-align:start;
+}

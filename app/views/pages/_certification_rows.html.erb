@@ -1,18 +1,20 @@
 <%# Accreditation rows — the same records the home strip shows, with the full
-    name and the practical meaning the dedicated page has room for. %>
-<div style="display:flex;flex-direction:column;gap:12px">
+    name and the practical meaning the dedicated page has room for.
+    A fixed 4:8 column ratio keeps every description starting on the same
+    line; `auto` sizing let each row set its own width and looked ragged. %>
+<div class="cert-rows">
   <% @certifications.each do |cert| %>
-    <div class="card" style="display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start">
-      <div style="min-width:104px">
-        <b style="display:block;font-family:var(--ff-lat);font-size:19px;font-weight:800;letter-spacing:.02em" dir="ltr"><%= cert.code %></b>
+    <div class="card cert-row">
+      <div class="cert-row__code">
+        <b class="cert-row__mark" dir="ltr"><%= cert.code %></b>
         <% if cert.full_name.present? %>
-          <span style="display:block;margin-top:3px;font-size:11px;color:var(--muted-2);line-height:1.6" dir="ltr"><%= cert.full_name %></span>
+          <span class="cert-row__full" dir="ltr"><%= cert.full_name %></span>
         <% end %>
       </div>
-      <div>
-        <b style="display:block;font-family:var(--ff-d);font-size:14.5px;font-weight:800;margin-bottom:5px"><%= cert.name_for(I18n.locale) %></b>
+      <div class="cert-row__body">
+        <b class="cert-row__title"><%= cert.name_for(I18n.locale) %></b>
         <% if cert.meaning_for(I18n.locale).present? %>
-          <p style="font-size:13px;line-height:1.95;color:var(--muted)"><%= cert.meaning_for(I18n.locale) %></p>
+          <p class="cert-row__text"><%= cert.meaning_for(I18n.locale) %></p>
         <% end %>
       </div>
     </div>
