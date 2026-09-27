@@ -117,7 +117,7 @@ const productsData = ({ T }) => ({
       [T('خطوط الابتسامة', 'Nasolabial folds'), T('الخطوط الأنفية الشفوية الممتدة من الأنف إلى زاويتي الفم.', 'The folds running from the nose to the corners of the mouth.')],
       [T('زوايا الفم وما بين الحاجبين', 'Marionette & glabella'), T('خطوط الماريونيت وزوايا الفم، وتجاعيد ما بين الحاجبين.', 'Marionette lines, oral commissures and glabella lines.')],
     ],
-    dots: [['50%', '58%'], ['50%', '72%'], ['38%', '62%']],
+    dots: [['50%', '58%'], ['50%', '72%'], ['38%', '65%']],
     posts: [T('كم يدوم فيلر الشفاه؟ وما الذي يغيّر المدة؟', 'How long does lip filler last — and what changes that?'),
       T('جل أحادي الطور: ماذا يعني للنتيجة؟', 'Monophasic gel: what does it mean for the result?')],
   },

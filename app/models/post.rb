@@ -57,7 +57,20 @@ class Post < ApplicationRecord
   end
 
   def display_date(locale = I18n.locale)
-    (published_at || created_at).in_time_zone.strftime(locale.to_s == "en" ? "%d %b %Y" : "%d %B %Y")
+    date = (published_at || created_at).in_time_zone.to_date
+    I18n.l(date, format: (locale.to_s == "en" ? "%d %b %Y" : "%-d %B %Y"), locale: locale)
+  end
+
+  # Arabic counts agree with the noun: 1 دقيقة واحدة, 2 دقيقتان, 3–10 دقائق, 11+ دقيقة
+  def read_time_label(locale = I18n.locale)
+    n = read_minutes.to_i
+    return "#{n} min read" if locale.to_s == "en"
+    case n
+    when 0, 1 then "دقيقة واحدة قراءة"
+    when 2 then "دقيقتان قراءة"
+    when 3..10 then "#{n} دقائق قراءة"
+    else "#{n} دقيقة قراءة"
+    end
   end
 
   private

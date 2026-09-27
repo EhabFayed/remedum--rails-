@@ -173,3 +173,16 @@ html[dir="rtl"] .cta-box:hover i{transform:rotate(-45deg)}
 /* ---------- comparison tabs: image sits on the left in RTL ---------- */
 html[dir="rtl"] .cmp__media{order:2}
 @media (max-width:860px){html[dir="rtl"] .cmp__media{order:0}}
+
+/* =====================================================================
+   RESPONSIVE FIXES (Sep 2026 audit) — Arabic home
+   ===================================================================== */
+@media (min-width:993px) and (max-width:1280px){
+  html[dir="rtl"] .nav{inset:0 auto 0 0;box-shadow:20px 0 60px -30px rgba(0,0,0,.4);transform:translateX(-100%)}
+  html[dir="rtl"] .dropdown{padding:0 12px 8px 0}
+}
+@media (max-width:1280px){
+  html[dir="rtl"] .nav.is-open{transform:none}
+}
+/* numbers and e-mail carry dir=ltr; keep them under their Arabic labels */
+html[dir="rtl"] .footer__val[dir="ltr"]{text-align:right}

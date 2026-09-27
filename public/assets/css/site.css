@@ -968,3 +968,488 @@ html[dir="ltr"] .post:hover .post__btn{transform:rotate(45deg)}
   display:block;font-size:12px;font-weight:700;
   color:var(--muted-2);margin-bottom:4px;text-align:start;
 }
+
+/* =====================================================================
+   RESPONSIVE FIXES (Sep 2026 audit) — inner pages
+   Appended last so it layers over the rules above without rewriting them.
+   ===================================================================== */
+
+/* ---- header: blur on a pseudo layer ----------------------------------
+   backdrop-filter on the header itself makes it the containing block for
+   the position:fixed drawer, which then shrank to the header's height
+   (126px) instead of the viewport. The blur lives on ::before now. */
+.site-header{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+.site-header::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
+.nav__link{white-space:nowrap}
+.burger{position:relative;z-index:80}
+
+/* ---- drawer from 1081 to 1280 too -------------------------------------
+   The full row (logo + nav + actions) needs ~1536px in English; between
+   1081 and 1280 it pushed the WhatsApp button and language pill off-screen. */
+@media (min-width:1081px) and (max-width:1280px){
+  .nav{
+    position:fixed;top:0;bottom:0;width:min(330px,86vw);
+    background:#fff;padding:96px 22px 30px;
+    transition:transform .45s var(--ease);z-index:70;overflow-y:auto;
+  }
+  html[dir="ltr"] .nav{inset:0 0 0 auto;transform:translateX(110%);box-shadow:-20px 0 60px -30px rgba(0,0,0,.4)}
+  html[dir="rtl"] .nav{inset:0 auto 0 0;transform:translateX(-110%);box-shadow:20px 0 60px -30px rgba(0,0,0,.4)}
+  .nav__list{flex-direction:column;align-items:stretch;gap:2px;border:0;padding:0;box-shadow:none}
+  .nav__link{justify-content:space-between;padding:13px 16px;font-size:15px}
+  .dropdown{
+    position:static;opacity:1;visibility:visible;transform:none;
+    box-shadow:none;padding:0 12px 8px;max-height:0;overflow:hidden;
+    transition:max-height .4s var(--ease);
+  }
+  .burger{display:flex}
+}
+/* a closed drawer keeps its shadow off the page edge and its links out of
+   the tab order; the rtl rule above had more specificity than .is-open, so
+   the Arabic drawer never opened */
+@media (max-width:1280px){
+  .nav{visibility:hidden;transition:transform .45s var(--ease),visibility 0s .45s}
+  html[dir] .nav.is-open{transform:none;visibility:visible;transition:transform .45s var(--ease)}
+  .nav__item:hover .dropdown{max-height:0}
+  .nav__item.is-open .dropdown,
+  .nav__item.is-open:hover .dropdown{max-height:640px}
+}
+@media (min-width:1281px) and (max-width:1536px){
+  .site-header__inner{gap:12px;padding-inline:22px}
+  .nav__link{padding:8px 9px;font-size:13.5px;gap:4px}
+  .site-header .wa-btn{padding:11px;gap:0}
+  .site-header .wa-btn__txt{display:none}
+}
+/* phones: logo + WhatsApp + language + burger did not fit 320px */
+@media (max-width:380px){
+  .site-header__inner{padding-inline:14px;gap:8px}
+  .header__actions{gap:6px}
+  .lang-pill{padding:8px 10px}
+  .site-header .wa-btn{padding:10px}
+  .burger{width:40px;height:40px}
+  .site-header .logo{gap:8px}
+  .site-header .logo__text b{font-size:15px}
+}
+
+/* ---- drawer backdrop + scroll lock (toggled by site.js) ---- */
+.nav-scrim{
+  position:fixed;inset:0;background:rgba(6,20,14,.45);z-index:55;
+  opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;
+}
+.nav-scrim.is-on{opacity:1;visibility:visible}
+html.nav-locked{overflow:hidden}
+
+/* ---- images keep their aspect ratio when width shrinks ---- */
+img{height:auto}
+
+/* ---- buttons may wrap on phones instead of spilling off-screen ---- */
+.btn__circle{flex:none}
+@media (max-width:680px){
+  .btn{white-space:normal;max-width:100%;text-align:start;line-height:1.35}
+}
+
+/* ---- inline two-column splits collapse on phones ------------------------
+   The .grid[style*=…] override above only reaches elements with class .grid;
+   these split layouts carry their columns inline on other classes. */
+@media (max-width:1080px){
+  .hero-split{grid-template-columns:minmax(0,1fr)}
+  #map.grid{grid-template-columns:minmax(0,1fr)!important}
+}
+@media (max-width:680px){
+  .hero-split[style*="grid-template-columns"]{grid-template-columns:minmax(0,1fr)!important;gap:26px}
+  .hero-split .arch-media img[style*="height"]{height:300px!important}
+  .face-wrap{width:100%}
+  .face-wrap img{height:auto!important;aspect-ratio:11/12;object-fit:cover}
+
+  .dark-panel[style*="grid-template-columns"]{grid-template-columns:minmax(0,1fr)!important;padding:30px 22px!important;gap:24px!important}
+  .dark-panel[style*="grid-template-columns"] img{height:220px!important}
+  .dark-panel[style*="grid-template-columns"] h2{font-size:34px!important}
+
+  .dark-strip[style*="grid-template-columns"]{grid-template-columns:minmax(0,1fr)!important;padding:28px 22px!important;gap:18px!important}
+  .dark-strip[style*="grid-template-columns"] > b{justify-self:start;font-size:24px!important;padding:14px 22px!important}
+  .dark-strip .chip{display:inline-block;border-radius:14px;line-height:1.6;padding:7px 13px}
+}
+/* hotspot labels near the inline-end edge open towards the centre */
+.face-dot--flip{flex-direction:row-reverse;transform:translateX(calc(-100% + 13px))}
+html[dir="rtl"] .face-dot--flip{transform:translateX(calc(100% - 13px))}
+
+/* ---- tables and two-column rows ---- */
+.spec-table .row{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+.spec-table .row span{overflow-wrap:anywhere}
+.compare .crit{overflow-wrap:anywhere;hyphens:auto}
+@media (max-width:680px){
+  .spec-table .row span{padding:12px 14px}
+  .compare--simple .row{grid-template-columns:minmax(0,1fr)}
+  .compare--simple .crit{padding:12px 18px 4px}
+  .compare--simple .us{padding:4px 18px 14px}
+}
+
+/* ---- lists and form rows whose text holds inline markup ----
+   As flex containers every text run and <span>/<a> became its own column. */
+.check-list li{display:block;position:relative;padding-inline-start:23px}
+.check-list li > svg{position:absolute;inset-inline-start:0;top:6px;margin:0}
+.checkbox-row{display:block;position:relative;padding-inline-start:30px}
+.checkbox-row > input{position:absolute;inset-inline-start:0;top:2px;margin:0}
+
+/* ---- quote page: the form's grid lost its aside, leaving an empty column ---- */
+.grid[style*="1.3fr .7fr"]:not(:has(> :nth-child(2))){grid-template-columns:minmax(0,1fr)!important;max-width:860px;margin-inline:auto}
+/* iOS zooms into inputs smaller than 16px */
+@media (max-width:680px){
+  .field input,.field textarea,.field select{font-size:16px}
+}
+
+/* ---- accreditations strip: 6 → 3 → 2 columns instead of 6 → 1 ---- */
+@media (max-width:1080px){
+  .grid[style*="repeat(6"]{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+@media (max-width:680px){
+  .grid.grid[style*="repeat(6"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+.grid[style*="repeat(6"] span{font-size:11.5px!important}
+
+/* ---- skincare row on the brands hub at tablet width ---- */
+@media (max-width:900px){
+  #skincare-external .grid[style]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  #skincare-external .grid > .arch-media{grid-column:1/-1;aspect-ratio:16/9;min-height:0}
+  #skincare-external .grid > .arch-media img{object-position:center 65%}
+}
+@media (max-width:680px){
+  #skincare-external .grid > .arch-media{aspect-ratio:4/3}
+}
+
+/* ---- brand names inside Arabic cards line up with the Arabic text ---- */
+html[dir="rtl"] b.lat[dir="ltr"][style*="display:block"]{text-align:right}
+
+/* ---- identity tiles: the value's .lat span was styled like a label ---- */
+.fact-tile b .lat{display:inline;font-size:inherit;color:inherit;margin:0;letter-spacing:inherit;font-weight:inherit}
+
+/* ---- certification rows: code block aligns with the text in RTL ---- */
+.cert-row__code{align-items:flex-start}
+
+/* ---- about timeline: dashes stop at the last dot ---- */
+.timeline::before{inset-inline-start:30px;inset-inline-end:calc(25% - 30px)}
+
+/* ---- small text ---- */
+.dur__head span{font-size:11px}
+.dur__scale span{font-size:10.5px}
+.cta-box .tag{font-size:11.5px}
+.logo__text i{font-size:9.5px}
+
+/* ---- headings that were removed leave a smaller gap ---- */
+.sec-head:not(:has(.sec-title)){margin-bottom:22px}
+.card .card__title{color:var(--ink)}
+.post__meta{flex-wrap:wrap}
+
+/* ---- knowledge articles: editor content cannot widen the page ---- */
+.article-body{overflow-wrap:anywhere}
+.article-body pre{overflow-x:auto;max-width:100%;white-space:pre;padding:14px 16px;border-radius:var(--r-sm);background:var(--mint-2);direction:ltr;text-align:left}
+.article-body code{overflow-wrap:anywhere}
+html[dir="ltr"] .article-body,html[dir="ltr"] .faq-list{max-width:680px}
+@media (max-width:360px){
+  .search-pill{padding-inline-start:16px;gap:8px}
+  .search-pill button{padding:10px 14px}
+}
+
+/* ---- footer ---- */
+@media (min-width:681px) and (max-width:1080px){
+  .site-footer__top > :last-child{grid-column:1/-1;flex-direction:row!important}
+  .site-footer__top > :last-child .cta-box{flex:1}
+}
+.site-footer__bottom ul{gap:8px 20px;flex-wrap:wrap;flex:none}
+@media (max-width:680px){
+  .site-footer__bottom ul{justify-content:center;flex:initial}
+}
+
+/* drawer polish: a collapsed sub-menu kept an 8px tappable strip, and the
+   chevron followed :hover (which sticks on touch) instead of the open state */
+@media (max-width:1280px){
+  .dropdown{padding-bottom:0!important}
+  .nav__item.is-open .dropdown{padding-bottom:8px!important}
+  .nav__item:hover .nav__link svg{transform:none}
+  .nav__item.is-open .nav__link svg{transform:rotate(180deg)}
+}
+
+/* =====================================================================
+   PRODUCT FACE MAPS — the home page's interactive map, reused
+   (rules below copied from style.css "9. FACE MAP"; keep in sync)
+   ===================================================================== */
+.facemap__stage{position:relative;width:100%;max-width:440px;margin-inline:auto}
+.facemap__frame{position:relative;width:100%;aspect-ratio:5/6}
+.facemap__photo{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  /* same arch language as the about collage */
+  border-radius:50% 50% 26% 26% / 34% 34% 16% 16%;
+  box-shadow:var(--shadow-card);
+}
+.facemap__hint{
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  margin-top:26px;
+  font-size:12.5px;font-weight:600;color:var(--muted);
+}
+.facemap__hint i{
+  width:9px;height:9px;border-radius:50%;flex:none;
+  background:var(--green);
+  box-shadow:0 0 0 4px rgba(28,169,124,.18);
+}
+
+/* --- treatment zones --- */
+.fregions{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  z-index:2;pointer-events:none;
+  overflow:visible;
+}
+.fregion{
+  opacity:0;
+  transition:opacity .45s var(--ease);
+}
+.fregion--fine{color:#2FC697}
+.fregion--mid{color:var(--green)}
+.fregion--subq{color:#0E8A63}
+
+.fzone{
+  fill:currentColor;fill-opacity:.26;
+  stroke:currentColor;stroke-opacity:.95;
+  stroke-width:.55;stroke-dasharray:2.4 1.9;stroke-linecap:round;
+  filter:drop-shadow(0 0 1.4px currentColor);
+}
+/* the jawline reads as a band along the contour, not a closed shape */
+.fzone--band{
+  fill:none;
+  stroke-width:2.6;stroke-opacity:.36;stroke-dasharray:none;
+}
+
+.fregion.is-hover{opacity:.55}
+.facemap__frame.is-filtered .fregion.is-match{opacity:.72}
+.fregion.is-on{opacity:1}
+.fregion.is-on .fzone{animation:fdash 16s linear infinite}
+@keyframes fdash{to{stroke-dashoffset:-43}}
+
+/* --- injection points --- */
+.fpoint{
+  position:absolute;left:var(--x);top:var(--y);
+  width:34px;height:34px;
+  transform:translate(-50%,-50%);
+  display:grid;place-items:center;
+  z-index:3;
+}
+.fpoint--fine{--c:#4FD3A5}
+.fpoint--mid{--c:var(--green)}
+.fpoint--subq{--c:#0B4432}
+.fpoint--duo{--c:var(--green)}
+
+.fpoint__dot{
+  position:relative;
+  width:13px;height:13px;border-radius:50%;
+  background:var(--c);
+  box-shadow:0 0 0 3px rgba(255,255,255,.92),0 8px 16px -6px rgba(10,46,34,.55);
+  transition:transform .4s var(--ease);
+}
+.fpoint--duo .fpoint__dot{background:linear-gradient(135deg,var(--green) 0 50%,var(--green-900) 50% 100%)}
+.fpoint__dot::after{
+  content:'';position:absolute;inset:-5px;border-radius:50%;
+  border:1.5px solid var(--c);
+  animation:fpulse 2.8s var(--ease) infinite;
+  animation-delay:var(--d,0s);
+}
+@keyframes fpulse{
+  0%{transform:scale(.55);opacity:.85}
+  70%{transform:scale(2);opacity:0}
+  100%{transform:scale(2);opacity:0}
+}
+.fpoint:hover .fpoint__dot,
+.fpoint:focus-visible .fpoint__dot{transform:scale(1.35)}
+.fpoint.is-on .fpoint__dot{transform:scale(1.5)}
+.fpoint.is-on .fpoint__dot::after{
+  animation:none;inset:-7px;border-width:2px;opacity:1;
+  border-color:#fff;
+  box-shadow:0 0 0 1.5px var(--c);
+}
+
+.fpoint__label{
+  position:absolute;bottom:calc(100% - 2px);left:50%;
+  transform:translate(-50%,6px);
+  padding:5px 12px;border-radius:999px;white-space:nowrap;
+  background:var(--ink);color:#fff;
+  font-size:11.5px;font-weight:600;letter-spacing:.01em;line-height:1.5;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s var(--ease),transform .3s var(--ease);
+}
+.fpoint:hover .fpoint__label,
+.fpoint:focus-visible .fpoint__label{opacity:1;transform:translate(-50%,0)}
+.fpoint.is-on .fpoint__label{opacity:0}
+
+/* dimming while a product is selected in the key */
+.facemap__frame.is-filtered .fpoint{opacity:.24}
+.facemap__frame.is-filtered .fpoint.is-match{opacity:1}
+.facemap__frame.is-filtered .fpoint:not(.is-match) .fpoint__dot::after{animation:none}
+
+/* --- the popup --- */
+.fpop{
+  position:absolute;z-index:6;
+  width:302px;
+  padding:18px 20px 18px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  box-shadow:var(--shadow-card);
+  opacity:0;transform:scale(.94);
+  transition:opacity .3s var(--ease),transform .3s var(--ease);
+  pointer-events:none;
+}
+.fpop.is-open{opacity:1;transform:none;pointer-events:auto}
+.fpop::after{
+  content:'';position:absolute;top:var(--tip,50%);
+  width:12px;height:12px;background:#fff;
+  border:1px solid var(--line);
+  transform:translateY(-50%) rotate(45deg);
+}
+.fpop[data-side="right"]::after{left:-7px;border-top:0;border-right:0}
+.fpop[data-side="left"]::after{right:-7px;border-bottom:0;border-left:0}
+.fpop[data-side="none"]::after{display:none}
+/* leader line, drawn from the card edge across to the point it describes */
+.fpop::before{
+  content:'';position:absolute;top:var(--tip,50%);
+  width:var(--lead,0px);height:1.5px;
+  background:linear-gradient(90deg,rgba(28,169,124,.18),rgba(28,169,124,.75));
+}
+.fpop[data-side="right"]::before{
+  right:100%;
+  background:linear-gradient(90deg,rgba(28,169,124,.75),rgba(28,169,124,.18));
+}
+.fpop[data-side="left"]::before{left:100%}
+.fpop[data-side="none"]::before{display:none}
+
+.fpop__close{
+  position:absolute;top:12px;right:12px;
+  width:26px;height:26px;border-radius:50%;
+  display:grid;place-items:center;
+  color:var(--muted);background:#F2F6F4;
+  transition:.3s;
+}
+.fpop__close:hover{background:var(--ink);color:#fff}
+.fpop__zone{
+  display:inline-block;
+  padding:4px 10px;border-radius:999px;
+  background:var(--mint);color:var(--green-900);
+  font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+}
+.fpop__title{
+  font-family:var(--ff-d);
+  font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.25;
+  margin:10px 0 6px;color:var(--ink);
+}
+.fpop__text{font-size:12.5px;line-height:1.7;color:var(--muted)}
+.fpop__prods{display:flex;flex-direction:column;gap:9px;margin:14px 0 12px}
+.fpop-prod{
+  display:grid;grid-template-columns:48px minmax(0,1fr);
+  gap:8px 11px;align-items:center;
+  padding:11px 12px 12px;border-radius:14px;
+  background:#F2F6F4;
+  border:1px solid transparent;
+  transition:border-color .3s,background .3s;
+}
+.fpop-prod:hover{background:#EDF5F1;border-color:rgba(28,169,124,.25)}
+.fpop-prod__img{
+  position:relative;
+  width:48px;height:48px;border-radius:11px;
+  overflow:visible;
+  background:#fff;
+  box-shadow:0 6px 16px -8px rgba(10,46,34,.35);
+}
+.fpop-prod__img img{
+  width:100%;height:100%;border-radius:11px;
+  object-fit:cover;
+}
+.fpop-prod__swatch{
+  position:absolute;right:-4px;bottom:-4px;
+  width:14px;height:14px;border-radius:50%;
+  background:var(--c);
+  border:2.5px solid #F2F6F4;
+}
+.fpop-prod--fine{--c:#4FD3A5}
+.fpop-prod--mid{--c:var(--green)}
+.fpop-prod--subq{--c:var(--green-900)}
+.fpop-prod__body b{
+  display:block;
+  font-family:var(--ff-d);
+  font-size:13.5px;font-weight:700;letter-spacing:-.01em;color:var(--ink);
+}
+.fpop-prod__body span{display:block;font-size:11px;color:var(--muted);line-height:1.55}
+
+/* --- how long the result lasts, on a 0–24 month scale --- */
+.fpop-dur{grid-column:1/-1;margin-top:2px}
+.fpop-dur__head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+  margin-bottom:6px;
+}
+.fpop-dur__head span{
+  font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted-2);
+}
+.fpop-dur__head b{
+  font-family:var(--ff-d);
+  font-size:12px;font-weight:700;letter-spacing:-.01em;color:var(--c);
+}
+.fpop-dur__track{
+  position:relative;height:6px;border-radius:999px;
+  background:linear-gradient(90deg,rgba(10,46,34,.09) 0 1px,transparent 1px) 0 0/25% 100% repeat-x,
+             rgba(10,46,34,.07);
+}
+.fpop-dur__fill{
+  position:absolute;top:0;bottom:0;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--c),color-mix(in srgb,var(--c) 62%,#fff));
+  box-shadow:0 0 0 2px rgba(255,255,255,.75);
+}
+.fpop-dur__fill::after{
+  content:'';position:absolute;right:-1px;top:50%;
+  width:9px;height:9px;border-radius:50%;
+  background:#fff;border:2.5px solid var(--c);
+  transform:translateY(-50%);
+}
+.fpop-dur__scale{
+  display:flex;justify-content:space-between;
+  margin-top:5px;
+}
+.fpop-dur__scale i{
+  font-style:normal;font-size:9px;font-weight:600;
+  color:var(--muted-2);letter-spacing:.02em;
+}
+.fpop__link{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:12px;font-weight:700;color:var(--green);
+  transition:gap .3s var(--ease),color .3s;
+}
+.fpop__link:hover{gap:11px;color:var(--green-900)}
+
+/* --- the product key --- */
+/* the card drops below the face when there is no room beside it */
+@media (max-width:992px){
+  .fpop{position:relative;width:auto;max-width:420px;margin:26px auto 0;transform:translateY(12px)}
+  .fpop.is-open{transform:none}
+  .fpop::after,.fpop::before{display:none}
+}
+@media (max-width:768px){
+  .fpoint{width:30px;height:30px}
+  .fpoint__label{font-size:10.5px;padding:4px 10px}
+}
+.fpop__close{min-width:40px;min-height:40px}
+html[dir="rtl"] .fpop__zone,html[dir="rtl"] .fpop__title,html[dir="rtl"] .fpop-prod__body b,
+html[dir="rtl"] .fpop-dur__head span,html[dir="rtl"] .fpop-dur__head b,html[dir="rtl"] .fpoint__label{text-align:right}
+html[dir="rtl"] .fpop__close{right:auto;left:12px}
+html[dir="rtl"] .fpop-prod__swatch{right:auto;left:-4px}
+html[dir="rtl"] .fpop-dur__scale,html[dir="rtl"] .fpop-dur__track{direction:ltr}
+/* on the product pages the map sits in the left column beside the area cards */
+.hero-split > .facemap__stage{max-width:440px;width:100%;margin-inline:auto}
+
+/* follow-ups from the inner-page verification */
+@media (max-width:680px){ .btn{min-height:40px} }
+.dark-strip .chip .lat{white-space:nowrap}
+@media (max-width:420px){
+  #skincare-external .grid[style]{grid-template-columns:minmax(0,1fr)!important}
+}
+.dur__scale span{font-size:11px}
