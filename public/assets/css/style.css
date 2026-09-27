@@ -1014,7 +1014,7 @@ button{background:none;border:0;cursor:pointer}
 /* ---- step chips ---- */
 .steps-bar{
   position:relative;
-  display:grid;grid-template-columns:repeat(5,1fr);
+  display:grid;grid-template-columns:repeat(6,1fr);
   align-items:center;
   margin:10px 0 var(--step-gap);
 }
@@ -1062,7 +1062,7 @@ button{background:none;border:0;cursor:pointer}
 
 /* ---- step cards ---- */
 .steps{
-  display:grid;grid-template-columns:repeat(5,1fr);
+  display:grid;grid-template-columns:repeat(6,1fr);
   gap:12px;align-items:start;
 }
 .step{
@@ -1812,3 +1812,151 @@ a.footer__val:hover{color:#fff;text-decoration:underline}
 
 /* brand name keeps its own casing inside the uppercase hero title */
 .hero__title .word-fx{text-transform:none}
+
+/* =====================================================================
+   RESPONSIVE FIXES (Sep 2026 audit) — home pages
+   Appended last so it layers over the rules above without rewriting them.
+   ===================================================================== */
+
+/* ---- stuck header: blur on a pseudo layer ----------------------------
+   backdrop-filter on .header made it the containing block for the fixed
+   drawer, so after scrolling the drawer shrank to the header's 130px. */
+.header.is-stuck{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+.header.is-stuck::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+}
+/* the search icon stayed white on the white stuck header */
+.header.is-stuck .icon-btn--light{color:var(--ink)}
+.nav__link{white-space:nowrap}
+.burger{position:relative;z-index:80}
+
+/* ---- drawer from 993 to 1280 too --------------------------------------
+   Logo + six menu items + actions need ~1406px in English; below that the
+   actions (language, Request a Quote) were pushed off the right edge. */
+@media (min-width:993px) and (max-width:1280px){
+  .nav{
+    position:fixed;inset:0 0 0 auto;width:min(330px,84vw);
+    background:#fff;padding:100px 22px 30px;margin:0;
+    box-shadow:-20px 0 60px -30px rgba(0,0,0,.4);
+    transform:translateX(100%);transition:transform .45s var(--ease);
+    z-index:70;overflow-y:auto;
+  }
+  .nav__list{flex-direction:column;align-items:stretch;gap:2px;box-shadow:none;padding:0;border-radius:0}
+  .nav__link{justify-content:space-between;padding:13px 16px;font-size:15px}
+  .dropdown{
+    position:static;opacity:1;visibility:visible;transform:none;
+    box-shadow:none;padding:0 0 8px 12px;max-height:0;overflow:hidden;
+    transition:max-height .4s var(--ease);
+  }
+  .burger{display:flex}
+  .icon-btn--dark{display:none}
+}
+@media (max-width:1280px){
+  .nav{visibility:hidden;transition:transform .45s var(--ease),visibility 0s .45s}
+  .nav.is-open{transform:none;visibility:visible;transition:transform .45s var(--ease)}
+  /* :hover sticks after a tap on touch screens, so only the class opens a menu;
+     260px also cut the ten-item Brands list after "HA Filler" */
+  .nav__item:hover .dropdown{max-height:0}
+  .nav__item.is-open .dropdown,
+  .nav__item.is-open:hover .dropdown{max-height:640px}
+}
+/* 1281–1680: the English row still ran ~47px past the edge at full size */
+@media (min-width:1281px) and (max-width:1680px){
+  .header__inner{gap:10px}
+  .nav{margin-left:0}
+  .nav__link{padding:8px 8px;font-size:13px;gap:3px}
+  .header__actions{gap:8px}
+  /* the Sections and Search buttons have no behaviour behind them yet */
+  .header__actions .icon-btn{display:none}
+}
+
+/* ---- drawer backdrop + scroll lock (toggled by main.js) ---- */
+.nav-scrim{
+  position:fixed;inset:0;background:rgba(6,20,14,.45);z-index:55;
+  opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;
+}
+.nav-scrim.is-on{opacity:1;visibility:visible}
+html.nav-locked{overflow:hidden}
+
+/* ---- phones: header row fits 320px ---- */
+@media (max-width:420px){
+  .header__inner{gap:10px}
+  .header__actions{gap:8px}
+}
+@media (max-width:374px){
+  .logo__text{font-size:15.5px}
+}
+
+/* ---- services accordion: text used a 136px column at 320px ---- */
+@media (max-width:520px){
+  .acc__head{grid-template-columns:auto minmax(0,1fr) 40px;gap:10px 12px;padding:18px 16px}
+  .acc__no{font-size:16px}
+  .acc__desc{grid-column:1 / -1}
+  .acc__media img{height:250px}
+  .acc__chips{left:12px;right:12px;bottom:12px;gap:6px}
+  .acc__chips li{padding:7px 12px;border-radius:11px}
+  .acc__chips b{font-size:13px}
+}
+
+/* ---- decorative leaves no longer paint over headings ---- */
+.services > .container,.facemap > .container,.why > .container{position:relative;z-index:1}
+@media (max-width:768px){
+  .deco-leaf--tr,.why .deco-leaf--tr{width:64px;height:64px;top:18px}
+}
+
+/* ---- footer watermark stops overlapping the social icons ---- */
+@media (max-width:520px){
+  .footer__watermark{margin:14px 0 0;text-align:center}
+}
+
+/* ---- tablets keep two columns instead of one narrow centred column ---- */
+@media (min-width:601px) and (max-width:768px){
+  .why__grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:none}
+  .blog__grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:none}
+  .blog__grid .post:last-child{grid-column:1 / -1;max-width:520px;margin-inline:auto}
+}
+
+/* ---- comparison cards: icon stays beside its sentence ---- */
+@media (max-width:992px){
+  .compare__us,.compare__them{display:grid;grid-template-columns:22px minmax(0,1fr);column-gap:11px;align-items:center}
+  .compare__us::before,.compare__them::before{grid-column:1 / -1;margin-bottom:2px}
+}
+
+/* ---- carousel dots get a finger-sized hit area ---- */
+.cmp__dot{position:relative}
+.cmp__dot::after{content:"";position:absolute;inset:-10px}
+
+/* ---- small text ---- */
+.fprod__dur small,.post__date small{font-size:11px}
+.certs__list li span{font-size:11.5px}
+.step__cap{font-size:12px}
+.fpop__close{min-width:40px;min-height:40px}
+
+/* ---- video-hero home (static build): spacing ---- */
+.hero .stats-card{margin-top:28px}
+@media (max-width:520px){
+  .hero__inner{padding-inline:18px}
+}
+
+/* follow-up from verification */
+@media (max-width:520px){
+  /* the search button (no behaviour yet) left the English header 38px too wide at 320 */
+  .header__actions .icon-btn--light{display:none}
+  .deco-leaf--bl{bottom:170px}
+}
+/* beat `.compare__row > span{display:flex}` so the icon stays beside its sentence */
+@media (max-width:992px){
+  .compare__row > .compare__us,.compare__row > .compare__them{display:grid;grid-template-columns:22px minmax(0,1fr);column-gap:11px;align-items:center}
+  .compare__row > .compare__us::before,.compare__row > .compare__them::before{grid-column:1 / -1;margin-bottom:2px}
+}
+
+/* drawer polish: a collapsed sub-menu kept an 8px tappable strip, and the
+   chevron followed :hover (which sticks on touch) instead of the open state */
+@media (max-width:1280px){
+  .dropdown{padding-bottom:0!important}
+  .nav__item.is-open .dropdown{padding-bottom:8px!important}
+  .nav__item:hover .nav__link svg{transform:none}
+  .nav__item.is-open .nav__link svg{transform:rotate(180deg)}
+}

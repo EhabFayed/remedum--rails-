@@ -301,12 +301,10 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
     T('سيكشن مستقل خارج التبويبين، مرئي للجمهورين. كل منطقة يصل إليها رابط ثابت من خريطة الوجه في الرئيسية ومن المقالات.',
       'A standalone section outside the tabs, visible to both audiences. Each area is reachable by a stable link from the homepage face map and from articles.'))}
   <div class="hero-split" style="grid-template-columns:.9fr 1.1fr;gap:36px">
-    <div class="face-wrap" style="max-width:440px;margin:0 auto">
-      <img src="/assets/img/face-model.jpg" alt="${T('خريطة الوجه', 'Face map')} — ${p.name}" style="height:480px">
-      ${p.dots.map(([x, y], i) => `
-      <span class="face-dot face-dot--${p.swatch}" style="inset-inline-start:${x};top:${y}">
-        <i></i><b>${p.zones[i][0]}</b>
-      </span>`).join('')}
+    <div class="facemap__stage">
+      <div class="facemap__frame" data-product="${p.swatch}">
+        <img class="facemap__photo" src="/assets/img/face-model.jpg" alt="${T('خريطة الوجه', 'Face map')} — ${p.name}">
+      </div>
     </div>
     <div style="display:flex;flex-direction:column;gap:12px">
       ${p.zones.map(([t, d]) => `

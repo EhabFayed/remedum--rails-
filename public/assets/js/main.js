@@ -19,13 +19,23 @@
   /* ---------- mobile nav ---------- */
   var burger = document.getElementById('burger');
   var nav = document.getElementById('nav');
-  burger.addEventListener('click', function () {
-    burger.classList.toggle('is-open');
-    nav.classList.toggle('is-open');
-  });
+  // backdrop, Escape and scroll lock: the drawer used to close only via the burger
+  var scrim = document.createElement('div');
+  scrim.className = 'nav-scrim';
+  document.body.appendChild(scrim);
+  var setNav = function (open) {
+    burger.classList.toggle('is-open', open);
+    nav.classList.toggle('is-open', open);
+    scrim.classList.toggle('is-on', open);
+    document.documentElement.classList.toggle('nav-locked', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+  burger.addEventListener('click', function () { setNav(!nav.classList.contains('is-open')); });
+  scrim.addEventListener('click', function () { setNav(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setNav(false); });
   nav.addEventListener('click', function (e) {
     var link = e.target.closest('.nav__link');
-    if (link && window.matchMedia('(max-width:992px)').matches) {
+    if (link && window.matchMedia('(max-width:1280px)').matches) {
       var item = link.parentElement;
       if (item.querySelector('.dropdown')) {
         e.preventDefault();
@@ -34,8 +44,7 @@
       }
     }
     if (e.target.closest('a[href^="#"]')) {
-      burger.classList.remove('is-open');
-      nav.classList.remove('is-open');
+      setNav(false);
     }
   });
 
@@ -323,7 +332,11 @@
       pop.hidden = false;
       placePop(btn);
       /* next frame, so the transition actually runs */
-      requestAnimationFrame(function () { pop.classList.add('is-open'); });
+      requestAnimationFrame(function () {
+        pop.classList.add('is-open');
+        // on phones the card opens below the face, often past the fold
+        if (isSheet()) pop.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      });
     };
 
     points.forEach(function (btn) {
@@ -449,6 +462,7 @@
     var cmpDotsWrap = cmp.querySelector('.cmp__dots');
     var cmpCount = cmp.querySelector('.cmp__count');
     var cmpCur = 0;
+    var cmpReady = false;
     var cmpGo = function (n) {
       cmpCur = (n + cmpPanels.length) % cmpPanels.length;
       cmpTabs.forEach(function (t, i) {
@@ -460,6 +474,12 @@
       cmpPanels.forEach(function (p, i) { p.classList.toggle('is-active', i === cmpCur); });
       cmpDots.forEach(function (d, i) { d.classList.toggle('is-active', i === cmpCur); });
       if (cmpCount) cmpCount.textContent = (cmpCur + 1) + ' / ' + cmpPanels.length;
+      // keep the active tab visible in the scrolling tab row (screen coords, so RTL works too)
+      if (cmpReady) {
+        var bar = cmpTabs[cmpCur].parentElement;
+        var tr = cmpTabs[cmpCur].getBoundingClientRect(), br = bar.getBoundingClientRect();
+        bar.scrollBy({ left: (tr.left + tr.width / 2) - (br.left + br.width / 2), behavior: 'smooth' });
+      }
     };
     var cmpDots = cmpPanels.map(function (_, i) {
       var d = document.createElement('button');
@@ -482,6 +502,7 @@
       e.preventDefault();
     });
     cmpGo(0);
+    cmpReady = true;
   }
 
   /* ---------- scroll reveal ---------- */
