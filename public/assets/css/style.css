@@ -1960,3 +1960,14 @@ html.nav-locked{overflow:hidden}
   .nav__item:hover .nav__link svg{transform:none}
   .nav__item.is-open .nav__link svg{transform:rotate(180deg)}
 }
+
+/* ---- logo matches the inner pages: name + the other language beneath ---- */
+.logo__stack{display:flex;flex-direction:column;line-height:1.15}
+.logo__sub{
+  font-style:normal;font-size:9.5px;font-weight:700;letter-spacing:.22em;
+  color:var(--brown);margin-top:2px;
+}
+.logo__sub[lang="ar"]{letter-spacing:0;font-size:10.5px}
+@media (max-width:992px){
+  .header:not(.is-stuck) .logo__sub{color:#C9A46A}
+}
