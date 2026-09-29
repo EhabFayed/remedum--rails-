@@ -645,6 +645,9 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات 
               <button type="button" class="cchip">ReMedium® Mid</button>
               <button type="button" class="cchip">ReMedium® Sub-Q</button>
               <button type="button" class="cchip">${T('فيلر جراحات العيون HA', 'HA Ophthalmic')}</button>
+              <button type="button" class="cchip">Hairont</button>
+              <button type="button" class="cchip">GynWell</button>
+              <button type="button" class="cchip">OVDs</button>
               <button type="button" class="cchip">${T('مستحضرات العناية الكورية', 'Korean skincare lines')}</button>
             </div>
           </div>
