@@ -1,61 +1,4 @@
-<!DOCTYPE html>
-<html lang="<%= I18n.locale %>" dir="<%= rtl? ? "rtl" : "ltr" %>">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= content_for(:title) %> — <%= t("site.meta.title_suffix") %></title>
-  <meta name="description" content="<%= content_for(:description) %>">
-  <link rel="alternate" hreflang="<%= I18n.locale %>" href="<%= self_canonical_path %>">
-  <link rel="alternate" hreflang="<%= rtl? ? "en" : "ar" %>" href="<%= alt_locale_path %>">
-  <link rel="alternate" hreflang="x-default" href="<%= rtl? ? alt_locale_path : self_canonical_path %>">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon.ico" sizes="32x32">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <% if rtl? %>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Archivo:wght@600;700;800&display=swap">
-  <% else %>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
-  <% end %>
-  <link rel="stylesheet" href="<%= static_asset("/assets/css/site.css") %>">
-  <link rel="stylesheet" href="<%= static_asset("/assets/css/site-footer.css") %>">
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<header class="site-header">
-  <div class="site-header__inner">
-    <a class="logo" href="<%= locale_path("") %>">
-      <span class="logo__mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19C5 9 11 4 20 4c0 9-5 15-15 15z"></path><path d="M5 19c3-6 6-9 10-11"></path></svg></span>
-      <span class="logo__text"><b><%= t("site.brand") %></b><i class="lat"><%= t("site.brand_sub") %></i></span>
-    </a>
-    <nav class="nav" aria-label="<%= t("site.actions.main_nav") %>">
-      <ul class="nav__list">
-        <% SiteHelper::NAV.each do |item| %>
-        <li class="nav__item">
-          <a class="nav__link<%= " is-active" if content_for(:nav_active).to_s == item[:key] %>" href="<%= locale_path(item[:path]) %>"><%= t("site.nav.#{item[:key]}") %><% if item[:items] %><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg><% end %></a>
-          <% if item[:items] %>
-          <div class="dropdown">
-            <% item[:items].each do |(label_key, sub_path)| %>
-            <a href="<%= locale_path(sub_path) %>"><%= t("site.nav.#{label_key}") %></a>
-            <% end %>
-          </div>
-          <% end %>
-        </li>
-        <% end %>
-      </ul>
-    </nav>
-    <div class="header__actions">
-      <a class="btn btn--dark" href="<%= locale_path("medical/quote") %>"><%= t("site.actions.quote") %><span class="btn__circle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></span></a>
-      <a class="wa-btn" href="<%= whatsapp_url %>" target="_blank" rel="noopener" aria-label="<%= t("site.actions.whatsapp") %>"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2zm4.8 13.9c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.6-.1 1.2z"></path></svg><span class="wa-btn__txt"><%= t("site.actions.whatsapp") %></span></a>
-      <a class="lang-pill" href="<%= alt_locale_path %>" lang="<%= rtl? ? "en" : "ar" %>" dir="<%= rtl? ? "ltr" : "rtl" %>"><%= t("site.actions.lang_switch") %></a>
-      <button class="burger" aria-label="<%= t("site.actions.menu") %>"><span></span><span></span><span></span></button>
-    </div>
-  </div>
-</header>
-<main>
-<%= yield %>
-</main>
+<%# Shared site footer: rendered by layouts/site and by the two hand-maintained home pages. Styles live in /assets/css/site-footer.css. %>
 <footer class="site-footer"><div class="container">
   <div class="site-footer__top">
     <div class="site-footer__about">
@@ -98,7 +41,7 @@
     </div>
   </div>
   <div class="site-footer__bottom">
-    <p>© <span data-year>2026</span> <%= t("site.footer.copyright") %> <span class="lat" dir="ltr"><%= site_setting("cr_number", "1010909714") %></span> · <%= t("site.footer.vat") %> <span class="lat" dir="ltr"><%= site_setting("vat_number", "311755763600003") %></span></p>
+    <p>© <span data-year><%= Time.current.year %></span> <%= t("site.footer.copyright") %> <span class="lat" dir="ltr"><%= site_setting("cr_number", "1010909714") %></span> · <%= t("site.footer.vat") %> <span class="lat" dir="ltr"><%= site_setting("vat_number", "311755763600003") %></span></p>
     <ul>
       <li><a href="<%= locale_path("legal/privacy") %>"><%= t("site.footer.legal_privacy") %></a></li>
       <li><a href="<%= locale_path("legal/terms") %>"><%= t("site.footer.legal_terms") %></a></li>
@@ -106,6 +49,3 @@
     </ul>
   </div>
 </div></footer>
-<script src="<%= static_asset("/assets/js/site.js") %>"></script>
-</body>
-</html>

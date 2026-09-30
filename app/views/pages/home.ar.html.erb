@@ -22,6 +22,7 @@
     />
     <link rel="stylesheet" href="<%= static_asset("/assets/css/style.css") %>" />
     <link rel="stylesheet" href="<%= static_asset("/assets/css/rtl.css") %>" />
+    <link rel="stylesheet" href="<%= static_asset("/assets/css/site-footer.css") %>" />
     <link rel="alternate" hreflang="ar" href="/ar/" />
     <link rel="alternate" hreflang="en" href="/" />
     <link rel="alternate" hreflang="x-default" href="/" />
@@ -1402,88 +1403,7 @@
     </section>
 
     <!-- ================= 11. DUAL CALL TO ACTION + FOOTER ================= -->
-    <footer class="footer" id="contact">
-      <div class="container">
-        <div class="footer__top">
-          <div class="footer__cta">
-            <h2>خطوتك التالية <br />مع جذور الجمال</h2>
-            <div class="footer__ctas">
-              <a href="/ar/medical/quote/" class="cta-box">
-                <span class="cta-box__tag">للمنشآت الصحية</span>
-                <strong>طلب عرض سعر</strong>
-                <p>
-                  فتح حساب المنشأة، أسعار التوريد المعتمدة، وجداول التسليم للعيادات والمراكز المرخّصة.
-                </p>
-                <i
-                  ><svg class="ico ico--sm"><use href="#i-arrow-ur" /></svg
-                ></i>
-              </a>
-              <a href="https://wa.me/966562017170" class="cta-box cta-box--alt">
-                <span class="cta-box__tag">دليل المراجعات</span>
-                <strong>اسألي طبيبِك عن المنتج</strong>
-                <p>
-                  دليلِك لمعرفة الأسئلة الأساسية التي تضمن لكِ الحصول على منتج
-                  أصلي ومعتمد نظاميًا.
-                </p>
-                <i
-                  ><svg class="ico ico--sm"><use href="#i-arrow-ur" /></svg
-                ></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="footer__col">
-            <h5>الشركة</h5>
-            <ul>
-              <li><a href="/ar/company/about/">عن جذور الجمال</a></li>
-              <li><a href="/ar/brands/">المنتجات والعلامات التجارية</a></li>
-              <li><a href="#facemap">خريطة الوجه التفاعلية</a></li>
-              <li><a href="/ar/quality/compliance/">الجودة والالتزام النظامي</a></li>
-              <li><a href="/ar/knowledge/">مركز المعرفة والرؤى</a></li>
-            </ul>
-          </div>
-
-          <div class="footer__col footer__col--contact">
-            <h5>تواصل معنا</h5>
-            <div class="footer__block">
-              <div class="footer__row"><span class="footer__key">الهاتف</span><a class="footer__val" href="tel:+966562017170" dir="ltr">+966 56 201 7170</a></div>
-              <div class="footer__row"><span class="footer__key">البريد</span><a class="footer__val" href="mailto:sales@beautyrooots.com" dir="ltr">sales@beautyrooots.com</a></div>
-            </div>
-            <div class="footer__block">
-              <div class="footer__row"><span class="footer__key">سجل تجاري</span><span class="footer__val lat" dir="ltr">1010909714</span></div>
-              <div class="footer__row"><span class="footer__key">رقم ضريبي</span><span class="footer__val lat" dir="ltr">311755763600003</span></div>
-              <div class="footer__row"><span class="footer__key">العنوان</span><span class="footer__val">شارع حضرموت، حي الخليج، الرياض 13223، المملكة العربية السعودية</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer__socials">
-          <a href="https://www.facebook.com/share/14oxwQmX71k/" target="_blank" rel="noopener noreferrer" aria-label="فيسبوك"
-            ><svg class="ico ico--xs"><use href="#i-fb" /></svg
-          ></a>
-          <a href="https://www.instagram.com/remedium_ksa" target="_blank" rel="noopener noreferrer" aria-label="إنستغرام"
-            ><svg class="ico ico--xs"><use href="#i-ig" /></svg
-          ></a>
-          <a href="https://www.youtube.com/channel/UCXYwt9hbx2gO2nCTzokDmjw" target="_blank" rel="noopener noreferrer" aria-label="يوتيوب"
-            ><svg class="ico ico--xs"><use href="#i-yt" /></svg
-          ></a>
-          <a href="https://www.tiktok.com/@remedium_ksa" target="_blank" rel="noopener noreferrer" aria-label="تيك توك"
-            ><svg class="ico ico--xs"><use href="#i-tt" /></svg
-          ></a>
-        </div>
-
-        <div class="footer__watermark" aria-hidden="true">جذور الجمال</div>
-
-        <div class="footer__bottom">
-          <p>جميع الحقوق محفوظة © <%= Time.current.year %> لشركة جذور الجمال للتجارة</p>
-          <ul>
-            <li><a href="/ar/legal/privacy/">سياسة الخصوصية</a></li>
-            <li><a href="/ar/legal/terms/">الشروط والأحكام</a></li>
-            <li><a href="/ar/legal/medical-disclaimer/">إخلاء المسؤولية الطبية</a></li>
-          </ul>
-        </div>
-      </div>
-    </footer>
+    <%= render "shared/site_footer" %>
 
     <script src="<%= static_asset("/assets/js/main.js") %>"></script>
   </body>

@@ -190,7 +190,6 @@ button{background:none;border:0;cursor:pointer}
 .logo__text{display:flex;flex-direction:column;line-height:1.2}
 .logo__text b{font-family:var(--ff-d);font-size:16.5px;font-weight:800}
 .logo__text i{font-style:normal;font-family:var(--ff-lat);font-size:8px;letter-spacing:.22em;color:var(--brown);font-weight:700}
-.site-footer .logo__text i{color:var(--brown-300)}
 
 .nav__list{
   display:flex;align-items:center;gap:2px;
@@ -567,51 +566,7 @@ button{background:none;border:0;cursor:pointer}
 .quote-card .who b{font-family:var(--ff-d);font-size:12px;font-weight:800}
 .stars{display:flex;align-items:center;gap:4px;color:#D9A514}
 
-/* ---------- 14. FOOTER ---------- */
-.site-footer{
-  margin-top:72px;
-  background:radial-gradient(110% 130% at 90% 0%, #103F2E 0%, var(--dark) 55%, #061B13 100%);
-  color:#fff;
-}
-.site-footer__top{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px;
-  padding:52px 0 38px;
-}
-.site-footer .logo__text b{color:#fff}
-.site-footer__about p{font-size:13px;line-height:1.9;color:rgba(255,255,255,.6);margin:16px 0}
-.site-footer__about ul{display:flex;flex-direction:column;gap:9px}
-.site-footer__about li{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.8;color:rgba(255,255,255,.62)}
-.site-footer__about li svg{color:var(--green);flex:none;margin-top:4px}
-.site-footer h5{font-family:var(--ff-d);font-size:15.5px;font-weight:700;margin-bottom:16px}
-.site-footer__links ul{display:flex;flex-direction:column;gap:10px}
-.site-footer__links a{font-size:13px;color:rgba(255,255,255,.62);transition:color .3s}
-.site-footer__links a:hover{color:var(--green)}
-.cta-box{
-  position:relative;display:flex;flex-direction:column;gap:4px;
-  padding:18px 20px;border-radius:20px;
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);
-  transition:.4s var(--ease);
-}
-.cta-box:hover{background:rgba(255,255,255,.11);transform:translateY(-3px)}
-.cta-box .tag{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--brown-300)}
-.cta-box strong{font-family:var(--ff-d);font-size:16px;font-weight:700}
-.cta-box p{font-size:12px;line-height:1.7;color:rgba(255,255,255,.6)}
-.cta-box i{
-  position:absolute;top:16px;inset-inline-end:16px;
-  width:30px;height:30px;border-radius:50%;
-  display:grid;place-items:center;background:var(--green);color:#fff;
-  transition:.4s var(--ease);
-}
-.cta-box:hover i{transform:rotate(-45deg)}
-.cta-box--alt i{background:rgba(255,255,255,.14)}
-.site-footer__bottom{
-  display:flex;align-items:center;justify-content:space-between;gap:20px;
-  padding:18px 0 22px;border-top:1px solid rgba(255,255,255,.14);
-}
-.site-footer__bottom p{font-size:12px;color:rgba(255,255,255,.55)}
-.site-footer__bottom ul{display:flex;gap:20px;flex-wrap:wrap}
-.site-footer__bottom a{font-size:12px;color:rgba(255,255,255,.55);transition:.3s}
-.site-footer__bottom a:hover{color:var(--green)}
+/* ---------- 14. FOOTER: see site-footer.css (shared with the home pages) ---------- */
 
 /* ---------- 15. RESPONSIVE ---------- */
 @media (max-width:1280px){
@@ -642,7 +597,6 @@ button{background:none;border:0;cursor:pointer}
   .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
   .timeline{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 0}
   .timeline::before{display:none}
-  .site-footer__top{grid-template-columns:1fr 1fr}
 }
 @media (max-width:680px){
   .container{padding-inline:18px}
@@ -665,8 +619,6 @@ button{background:none;border:0;cursor:pointer}
   .lic-table .row{grid-template-columns:1fr}
   .lic-table .row--head{display:none}
   .form-grid{grid-template-columns:1fr}
-  .site-footer__top{grid-template-columns:1fr}
-  .site-footer__bottom{flex-direction:column;text-align:center}
   .page-hero__inner{padding:34px 0}
   .gate{padding:30px 22px}
 }
@@ -681,7 +633,6 @@ html[dir="ltr"]{
   --ff-lat:'Archivo','Plus Jakarta Sans',sans-serif;
 }
 html[dir="ltr"] .btn:hover .btn__circle{transform:rotate(45deg)}
-html[dir="ltr"] .cta-box:hover i{transform:rotate(45deg)}
 html[dir="ltr"] .post:hover .post__btn{transform:rotate(45deg)}
 .lang-pill{
   display:inline-flex;align-items:center;gap:6px;
@@ -907,15 +858,6 @@ html[dir="ltr"] .post:hover .post__btn{transform:rotate(45deg)}
   .mini-product:hover,.post:hover,.btn:hover{transform:none}
 }
 
-/* footer social links (inner pages) */
-.site-footer__socials{display:flex;gap:9px;margin-top:16px}
-.site-footer__socials a{
-  width:33px;height:33px;border-radius:50%;
-  display:grid;place-items:center;
-  background:rgba(255,255,255,.08);color:#fff;
-  transition:background .25s,transform .25s;
-}
-.site-footer__socials a:hover{background:var(--green);transform:translateY(-2px)}
 
 /* ---------- certification rows (quality/certifications) ---------- */
 .cert-rows{display:flex;flex-direction:column;gap:12px}
@@ -1135,7 +1077,6 @@ html[dir="rtl"] b.lat[dir="ltr"][style*="display:block"]{text-align:right}
 /* ---- small text ---- */
 .dur__head span{font-size:11px}
 .dur__scale span{font-size:10.5px}
-.cta-box .tag{font-size:11.5px}
 .logo__text i{font-size:9.5px}
 
 /* ---- headings that were removed leave a smaller gap ---- */
@@ -1153,15 +1094,6 @@ html[dir="ltr"] .article-body,html[dir="ltr"] .faq-list{max-width:680px}
   .search-pill button{padding:10px 14px}
 }
 
-/* ---- footer ---- */
-@media (min-width:681px) and (max-width:1080px){
-  .site-footer__top > :last-child{grid-column:1/-1;flex-direction:row!important}
-  .site-footer__top > :last-child .cta-box{flex:1}
-}
-.site-footer__bottom ul{gap:8px 20px;flex-wrap:wrap;flex:none}
-@media (max-width:680px){
-  .site-footer__bottom ul{justify-content:center;flex:initial}
-}
 
 /* drawer polish: a collapsed sub-menu kept an 8px tappable strip, and the
    chevron followed :hover (which sticks on touch) instead of the open state */

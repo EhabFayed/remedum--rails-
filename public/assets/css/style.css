@@ -1402,105 +1402,7 @@ button{background:none;border:0;cursor:pointer}
 .post__title a{transition:color .3s}
 .post__title a:hover{color:var(--green)}
 
-/* ---------- 14. FOOTER ---------- */
-.footer{
-  position:relative;
-  padding:80px 0 0;
-  background:radial-gradient(110% 130% at 10% 0%, #103F2E 0%, #0A2E22 55%, #061B13 100%);
-  color:#fff;
-  overflow:hidden;
-}
-.footer__top{
-  display:grid;grid-template-columns:1.35fr .7fr .95fr;
-  gap:50px;
-  padding-bottom:46px;
-}
-.footer__cta h2{
-  font-family:var(--ff-d);
-  font-size:clamp(24px,2.6vw,36px);
-  font-weight:700;line-height:1.24;letter-spacing:-.02em;
-  text-transform:uppercase;
-  margin-bottom:30px;
-}
-.footer__ctas{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:560px}
-.cta-box{
-  position:relative;
-  display:flex;flex-direction:column;gap:4px;
-  padding:20px 20px 22px;
-  border-radius:var(--r-md);
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.13);
-  transition:.4s var(--ease);
-}
-.cta-box:hover{background:rgba(255,255,255,.11);transform:translateY(-3px)}
-.cta-box__tag{
-  font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--green);
-}
-.cta-box strong{
-  font-family:var(--ff-d);
-  font-size:17px;font-weight:700;letter-spacing:-.01em;color:#fff;
-}
-.cta-box p{font-size:12px;line-height:1.6;color:rgba(255,255,255,.6);margin-top:2px}
-.cta-box i{
-  position:absolute;top:16px;right:16px;
-  width:30px;height:30px;border-radius:50%;
-  display:grid;place-items:center;
-  background:var(--green);color:#fff;
-  transition:.4s var(--ease);
-}
-.cta-box:hover i{transform:rotate(45deg)}
-.cta-box--alt i{background:rgba(255,255,255,.14)}
-
-.footer__col h5{
-  font-family:var(--ff-d);
-  font-size:16px;font-weight:600;margin-bottom:18px;
-}
-.footer__col ul{display:flex;flex-direction:column;gap:11px}
-.footer__col a,.footer__col p{
-  font-size:13.5px;color:rgba(255,255,255,.62);transition:color .3s;
-}
-.footer__col a:hover{color:var(--green)}
-.footer__block{margin-bottom:22px}
-.footer__block span{
-  display:block;font-size:13.5px;font-weight:600;color:#fff;margin-bottom:6px;
-}
-.footer__block a{display:block}
-
-.footer__socials{
-  display:flex;gap:10px;
-  padding:24px 0 0;
-  border-top:1px solid var(--line-dark);
-}
-.footer__socials a{
-  width:34px;height:34px;border-radius:50%;
-  display:grid;place-items:center;
-  background:rgba(255,255,255,.08);color:#fff;
-  transition:.3s;
-}
-.footer__socials a:hover{background:var(--green)}
-
-.footer__watermark{
-  font-family:var(--ff-d);
-  font-size:clamp(38px,8.4vw,124px);
-  font-weight:800;line-height:.9;letter-spacing:-.04em;
-  text-align:right;
-  color:transparent;
-  -webkit-text-stroke:1.5px rgba(255,255,255,.12);
-  user-select:none;
-  margin:-20px 0 -8px;
-  pointer-events:none;
-}
-
-.footer__bottom{
-  display:flex;align-items:center;justify-content:space-between;gap:20px;
-  padding:20px 0 26px;
-  border-top:1px solid var(--line-dark);
-}
-.footer__bottom p{font-size:12.5px;color:rgba(255,255,255,.55)}
-.footer__bottom ul{display:flex;gap:22px}
-.footer__bottom a{font-size:12.5px;color:rgba(255,255,255,.55);transition:.3s}
-.footer__bottom a:hover{color:var(--green)}
+/* ---------- 14. FOOTER: shared partial, see site-footer.css ---------- */
 
 /* ---------- 15. REVEAL ANIMATION ---------- */
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
@@ -1623,11 +1525,8 @@ button{background:none;border:0;cursor:pointer}
   .compare__us::before{content:'Beauty Roots';display:block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);width:100%;margin-bottom:-4px}
   .compare__them::before{content:'Unregulated';display:block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2);width:100%;margin-bottom:-4px}
   .compare__us,.compare__them{flex-wrap:wrap}
-  .footer__ctas{max-width:none}
   .blog__grid{grid-template-columns:1fr 1fr}
   .blog__grid .post:last-child{grid-column:1/-1;max-width:520px;margin-inline:auto}
-  .footer__top{grid-template-columns:1fr 1fr;gap:40px}
-  .footer__cta{grid-column:1/-1}
 }
 
 @media (max-width:768px){
@@ -1645,7 +1544,6 @@ button{background:none;border:0;cursor:pointer}
   .why__grid{grid-template-columns:1fr;max-width:380px;margin-inline:auto}
   .blog__grid{grid-template-columns:1fr;max-width:480px;margin-inline:auto}
   .blog__grid .post:last-child{grid-column:auto}
-  .footer__bottom{flex-direction:column;text-align:center}
   .steps{grid-template-columns:1fr;max-width:340px;margin-inline:auto}
   .step{margin-top:0}
   .steps-bar{display:none}
@@ -1673,9 +1571,7 @@ button{background:none;border:0;cursor:pointer}
   .logo__text{font-size:16px}
   .hero__title{font-size:29px}
   .stats-card__list{grid-template-columns:1fr;gap:12px}
-  .footer__ctas{grid-template-columns:1fr}
   .hero__cta .btn{width:100%;justify-content:space-between}
-  .footer__top{grid-template-columns:1fr}
   .mini-cards{gap:10px}
   .fprod{grid-template-columns:auto minmax(0,1fr);padding:14px 16px;gap:12px}
   .fprod__dur{
@@ -1783,32 +1679,6 @@ button{background:none;border:0;cursor:pointer}
   .why-card:hover .why-card__img img{transform:none}
 }
 
-/* footer contact: label beside its value */
-.footer__row{
-  display:grid;
-  grid-template-columns:76px 1fr;
-  gap:10px;
-  align-items:start;
-  padding:5px 0;
-}
-.footer__key{
-  display:block;
-  font-size:12px;font-weight:700;
-  color:rgba(255,255,255,.55);
-  letter-spacing:.01em;
-  line-height:1.7;
-}
-.footer__val{
-  display:block;
-  font-size:13.5px;line-height:1.7;
-  color:rgba(255,255,255,.9);
-}
-a.footer__val:hover{color:#fff;text-decoration:underline}
-@media (max-width:520px){
-  .footer__row{grid-template-columns:1fr;gap:0;padding:7px 0}
-  .footer__key{font-size:11.5px;line-height:1.5}
-  .footer__val{line-height:1.55}
-}
 
 /* brand name keeps its own casing inside the uppercase hero title */
 .hero__title .word-fx{text-transform:none}
@@ -1906,10 +1776,6 @@ html.nav-locked{overflow:hidden}
   .deco-leaf--tr,.why .deco-leaf--tr{width:64px;height:64px;top:18px}
 }
 
-/* ---- footer watermark stops overlapping the social icons ---- */
-@media (max-width:520px){
-  .footer__watermark{margin:14px 0 0;text-align:center}
-}
 
 /* ---- tablets keep two columns instead of one narrow centred column ---- */
 @media (min-width:601px) and (max-width:768px){

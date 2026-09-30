@@ -17,6 +17,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="<%= static_asset("/assets/css/style.css") %>" />
+    <link rel="stylesheet" href="<%= static_asset("/assets/css/site-footer.css") %>" />
       <link rel="alternate" hreflang="en" href="/" />
     <link rel="alternate" hreflang="ar" href="/ar/" />
     <link rel="alternate" hreflang="x-default" href="/" />
@@ -1361,89 +1362,7 @@
     </section>
 
     <!-- ================= 11. DUAL CALL TO ACTION + FOOTER ================= -->
-    <footer class="footer" id="contact">
-      <div class="container">
-        <div class="footer__top">
-          <div class="footer__cta">
-            <h2>Take Your Next Step <br />With Beauty Roots</h2>
-            <div class="footer__ctas">
-              <a href="/en/medical/quote/" class="cta-box">
-                <span class="cta-box__tag">For Facilities</span>
-                <strong>Request a Quote</strong>
-                <p>
-                  Official onboarding, verified pricing tiers, and delivery
-                  scheduling for licensed clinics.
-                </p>
-                <i
-                  ><svg class="ico ico--sm"><use href="#i-arrow-ur" /></svg
-                ></i>
-              </a>
-              <a href="https://wa.me/966562017170" class="cta-box cta-box--alt">
-                <span class="cta-box__tag">Patient Awareness</span>
-                <strong>Ask Your Doctor</strong>
-                <p>
-                  Learn what questions to ask your practitioner to ensure you
-                  receive genuine, SFDA-approved products.
-                </p>
-                <i
-                  ><svg class="ico ico--sm"><use href="#i-arrow-ur" /></svg
-                ></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="footer__col">
-            <h5>Company</h5>
-            <ul>
-              <li><a href="/en/company/about/">About Beauty Roots</a></li>
-              <li><a href="/en/brands/">Brands &amp; Products</a></li>
-              <li><a href="#facemap">Interactive Face Map</a></li>
-              <li><a href="/en/quality/compliance/">Regulatory Compliance</a></li>
-              <li><a href="/en/knowledge/">Knowledge Center</a></li>
-            </ul>
-          </div>
-
-          <div class="footer__col footer__col--contact">
-            <h5>Contact</h5>
-            <div class="footer__block">
-              <div class="footer__row"><span class="footer__key">Phone</span><a class="footer__val" href="tel:+966562017170" dir="ltr">+966 56 201 7170</a></div>
-              <div class="footer__row"><span class="footer__key">Email</span><a class="footer__val" href="mailto:sales@beautyrooots.com" dir="ltr">sales@beautyrooots.com</a></div>
-            </div>
-            <div class="footer__block">
-              <div class="footer__row"><span class="footer__key">CR</span><span class="footer__val lat" dir="ltr">1010909714</span></div>
-              <div class="footer__row"><span class="footer__key">VAT</span><span class="footer__val lat" dir="ltr">311755763600003</span></div>
-              <div class="footer__row"><span class="footer__key">Address</span><span class="footer__val">Hadhramaut St., Al Khaleej Dist., Riyadh 13223, Saudi Arabia</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer__socials">
-          <a href="https://www.facebook.com/share/14oxwQmX71k/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
-            ><svg class="ico ico--xs"><use href="#i-fb" /></svg
-          ></a>
-          <a href="https://www.instagram.com/remedium_ksa" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
-            ><svg class="ico ico--xs"><use href="#i-ig" /></svg
-          ></a>
-          <a href="https://www.youtube.com/channel/UCXYwt9hbx2gO2nCTzokDmjw" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
-            ><svg class="ico ico--xs"><use href="#i-yt" /></svg
-          ></a>
-          <a href="https://www.tiktok.com/@remedium_ksa" target="_blank" rel="noopener noreferrer" aria-label="TikTok"
-            ><svg class="ico ico--xs"><use href="#i-tt" /></svg
-          ></a>
-        </div>
-
-        <div class="footer__watermark" aria-hidden="true">Beauty Roots</div>
-
-        <div class="footer__bottom">
-          <p>Copyright © <%= Time.current.year %> Beauty Roots. All Rights Reserved</p>
-          <ul>
-            <li><a href="/en/legal/privacy/">Privacy Policy</a></li>
-            <li><a href="/en/legal/terms/">Terms &amp; Conditions</a></li>
-            <li><a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a></li>
-          </ul>
-        </div>
-      </div>
-    </footer>
+    <%= render "shared/site_footer" %>
 
     <script src="<%= static_asset("/assets/js/main.js") %>"></script>
   </body>
