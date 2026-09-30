@@ -287,8 +287,8 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
         ${noteStrip(T('الصياغة التقنية النهائية تُعتمد بما يطابق الملف التقني المسجَّل (IFU) لدى الهيئة العامة للغذاء والدواء.', 'Final technical wording to be approved against the registered technical file (IFU) with the SFDA.'))}
         <div class="card card--mint">
           <h4 class="card__title">${T('للممارسين المرخّصين', 'For licensed practitioners')}</h4>
-          <p>${T('الملف التقني الكامل وبروتوكولات الاستخدام والمواد السريرية — في صفحة الأدلة المخبرية وبروتوكولات الحقن ضمن قسم المعلومات الطبية.', 'The full technical file, usage protocols and clinical material are available on the Laboratory Evidence & Protocols page in the Medical Information section.')}</p>
-          <div style="margin-top:14px">${btn(T('الأدلة المخبرية وبروتوكولات الحقن', 'Laboratory Evidence & Protocols'), u('medical/evidence'), 'dark', I.lock(13))}</div>
+          <p>${T('الملف التقني الكامل وبروتوكولات الاستخدام والمواد السريرية — في صفحة الأدلة المختبرية وبروتوكولات الحقن ضمن قسم المعلومات الطبية.', 'The full technical file, usage protocols and clinical material are available on the Laboratory Evidence & Protocols page in the Medical Information section.')}</p>
+          <div style="margin-top:14px">${btn(T('الأدلة المختبرية وبروتوكولات الحقن', 'Laboratory Evidence & Protocols'), u('medical/evidence'), 'dark', I.lock(13))}</div>
         </div>
       </div>
     </div>
