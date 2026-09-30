@@ -1,0 +1,83 @@
+/* Shared site footer. Loaded by layouts/site (after site.css) and by the two
+   home pages (after style.css + rtl.css). Everything is scoped under
+   .site-footer so it never collides with the home page's own .logo/.cta-box
+   rules, and font variables carry fallbacks for pages that do not define them. */
+.site-footer{
+  margin-top:72px;
+  background:radial-gradient(110% 130% at 90% 0%, #103F2E 0%, var(--dark,#0A2E22) 55%, #061B13 100%);
+  color:#fff;
+}
+.site-footer .container{width:100%;max-width:var(--container,1290px);margin-inline:auto;padding-inline:24px}
+.site-footer .lat{font-family:var(--ff-lat,'Archivo','Cairo',sans-serif)}
+.site-footer__top{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px;
+  padding:52px 0 38px;
+}
+.site-footer .logo{display:flex;align-items:center;gap:10px;color:#fff;flex:none;text-decoration:none}
+.site-footer .logo__mark{
+  width:30px;height:30px;border-radius:9px;
+  display:grid;place-items:center;
+  background:var(--green,#1CA97C);color:#fff;
+}
+.site-footer .logo__mark svg{width:16px;height:16px}
+.site-footer .logo__text{display:flex;flex-direction:column;line-height:1.2;font-size:inherit;letter-spacing:0;white-space:normal;color:#fff}
+.site-footer .logo__text b{font-family:var(--ff-d,'Cairo','IBM Plex Sans Arabic',sans-serif);font-size:16.5px;font-weight:800;color:#fff}
+.site-footer .logo__text i{font-style:normal;font-family:var(--ff-lat,'Archivo','Cairo',sans-serif);font-size:9.5px;letter-spacing:.22em;color:var(--brown-300,#C9A46A);font-weight:700}
+.site-footer__about p{font-size:13px;line-height:1.9;color:rgba(255,255,255,.6);margin:16px 0}
+.site-footer__about ul{display:flex;flex-direction:column;gap:9px;list-style:none;margin:0;padding:0}
+.site-footer__about li{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.8;color:rgba(255,255,255,.62)}
+.site-footer__about li svg{color:var(--green,#1CA97C);flex:none;margin-top:4px}
+.site-footer__socials{display:flex;gap:9px;margin-top:16px}
+.site-footer__socials a{
+  width:33px;height:33px;border-radius:50%;
+  display:grid;place-items:center;
+  background:rgba(255,255,255,.08);color:#fff;
+  transition:background .25s,transform .25s;
+}
+.site-footer__socials a:hover{background:var(--green,#1CA97C);transform:translateY(-2px)}
+.site-footer h5{font-family:var(--ff-d,'Cairo','IBM Plex Sans Arabic',sans-serif);font-size:15.5px;font-weight:700;margin:0 0 16px}
+.site-footer__links ul{display:flex;flex-direction:column;gap:10px;list-style:none;margin:0;padding:0}
+.site-footer__links a{font-size:13px;color:rgba(255,255,255,.62);transition:color .3s;text-decoration:none}
+.site-footer__links a:hover{color:var(--green,#1CA97C)}
+.site-footer .cta-box{
+  position:relative;display:flex;flex-direction:column;gap:4px;
+  padding:18px 20px;border-radius:20px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);
+  color:#fff;text-decoration:none;
+  transition:.4s var(--ease,cubic-bezier(.25,.8,.35,1));
+}
+.site-footer .cta-box:hover{background:rgba(255,255,255,.11);transform:translateY(-3px)}
+.site-footer .cta-box .tag{font-size:11.5px;font-weight:700;letter-spacing:.06em;color:var(--brown-300,#C9A46A)}
+.site-footer .cta-box strong{font-family:var(--ff-d,'Cairo','IBM Plex Sans Arabic',sans-serif);font-size:16px;font-weight:700}
+.site-footer .cta-box p{font-size:12px;line-height:1.7;color:rgba(255,255,255,.6)}
+.site-footer .cta-box i{
+  position:absolute;top:16px;left:auto;right:auto;inset-inline-end:16px;
+  width:30px;height:30px;border-radius:50%;
+  display:grid;place-items:center;background:var(--green,#1CA97C);color:#fff;
+  transition:.4s var(--ease,cubic-bezier(.25,.8,.35,1));
+}
+.site-footer .cta-box:hover i{transform:rotate(-45deg)}
+html:not([dir="rtl"]) .site-footer .cta-box:hover i{transform:rotate(45deg)}
+.site-footer .cta-box--alt i{background:rgba(255,255,255,.14)}
+.site-footer__bottom{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:18px 0 22px;border-top:1px solid rgba(255,255,255,.14);
+}
+.site-footer__bottom p{font-size:12px;color:rgba(255,255,255,.55);margin:0}
+.site-footer__bottom ul{display:flex;gap:8px 20px;flex-wrap:wrap;flex:none;list-style:none;margin:0;padding:0}
+.site-footer__bottom a{font-size:12px;color:rgba(255,255,255,.55);transition:.3s;text-decoration:none}
+.site-footer__bottom a:hover{color:var(--green,#1CA97C)}
+
+@media (max-width:1080px){
+  .site-footer__top{grid-template-columns:1fr 1fr}
+}
+@media (min-width:681px) and (max-width:1080px){
+  .site-footer__top > :last-child{grid-column:1/-1;flex-direction:row!important}
+  .site-footer__top > :last-child .cta-box{flex:1}
+}
+@media (max-width:680px){
+  .site-footer .container{padding-inline:18px}
+  .site-footer__top{grid-template-columns:1fr}
+  .site-footer__bottom{flex-direction:column;text-align:center}
+  .site-footer__bottom ul{justify-content:center;flex:initial}
+}

@@ -39,7 +39,7 @@ Setting.write_all(
 
 # --------------------------------------------------------- certifications
 [
-  [ "SFDA", "تسجيل الغذاء والدواء السعودية", "Saudi Food & Drug Authority registration",
+  [ "SFDA", "مسجّل لدى الهيئة العامة للغذاء والدواء", "Saudi Food & Drug Authority registration",
     "Saudi Food & Drug Authority",
     "تسجيل المنتج لدى الهيئة العامة للغذاء والدواء ",
     "Registration with the Saudi FDA ." ],
@@ -155,7 +155,7 @@ ARTICLES = [
   {
     slug_en: "verify-sfda-approved-dermal-filler",
     category: "regulatory",
-    cover: "/assets/img/knowledge-regulations.jpg", cover_w: nil, cover_h: nil,
+    cover: "/assets/img/knowledge-regulations.jpg", cover_w: 1600, cover_h: 1364,
     title_ar: "كيف تتحقق المنشأة الصحية من تسجيل الفيلر واعتماده رسميًا لدى الهيئة؟",
     title_en: "How to Verify That a Dermal Filler Is Fully SFDA-Approved",
     byline_ar: "بقلم فريق الشؤون التنظيمية", byline_en: "By the Regulatory Affairs Team",
@@ -189,7 +189,7 @@ ARTICLES = [
   {
     slug_en: "storage-conditions-filler-safety",
     category: "storage-quality",
-    cover: "/assets/img/knowledge-storage.jpg", cover_w: nil, cover_h: nil,
+    cover: "/assets/img/knowledge-storage.jpg", cover_w: 1600, cover_h: 1364,
     title_ar: "ظروف الحفظ والتخزين: كيف تؤثر درجات الحرارة على أمان الفيلر ونتيجة الحقن؟",
     title_en: "Storage Conditions: How Temperature Affects Filler Safety and Outcome",
     byline_ar: "بقلم فريق الإمداد واللوجستيات", byline_en: "By the Supply Chain Team",

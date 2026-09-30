@@ -43,13 +43,8 @@ html[dir="rtl"] .why-card h4,
 html[dir="rtl"] .compare__row--head > span,
 html[dir="rtl"] .certs__head h3,
 html[dir="rtl"] .certs__list b,
-html[dir="rtl"] .post__title,
-html[dir="rtl"] .footer__cta h2,
-html[dir="rtl"] .cta-box__tag,
-html[dir="rtl"] .cta-box strong,
-html[dir="rtl"] .footer__watermark{letter-spacing:0}
-html[dir="rtl"] .hero__title,
-html[dir="rtl"] .footer__cta h2{text-transform:none}
+html[dir="rtl"] .post__title{letter-spacing:0}
+html[dir="rtl"] .hero__title{text-transform:none}
 
 /* ---------- 4. BUTTONS ---------- */
 html[dir="rtl"] .btn{padding:7px 26px 7px 7px}
@@ -137,13 +132,6 @@ html[dir="rtl"] .post__date{left:auto;right:16px}
 html[dir="rtl"] .post__btn{right:auto;left:16px}
 html[dir="rtl"] .post:hover .post__btn{transform:rotate(-45deg)}
 
-/* ---------- 14. FOOTER ---------- */
-html[dir="rtl"] .footer{
-  background:radial-gradient(110% 130% at 90% 0%, #103F2E 0%, #0A2E22 55%, #061B13 100%);
-}
-html[dir="rtl"] .footer__watermark{text-align:left}
-html[dir="rtl"] .cta-box i{right:auto;left:16px}
-html[dir="rtl"] .cta-box:hover i{transform:rotate(-45deg)}
 
 /* ---------- 15. RESPONSIVE ---------- */
 @media (max-width:1200px){
@@ -184,8 +172,6 @@ html[dir="rtl"] .cmp__media{order:2}
 @media (max-width:1280px){
   html[dir="rtl"] .nav.is-open{transform:none}
 }
-/* numbers and e-mail carry dir=ltr; keep them under their Arabic labels */
-html[dir="rtl"] .footer__val[dir="ltr"]{text-align:right}
 
 /* the rotating badge's ring text inherited dir=rtl, and on an SVG textPath
    Chrome then collapses it to nothing — the ring was blank on the Arabic
