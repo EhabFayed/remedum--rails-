@@ -493,11 +493,11 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات 
      LABORATORY EVIDENCE & INJECTION PROTOCOLS — medical/evidence
   ============================================================ */
   add('medical/evidence',
-    T('الأدلة المخبرية وبروتوكولات الحقن', 'Laboratory Evidence & Injection Protocols'),
+    T('الأدلة المختبرية وبروتوكولات الحقن', 'Laboratory Evidence & Injection Protocols'),
     T('بيانات انسيابية وفيزيائية موثقة، دراسات مقارنة منشورة، وتوجيهات الحقن المعتمدة من المصنع للكوادر الطبية.', 'Validated rheological data, published comparative studies, and standardized manufacturer injection techniques for medical practitioners.'),
     'medical', `
-${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات الطبية', 'Medical Information'), u('medical/evidence')], [T('الأدلة المخبرية وبروتوكولات الحقن', 'Laboratory Evidence & Injection Protocols')]],
-    T('الأدلة المخبرية وبروتوكولات الحقن السريرية', 'Laboratory Evidence & Injection Protocols'),
+${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات الطبية', 'Medical Information'), u('medical/evidence')], [T('الأدلة المختبرية وبروتوكولات الحقن', 'Laboratory Evidence & Injection Protocols')]],
+    T('الأدلة المختبرية وبروتوكولات الحقن السريرية', 'Laboratory Evidence & Injection Protocols'),
     T('بيانات انسيابية وفيزيائية موثقة، دراسات مقارنة منشورة، وتوجيهات الحقن المعتمدة من المصنع للكوادر الطبية.',
       'Validated rheological data, published comparative studies, and standardized manufacturer injection techniques for medical practitioners.'),
     `<div class="page-hero__chips">${chip(T('العلوم والتقنيات السريرية', 'Clinical science & technique'))}${chip(T('للممارسين الصحيين', 'For practitioners'), 'green')}</div>`)}

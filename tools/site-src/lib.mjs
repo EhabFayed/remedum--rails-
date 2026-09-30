@@ -265,7 +265,7 @@ export const NAV = (ctx) => [
   {
     label: ctx.T('المعلومات الطبية', 'Medical Information'), key: 'medical', items: [
       [ctx.T('نموذج الخدمة والشروط التجارية', 'Service Model & Commercial Terms'), ctx.u('medical/service-model')],
-      [ctx.T('الأدلة المخبرية وبروتوكولات الحقن', 'Laboratory Evidence & Protocols'), ctx.u('medical/evidence')],
+      [ctx.T('الأدلة المختبرية وبروتوكولات الحقن', 'Laboratory Evidence & Protocols'), ctx.u('medical/evidence')],
       [ctx.T('معرض النتائج السريرية', 'Clinical Results Gallery'), ctx.u('medical/results')],
       [ctx.T('طلب عرض سعر', 'Request a Quote'), ctx.u('medical/quote')],
     ],

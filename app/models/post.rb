@@ -66,10 +66,10 @@ class Post < ApplicationRecord
     n = read_minutes.to_i
     return "#{n} min read" if locale.to_s == "en"
     case n
-    when 0, 1 then "دقيقة واحدة قراءة"
-    when 2 then "دقيقتان قراءة"
-    when 3..10 then "#{n} دقائق قراءة"
-    else "#{n} دقيقة قراءة"
+    when 0, 1 then "دقيقة واحدة للقراءة"
+    when 2 then "دقيقتان للقراءة"
+    when 3..10 then "#{n} دقائق للقراءة"
+    else "#{n} دقيقة للقراءة"
     end
   end
 
