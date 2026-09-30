@@ -126,14 +126,6 @@ button{background:none;border:0;cursor:pointer}
 .btn--pill-white{background:#fff;color:var(--ink);box-shadow:0 8px 24px -12px rgba(0,0,0,.25)}
 .btn--pill-white .btn__circle{background:var(--green);color:#fff}
 
-.icon-btn{
-  width:42px;height:42px;border-radius:50%;
-  display:grid;place-items:center;
-  transition:background .3s,color .3s,transform .3s;
-}
-.icon-btn:hover{transform:translateY(-2px)}
-.icon-btn--dark{background:var(--ink);color:#fff}
-.icon-btn--light{background:transparent;color:#fff}
 
 .nav-arrow{
   width:38px;height:38px;border-radius:50%;
@@ -1463,8 +1455,6 @@ button{background:none;border:0;cursor:pointer}
   }
   .nav__item:hover .dropdown,.nav__item.is-open .dropdown{max-height:260px}
   .burger{display:flex}
-  .icon-btn--dark{display:none}
-  .icon-btn--light{color:var(--ink)}
   .btn--pill-white{display:none}
 
   /* below 992 the hero becomes a single dark canvas — no white/green split */
@@ -1477,7 +1467,6 @@ button{background:none;border:0;cursor:pointer}
   .mini-card{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.12)}
   .mini-card__pct,.mini-card__label{color:#fff}
   .avatars img,.avatars__more{border-color:#123F2E}
-  .icon-btn--light{color:#fff}
   .logo__text{color:#fff}
   .mini-card__img{aspect-ratio:auto;height:clamp(120px,20vw,168px)}
   .mini-cards{max-width:520px}
@@ -1567,7 +1556,6 @@ button{background:none;border:0;cursor:pointer}
      so it is the first thing to go. */
   .header__inner{gap:10px;padding-inline:14px}
   .header__actions{gap:8px}
-  .icon-btn--light{display:none}
   .logo__text{font-size:16px}
   .hero__title{font-size:29px}
   .stats-card__list{grid-template-columns:1fr;gap:12px}
@@ -1698,7 +1686,6 @@ button{background:none;border:0;cursor:pointer}
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
 }
 /* the search icon stayed white on the white stuck header */
-.header.is-stuck .icon-btn--light{color:var(--ink)}
 .nav__link{white-space:nowrap}
 .burger{position:relative;z-index:80}
 
@@ -1721,7 +1708,6 @@ button{background:none;border:0;cursor:pointer}
     transition:max-height .4s var(--ease);
   }
   .burger{display:flex}
-  .icon-btn--dark{display:none}
 }
 @media (max-width:1280px){
   .nav{visibility:hidden;transition:transform .45s var(--ease),visibility 0s .45s}
@@ -1739,7 +1725,6 @@ button{background:none;border:0;cursor:pointer}
   .nav__link{padding:8px 8px;font-size:13px;gap:3px}
   .header__actions{gap:8px}
   /* the Sections and Search buttons have no behaviour behind them yet */
-  .header__actions .icon-btn{display:none}
 }
 
 /* ---- drawer backdrop + scroll lock (toggled by main.js) ---- */
@@ -1809,7 +1794,6 @@ html.nav-locked{overflow:hidden}
 /* follow-up from verification */
 @media (max-width:520px){
   /* the search button (no behaviour yet) left the English header 38px too wide at 320 */
-  .header__actions .icon-btn--light{display:none}
   .deco-leaf--bl{bottom:170px}
 }
 /* beat `.compare__row > span{display:flex}` so the icon stays beside its sentence */
