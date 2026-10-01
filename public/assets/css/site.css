@@ -1385,3 +1385,19 @@ html[dir="rtl"] .fpop-dur__scale,html[dir="rtl"] .fpop-dur__track{direction:ltr}
   #skincare-external .grid[style]{grid-template-columns:minmax(0,1fr)!important}
 }
 .dur__scale span{font-size:11px}
+
+/* ---- arrows stay still on hover (Oct 2026) ----------------------------
+   Circle arrows used to rotate 45° on hover (both directions), and the
+   face-map card link slid its arrow sideways. Colour and lift effects stay. */
+html .btn:hover .btn__circle,
+html[dir] .btn:hover .btn__circle,
+html[dir] .btn--sm:hover .btn__circle,
+html .why-card:hover .why-card__btn,
+html[dir] .why-card:hover .why-card__btn,
+html .post:hover .post__btn,
+html[dir] .post:hover .post__btn{transform:none}
+html .fpop__link:hover,html[dir] .fpop__link:hover{gap:7px}
+html .cta-box:hover i,
+html[dir] .cta-box:hover i,
+html[dir="ltr"] .cta-box:hover i,
+html[dir="rtl"] .cta-box:hover i{transform:none}

@@ -81,3 +81,8 @@ html:not([dir="rtl"]) .site-footer .cta-box:hover i{transform:rotate(45deg)}
   .site-footer__bottom{flex-direction:column;text-align:center}
   .site-footer__bottom ul{justify-content:center;flex:initial}
 }
+
+/* arrows stay still on hover (Oct 2026): the box keeps its lift and tint */
+html .site-footer .cta-box:hover i,
+html[dir] .site-footer .cta-box:hover i,
+html:not([dir="rtl"]) .site-footer .cta-box:hover i{transform:none}
