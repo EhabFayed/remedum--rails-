@@ -3,60 +3,95 @@
 <% content_for :nav_active, 'brands' %>
 
 
-<section class="page-hero"><div class="container"><div class="page-hero__inner">
-
+<section class="page-hero"><div class="container"><div class="page-hero__inner hero-split pdp-hero">
+  <div>
+    
 <div class="crumbs">
-  <a href="<%= locale_path("") %>"><%= t('content.brands_76') %></a><span class="sep"><%= t('content.brands_80') %></span><a href="<%= locale_path("brands") %>"><%= t('content.brands_77') %></a><span class="sep"><%= t('content.brands_80') %></span><span class="here"><span class="lat" dir="ltr">Hairont</span></span>
+  <a href="<%= locale_path("") %>"><%= t('content.hfil_1') %></a><span class="sep"><%= t('content.hfil_22') %></span><a href="<%= locale_path("brands") %>"><%= t('content.hfil_2') %></a><span class="sep"><%= t('content.hfil_22') %></span><span class="here"><span class="lat" dir="ltr">Hairont</span></span>
 </div>
-  <h1 class="page-title"><%= t('content.brands_244_html') %></h1>
-  <p class="page-hero__lead"><%= t('content.brands_101') %></p>
-  <div class="page-hero__chips"><span class="chip"><%= t('content.brands_245') %></span><span class="chip chip--green"><span class="lat" dir="ltr">Anti-Adhesion Gel</span></span></div>
+    <h1 class="page-title"><span class="lat" dir="ltr">Hairont</span> | <%= t('content.hfil_56') %></h1>
+    <p class="page-hero__lead"><%= t('content.hfil_55') %></p>
+    <div class="page-hero__chips"><span class="chip"><%= t('content.hfil_57') %></span><span class="chip chip--green"><span class="lat" dir="ltr">Anti-Adhesion Gel</span></span></div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px">
+      <a class="btn btn--dark" href="<%= locale_path("medical/quote") %>"><%= t('content.hfil_59') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></span></a>
+      <a class="btn btn--ghost" href="<%= locale_path("company/contact") %>"><%= t('content.hfil_23') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></span></a>
+    </div>
+  </div>
+  <div class="arch-media pdp-hero__media">
+    <img src="/assets/img/hairont-hero.webp" alt="<%= t('content.hfil_58') %>" width="1200" height="1143">
+  </div>
 </div></div></section>
 
 <section class="section"><div class="container">
   <div class="grid grid-2" style="gap:18px;align-items:start">
     <div class="card">
-      <h3 class="card__title" style="font-size:17px"><%= t('content.brands_246') %></h3>
-      <p style="font-size:13px;line-height:2"><%= t('content.brands_247') %></p>
-      <p style="font-size:13px;line-height:2;margin-top:10px"><%= t('content.brands_248') %></p>
+      <h3 class="card__title" style="font-size:17px"><%= t('content.hfil_60') %></h3>
+      <p style="font-size:13px;line-height:2"><%= t('content.hfil_61') %></p>
+      <p style="font-size:13px;line-height:2;margin-top:10px"><%= t('content.hfil_62') %></p>
     </div>
     <div class="card">
-      <h3 class="card__title" style="font-size:17px"><%= t('content.brands_249') %></h3>
-      <p style="font-size:13px;line-height:2"><%= t('content.brands_250') %></p>
-
+      <h3 class="card__title" style="font-size:17px"><%= t('content.hfil_63') %></h3>
+      <p style="font-family:var(--ff-d);font-size:14.5px;font-weight:700;color:var(--green-900);margin-bottom:8px"><%= t('content.hfil_64') %></p>
+      <p style="font-size:13px;line-height:2"><%= t('content.hfil_65') %></p>
     </div>
   </div>
 </div></section>
 
 <section class="section--mint"><div class="container">
-
+  <div class="hero-split" style="align-items:center">
+    <div>
+      
 <div class="sec-head">
-  <span class="eyebrow"><i></i><%= t('content.brands_252') %></span>
-  <h2 class="sec-title"><%= t('content.brands_253') %></h2>
-
+  <span class="eyebrow"><i></i><%= t('content.hfil_66') %></span>
+  <h2 class="sec-title"><%= t('content.hfil_67') %></h2>
+  
 </div>
-  <div class="grid grid-2" style="gap:18px">
-    <div class="card"><h4 class="card__title" style="font-size:15.5px"><%= t('content.brands_254') %></h4><p style="font-size:13px;line-height:2"><%= t('content.brands_255') %></p></div><div class="card"><h4 class="card__title" style="font-size:15.5px"><%= t('content.brands_256') %></h4><p style="font-size:13px;line-height:2"><%= t('content.brands_257') %></p></div>
+      <p style="font-family:var(--ff-d);font-size:16px;font-weight:700;color:var(--green-900);margin:-14px 0 10px"><%= t('content.hfil_68') %></p>
+      <p style="font-size:13.5px;line-height:2"><%= t('content.hfil_69') %></p>
+    </div>
+    <figure class="barrier-figure">
+      
+<svg class="barrier-art" viewBox="0 0 520 300" role="img" aria-label="<%= t('content.hfil_71') %>">
+  <defs>
+    <linearGradient id="bTissue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D6CF"/><stop offset="1" stop-color="#E7B7AC"/></linearGradient>
+    <linearGradient id="bTissue2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#F3D6CF"/><stop offset="1" stop-color="#E7B7AC"/></linearGradient>
+    <linearGradient id="bGel" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9FE3CB" stop-opacity=".75"/><stop offset=".5" stop-color="#5FD0A9" stop-opacity=".85"/><stop offset="1" stop-color="#9FE3CB" stop-opacity=".75"/></linearGradient>
+  </defs>
+  <rect width="520" height="300" rx="26" fill="#F4FAF7"/>
+  <path d="M40 40H480V104C430 116 390 98 340 108S250 122 200 110 110 100 40 112Z" fill="url(#bTissue)"/>
+  <path d="M40 104C110 92 150 118 200 104S300 96 340 102 430 110 480 98" fill="none" stroke="#D49A8C" stroke-width="2"/>
+  <path d="M40 116C110 104 150 128 200 116S300 108 340 114 430 122 480 110V186C430 198 390 178 340 188S250 202 200 190 110 178 40 192Z" fill="url(#bGel)"/>
+  <g fill="#fff" opacity=".7"><circle cx="120" cy="150" r="5"/><circle cx="210" cy="160" r="3.5"/><circle cx="300" cy="146" r="4.5"/><circle cx="390" cy="158" r="3"/><circle cx="440" cy="148" r="4"/></g>
+  <path d="M40 200C110 186 150 212 200 198S300 190 340 196 430 204 480 192V260H40Z" fill="url(#bTissue2)"/>
+  <path d="M40 200C110 186 150 212 200 198S300 190 340 196 430 204 480 192" fill="none" stroke="#D49A8C" stroke-width="2"/>
+  <g font-family="inherit" font-size="15" font-weight="700" fill="#0C1A14" text-anchor="middle">
+    <text x="260" y="76"><%= t('content.hfil_70') %></text>
+    <text x="260" y="157" fill="#0B4432"><%= t('content.hfil_71') %></text>
+    <text x="260" y="236"><%= t('content.hfil_70') %></text>
+  </g>
+</svg>
+      <figcaption><%= t('content.hfil_72') %></figcaption>
+    </figure>
   </div>
 </div></section>
 
 <section class="section"><div class="container">
-
+  
 <div class="sec-head">
-  <span class="eyebrow"><i></i><%= t('content.brands_229') %></span>
-
-
+  <span class="eyebrow"><i></i><%= t('content.hfil_41') %></span>
+  <h2 class="sec-title"><%= t('content.hfil_73') %></h2>
+  
 </div>
-  <div class="grid grid-4" style="gap:18px">
-    <div class="card"><h4 class="card__title" style="font-size:15px"><%= t('content.brands_233') %></h4><p style="font-size:12.5px;line-height:2"><%= t('content.brands_258') %></p></div><div class="card"><h4 class="card__title" style="font-size:15px"><%= t('content.brands_231') %></h4><p style="font-size:12.5px;line-height:2"><%= t('content.brands_259') %></p></div><div class="card"><h4 class="card__title" style="font-size:15px"><%= t('content.brands_249') %></h4><p style="font-size:12.5px;line-height:2"><%= t('content.brands_260') %></p></div><div class="card"><h4 class="card__title" style="font-size:15px"><%= t('content.brands_237') %></h4><p style="font-size:12.5px;line-height:2"><%= t('content.brands_261') %></p></div>
+  <div class="grid grid-3" style="gap:18px">
+    <div class="card"><h4 class="card__title" style="font-size:15px"><%= t('content.hfil_74') %></h4><p style="font-size:12.5px;line-height:2"><%= t('content.hfil_75') %></p></div><div class="card"><h4 class="card__title" style="font-size:15px"><%= t('content.hfil_42') %></h4><p style="font-size:12.5px;line-height:2"><%= t('content.hfil_76') %><br><span class="lat" dir="ltr">Sodium Hyaluronate</span></p></div><div class="card"><h4 class="card__title" style="font-size:15px"><%= t('content.hfil_63') %></h4><p style="font-size:12.5px;line-height:2"><%= t('content.hfil_77') %></p></div><div class="card"><h4 class="card__title" style="font-size:15px"><%= t('content.hfil_37') %></h4><p style="font-size:12.5px;line-height:2"><span class="lat" dir="ltr">10 mg/mL</span></p></div><div class="card"><h4 class="card__title" style="font-size:15px"><%= t('content.hfil_78') %></h4><p style="font-size:12.5px;line-height:2"><span class="lat" dir="ltr">1.0 / 2.0 / 2.5 / 3.0 / 4.0 / 5.0 / 6.0 / 8.0 / 10 / 15 / 18 / 20 mL</span></p></div><div class="card"><h4 class="card__title" style="font-size:15px"><%= t('content.hfil_79') %></h4><p style="font-size:12.5px;line-height:2"><%= t('content.hfil_80') %><br><span class="lat" dir="ltr">Steam Sterilized</span></p></div><div class="card"><h4 class="card__title" style="font-size:15px"><%= t('content.hfil_81') %></h4><p style="font-size:12.5px;line-height:2"><%= t('content.hfil_82') %></p></div><div class="card"><h4 class="card__title" style="font-size:15px"><%= t('content.hfil_83') %></h4><p style="font-size:12.5px;line-height:2"><%= t('content.hfil_84') %></p></div><div class="card"><h4 class="card__title" style="font-size:15px"><%= t('content.hfil_50') %></h4><p style="font-size:12.5px;line-height:2"><%= t('content.hfil_85') %></p></div>
   </div>
 </div></section>
 
 <section class="section section--last"><div class="container">
-  <div class="dark-strip"><h3><%= t('content.brands_239') %></h3><p><%= t('content.brands_262') %></p></div>
+  <div class="dark-strip"><h3><%= t('content.hfil_53') %></h3><p><%= t('content.hfil_86') %></p></div>
   <div style="display:flex;gap:14px;justify-content:center;margin-top:24px;flex-wrap:wrap">
-    <a class="btn btn--dark" href="<%= locale_path("medical/quote") %>"><%= t('content.brands_263') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></span></a>
-    <a class="btn btn--ghost" href="<%= locale_path("company/contact") %>"><%= t('content.brands_242') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></span></a>
+    <a class="btn btn--dark" href="<%= locale_path("medical/quote") %>"><%= t('content.hfil_59') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></span></a>
+    <a class="btn btn--ghost" href="<%= locale_path("company/contact") %>"><%= t('content.hfil_23') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 17L7 7"></path><path d="M7 14V7h7"></path></svg></span></a>
   </div>
 </div></section>
 

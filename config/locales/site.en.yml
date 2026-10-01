@@ -2,6 +2,8 @@
 # (app/views/pages/**.en.html.erb); these keys cover the shared layout only.
 en:
   site:
+    wa_float_label: "Contact us"
+    wa_float: "Chat with us on WhatsApp"
     brand: "Beauty Roots"
     brand_sub: "جذور الجمال"
     meta:

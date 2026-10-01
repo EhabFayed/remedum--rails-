@@ -2,6 +2,8 @@
 # (app/views/pages/**.ar.html.erb)؛ هذه المفاتيح تغطي الهيكل المشترك فقط.
 ar:
   site:
+    wa_float_label: "تواصل معنا"
+    wa_float: "تواصل معنا عبر واتساب"
     brand: "جذور الجمال"
     brand_sub: "BEAUTY ROOTS"
     meta:
