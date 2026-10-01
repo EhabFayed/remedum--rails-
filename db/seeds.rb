@@ -77,7 +77,7 @@ brands = {
     tagline_en: "Our exclusive agency — Korean monophasic hyaluronic-acid filler",
     body_ar: "فيلر «ReMedium» لهيالورونيك أسيد — فياكروس عالي النقاء من إنتاج Forever 18 INTERNATIONAL في سيول، مصنّع بتقنية MDM المبتكرة ووفق معايير التصنيع الجيد GMP.",
     body_en: "ReMedium hyaluronic-acid filler — high-purity crosslinked gel produced by Forever 18 INTERNATIONAL in Seoul, manufactured with MDM technology under GMP.",
-    image_url: "/assets/img/brand-remedium.jpg", position: 0
+    image_url: "/assets/img/brand-remedium.webp", position: 0
   },
   "ha-filler" => {
     name_ar: "HA Filler", name_en: "HA Filler", page_path: "brands/ha-filler",
@@ -101,7 +101,7 @@ brands = {
     name_ar: "مستحضرات العناية الكورية", name_en: "Korean skincare lines", page_path: "brands",
     tagline_ar: "تشكيلات مختارة من أبرز علامات العناية الكورية",
     tagline_en: "Curated lines from leading Korean skincare brands",
-    image_url: "/assets/img/brand-skincare.jpg", position: 5
+    image_url: "/assets/img/brand-skincare.webp", position: 5
   }
 }
 brands.each do |slug, attrs|
@@ -119,19 +119,19 @@ remedium = Brand.find_by(slug: "remedium")
     indications_ar: "حول العين، خطوط الجبهة، خطوط الرقبة",
     indications_en: "Around the eyes, forehead lines, neck lines",
     duration_from: 9, duration_to: 12, accent_color: "#4FD3A5",
-    image_url: "/assets/img/brand-fine.jpg", page_path: "brands/remedium/fine", position: 0 },
+    image_url: "/assets/img/brand-fine.webp", page_path: "brands/remedium/fine", position: 0 },
   { slug: "remedium-mid", name_ar: "ReMedium Mid", name_en: "ReMedium Mid",
     subtitle_ar: "للطبقات المتوسطة والشفاه", subtitle_en: "For mid-dermal volume and lips",
     indications_ar: "الشفاه، تحديد الذقن، خطوط الابتسامة",
     indications_en: "Lips, chin definition, nasolabial folds",
     duration_from: 12, duration_to: 18, accent_color: "#1CA97C",
-    image_url: "/assets/img/brand-mid.jpg", page_path: "brands/remedium/mid", position: 1 },
+    image_url: "/assets/img/brand-mid.webp", page_path: "brands/remedium/mid", position: 1 },
   { slug: "remedium-sub-q", name_ar: "ReMedium Sub-Q", name_en: "ReMedium Sub-Q",
     subtitle_ar: "للبناء الحجمي العميق والنحت", subtitle_en: "For deep volume and contouring",
     indications_ar: "الوجنتان، الصدغان، استعادة حجم الذقن، تحت خط الفك",
     indications_en: "Cheeks, temples, chin augmentation, jawline",
     duration_from: 18, duration_to: 24, accent_color: "#0B4432",
-    image_url: "/assets/img/brand-subq.jpg", page_path: "brands/remedium/sub-q", position: 2 }
+    image_url: "/assets/img/brand-subq.webp", page_path: "brands/remedium/sub-q", position: 2 }
 ].each do |attrs|
   Product.find_or_initialize_by(slug: attrs[:slug]).update!(attrs.merge(brand: remedium, status: "published"))
 end
@@ -155,7 +155,7 @@ ARTICLES = [
   {
     slug_en: "verify-sfda-approved-dermal-filler",
     category: "regulatory",
-    cover: "/assets/img/knowledge-regulations.jpg", cover_w: 1600, cover_h: 1364,
+    cover: "/assets/img/knowledge-regulations.webp", cover_w: 1600, cover_h: 1364,
     title_ar: "كيف تتحقق المنشأة الصحية من تسجيل الفيلر واعتماده رسميًا لدى الهيئة؟",
     title_en: "How to Verify That a Dermal Filler Is Fully SFDA-Approved",
     byline_ar: "بقلم فريق الشؤون التنظيمية", byline_en: "By the Regulatory Affairs Team",
@@ -189,7 +189,7 @@ ARTICLES = [
   {
     slug_en: "storage-conditions-filler-safety",
     category: "storage-quality",
-    cover: "/assets/img/knowledge-storage.jpg", cover_w: 1600, cover_h: 1364,
+    cover: "/assets/img/knowledge-storage.webp", cover_w: 1600, cover_h: 1364,
     title_ar: "ظروف الحفظ والتخزين: كيف تؤثر درجات الحرارة على أمان الفيلر ونتيجة الحقن؟",
     title_en: "Storage Conditions: How Temperature Affects Filler Safety and Outcome",
     byline_ar: "بقلم فريق الإمداد واللوجستيات", byline_en: "By the Supply Chain Team",

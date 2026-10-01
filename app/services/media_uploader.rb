@@ -18,7 +18,7 @@ class MediaUploader
 
   def call
     return error("no_file", "لم يصل أي ملف.", :bad_request) unless @file.respond_to?(:tempfile)
-    return error("too_large", "الملف أكبر من ١٢ ميجابايت.", :payload_too_large) if @file.size > MAX_BYTES
+    return error("too_large", "الملف أكبر من 12 ميجابايت.", :payload_too_large) if @file.size > MAX_BYTES
 
     image = Vips::Image.new_from_file(@file.tempfile.path, access: :sequential)
     return error("unsupported", "صيغة غير مدعومة.", :unsupported_media_type) unless allowed?
