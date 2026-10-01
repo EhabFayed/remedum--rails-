@@ -35,6 +35,10 @@ Rails.application.routes.draw do
   get "ar", to: "pages#home", defaults: { locale: "ar" }, as: :ar_home
   get "en", to: redirect("/")
 
+  # Site search index (JSON), matched before the catch-all page route
+  get ":locale/search-index", to: "search#index", constraints: { locale: /ar|en/ },
+      defaults: { format: :json }, as: :search_index
+
   # Articles are database-backed and must be matched before the catch-all below,
   # which would otherwise look for a template named knowledge/<slug>.
   get ":locale/knowledge/:slug", to: "articles#show",
