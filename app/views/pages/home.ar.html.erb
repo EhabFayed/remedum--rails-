@@ -1337,7 +1337,6 @@
     </section>
 
     <!-- ================= 10. KNOWLEDGE CENTER ================= -->
-    <% if @posts.present? %>
     <section class="blog" id="knowledge">
       <div class="container">
         <div class="sec-head sec-head--center">
@@ -1348,6 +1347,7 @@
           <h2 class="sec-title">مقالات وإضاءات معرفية</h2>
         </div>
 
+        <% if @posts.present? %>
         <div class="blog__grid">
           <% @posts.each do |post| %>
           <% cover = post.cover_for(I18n.locale) %>
@@ -1371,9 +1371,11 @@
           </article>
           <% end %>
         </div>
+        <% else %>
+        <p class="blog__empty">لا مقالات منشورة بعد.</p>
+        <% end %>
       </div>
     </section>
-    <% end %>
 
     <!-- ================= 11. DUAL CALL TO ACTION + FOOTER ================= -->
     <%= render "shared/site_footer" %>
