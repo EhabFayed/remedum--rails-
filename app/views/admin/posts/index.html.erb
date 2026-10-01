@@ -1,10 +1,17 @@
 <% content_for :title, "المقالات" %>
 <%= page_header "المقالات", "#{@posts.size} مقال في مركز المعرفة." do %>
+  <% if @counts[:published].positive? %>
+    <%= button_to "إخفاء كل المقالات", hide_all_admin_posts_path, method: :patch, class: "btn pressable",
+                  form: { onsubmit: "return confirm('إخفاء كل المقالات المنشورة من الموقع؟ يمكنك إظهارها مرة أخرى في أي وقت.')" } %>
+  <% end %>
+  <% if @counts[:hidden].positive? %>
+    <%= button_to "إظهار كل المقالات", show_all_admin_posts_path, method: :patch, class: "btn pressable" %>
+  <% end %>
   <a class="btn btn--primary pressable" href="<%= new_admin_post_path %>">+ مقال جديد</a>
 <% end %>
 
 <div class="filters">
-  <% [["", "الكل", @counts[:all]], ["published", "منشور", @counts[:published]], ["draft", "مسوّدة", @counts[:draft]]].each do |value, label, n| %>
+  <% [["", "الكل", @counts[:all]], ["published", "منشور", @counts[:published]], ["hidden", "مخفي", @counts[:hidden]], ["draft", "مسوّدة", @counts[:draft]]].each do |value, label, n| %>
     <a class="filter pressable<%= " is-on" if @status == value %>"
        href="<%= value.present? ? admin_posts_path(status: value) : admin_posts_path %>">
       <%= label %><span class="filter__n"><%= n %></span>
@@ -30,7 +37,7 @@
             <td class="lat" style="font-size:11.5px;color:var(--faint)"><%= admin_date post.updated_at %></td>
             <td>
               <div class="tbl__acts">
-                <%= button_to (post.published? ? "إلغاء النشر" : "نشر"),
+                <%= button_to (post.published? ? "إخفاء" : post.hidden? ? "إظهار" : "نشر"),
                               toggle_status_admin_post_path(post), method: :patch,
                               class: "btn btn--sm pressable" %>
                 <% if post.published? %>

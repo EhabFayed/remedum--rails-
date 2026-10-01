@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
     resources :posts do
       member { patch :toggle_status }
+      collection { patch :hide_all; patch :show_all }
     end
     resources :categories, except: :show
     resources :faqs, except: :show

@@ -4,7 +4,8 @@ class Admin::PostsController < Admin::BaseController
   def index
     @status = params[:status].to_s
     @posts = Post.includes(:category, :author).by_status(@status).order(updated_at: :desc)
-    @counts = { all: Post.count, published: Post.published.count, draft: Post.where(status: "draft").count }
+    @counts = { all: Post.count, published: Post.published.count, hidden: Post.where(status: "hidden").count,
+                draft: Post.where(status: "draft").count }
   end
 
   def new
@@ -47,8 +48,20 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def toggle_status
-    @post.update!(status: @post.published? ? "draft" : "published")
+    @post.update!(status: @post.published? ? "hidden" : "published")
     back_or admin_posts_path
+  end
+
+  # Hides every live article at once without unpublishing it: dates, slugs and
+  # content stay, and "show all" brings back exactly the articles hidden here.
+  def hide_all
+    n = Post.where(status: "published").update_all(status: "hidden", updated_at: Time.current)
+    redirect_to admin_posts_path, notice: "تم إخفاء #{n} مقال من الموقع."
+  end
+
+  def show_all
+    n = Post.where(status: "hidden").update_all(status: "published", updated_at: Time.current)
+    redirect_to admin_posts_path, notice: "تم إظهار #{n} مقال في الموقع."
   end
 
   private
