@@ -177,3 +177,19 @@ html[dir="rtl"] .cmp__media{order:2}
    Chrome then collapses it to nothing — the ring was blank on the Arabic
    home (even before it held Arabic). Arabic words still shape correctly. */
 html[dir="rtl"] .spin-badge__ring text{direction:ltr;letter-spacing:0;font-size:8.5px}
+
+/* ---- arrows stay still on hover (Oct 2026) ----------------------------
+   Circle arrows used to rotate 45° on hover (both directions), and the
+   face-map card link slid its arrow sideways. Colour and lift effects stay. */
+html .btn:hover .btn__circle,
+html[dir] .btn:hover .btn__circle,
+html[dir] .btn--sm:hover .btn__circle,
+html .why-card:hover .why-card__btn,
+html[dir] .why-card:hover .why-card__btn,
+html .post:hover .post__btn,
+html[dir] .post:hover .post__btn{transform:none}
+html .fpop__link:hover,html[dir] .fpop__link:hover{gap:7px}
+html .cta-box:hover i,
+html[dir] .cta-box:hover i,
+html[dir="ltr"] .cta-box:hover i,
+html[dir="rtl"] .cta-box:hover i{transform:none}
