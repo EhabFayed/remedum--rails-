@@ -225,6 +225,7 @@
         </a>
 
         <nav class="nav" id="nav">
+          <button type="button" class="nav__search" data-search-open><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span><%= t("site.search.placeholder") %></span></button>
           <ul class="nav__list">
             <li class="nav__item">
               <a href="/" class="nav__link is-active">Home</a>
@@ -284,7 +285,8 @@
         </nav>
 
         <div class="header__actions">
-          <a href="/ar/" lang="ar" dir="rtl" style="display:inline-flex;align-items:center;padding:9px 18px;border-radius:999px;font-size:13.5px;font-weight:700;color:#0C1A14;background:#fff;box-shadow:0 8px 24px -12px rgba(0,0,0,.25)">عربي</a>
+          <button type="button" class="icon-btn icon-btn--light" data-search-open aria-label="<%= t("site.search.open") %>"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
+            <a href="/ar/" lang="ar" dir="rtl" style="display:inline-flex;align-items:center;padding:9px 18px;border-radius:999px;font-size:13.5px;font-weight:700;color:#0C1A14;background:#fff;box-shadow:0 8px 24px -12px rgba(0,0,0,.25)">عربي</a>
           <a href="/en/medical/quote/" class="btn btn--pill-white">
             <span>Request a Quote</span>
             <i class="btn__circle"
@@ -1335,5 +1337,6 @@
 <%= render "shared/wa_float" %>
 
     <script src="<%= static_asset("/assets/js/main.js") %>"></script>
+    <script src="<%= static_asset("/assets/js/search.js") %>" defer></script>
   </body>
 </html>

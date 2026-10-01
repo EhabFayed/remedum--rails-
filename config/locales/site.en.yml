@@ -2,6 +2,17 @@
 # (app/views/pages/**.en.html.erb); these keys cover the shared layout only.
 en:
   site:
+    search:
+      open: "Search"
+      placeholder: "Search products, brands or articles…"
+      products: "Products & Brands"
+      knowledge: "Knowledge Center & Insights"
+      empty: "No matching results"
+      empty_hint: "Try another word — a product name or a treatment area."
+      suggest: "Suggested searches"
+      close: "Close search"
+      results: "results"
+      hint: "↑ ↓ to move · Enter to open · Esc to close"
     wa_float_label: "Contact us"
     wa_float: "Chat with us on WhatsApp"
     brand: "Beauty Roots"

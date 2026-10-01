@@ -8,11 +8,11 @@
   <a href="<%= locale_path("") %>"><%= t('content.brands_76') %></a><span class="sep"><%= t('content.brands_80') %></span><span class="here"><%= t('content.pages_358') %></span>
 </div>
   <h1 class="page-title"><%= t('content.pages_356') %></h1>
-  <div class="search-pill" style="margin-top:20px">
+  <form class="search-pill" style="margin-top:20px" role="search" data-search-open>
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
     <input type="search" placeholder="<%= t('content.pages_359') %>" aria-label="<%= t('content.pages_360') %>">
-    <button type="button"><%= t('content.pages_360') %></button>
-  </div>
+    <button type="submit"><%= t('content.pages_360') %></button>
+  </form>
   <div class="choice-chips" style="margin-top:18px;justify-content:center">
     <button type="button" class="cchip is-on"><%= t('content.pages_361') %></button>
     <button type="button" class="cchip"><%= t('content.pages_362') %></button>

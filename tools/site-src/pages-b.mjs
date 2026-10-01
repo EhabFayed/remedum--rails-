@@ -701,11 +701,11 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('المعلومات 
 <section class="page-hero"><div class="container"><div class="page-hero__inner" style="text-align:center;display:flex;flex-direction:column;align-items:center">
   ${crumbs(ctx, [[T('الرئيسية', 'Home'), u('')], [T('مركز المعرفة', 'Knowledge Center')]])}
   <h1 class="page-title">${T('مركز المعرفة والآراء', 'Knowledge Center & Reviews')}</h1>
-  <div class="search-pill" style="margin-top:20px">
+  <form class="search-pill" style="margin-top:20px" role="search" data-search-open>
     ${I.search(17)}
     <input type="search" placeholder="${T('كم يدوم فيلر الشفاه؟', 'How long does lip filler last?')}" aria-label="${T('بحث', 'Search')}">
-    <button type="button">${T('بحث', 'Search')}</button>
-  </div>
+    <button type="submit">${T('بحث', 'Search')}</button>
+  </form>
   <div class="choice-chips" style="margin-top:18px;justify-content:center">
     <button type="button" class="cchip is-on">${T('الكل', 'All')}</button>
     <button type="button" class="cchip">${T('أساسيات', 'Basics')}</button>

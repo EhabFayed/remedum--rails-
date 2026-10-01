@@ -44,6 +44,17 @@
       });
     });
   });
+  /* a link like brands/ha-filler#derm-plus (site search) opens that tab */
+  var openTabFromHash = function () {
+    var id = decodeURIComponent((location.hash || '').slice(1));
+    if (!id) return;
+    var tab = document.querySelector('[data-tabs] .tab[data-tab="' + id.replace(/"/g, '') + '"]');
+    if (!tab) return;
+    tab.click();
+    (tab.closest('section') || tab).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  openTabFromHash();
+  window.addEventListener('hashchange', openTabFromHash);
 
   /* medical gate: checkbox enables the button; entry reveals gated content */
   var gate = document.querySelector('[data-gate]');
