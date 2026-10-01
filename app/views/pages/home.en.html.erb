@@ -1296,6 +1296,7 @@
     </section>
 
     <!-- ================= 10. KNOWLEDGE CENTER ================= -->
+    <% if @posts.present? %>
     <section class="blog" id="knowledge">
       <div class="container">
         <div class="sec-head sec-head--center">
@@ -1331,6 +1332,7 @@
         </div>
       </div>
     </section>
+    <% end %>
 
     <!-- ================= 11. DUAL CALL TO ACTION + FOOTER ================= -->
     <%= render "shared/site_footer" %>

@@ -46,6 +46,7 @@ module AdminHelper
     map = {
       "published" => [ "منشور", "pill--on" ],
       "draft" => [ "مسوّدة", "pill--off" ],
+      "hidden" => [ "مخفي", "pill--off" ],
       "new" => [ "جديد", "pill--hot" ],
       "contacted" => [ "تم التواصل", "pill--on" ],
       "closed" => [ "مغلق", "pill--off" ]

@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  STATUSES = %w[draft published].freeze
+  STATUSES = %w[draft published hidden].freeze
 
   belongs_to :category, optional: true
   belongs_to :author, class_name: "User", optional: true
@@ -23,6 +23,7 @@ class Post < ApplicationRecord
   scope :by_status, ->(s) { STATUSES.include?(s.to_s) ? where(status: s) : all }
 
   def published? = status == "published"
+  def hidden? = status == "hidden"
 
   def title_for(locale)  = locale.to_s == "en" ? title_en.presence || title_ar : title_ar
   def slug_for(locale)   = locale.to_s == "en" ? slug_en : slug_ar
@@ -83,11 +84,12 @@ class Post < ApplicationRecord
   end
 
   # The publication date is set once, on first publish. Re-saving a live article
-  # must not push it back to the top of the list.
+  # must not push it back to the top of the list. Hiding keeps the date, so a
+  # hidden article comes back in its original place.
   def stamp_publication
     if published?
       self.published_at ||= Time.current
-    else
+    elsif status == "draft"
       self.published_at = nil
     end
   end
