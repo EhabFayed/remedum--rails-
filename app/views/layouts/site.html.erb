@@ -7,7 +7,7 @@
   <meta name="description" content="<%= content_for(:description) %>">
   <link rel="alternate" hreflang="<%= I18n.locale %>" href="<%= self_canonical_path %>">
   <link rel="alternate" hreflang="<%= rtl? ? "en" : "ar" %>" href="<%= alt_locale_path %>">
-  <link rel="alternate" hreflang="x-default" href="<%= rtl? ? alt_locale_path : self_canonical_path %>">
+  <link rel="alternate" hreflang="x-default" href="<%= rtl? ? self_canonical_path : alt_locale_path %>">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">

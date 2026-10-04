@@ -40,9 +40,16 @@ Rails.application.routes.draw do
 
   # ---------------------------------------------------- bilingual public site
   # English home at /, Arabic home at /ar/ (locale via route defaults)
-  root "pages#home", defaults: { locale: "en" }
-  get "ar", to: "pages#home", defaults: { locale: "ar" }, as: :ar_home
-  get "en", to: redirect("/")
+  # The dashboard has no language prefix: /ar/admin/posts?x=1 → /admin/posts?x=1
+  get ":locale/admin(/*rest)", constraints: { locale: /ar|en/ }, format: false,
+      to: redirect { |p, req| [ "/admin", p[:rest] ].compact.join("/") + (req.query_string.present? ? "?#{req.query_string}" : "") }
+  get "admin/:locale", constraints: { locale: /ar|en/ }, to: redirect("/admin")
+
+  # Arabic is the default language and its home lives at the bare domain;
+  # /ar keeps working for old links. Arabic inner pages stay under /ar/….
+  root "pages#home", defaults: { locale: "ar" }
+  get "ar", to: redirect("/", status: 301), as: :ar_home
+  get "en", to: "pages#home", defaults: { locale: "en" }, as: :en_home
 
   # Site search index (JSON), matched before the catch-all page route
   get ":locale/search-index", to: "search#index", constraints: { locale: /ar|en/ },

@@ -18,7 +18,7 @@ module App
 
     # Bilingual frontend: locale comes from the URL (/ar, /en)
     config.i18n.available_locales = [ :en, :ar ]
-    config.i18n.default_locale = :en
+    config.i18n.default_locale = :ar
 
     # Configuration for the application, engines, and railties goes here.
     #
