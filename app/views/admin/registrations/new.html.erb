@@ -1,0 +1,44 @@
+<% content_for :title, "إنشاء حساب" %>
+<div class="login">
+  <div class="login__head">
+    <span class="brand">
+      <span class="brand__mark">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 19C5 9 11 4 20 4c0 9-5 15-15 15z"></path><path d="M5 19c3-6 6-9 10-11"></path>
+        </svg>
+      </span>
+      <span class="brand__text"><b><i>جذور</i> الجمال</b><span>DASHBOARD</span></span>
+    </span>
+  </div>
+
+  <div class="login__card">
+    <%= render "admin/shared/flash" %>
+    <p class="hint" style="margin:0 0 14px">يُنشأ الحساب بانتظار موافقة المدير، وهو من يحدد صلاحيتك.</p>
+    <%= form_with model: @user, url: admin_signup_path, method: :post do |f| %>
+      <%= render "admin/shared/errors", record: @user %>
+      <div class="field">
+        <label class="label" for="user_name">الاسم <span class="req">*</span></label>
+        <%= f.text_field :name, class: "inp", required: true, autocomplete: "name", autofocus: true %>
+      </div>
+      <div class="field">
+        <label class="label" for="user_email">البريد الإلكتروني <span class="req">*</span></label>
+        <%= f.email_field :email, class: "inp", dir: "ltr", required: true, autocomplete: "username" %>
+      </div>
+      <div class="field">
+        <label class="label" for="user_title_ar">المسمى الوظيفي</label>
+        <%= f.text_field :title_ar, class: "inp" %>
+      </div>
+      <div class="field">
+        <label class="label" for="user_password">كلمة المرور <span class="req">*</span></label>
+        <%= f.password_field :password, class: "inp", dir: "ltr", required: true, minlength: 10, autocomplete: "new-password" %>
+        <p class="hint">10 أحرف على الأقل.</p>
+      </div>
+      <div class="field">
+        <label class="label" for="user_password_confirmation">تأكيد كلمة المرور <span class="req">*</span></label>
+        <%= f.password_field :password_confirmation, class: "inp", dir: "ltr", required: true, autocomplete: "new-password" %>
+      </div>
+      <%= f.submit "إنشاء الحساب", class: "btn btn--primary btn--full pressable" %>
+    <% end %>
+    <p class="hint" style="margin:14px 0 0;text-align:center">لديك حساب؟ <a href="<%= admin_login_path %>" style="color:var(--green)">تسجيل الدخول</a></p>
+  </div>
+</div>

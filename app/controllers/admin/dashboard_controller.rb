@@ -22,6 +22,10 @@ class Admin::DashboardController < Admin::BaseController
   # find, an image with no alt text.
   def health_warnings
     warnings = []
+    pending = User.pending.count
+    if pending.positive? && current_user.admin?
+      warnings << { text: "#{pending} حساب جديد بانتظار موافقتك", path: admin_users_path }
+    end
 
     no_cover = Post.published.where(cover_url_ar: [ nil, "" ]).count
     warnings << { text: "#{no_cover} مقال منشور بلا صورة غلاف", path: admin_posts_path } if no_cover.positive?

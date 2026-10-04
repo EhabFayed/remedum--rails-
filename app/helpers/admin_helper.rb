@@ -10,7 +10,7 @@ module AdminHelper
     { path: :admin_review_tracks_path,  label: "التجارب والآراء", icon: "help" },
     { path: :admin_leads_path,          label: "الطلبات", icon: "inbox", badge: :new_leads },
     { path: :admin_media_path,          label: "مكتبة الصور", icon: "image" },
-    { path: :admin_users_path,          label: "المستخدمون", icon: "user", admin_only: true },
+    { path: :admin_users_path,          label: "المستخدمون", icon: "user", admin_only: true, badge: :pending_users },
     { path: :admin_settings_path,       label: "إعدادات الموقع", icon: "cog" }
   ].freeze
 

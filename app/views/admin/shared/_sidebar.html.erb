@@ -21,6 +21,8 @@
         <span><%= item[:label] %></span>
         <% if item[:badge] == :new_leads && (n = Lead.open_requests.count).positive? %>
           <span class="navlink__badge"><%= n %></span>
+        <% elsif item[:badge] == :pending_users && (n = User.pending.count).positive? %>
+          <span class="navlink__badge"><%= n %></span>
         <% end %>
       </a>
     <% end %>

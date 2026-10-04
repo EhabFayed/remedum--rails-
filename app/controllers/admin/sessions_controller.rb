@@ -17,7 +17,11 @@ class Admin::SessionsController < Admin::BaseController
   def create
     user = User.find_by(email: params[:email].to_s.downcase.strip)
 
-    if user&.authenticate(params[:password].to_s)
+    if user&.pending? && user.authenticate(params[:password].to_s)
+      @email = params[:email].to_s
+      flash.now[:alert] = "حسابك بانتظار موافقة المدير. ستتمكن من الدخول بعد تفعيله."
+      render :new, status: :unprocessable_entity
+    elsif user&.authenticate(params[:password].to_s)
       reset_session
       session[:user_id] = user.id
       user.update_column(:last_login_at, Time.current)
