@@ -8,45 +8,51 @@
   var IS_AR = (document.documentElement.lang || '').toLowerCase().indexOf('ar') === 0;
 
   /* ---------- sticky header ---------- */
+  // The homes now use the shared .site-header (site-header.js); this only runs
+  // for markup that still has the old #header.
   var header = document.getElementById('header');
-  var onScroll = function () {
-    if (window.scrollY > 90) header.classList.add('is-stuck');
-    else header.classList.remove('is-stuck');
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  if (header) {
+    var onScroll = function () {
+      if (window.scrollY > 90) header.classList.add('is-stuck');
+      else header.classList.remove('is-stuck');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
 
   /* ---------- mobile nav ---------- */
   var burger = document.getElementById('burger');
   var nav = document.getElementById('nav');
-  // backdrop, Escape and scroll lock: the drawer used to close only via the burger
-  var scrim = document.createElement('div');
-  scrim.className = 'nav-scrim';
-  document.body.appendChild(scrim);
-  var setNav = function (open) {
-    burger.classList.toggle('is-open', open);
-    nav.classList.toggle('is-open', open);
-    scrim.classList.toggle('is-on', open);
-    document.documentElement.classList.toggle('nav-locked', open);
-    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-  };
-  burger.addEventListener('click', function () { setNav(!nav.classList.contains('is-open')); });
-  scrim.addEventListener('click', function () { setNav(false); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setNav(false); });
-  nav.addEventListener('click', function (e) {
-    var link = e.target.closest('.nav__link');
-    if (link && window.matchMedia('(max-width:1280px)').matches) {
-      var item = link.parentElement;
-      if (item.querySelector('.dropdown')) {
-        e.preventDefault();
-        item.classList.toggle('is-open');
-        return;
+  if (burger && nav) {
+    // backdrop, Escape and scroll lock: the drawer used to close only via the burger
+    var scrim = document.createElement('div');
+    scrim.className = 'nav-scrim';
+    document.body.appendChild(scrim);
+    var setNav = function (open) {
+      burger.classList.toggle('is-open', open);
+      nav.classList.toggle('is-open', open);
+      scrim.classList.toggle('is-on', open);
+      document.documentElement.classList.toggle('nav-locked', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    burger.addEventListener('click', function () { setNav(!nav.classList.contains('is-open')); });
+    scrim.addEventListener('click', function () { setNav(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setNav(false); });
+    nav.addEventListener('click', function (e) {
+      var link = e.target.closest('.nav__link');
+      if (link && window.matchMedia('(max-width:1280px)').matches) {
+        var item = link.parentElement;
+        if (item.querySelector('.dropdown')) {
+          e.preventDefault();
+          item.classList.toggle('is-open');
+          return;
+        }
       }
-    }
-    if (e.target.closest('a[href^="#"]')) {
-      setNav(false);
-    }
-  });
+      if (e.target.closest('a[href^="#"]')) {
+        setNav(false);
+      }
+    });
+  }
 
   /* ---------- services accordion ---------- */
   var accordion = document.getElementById('accordion');

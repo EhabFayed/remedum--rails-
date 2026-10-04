@@ -1648,3 +1648,14 @@ html[dir] .header__actions .icon-btn--light{display:grid}
 
 /* out of the way while the search is open */
 html.srch-locked .wa-float{opacity:0;pointer-events:none}
+
+/* HA Filler range slider: the product photos are square packshots with the box
+   running corner to corner, so the frame is square too (no crop) and the
+   column narrows to keep the slide close to the text height. */
+.hf-slide{grid-template-columns:minmax(0,1fr) minmax(0,360px)}
+.hf-slide__media{align-self:center;background:#fff}
+.hf-slide__media img{height:auto;aspect-ratio:1/1;object-fit:cover}
+@media (max-width:780px){
+  .hf-slide{grid-template-columns:minmax(0,1fr)}
+  .hf-slide__media img{height:auto;max-height:none}
+}

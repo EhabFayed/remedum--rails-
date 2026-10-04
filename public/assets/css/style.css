@@ -2021,3 +2021,8 @@ html.srch-locked .wa-float{opacity:0;pointer-events:none}
 
 /* specialized-products panel serves a phone crop through <picture> */
 .acc__media picture{display:contents}
+
+/* «ReMedium» in the hero: one real word for screen readers, search engines and
+   copy-paste; the animated letters beside it are decoration (aria-hidden). */
+.word-fx__label{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.word-fx b::before{content:attr(data-l)}  /* letters are drawn, not text: the page text holds «ReMedium» once */

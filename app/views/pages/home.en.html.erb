@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,6 +18,7 @@
     />
     <link rel="stylesheet" href="<%= static_asset("/assets/css/style.css") %>" />
     <link rel="stylesheet" href="<%= static_asset("/assets/css/site-footer.css") %>" />
+    <link rel="stylesheet" href="<%= static_asset("/assets/css/site-header.css") %>" />
       <link rel="alternate" hreflang="en" href="/en/" />
     <link rel="alternate" hreflang="ar" href="/" />
     <link rel="alternate" hreflang="x-default" href="/" />
@@ -210,95 +211,8 @@
     </svg>
 
     <!-- ================= HEADER ================= -->
-    <header class="header" id="header">
-      <div class="header__inner">
-        <a href="/en/" class="logo">
-          <span class="logo__mark">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M5 19C5 9 11 4 20 4c0 9-5 15-15 15z" />
-              <path d="M5 19c3-6 6-9 10-11" />
-            </svg>
-          </span>
-          <span class="logo__stack"><span class="logo__text"
-            ><span class="logo__u">BEAUTY</span> <span class="logo__r">ROOTS</span></span
-          ><i class="logo__sub" lang="ar" dir="rtl">جذور الجمال</i></span>
-        </a>
-
-        <nav class="nav" id="nav">
-          <button type="button" class="nav__search" data-search-open><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span><%= t("site.search.placeholder") %></span></button>
-          <ul class="nav__list">
-            <li class="nav__item">
-              <a href="/en/" class="nav__link is-active">Home</a>
-            </li>
-            <li class="nav__item">
-              <a href="/en/company/about/" class="nav__link"
-                >Company <svg class="ico ico--xs"><use href="#i-chev" /></svg></a
-              >
-              <ul class="dropdown">
-                <li><a href="/en/company/about/">About Beauty Roots</a></li>
-                <li><a href="/en/company/identity/">Legal Identity &amp; Licences</a></li>
-                <li><a href="/en/company/contact/">Contact Us</a></li>
-              </ul>
-            </li>
-            <li class="nav__item">
-              <a href="/en/brands/" class="nav__link"
-                >Brands &amp; Products <svg class="ico ico--xs"><use href="#i-chev" /></svg></a
-              >
-              <ul class="dropdown">
-                <li><a href="/en/brands/">All brands</a></li>
-                <li><a href="/en/brands/remedium/">ReMedium — exclusive agency</a></li>
-                <li><a href="/en/brands/remedium/sub-q/">ReMedium Sub-Q</a></li>
-                <li><a href="/en/brands/remedium/mid/">ReMedium Mid</a></li>
-                <li><a href="/en/brands/remedium/fine/">ReMedium Fine</a></li>
-                <li><a href="/en/brands/ha-filler/">HA Filler</a></li>
-                <li><a href="/en/brands/hairont/">Hairont</a></li>
-                <li><a href="/en/brands/gynwell/">GynWell</a></li>
-                <li><a href="/en/brands/ovds/">OVDs</a></li>
-                <li><a href="/en/brands/#skincare-external">Skincare</a></li>
-              </ul>
-            </li>
-            <li class="nav__item">
-              <a href="/en/quality/compliance/" class="nav__link"
-                >Quality &amp; Compliance <svg class="ico ico--xs"><use href="#i-chev" /></svg></a
-              >
-              <ul class="dropdown">
-                <li><a href="/en/quality/compliance/">Quality &amp; Compliance</a></li>
-                <li><a href="/en/quality/supply/">Supply Chain, Storage &amp; Distribution</a></li>
-                <li><a href="/en/quality/certifications/">Certifications &amp; Accreditations</a></li>
-              </ul>
-            </li>
-            <li class="nav__item">
-              <a href="/en/medical/service-model/" class="nav__link"
-                >Medical Information <svg class="ico ico--xs"><use href="#i-chev" /></svg></a
-              >
-              <ul class="dropdown">
-                <li><a href="/en/medical/service-model/">Service Model &amp; Commercial Terms</a></li>
-                <li><a href="/en/medical/evidence/">Laboratory Evidence &amp; Protocols</a></li>
-                <li><a href="/en/medical/results/">Clinical Results Gallery</a></li>
-                <li><a href="/en/medical/quote/">Request a Quote</a></li>
-              </ul>
-            </li>
-            <li class="nav__item">
-              <a href="/en/knowledge/" class="nav__link">Knowledge</a>
-            </li>
-          </ul>
-        </nav>
-
-        <div class="header__actions">
-          <button type="button" class="icon-btn icon-btn--light" data-search-open aria-label="<%= t("site.search.open") %>"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
-            <a href="/" lang="ar" dir="rtl" style="display:inline-flex;align-items:center;padding:9px 18px;border-radius:999px;font-size:13.5px;font-weight:700;color:#0C1A14;background:#fff;box-shadow:0 8px 24px -12px rgba(0,0,0,.25)">عربي</a>
-          <a href="/en/medical/quote/" class="btn btn--pill-white">
-            <span>Request a Quote</span>
-            <i class="btn__circle"
-              ><svg class="ico ico--sm"><use href="#i-arrow-ur" /></svg
-            ></i>
-          </a>
-          <button class="burger" id="burger" aria-label="Menu">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
-      </div>
-    </header>
+    <% content_for :nav_active, "home" %>
+    <%= render "shared/site_header" %>
 
     <!-- ================= 1. HERO + 2. IN NUMBERS ================= -->
     <section class="hero">
@@ -321,12 +235,12 @@
             <span class="line">&amp; EXCLUSIVE AGENT</span>
             <span class="line"
               >FOR
-              <span class="word-fx" translate="no" role="img" aria-label="ReMedium">
-                  <b style="--d: 0">R</b><b style="--d: 1">e</b
-                  ><b style="--d: 2">M</b><b style="--d: 3">e</b
-                  ><b style="--d: 4">d</b><b style="--d: 5">i</b
-                  ><b style="--d: 6">u</b><b style="--d: 7">m</b>
-                </span>
+              <span class="word-fx" translate="no"><span class="word-fx__label">ReMedium</span><span class="word-fx__letters" aria-hidden="true">
+                  <b style="--d: 0" data-l="R"></b><b style="--d: 1" data-l="e"></b
+                  ><b style="--d: 2" data-l="M"></b><b style="--d: 3" data-l="e"></b
+                  ><b style="--d: 4" data-l="d"></b><b style="--d: 5" data-l="i"></b
+                  ><b style="--d: 6" data-l="u"></b><b style="--d: 7" data-l="m"></b>
+                </span></span>
             </span>
           </h1>
 
@@ -1319,6 +1233,7 @@
     <%= render "shared/site_footer" %>
 <%= render "shared/wa_float" %>
 
+    <script src="<%= static_asset("/assets/js/site-header.js") %>"></script>
     <script src="<%= static_asset("/assets/js/main.js") %>"></script>
     <script src="<%= static_asset("/assets/js/search.js") %>" defer></script>
   </body>
