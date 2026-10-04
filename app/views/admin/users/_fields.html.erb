@@ -18,6 +18,12 @@
     <%= form.text_field :title_en, class: "inp" %>
   </div>
 </div>
+<% if form.object.persisted? && form.object != current_user %>
+<div class="field">
+  <label class="label">حالة الحساب</label>
+  <%= form.select :status, [["مفعّل — يستطيع الدخول", "active"], ["معلّق — لا يستطيع الدخول حتى يُفعَّل", "pending"]], {}, class: "sel" %>
+</div>
+<% end %>
 <div class="field">
   <label class="label">الصلاحية</label>
   <%= form.select :role, [["محرّر — كل شيء عدا إدارة المستخدمين", "editor"], ["مدير — كل شيء", "admin"]], {}, class: "sel" %>

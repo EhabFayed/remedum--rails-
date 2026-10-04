@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   ROLES = %w[admin editor].freeze
+  STATUSES = %w[active pending].freeze
 
   has_secure_password
   has_many :posts, foreign_key: :author_id, dependent: :nullify, inverse_of: :author
@@ -11,11 +12,16 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: false },
                     format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :role, inclusion: { in: ROLES }
+  validates :status, inclusion: { in: STATUSES }
   validates :password, length: { minimum: 10 }, allow_nil: true
 
   scope :ordered, -> { order(:name) }
+  scope :active,  -> { where(status: "active") }
+  scope :pending, -> { where(status: "pending") }
 
   def admin? = role == "admin"
+  def active? = status == "active"
+  def pending? = status == "pending"
 
   def display_role
     admin? ? "مدير" : "محرّر"

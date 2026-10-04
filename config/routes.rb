@@ -27,7 +27,11 @@ Rails.application.routes.draw do
       collection { get :export }
     end
     resources :media, only: %i[index create destroy]
-    resources :users, except: :show
+    resources :users, except: :show do
+      member { patch :approve }
+    end
+    get  "signup", to: "registrations#new",    as: :signup
+    post "signup", to: "registrations#create"
     resource  :settings, only: %i[show update]
   end
 
