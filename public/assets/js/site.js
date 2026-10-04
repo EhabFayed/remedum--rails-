@@ -340,20 +340,20 @@
 
   /* zone geometry and point positions — identical to the home page map */
   var REGIONS = {
-    forehead: '<ellipse class="fzone" cx="49" cy="42" rx="12.2" ry="4.6"/>',
-    temple: '<ellipse class="fzone" cx="71" cy="50" rx="3.6" ry="5.4" transform="rotate(12 71 50)"/><ellipse class="fzone" cx="28.5" cy="52" rx="4" ry="5.6" transform="rotate(-12 28.5 52)"/>',
-    periorbital: '<ellipse class="fzone" cx="33.5" cy="59" rx="3.6" ry="4.8" transform="rotate(-22 33.5 59)"/><ellipse class="fzone" cx="67" cy="58" rx="3.4" ry="4.8" transform="rotate(22 67 58)"/>',
-    cheek: '<ellipse class="fzone" cx="33" cy="70" rx="7.4" ry="6"/><ellipse class="fzone" cx="64.5" cy="68" rx="6.8" ry="5.8"/>',
-    smile: '<ellipse class="fzone" cx="41.5" cy="78" rx="2.6" ry="4.6" transform="rotate(-9 41.5 78)"/><ellipse class="fzone" cx="58" cy="77" rx="2.6" ry="4.6" transform="rotate(9 58 77)"/>',
-    lips: '<ellipse class="fzone" cx="50" cy="84" rx="9" ry="3.8"/>',
-    jaw: '<path class="fzone fzone--band" d="M30 77C31.5 84 35.5 89.8 42 93.2 45.6 95 48.4 95.4 50.5 95.4c2.4 0 5.6-.4 9.2-2.2 6.4-3 10-8 11.4-14.6"/>',
-    chin: '<ellipse class="fzone" cx="50" cy="95" rx="6" ry="4.2"/>',
-    neck: '<ellipse class="fzone" cx="48" cy="104" rx="9.2" ry="1.4"/><ellipse class="fzone" cx="47.5" cy="108" rx="8.4" ry="1.3"/>'
+    forehead: '<ellipse class="fzone" cx="51" cy="43.4" rx="13" ry="4"/>',
+    temple: '<ellipse class="fzone" cx="73.5" cy="52.6" rx="4.2" ry="6" transform="rotate(12 73.5 52.6)"/><ellipse class="fzone" cx="26.5" cy="52.6" rx="4.2" ry="6" transform="rotate(-12 26.5 52.6)"/>',
+    periorbital: '<ellipse class="fzone" cx="26.6" cy="61" rx="3.8" ry="5.2" transform="rotate(-22 26.6 61)"/><ellipse class="fzone" cx="71.6" cy="60.6" rx="3.8" ry="5.2" transform="rotate(22 71.6 60.6)"/>',
+    cheek: '<ellipse class="fzone" cx="33" cy="75.4" rx="8" ry="6.2"/><ellipse class="fzone" cx="67.5" cy="74.4" rx="8" ry="6.2"/>',
+    smile: '<ellipse class="fzone" cx="41" cy="79.6" rx="2.8" ry="5.2" transform="rotate(-9 41 79.6)"/><ellipse class="fzone" cx="59.5" cy="79.6" rx="2.8" ry="5.2" transform="rotate(9 59.5 79.6)"/>',
+    lips: '<ellipse class="fzone" cx="51.5" cy="85.2" rx="9.6" ry="3.8"/>',
+    jaw: '<path class="fzone fzone--band" d="M28.5 81C30 87.8 34 93 41 96.2 45 98 48.4 98.4 51 98.4c2.6 0 6-.4 10-2.2 7-3.2 11-8.4 12.5-15.2"/>',
+    chin: '<ellipse class="fzone" cx="51" cy="94.6" rx="6.2" ry="4.4"/>',
+    neck: '<ellipse class="fzone" cx="48" cy="101.6" rx="10.5" ry="1.4"/><ellipse class="fzone" cx="47.5" cy="105.8" rx="9.5" ry="1.3"/>'
   };
   var POINTS = [
-    ['forehead', 49, 35], ['temple', 71, 41.7], ['periorbital', 33.5, 49.2],
-    ['cheek', 33, 58.3], ['smile', 58, 64.2], ['lips', 50, 70],
-    ['jaw', 64, 73.5], ['chin', 50, 79.2], ['neck', 47, 87]
+    ['forehead', 51.5, 38], ['temple', 72, 46], ['periorbital', 29, 50.5],
+    ['cheek', 33, 62], ['smile', 59.5, 66.5], ['lips', 52, 71],
+    ['jaw', 66, 76], ['chin', 51, 80], ['neck', 47, 88]
   ];
   var tone = function (key) {
     var ps = FACE_POINTS[key].products;
