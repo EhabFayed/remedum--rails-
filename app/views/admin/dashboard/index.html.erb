@@ -5,8 +5,8 @@
      ["مقالات منشورة", @counts[:published_posts], admin_posts_path + "?status=published", false],
      ["مسوّدات",       @counts[:draft_posts],     admin_posts_path + "?status=draft", false],
      ["طلبات جديدة",   @counts[:new_leads],       admin_leads_path + "?status=new", @counts[:new_leads].positive?],
-     ["العلامات",      @counts[:brands],          admin_brands_path, false],
-     ["المنتجات",      @counts[:products],        admin_products_path, false],
+     ["الاعتمادات",    @counts[:certifications], admin_certifications_path, false],
+     ["التجارب والآراء", @counts[:review_tracks], admin_review_tracks_path, false],
      ["صور المكتبة",   @counts[:media],           admin_media_path, false]
    ] %>
 <div class="stats">

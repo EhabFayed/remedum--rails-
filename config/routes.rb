@@ -19,6 +19,10 @@ Rails.application.routes.draw do
     resources :brands, except: :show
     resources :products, except: :show
     resources :certifications, except: :show
+    resources :review_tracks, except: :show do
+      member { patch :toggle }
+      collection { patch :heading }
+    end
     resources :leads, only: %i[index show update destroy] do
       collection { get :export }
     end

@@ -58,14 +58,21 @@ Rails.application.configure do
   # Set host to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { host: ENV.fetch("RAILS_HOST", "beautyrooots.com"), protocol: "https" }
 
-  # Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
-  # config.action_mailer.smtp_settings = {
-  #   user_name: Rails.application.credentials.dig(:smtp, :user_name),
-  #   password: Rails.application.credentials.dig(:smtp, :password),
-  #   address: "smtp.example.com",
-  #   port: 587,
-  #   authentication: :plain
-  # }
+  # Outgoing mail (new-lead notifications) reads the SMTP_* values in .env.production.
+  # Until SMTP_ADDRESS is filled in, nothing is sent and leads still land in the dashboard.
+  if ENV["SMTP_ADDRESS"].present?
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address: ENV["SMTP_ADDRESS"],
+      port: ENV.fetch("SMTP_PORT", 587).to_i,
+      user_name: ENV["SMTP_USERNAME"].presence,
+      password: ENV["SMTP_PASSWORD"].presence,
+      authentication: (:plain if ENV["SMTP_USERNAME"].present?),
+      enable_starttls_auto: true
+    }.compact
+  else
+    config.action_mailer.perform_deliveries = false
+  end
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

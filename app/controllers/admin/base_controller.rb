@@ -3,7 +3,13 @@
 class Admin::BaseController < ApplicationController
   layout "admin"
 
+  # Sections parked until a public page reads from them: their data is kept,
+  # but the client cannot reach an editor whose changes would not show anywhere.
+  # Remove a name here to bring the section back.
+  HIDDEN_SECTIONS = %w[brands products faqs].freeze
+
   before_action :require_login
+  before_action :park_hidden_section
   before_action :no_index
   skip_around_action :switch_locale
 
@@ -28,6 +34,12 @@ class Admin::BaseController < ApplicationController
     return if current_user&.admin?
 
     redirect_to admin_root_path, alert: "هذا القسم للمديرين فقط."
+  end
+
+  def park_hidden_section
+    return unless HIDDEN_SECTIONS.include?(controller_name)
+
+    redirect_to admin_root_path, notice: "هذا القسم غير مفعّل حاليًا على الموقع."
   end
 
   def no_index
