@@ -75,10 +75,10 @@ module SiteHelper
     number.present? ? "https://wa.me/#{number}" : WHATSAPP_URL
   end
 
-  # "" → the locale home ("/" for en — the landing, "/ar/" for ar).
+  # "" → the locale home ("/" for ar — the default language, "/en/" for en).
   # "brands#skincare-external" → "/en/brands/#skincare-external"
   def locale_path(path)
-    return I18n.locale == :ar ? "/ar/" : "/" if path.blank?
+    return I18n.locale == :ar ? "/" : "/en/" if path.blank?
 
     base, anchor = path.split("#", 2)
     "/#{I18n.locale}/#{base}/#{anchor ? "##{anchor}" : ""}"
@@ -87,11 +87,9 @@ module SiteHelper
   # The same page in the other locale — for the language pill and hreflang.
   def alt_locale_path
     self_path = request.path.end_with?("/") ? request.path : "#{request.path}/"
-    if I18n.locale == :ar
-      self_path == "/ar/" ? "/" : self_path.sub(%r{\A/ar/}, "/en/")
-    else
-      self_path == "/" ? "/ar/" : self_path.sub(%r{\A/en/}, "/ar/")
-    end
+    return(I18n.locale == :ar ? "/en/" : "/") if self_path == "/" || self_path == "/en/"
+
+    I18n.locale == :ar ? self_path.sub(%r{\A/ar/}, "/en/") : self_path.sub(%r{\A/en/}, "/ar/")
   end
 
   def self_canonical_path
