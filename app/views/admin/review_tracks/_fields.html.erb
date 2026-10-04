@@ -1,0 +1,58 @@
+<div class="field">
+  <label class="label">العنوان بالعربية <span class="req">*</span></label>
+  <%= form.text_field :title_ar, class: "inp", placeholder: "آراء الأطباء والمنشآت" %>
+</div>
+<div class="field" dir="ltr">
+  <label class="label">Title in English <span class="req">*</span></label>
+  <%= form.text_field :title_en, class: "inp", placeholder: "Physician & facility reviews" %>
+</div>
+<div class="field">
+  <label class="label">النص (عربي)</label>
+  <%= form.text_area :body_ar, class: "txt", rows: 2 %>
+</div>
+<div class="field" dir="ltr">
+  <label class="label">Text (English)</label>
+  <%= form.text_area :body_en, class: "txt", rows: 2 %>
+</div>
+<div class="field">
+  <label class="label">الإضافة أسفل النص</label>
+  <%= form.select :kind, ReviewTrack::KINDS.map { |k| [ReviewTrack::KIND_LABELS[k], k] }, {}, class: "sel" %>
+  <p class="hint">اقتباس: النص المميز هو الاقتباس، والسطر الثاني اسم صاحبه. نجوم: النص المميز هو نص الرابط. شارة: النص المميز يظهر داخل الشارة.</p>
+</div>
+<div class="field">
+  <label class="label">النص المميز (عربي)</label>
+  <%= form.text_area :note_ar, class: "txt", rows: 2 %>
+</div>
+<div class="field" dir="ltr">
+  <label class="label">Highlighted text (English)</label>
+  <%= form.text_area :note_en, class: "txt", rows: 2 %>
+</div>
+<div class="grid-2">
+  <div class="field">
+    <label class="label">صاحب الاقتباس (عربي)</label>
+    <%= form.text_field :caption_ar, class: "inp" %>
+  </div>
+  <div class="field" dir="ltr">
+    <label class="label">Quote by (English)</label>
+    <%= form.text_field :caption_en, class: "inp" %>
+  </div>
+</div>
+<div class="field">
+  <label class="label">رابط النجوم</label>
+  <%= form.text_field :link_url, class: "inp inp--mono", dir: "ltr", placeholder: "https://maps.google.com/…" %>
+  <p class="hint">يُستخدم مع «نجوم مع رابط» فقط، ويفتح في نافذة جديدة.</p>
+</div>
+<div class="field" data-media-group>
+  <%= render "admin/shared/image_picker", form: form, label: "صورة الاقتباس", hint: "review",
+             url_field: :image_url, width_field: nil, height_field: nil %>
+  <p class="hint">تُستخدم مع «اقتباس مع صورة» فقط.</p>
+</div>
+<div class="grid-2">
+  <div class="field">
+    <label class="label">الترتيب</label>
+    <%= form.number_field :position, class: "inp" %>
+  </div>
+  <div class="field" style="display:flex;align-items:flex-end">
+    <label class="check"><%= form.check_box :published %><span>يظهر على الموقع</span></label>
+  </div>
+</div>

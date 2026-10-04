@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_09_14_110000) do
+ActiveRecord::Schema[8.0].define(version: 2026_10_04_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -194,6 +194,25 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_14_110000) do
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["slug"], name: "index_products_on_slug", unique: true
+  end
+
+  create_table "review_tracks", force: :cascade do |t|
+    t.string "title_ar", null: false
+    t.string "title_en", null: false
+    t.text "body_ar"
+    t.text "body_en"
+    t.string "kind", default: "plain", null: false
+    t.text "note_ar"
+    t.text "note_en"
+    t.string "caption_ar"
+    t.string "caption_en"
+    t.string "link_url"
+    t.string "image_url"
+    t.integer "position", default: 0, null: false
+    t.boolean "published", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["position"], name: "index_review_tracks_on_position"
   end
 
   create_table "settings", primary_key: "key", id: :string, force: :cascade do |t|

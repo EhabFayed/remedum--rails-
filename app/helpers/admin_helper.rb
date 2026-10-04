@@ -3,10 +3,11 @@ module AdminHelper
     { path: :admin_root_path,           label: "نظرة عامة", icon: "grid", exact: true },
     { path: :admin_posts_path,          label: "المقالات", icon: "doc" },
     { path: :admin_categories_path,     label: "التصنيفات", icon: "tag" },
-    { path: :admin_faqs_path,           label: "الأسئلة الشائعة", icon: "help" },
-    { path: :admin_brands_path,         label: "العلامات", icon: "leaf" },
-    { path: :admin_products_path,       label: "المنتجات", icon: "box" },
+    { path: :admin_faqs_path,           label: "الأسئلة الشائعة", icon: "help", section: "faqs" },
+    { path: :admin_brands_path,         label: "العلامات", icon: "leaf", section: "brands" },
+    { path: :admin_products_path,       label: "المنتجات", icon: "box", section: "products" },
     { path: :admin_certifications_path, label: "الاعتمادات", icon: "shield" },
+    { path: :admin_review_tracks_path,  label: "التجارب والآراء", icon: "help" },
     { path: :admin_leads_path,          label: "الطلبات", icon: "inbox", badge: :new_leads },
     { path: :admin_media_path,          label: "مكتبة الصور", icon: "image" },
     { path: :admin_users_path,          label: "المستخدمون", icon: "user", admin_only: true },
@@ -14,7 +15,10 @@ module AdminHelper
   ].freeze
 
   def nav_items
-    NAV.reject { |i| i[:admin_only] && !current_user&.admin? }
+    NAV.reject do |i|
+      (i[:admin_only] && !current_user&.admin?) ||
+        Admin::BaseController::HIDDEN_SECTIONS.include?(i[:section])
+    end
   end
 
   def nav_active?(item)

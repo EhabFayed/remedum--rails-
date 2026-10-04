@@ -1,0 +1,71 @@
+<% content_for :title, "مسارات التجارب والآراء" %>
+<%= page_header "مسارات التجارب والآراء", "البطاقات الثلاث في قسم «التجارب والآراء» بصفحة مركز المعرفة، بالترتيب المعروض." %>
+
+<div class="split">
+  <div>
+    <% if @tracks.empty? %>
+      <p class="empty">لا مسارات بعد — لن تظهر بطاقات في القسم.</p>
+    <% else %>
+      <div class="tablewrap"><div class="tablescroll">
+        <table class="tbl tbl--auto">
+          <thead><tr><th>الترتيب</th><th>العنوان</th><th>الإضافة</th><th>الحالة</th><th></th></tr></thead>
+          <tbody>
+            <% @tracks.each do |track| %>
+              <tr>
+                <td class="lat" style="color:var(--faint)"><%= track.position %></td>
+                <td>
+                  <a class="tbl__title" href="<%= edit_admin_review_track_path(track) %>"><%= track.title_ar %></a>
+                  <p class="tbl__sub" dir="ltr"><%= track.title_en %></p>
+                </td>
+                <td style="color:var(--muted)"><%= ReviewTrack::KIND_LABELS[track.kind] %></td>
+                <td><%= status_pill(track.published ? "published" : "draft") %></td>
+                <td>
+                  <div class="tbl__acts">
+                    <%= button_to (track.published ? "إخفاء" : "إظهار"), toggle_admin_review_track_path(track), method: :patch, class: "btn btn--sm pressable" %>
+                    <a class="btn btn--sm pressable" href="<%= edit_admin_review_track_path(track) %>">تحرير</a>
+                    <%= render "admin/shared/delete_button", path: admin_review_track_path(track), label: "حذف" %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div></div>
+    <% end %>
+
+    <div class="card" style="margin-top:20px">
+      <h2 class="card__title" style="margin-bottom:12px">عنوان القسم</h2>
+      <%= form_with url: heading_admin_review_tracks_path, method: :patch, scope: :heading do |f| %>
+        <div class="grid-2">
+          <div class="field">
+            <label class="label">العنوان الصغير (عربي)</label>
+            <%= f.text_field :reviews_eyebrow_ar, value: ReviewTrack.heading(:eyebrow, :ar), class: "inp", placeholder: t("content.pages_369", locale: :ar) %>
+          </div>
+          <div class="field" dir="ltr">
+            <label class="label">Eyebrow (English)</label>
+            <%= f.text_field :reviews_eyebrow_en, value: ReviewTrack.heading(:eyebrow, :en), class: "inp", placeholder: t("content.pages_369", locale: :en) %>
+          </div>
+          <div class="field">
+            <label class="label">العنوان (عربي)</label>
+            <%= f.text_field :reviews_title_ar, value: ReviewTrack.heading(:title, :ar), class: "inp", placeholder: t("content.pages_370", locale: :ar) %>
+          </div>
+          <div class="field" dir="ltr">
+            <label class="label">Title (English)</label>
+            <%= f.text_field :reviews_title_en, value: ReviewTrack.heading(:title, :en), class: "inp", placeholder: t("content.pages_370", locale: :en) %>
+          </div>
+        </div>
+        <p class="hint" style="margin-bottom:12px">اترك الحقل فارغًا لاستخدام النص الأصلي الظاهر داخله.</p>
+        <%= f.submit "حفظ العنوان", class: "btn btn--primary pressable" %>
+      <% end %>
+    </div>
+  </div>
+
+  <aside class="card">
+    <h2 class="card__title" style="margin-bottom:12px">مسار جديد</h2>
+    <%= form_with model: [:admin, @track] do |f| %>
+      <%= render "admin/shared/errors", record: @track %>
+      <%= render "fields", form: f %>
+      <%= f.submit "إضافة", class: "btn btn--primary btn--full pressable" %>
+    <% end %>
+  </aside>
+</div>
