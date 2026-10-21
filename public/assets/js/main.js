@@ -71,9 +71,9 @@
   /* `img` = pack shot. Placeholders for now — swap in the real ReMedium
      product photography, same 1:1 crop. `months` drives the 0–24 scale. */
   var FACE_IMGS = {
-    fine: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=200&h=200&q=85',
-    mid: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=200&h=200&q=85',
-    subq: 'https://images.unsplash.com/photo-1631730359585-38a4935cbec4?auto=format&fit=crop&w=200&h=200&q=85'
+    fine: '/assets/img/remedium-fine-thumb.webp',
+    mid: '/assets/img/remedium-mid-thumb.webp',
+    subq: '/assets/img/remedium-subq-thumb.webp'
   };
 
   var FACE_PRODUCTS = IS_AR ? {

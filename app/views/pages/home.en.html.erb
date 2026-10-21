@@ -440,16 +440,20 @@
                 />
                 <ul class="acc__chips">
                   <li>
-                    <b>ReMedium Sub-Q</b
-                    ><span>Cheeks, temples &amp; jawline contouring</span>
+                    <a class="acc__chip" href="<%= locale_path("brands/remedium/sub-q") %>"><b>ReMedium Sub-Q</b
+                    ><span>Cheeks, temples &amp; jawline contouring</span></a>
                   </li>
                   <li>
-                    <b>ReMedium Mid</b
-                    ><span>Lips, chin &amp; nasolabial folds</span>
+                    <a class="acc__chip" href="<%= locale_path("brands/remedium/mid") %>"><b>ReMedium Mid</b
+                    ><span>Lips, chin &amp; nasolabial folds</span></a>
                   </li>
                   <li>
-                    <b>ReMedium Fine</b
-                    ><span>Superficial lines, crow's feet &amp; neck</span>
+                    <a class="acc__chip" href="<%= locale_path("brands/remedium/fine") %>"><b>ReMedium Fine</b
+                    ><span>Superficial lines, crow's feet &amp; neck</span></a>
+                  </li>
+                
+                  <li class="acc__chips-more">
+                    <a class="acc__chip" href="<%= locale_path("brands/remedium") %>"><b>View the range</b><svg class="ico ico--xs" aria-hidden="true"><use href="#i-arrow-ur" /></svg></a>
                   </li>
                 </ul>
               </div>
@@ -472,6 +476,11 @@
                   src="/assets/img/hafiller-hero-wide.webp" width="1600" height="893" loading="lazy"
                   alt="HA Filler hyaluronic acid filler boxes"
                 />
+                <ul class="acc__chips">
+                  <li class="acc__chips-more">
+                    <a class="acc__chip" href="<%= locale_path("brands/ha-filler") %>"><b>Explore HA Filler products</b><svg class="ico ico--xs" aria-hidden="true"><use href="#i-arrow-ur" /></svg></a>
+                  </li>
+                </ul>
               </div>
             </div>
           </article>
@@ -490,6 +499,11 @@
                   src="/assets/img/home-skincare.webp" width="1600" height="840" loading="lazy"
                   alt="Professional skincare range"
                 />
+                <ul class="acc__chips">
+                  <li class="acc__chips-more">
+                    <a class="acc__chip" href="https://reemncream.com/ar/collections/all" target="_blank" rel="noopener noreferrer"><b>Shop skincare products</b><svg class="ico ico--xs" aria-hidden="true"><use href="#i-arrow-ur" /></svg></a>
+                  </li>
+                </ul>
               </div>
             </div>
           </article>
@@ -510,16 +524,16 @@
                 </picture>
                 <ul class="acc__chips">
                   <li>
-                    <b>Hairont</b
-                    ><span>Anti-adhesion medical gel after surgery</span>
+                    <a class="acc__chip" href="<%= locale_path("brands/hairont") %>"><b>Hairont</b
+                    ><span>Anti-adhesion medical gel after surgery</span></a>
                   </li>
                   <li>
-                    <b>GynWell</b
-                    ><span>Sodium hyaluronate gel for intrauterine use</span>
+                    <a class="acc__chip" href="<%= locale_path("brands/gynwell") %>"><b>GynWell</b
+                    ><span>Sodium hyaluronate gel for intrauterine use</span></a>
                   </li>
                   <li>
-                    <b>OVDs</b
-                    ><span>Viscous preparations for eye surgery</span>
+                    <a class="acc__chip" href="<%= locale_path("brands/ovds") %>"><b>OVDs</b
+                    ><span>Viscous preparations for eye surgery</span></a>
                   </li>
                 </ul>
               </div>
@@ -741,66 +755,9 @@
                 ReMedium is engineered in three calibrated densities tailored to
                 specific facial anatomy. Delicate, dynamic areas require our
                 lightest gel, while structural contours require higher cohesive
-                support. Select a product to explore target indications.
+                support.
               </p>
             </div>
-
-            <ul class="fprod-list" id="fprodList">
-              <li>
-                <button
-                  class="fprod fprod--subq"
-                  data-product="subq"
-                  aria-pressed="false"
-                >
-                  <span class="fprod__swatch"></span>
-                  <span class="fprod__body">
-                    <strong>ReMedium Sub-Q</strong>
-                    <span
-                      >Cheeks &middot; Temples &middot; Chin &middot; Jawline
-                      contouring</span
-                    >
-                  </span>
-                  <span class="fprod__dur"
-                    >18 &ndash; 24 <small>months</small></span
-                  >
-                </button>
-              </li>
-              <li>
-                <button
-                  class="fprod fprod--mid"
-                  data-product="mid"
-                  aria-pressed="false"
-                >
-                  <span class="fprod__swatch"></span>
-                  <span class="fprod__body">
-                    <strong>ReMedium Mid</strong>
-                    <span>Lips &middot; Chin &middot; Nasolabial folds</span>
-                  </span>
-                  <span class="fprod__dur"
-                    >12 &ndash; 18 <small>months</small></span
-                  >
-                </button>
-              </li>
-              <li>
-                <button
-                  class="fprod fprod--fine"
-                  data-product="fine"
-                  aria-pressed="false"
-                >
-                  <span class="fprod__swatch"></span>
-                  <span class="fprod__body">
-                    <strong>ReMedium Fine</strong>
-                    <span
-                      >Periorbital lines &middot; Forehead lines &middot; Neck
-                      lines</span
-                    >
-                  </span>
-                  <span class="fprod__dur"
-                    >9 &ndash; 12 <small>months</small></span
-                  >
-                </button>
-              </li>
-            </ul>
 
             <p class="facemap__note">
               <svg class="ico ico--xs"><use href="#i-shield" /></svg> Duration

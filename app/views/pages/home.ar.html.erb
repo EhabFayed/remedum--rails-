@@ -446,16 +446,20 @@
                 />
                 <ul class="acc__chips">
                   <li>
-                    <b>ReMedium Sub-Q</b
-                    ><span>لنحت الفك والخدود واستعادة الحجم العميق</span>
+                    <a class="acc__chip" href="<%= locale_path("brands/remedium/sub-q") %>"><b>ReMedium Sub-Q</b
+                    ><span>لنحت الفك والخدود واستعادة الحجم العميق</span></a>
                   </li>
                   <li>
-                    <b>ReMedium Mid</b
-                    ><span>للشفاه والذقن وخطوط الابتسامة</span>
+                    <a class="acc__chip" href="<%= locale_path("brands/remedium/mid") %>"><b>ReMedium Mid</b
+                    ><span>للشفاه والذقن وخطوط الابتسامة</span></a>
                   </li>
                   <li>
-                    <b>ReMedium Fine</b
-                    ><span>للخطوط الدقيقة وحول العين والرقبة</span>
+                    <a class="acc__chip" href="<%= locale_path("brands/remedium/fine") %>"><b>ReMedium Fine</b
+                    ><span>للخطوط الدقيقة وحول العين والرقبة</span></a>
+                  </li>
+                
+                  <li class="acc__chips-more">
+                    <a class="acc__chip" href="<%= locale_path("brands/remedium") %>"><b>عرض المجموعة</b><svg class="ico ico--xs" aria-hidden="true"><use href="#i-arrow-ur" /></svg></a>
                   </li>
                 </ul>
               </div>
@@ -476,6 +480,11 @@
                   src="/assets/img/hafiller-hero-wide.webp" width="1600" height="893" loading="lazy"
                   alt="علب منتجات HA Filler من فيلر حمض الهيالورونيك"
                 />
+                <ul class="acc__chips">
+                  <li class="acc__chips-more">
+                    <a class="acc__chip" href="<%= locale_path("brands/ha-filler") %>"><b>استكشف منتجات HA Filler</b><svg class="ico ico--xs" aria-hidden="true"><use href="#i-arrow-ur" /></svg></a>
+                  </li>
+                </ul>
               </div>
             </div>
           </article>
@@ -494,6 +503,11 @@
                   src="/assets/img/home-skincare.webp" width="1600" height="840" loading="lazy"
                   alt="تشكيلة عناية احترافية بالبشرة"
                 />
+                <ul class="acc__chips">
+                  <li class="acc__chips-more">
+                    <a class="acc__chip" href="https://reemncream.com/ar/collections/all" target="_blank" rel="noopener noreferrer"><b>تسوق منتجات العناية بالبشرة</b><svg class="ico ico--xs" aria-hidden="true"><use href="#i-arrow-ur" /></svg></a>
+                  </li>
+                </ul>
               </div>
             </div>
           </article>
@@ -514,16 +528,16 @@
                 </picture>
                 <ul class="acc__chips">
                   <li>
-                    <b>Hairont</b
-                    ><span>جل طبي مضاد للالتصاقات بعد الجراحة</span>
+                    <a class="acc__chip" href="<%= locale_path("brands/hairont") %>"><b>Hairont</b
+                    ><span>جل طبي مضاد للالتصاقات بعد الجراحة</span></a>
                   </li>
                   <li>
-                    <b>GynWell</b
-                    ><span>جل هيالورونات الصوديوم للاستخدام داخل الرحم</span>
+                    <a class="acc__chip" href="<%= locale_path("brands/gynwell") %>"><b>GynWell</b
+                    ><span>جل هيالورونات الصوديوم للاستخدام داخل الرحم</span></a>
                   </li>
                   <li>
-                    <b>OVDs</b
-                    ><span>مستحضرات لزجة لجراحات العيون</span>
+                    <a class="acc__chip" href="<%= locale_path("brands/ovds") %>"><b>OVDs</b
+                    ><span>مستحضرات لزجة لجراحات العيون</span></a>
                   </li>
                 </ul>
               </div>
@@ -743,67 +757,9 @@
                 صُممت تشكيلة <span dir="ltr">ReMedium</span> بثلاث كثافات
                 مدروسة لتلائم الخصائص التشريحية لكل منطقة في الوجه؛ فالطبقات
                 الرقيقة والحركية يناسبها الجل الأكثر انسيابية، بينما تتطلب
-                المناطق الهيكلية قوامًا متماسكًا يحدد الملامح ويدعمها. حددي
-                المنتج للتعرف على مناطق استخدامه.
+                المناطق الهيكلية قوامًا متماسكًا يحدد الملامح ويدعمها.
               </p>
             </div>
-
-            <ul class="fprod-list" id="fprodList">
-              <li>
-                <button
-                  class="fprod fprod--subq"
-                  data-product="subq"
-                  aria-pressed="false"
-                >
-                  <span class="fprod__swatch"></span>
-                  <span class="fprod__body">
-                    <strong>ReMedium Sub-Q</strong>
-                    <span
-                      >الوجنتان &middot; الصدغان &middot; استعادة حجم الذقن
-                      &middot; نحت خط الفك</span
-                    >
-                  </span>
-                  <span class="fprod__dur"
-                    >18 &ndash; 24 <small>شهرًا</small></span
-                  >
-                </button>
-              </li>
-              <li>
-                <button
-                  class="fprod fprod--mid"
-                  data-product="mid"
-                  aria-pressed="false"
-                >
-                  <span class="fprod__swatch"></span>
-                  <span class="fprod__body">
-                    <strong>ReMedium Mid</strong>
-                    <span>الشفاه &middot; تحديد الذقن &middot; خطوط الابتسامة</span>
-                  </span>
-                  <span class="fprod__dur"
-                    >12 &ndash; 18 <small>شهرًا</small></span
-                  >
-                </button>
-              </li>
-              <li>
-                <button
-                  class="fprod fprod--fine"
-                  data-product="fine"
-                  aria-pressed="false"
-                >
-                  <span class="fprod__swatch"></span>
-                  <span class="fprod__body">
-                    <strong>ReMedium Fine</strong>
-                    <span
-                      >الخطوط الدقيقة حول العين &middot; خطوط الجبهة &middot;
-                      خطوط الرقبة</span
-                    >
-                  </span>
-                  <span class="fprod__dur"
-                    >9 &ndash; 12 <small>شهرًا</small></span
-                  >
-                </button>
-              </li>
-            </ul>
 
             <p class="facemap__note">
               <svg class="ico ico--xs"><use href="#i-shield" /></svg> مدة ثبات
