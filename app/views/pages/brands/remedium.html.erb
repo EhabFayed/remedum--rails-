@@ -18,6 +18,62 @@
   </div>
 </div></div></section>
 
+<section class="section rm-range"><div class="container">
+
+<div class="sec-head">
+  <span class="eyebrow"><i></i><%= t('content.brands_140') %></span>
+  <h2 class="sec-title"><%= t('content.brands_141') %></h2>
+  <p class="sec-lead"><%= t('content.brands_142') %></p>
+</div>
+  <%# One panel per density, NeuSkin "three pillars" style: the hovered panel
+      widens and shows its detail; touch screens show every panel in full. %>
+  <div class="rm-pillars">
+    <a class="rm-pillar" href="<%= locale_path("brands/remedium/sub-q") %>" style="--accent:var(--subq)">
+      <img src="/assets/img/brand-subq.webp" width="1600" height="1066" decoding="async" alt="ReMedium Sub-Q — <%= t('content.brands_50').strip %>">
+      <div class="rm-pillar__copy">
+        <span class="rm-pillar__tag"><%= t('content.brands_50').strip %></span>
+        <h3 class="rm-pillar__name"><bdi dir="ltr">ReMedium Sub-Q</bdi></h3>
+        <div class="rm-pillar__more">
+          <p class="rm-pillar__areas"><%= t('content.brands_52') %></p>
+          <div class="rm-pillar__meta">
+            <span class="rm-pillar__dur"><small><%= t('content.brands_94') %></small><b><%= t('content.brands_53') %></b></span>
+            <span class="rm-pillar__go"><%= t('content.brands_96') %> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></span>
+          </div>
+        </div>
+      </div>
+    </a>
+    <a class="rm-pillar" href="<%= locale_path("brands/remedium/mid") %>" style="--accent:var(--mid)">
+      <img src="/assets/img/brand-mid.webp" width="1600" height="1066" decoding="async" alt="ReMedium Mid — <%= t('content.brands_26').strip %>">
+      <div class="rm-pillar__copy">
+        <span class="rm-pillar__tag"><%= t('content.brands_26').strip %></span>
+        <h3 class="rm-pillar__name"><bdi dir="ltr">ReMedium Mid</bdi></h3>
+        <div class="rm-pillar__more">
+          <p class="rm-pillar__areas"><%= t('content.brands_28') %></p>
+          <div class="rm-pillar__meta">
+            <span class="rm-pillar__dur"><small><%= t('content.brands_94') %></small><b><%= t('content.brands_29') %></b></span>
+            <span class="rm-pillar__go"><%= t('content.brands_96') %> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></span>
+          </div>
+        </div>
+      </div>
+    </a>
+    <a class="rm-pillar" href="<%= locale_path("brands/remedium/fine") %>" style="--accent:var(--fine)">
+      <img src="/assets/img/brand-fine.webp" width="1600" height="1066" decoding="async" alt="ReMedium Fine — <%= t('content.brands_1').strip %>">
+      <div class="rm-pillar__copy">
+        <span class="rm-pillar__tag"><%= t('content.brands_1').strip %></span>
+        <h3 class="rm-pillar__name"><bdi dir="ltr">ReMedium Fine</bdi></h3>
+        <div class="rm-pillar__more">
+          <p class="rm-pillar__areas"><%= t('content.brands_3') %></p>
+          <div class="rm-pillar__meta">
+            <span class="rm-pillar__dur"><small><%= t('content.brands_94') %></small><b><%= t('content.brands_4') %></b></span>
+            <span class="rm-pillar__go"><%= t('content.brands_96') %> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></span>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div></section>
+
+
 <section class="section"><div class="container">
 
 <div class="sec-head">
@@ -82,62 +138,7 @@
   </div>
 </div></section>
 
-<section class="section"><div class="container">
 
-<div class="sec-head">
-  <span class="eyebrow"><i></i><%= t('content.brands_140') %></span>
-  <h2 class="sec-title"><%= t('content.brands_141') %></h2>
-  <p class="sec-lead"><%= t('content.brands_142') %></p>
-</div>
-  <div class="grid grid-3" style="gap:18px">
-
-<div class="card card--soft product-card">
-  <div class="product-card__head">
-    <span class="swatch swatch--subq"></span>
-    <b class="product-card__name" dir="ltr">ReMedium Sub-Q</b>
-    <span class="chip"><%= t('content.brands_50') %></span>
-  </div>
-  <p><%= t('content.brands_52') %></p>
-
-<div class="dur">
-  <div class="dur__head"><span><%= t('content.brands_94') %></span><b style="color:var(--subq)"><%= t('content.brands_53') %></b></div>
-  <div class="dur__track"><span class="dur__fill" style="inset-inline-start:75%;width:25%;background:var(--subq)"></span></div>
-  <div class="dur__scale"><span>0</span><span>6</span><span>12</span><span>18</span><span><%= t('content.brands_95') %></span></div>
-</div>
-  <a class="go" href="<%= locale_path("brands/remedium/sub-q") %>"><%= t('content.brands_96') %> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></a>
-</div>
-<div class="card card--soft product-card">
-  <div class="product-card__head">
-    <span class="swatch swatch--mid"></span>
-    <b class="product-card__name" dir="ltr">ReMedium Mid</b>
-    <span class="chip"><%= t('content.brands_26') %></span>
-  </div>
-  <p><%= t('content.brands_28') %></p>
-
-<div class="dur">
-  <div class="dur__head"><span><%= t('content.brands_94') %></span><b style="color:var(--mid)"><%= t('content.brands_29') %></b></div>
-  <div class="dur__track"><span class="dur__fill" style="inset-inline-start:50%;width:25%;background:var(--mid)"></span></div>
-  <div class="dur__scale"><span>0</span><span>6</span><span>12</span><span>18</span><span><%= t('content.brands_95') %></span></div>
-</div>
-  <a class="go" href="<%= locale_path("brands/remedium/mid") %>"><%= t('content.brands_96') %> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></a>
-</div>
-<div class="card card--soft product-card">
-  <div class="product-card__head">
-    <span class="swatch swatch--fine"></span>
-    <b class="product-card__name" dir="ltr">ReMedium Fine</b>
-    <span class="chip"><%= t('content.brands_1') %></span>
-  </div>
-  <p><%= t('content.brands_3') %></p>
-
-<div class="dur">
-  <div class="dur__head"><span><%= t('content.brands_94') %></span><b style="color:var(--fine)"><%= t('content.brands_4') %></b></div>
-  <div class="dur__track"><span class="dur__fill" style="inset-inline-start:37.5%;width:12.5%;background:var(--fine)"></span></div>
-  <div class="dur__scale"><span>0</span><span>6</span><span>12</span><span>18</span><span><%= t('content.brands_95') %></span></div>
-</div>
-  <a class="go" href="<%= locale_path("brands/remedium/fine") %>"><%= t('content.brands_96') %> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></a>
-</div>
-  </div>
-</div></section>
 
 <section class="section"><div class="container">
 
