@@ -576,6 +576,8 @@
         </div>
 
         <div class="facemap__grid">
+          <div class="fm-split">
+          <div class="fm-split__map">
           <!-- ---- face stage ---- -->
           <div class="facemap__stage">
             <div class="facemap__frame" id="faceMap">
@@ -748,7 +750,23 @@
 
             <p class="facemap__hint"><i></i> اضغطي أي نقطة على الوجه</p>
           </div>
-
+          </div>
+          <!-- ---- the three densities, in their face-map colours ---- -->
+        <div class="fm-range">
+          <a class="fm-range__card" href="<%= locale_path("brands/remedium/sub-q") %>" style="--c:var(--fm-subq)">
+            <img src="/assets/img/remedium-subq-pack-v.webp" width="400" height="631" loading="lazy" decoding="async" alt="ReMedium Sub-Q — حقن عميق تحت الجلد" />
+            <span class="fm-range__cap"><i aria-hidden="true"></i><b><bdi>ReMedium Sub-Q</bdi></b><small>حقن عميق تحت الجلد</small></span>
+          </a>
+          <a class="fm-range__card" href="<%= locale_path("brands/remedium/mid") %>" style="--c:var(--fm-mid)">
+            <img src="/assets/img/remedium-mid-pack-v.webp" width="400" height="631" loading="lazy" decoding="async" alt="ReMedium Mid — حقن متوسط العمق" />
+            <span class="fm-range__cap"><i aria-hidden="true"></i><b><bdi>ReMedium Mid</bdi></b><small>حقن متوسط العمق</small></span>
+          </a>
+          <a class="fm-range__card" href="<%= locale_path("brands/remedium/fine") %>" style="--c:var(--fm-fine)">
+            <img src="/assets/img/remedium-fine-pack-v.webp" width="400" height="631" loading="lazy" decoding="async" alt="ReMedium Fine — حقن سطحي" />
+            <span class="fm-range__cap"><i aria-hidden="true"></i><b><bdi>ReMedium Fine</bdi></b><small>حقن سطحي</small></span>
+          </a>
+        </div>
+        </div>
           <!-- ---- product key ---- -->
           <aside class="facemap__side">
             <div class="facemap__side-head">

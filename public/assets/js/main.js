@@ -232,7 +232,7 @@
         return;
       }
       var frameBox = faceMap.getBoundingClientRect();
-      var boundsBox = faceMap.closest('.container').getBoundingClientRect();
+      var boundsBox = (faceMap.closest('.fm-split__map') || faceMap.closest('.container')).getBoundingClientRect();
       var fh = faceMap.clientHeight;
       /* the point is centred on its --x/--y by a -50%/-50% transform, which
          offsetLeft/offsetTop do not see — so those values are the centre */
