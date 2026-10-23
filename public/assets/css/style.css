@@ -1809,3 +1809,6 @@ a.footer__val:hover{color:#fff;text-decoration:underline}
   .footer__key{font-size:11.5px;line-height:1.5}
   .footer__val{line-height:1.55}
 }
+
+/* brand name keeps its own casing inside the uppercase hero title */
+.hero__title .word-fx{text-transform:none}
