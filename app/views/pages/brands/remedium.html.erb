@@ -176,12 +176,115 @@
   </div>
 </div></section>
 
+<section class="section cmp-sec" id="compare"><div class="container">
+
+<div class="sec-head">
+  <span class="eyebrow"><i></i><%= t('content.remedium_compare_eyebrow') %></span>
+  <h2 class="sec-title"><%= t('content.remedium_compare_title') %></h2>
+  <p class="sec-lead"><%= t('content.remedium_compare_lead') %></p>
+</div>
+  <%# On phones the table shows one product at a time; these chips pick it. %>
+  <div class="cmp-t__picker" data-cmp-picker>
+      <button type="button" class="cmp-t__chip is-active" data-pick="all"><%= t('content.remedium_compare_all') %></button>
+      <button type="button" class="cmp-t__chip" data-pick="subq"><i class="swatch swatch--subq"></i><bdi dir="ltr">Sub-Q</bdi></button>
+      <button type="button" class="cmp-t__chip" data-pick="mid"><i class="swatch swatch--mid"></i><bdi dir="ltr">Mid</bdi></button>
+      <button type="button" class="cmp-t__chip" data-pick="fine"><i class="swatch swatch--fine"></i><bdi dir="ltr">Fine</bdi></button>
+  </div>
+  <div class="cmp-t__wrap">
+    <table class="cmp-t" data-cmp>
+      <thead>
+      <tr>
+        <th scope="col" class="cmp-t__corner"></th>
+        <th scope="col" class="cmp-t__prod" data-col="subq">
+          <a href="<%= locale_path("brands/remedium/sub-q") %>" class="cmp-t__prodlink">
+            <img src="/assets/img/brand-subq.webp" width="1600" height="1066" loading="lazy" alt="ReMedium Sub-Q">
+            <span class="cmp-t__name"><i class="swatch swatch--subq"></i><bdi dir="ltr">ReMedium Sub-Q</bdi></span>
+            <span class="cmp-t__tag"><%= t('content.brands_50').strip %></span>
+          </a>
+        </th>
+        <th scope="col" class="cmp-t__prod" data-col="mid">
+          <a href="<%= locale_path("brands/remedium/mid") %>" class="cmp-t__prodlink">
+            <img src="/assets/img/brand-mid.webp" width="1600" height="1066" loading="lazy" alt="ReMedium Mid">
+            <span class="cmp-t__name"><i class="swatch swatch--mid"></i><bdi dir="ltr">ReMedium Mid</bdi></span>
+            <span class="cmp-t__tag"><%= t('content.brands_26').strip %></span>
+          </a>
+        </th>
+        <th scope="col" class="cmp-t__prod" data-col="fine">
+          <a href="<%= locale_path("brands/remedium/fine") %>" class="cmp-t__prodlink">
+            <img src="/assets/img/brand-fine.webp" width="1600" height="1066" loading="lazy" alt="ReMedium Fine">
+            <span class="cmp-t__name"><i class="swatch swatch--fine"></i><bdi dir="ltr">ReMedium Fine</bdi></span>
+            <span class="cmp-t__tag"><%= t('content.brands_1').strip %></span>
+          </a>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row"><%= t('content.brands_175') %></th>
+        <td data-col="subq"><%= t('content.brands_58') %></td>
+        <td data-col="mid"><%= t('content.brands_34') %></td>
+        <td data-col="fine"><%= t('content.brands_9') %></td>
+      </tr>
+      <tr>
+        <th scope="row"><%= t('content.brands_176') %></th>
+        <td data-col="subq"><%= t('content.brands_52') %></td>
+        <td data-col="mid"><%= t('content.brands_28') %></td>
+        <td data-col="fine"><%= t('content.brands_3') %></td>
+      </tr>
+      <tr>
+        <th scope="row"><%= t('content.brands_94') %></th>
+        <td data-col="subq">
+          <div class="dur"><div class="dur__head"><b style="color:var(--subq)"><%= t('content.brands_53') %></b></div>
+          <div class="dur__track"><span class="dur__fill" style="inset-inline-start:75%;width:25%;background:var(--subq)"></span></div>
+          <div class="dur__scale"><span>0</span><span>6</span><span>12</span><span>18</span><span><%= t('content.brands_95') %></span></div></div>
+        </td>
+        <td data-col="mid">
+          <div class="dur"><div class="dur__head"><b style="color:var(--mid)"><%= t('content.brands_29') %></b></div>
+          <div class="dur__track"><span class="dur__fill" style="inset-inline-start:50%;width:25%;background:var(--mid)"></span></div>
+          <div class="dur__scale"><span>0</span><span>6</span><span>12</span><span>18</span><span><%= t('content.brands_95') %></span></div></div>
+        </td>
+        <td data-col="fine">
+          <div class="dur"><div class="dur__head"><b style="color:var(--fine)"><%= t('content.brands_4') %></b></div>
+          <div class="dur__track"><span class="dur__fill" style="inset-inline-start:37.5%;width:12.5%;background:var(--fine)"></span></div>
+          <div class="dur__scale"><span>0</span><span>6</span><span>12</span><span>18</span><span><%= t('content.brands_95') %></span></div></div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><%= t('content.brands_177') %></th>
+        <td data-col="subq"><%= t('content.brands_59') %></td>
+        <td data-col="mid"><%= t('content.brands_35') %></td>
+        <td data-col="fine"><%= t('content.brands_10') %></td>
+      </tr>
+      <tr>
+        <th scope="row"><%= t('content.brands_173') %></th>
+        <td data-col="subq"><span class="lat" dir="ltr"><%= t('content.brands_174') %></span></td>
+        <td data-col="mid"><span class="lat" dir="ltr"><%= t('content.brands_174') %></span></td>
+        <td data-col="fine"><span class="lat" dir="ltr"><%= t('content.brands_174') %></span></td>
+      </tr>
+      <tr>
+        <th scope="row"><%= t('content.brands_152') %></th>
+        <td data-col="subq"><%= t('content.brands_180') %></td>
+        <td data-col="mid"><%= t('content.brands_180') %></td>
+        <td data-col="fine"><%= t('content.brands_180') %></td>
+      </tr>
+      <tr class="cmp-t__foot">
+        <th scope="row"></th>
+        <td data-col="subq"><a class="btn btn--ghost" href="<%= locale_path("brands/remedium/sub-q") %>"><%= t('content.brands_96') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></span></a></td>
+        <td data-col="mid"><a class="btn btn--ghost" href="<%= locale_path("brands/remedium/mid") %>"><%= t('content.brands_96') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></span></a></td>
+        <td data-col="fine"><a class="btn btn--ghost" href="<%= locale_path("brands/remedium/fine") %>"><%= t('content.brands_96') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></span></a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="foot-note"><%= t('content.brands_197') %></p>
+</div></section>
+
 <section class="section section--last"><div class="container">
   <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
     <h3 style="font-family:var(--ff-d);font-size:19px;font-weight:800;text-align:center"><%= t('content.brands_160') %></h3>
     <div style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap">
       <a class="btn btn--dark" href="<%= locale_path("medical/quote") %>"><%= t('content.brands_161') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></span></a>
-      <a class="btn btn--ghost" href="<%= locale_path("medical/service-model") %>#training"><%= t('content.brands_162') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></span></a>
+      <a class="btn btn--ghost" href="<%= locale_path("company/contact") %>#training"><%= t('content.brands_162') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></span></a>
     </div>
   </div>
 </div></section>

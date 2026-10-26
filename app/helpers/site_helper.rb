@@ -11,11 +11,23 @@ module SiteHelper
     ] },
     { key: "brands", path: "brands", items: [
       %w[brands_all brands],
-      %w[brands_remedium brands/remedium],
-      %w[brands_subq brands/remedium/sub-q],
-      %w[brands_mid brands/remedium/mid],
-      %w[brands_fine brands/remedium/fine],
-      %w[brands_ha brands/ha-filler],
+      # A hash entry opens a nested menu: the brand's full collection first,
+      # then its products. ReMedium products have pages; HA Filler products
+      # are tabs on the brand page, reached by anchor (site.js opens the tab).
+      { key: "brands_remedium", path: "brands/remedium", items: [
+        %w[brands_collection brands/remedium],
+        %w[brands_subq brands/remedium/sub-q],
+        %w[brands_mid brands/remedium/mid],
+        %w[brands_fine brands/remedium/fine]
+      ] },
+      { key: "brands_ha", path: "brands/ha-filler", items: [
+        %w[brands_collection brands/ha-filler],
+        %w[brands_ha_fine_lines brands/ha-filler#fine-lines],
+        %w[brands_ha_derm brands/ha-filler#derm],
+        %w[brands_ha_derm_deep brands/ha-filler#derm-deep],
+        %w[brands_ha_derm_plus brands/ha-filler#derm-plus],
+        %w[brands_ha_sub_skin brands/ha-filler#sub-skin]
+      ] },
       %w[brands_hairont brands/hairont],
       %w[brands_gynwell brands/gynwell],
       %w[brands_ovds brands/ovds],
@@ -26,13 +38,13 @@ module SiteHelper
       %w[quality_supply quality/supply],
       %w[quality_certifications quality/certifications]
     ] },
-    { key: "medical", path: "medical/service-model", items: [
-      %w[medical_service medical/service-model],
+    { key: "medical", path: "medical/evidence", items: [
       %w[medical_evidence medical/evidence],
       %w[medical_results medical/results],
       %w[medical_quote medical/quote]
     ] },
-    { key: "knowledge", path: "knowledge" }
+    { key: "knowledge", path: "knowledge" },
+    { key: "contact", path: "company/contact" }
   ].freeze
 
   FOOTER_LINKS = [

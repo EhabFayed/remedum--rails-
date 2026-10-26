@@ -15,8 +15,21 @@
           <a class="nav__link<%= " is-active" if content_for(:nav_active).to_s == item[:key] %>" href="<%= locale_path(item[:path]) %>"><%= t("site.nav.#{item[:key]}") %><% if item[:items] %><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg><% end %></a>
           <% if item[:items] %>
           <div class="dropdown">
-            <% item[:items].each do |(label_key, sub_path)| %>
+            <% item[:items].each do |sub| %>
+            <% if sub.is_a?(Hash) %>
+            <div class="dropdown__group">
+              <% name, tag = t("site.nav.#{sub[:key]}").split(" — ", 2) %>
+              <a class="dropdown__parent" href="<%= locale_path(sub[:path]) %>"><% if tag %><span class="dropdown__name"><b><%= name %></b> <em class="dropdown__tag"><%= tag %></em></span><% else %><%= name %><% end %><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></a>
+              <div class="dropdown__sub">
+                <% sub[:items].each do |(label_key, sub_path)| %>
+                <a href="<%= locale_path(sub_path) %>"><%= t("site.nav.#{label_key}") %></a>
+                <% end %>
+              </div>
+            </div>
+            <% else %>
+            <% label_key, sub_path = sub %>
             <a href="<%= locale_path(sub_path) %>"><%= t("site.nav.#{label_key}") %></a>
+            <% end %>
             <% end %>
           </div>
           <% end %>

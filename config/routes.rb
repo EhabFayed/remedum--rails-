@@ -51,6 +51,10 @@ Rails.application.routes.draw do
   get "ar", to: redirect("/", status: 301), as: :ar_home
   get "en", to: "pages#home", defaults: { locale: "en" }, as: :en_home
 
+  # The "service model & commercial terms" page moved into the contact page
+  get ":locale/medical/service-model", constraints: { locale: /ar|en/ }, format: false,
+      to: redirect { |p, _req| "/#{p[:locale]}/company/contact/#steps" }
+
   # Site search index (JSON), matched before the catch-all page route
   get ":locale/search-index", to: "search#index", constraints: { locale: /ar|en/ },
       defaults: { format: :json }, as: :search_index

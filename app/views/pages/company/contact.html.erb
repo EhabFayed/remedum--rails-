@@ -1,6 +1,6 @@
 <% content_for :title, t('content.company_contact_title') %>
 <% content_for :description, t('content.company_contact_description') %>
-<% content_for :nav_active, 'company' %>
+<% content_for :nav_active, 'contact' %>
 
 
 <section class="page-hero"><div class="container"><div class="page-hero__inner">
@@ -57,5 +57,176 @@
   </div>
 </div></section>
 
+<%# "How to start" — the six steps that used to sit on the home page, in the same visual treatment %>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-flower" viewBox="0 0 200 200">
+          <g fill="currentColor">
+            <path d="M100 106C79 79 77 41 100 6c23 35 21 73 0 100Z" />
+            <path
+              d="M100 106C79 79 77 41 100 6c23 35 21 73 0 100Z"
+              transform="rotate(51 100 100)"
+            />
+            <path
+              d="M100 106C79 79 77 41 100 6c23 35 21 73 0 100Z"
+              transform="rotate(-51 100 100)"
+            />
+            <path
+              d="M100 106C79 79 77 41 100 6c23 35 21 73 0 100Z"
+              transform="rotate(147 100 100)"
+            />
+            <path
+              d="M100 106C79 79 77 41 100 6c23 35 21 73 0 100Z"
+              transform="rotate(-147 100 100)"
+            />
+            <path
+              d="M100 106C84 85 82 55 100 26c18 29 16 59 0 80Z"
+              transform="rotate(25 100 100)"
+            />
+            <path
+              d="M100 106C84 85 82 55 100 26c18 29 16 59 0 80Z"
+              transform="rotate(-25 100 100)"
+            />
+            <path
+              d="M100 106C84 85 82 55 100 26c18 29 16 59 0 80Z"
+              transform="rotate(97 100 100)"
+            />
+            <path
+              d="M100 106C84 85 82 55 100 26c18 29 16 59 0 80Z"
+              transform="rotate(-97 100 100)"
+            />
+            <path
+              d="M100 106C84 85 82 55 100 26c18 29 16 59 0 80Z"
+              transform="rotate(180 100 100)"
+            />
+          </g>
+        </symbol></svg>
+<section class="process" id="steps">
+  <span class="process__wave process__wave--tr" aria-hidden="true"></span>
+  <span class="process__wave process__wave--bl" aria-hidden="true"></span>
+  <span class="process__flower process__flower--tl" aria-hidden="true"><svg viewBox="0 0 200 200"><use href="#i-flower" /></svg></span>
+  <span class="process__flower process__flower--br" aria-hidden="true"><svg viewBox="0 0 200 200"><use href="#i-flower" /></svg></span>
+  <div class="container">
+    <div class="sec-head sec-head--center sec-head--light">
+      <span class="eyebrow eyebrow--light"><i></i><%= t('content.contact_steps_eyebrow') %></span>
+      <h2 class="sec-title"><%= t('content.contact_steps_title') %></h2>
+      <p class="sec-lead"><%= t('content.contact_steps_lead') %></p>
+    </div>
+    <div class="steps-bar" id="stepsBar">
+      <span class="steps-bar__line"></span>
+          <button class="step-chip" type="button" style="--i: 0"><i></i><%= t('content.contact_step_label', n: 1) %></button>
+          <button class="step-chip is-active" type="button" style="--i: 1"><i></i><%= t('content.contact_step_label', n: 2) %></button>
+          <button class="step-chip" type="button" style="--i: 2"><i></i><%= t('content.contact_step_label', n: 3) %></button>
+          <button class="step-chip" type="button" style="--i: 3"><i></i><%= t('content.contact_step_label', n: 4) %></button>
+          <button class="step-chip" type="button" style="--i: 4"><i></i><%= t('content.contact_step_label', n: 5) %></button>
+          <button class="step-chip" type="button" style="--i: 5"><i></i><%= t('content.contact_step_label', n: 6) %></button>
+    </div>
+    <div class="steps" id="stepsGrid">
+          <article class="step" style="--i: 0">
+            <h3 class="step__title"><%= t('content.pages_217') %></h3>
+            <div class="step__media">
+              <div class="step__img step__img--pill">
+                <img src="/assets/img/step-contact.webp" width="1200" height="799" loading="lazy" alt="<%= t('content.pages_217') %>" />
+                <span class="step__cap"><%= t('content.pages_218') %></span>
+              </div>
+              <div class="step__img step__img--circle">
+                <img src="/assets/img/step-contact.webp" width="1200" height="799" loading="lazy" alt="" aria-hidden="true" />
+              </div>
+            </div>
+          </article>
+          <article class="step is-active" style="--i: 1">
+            <h3 class="step__title"><%= t('content.pages_219') %></h3>
+            <div class="step__media">
+              <div class="step__img step__img--pill">
+                <img src="/assets/img/step-account.webp" width="1200" height="799" loading="lazy" alt="<%= t('content.pages_219') %>" />
+                <span class="step__cap"><%= t('content.pages_220') %></span>
+              </div>
+              <div class="step__img step__img--circle">
+                <img src="/assets/img/step-account.webp" width="1200" height="799" loading="lazy" alt="" aria-hidden="true" />
+              </div>
+            </div>
+          </article>
+          <article class="step" style="--i: 2">
+            <h3 class="step__title"><%= t('content.pages_221') %></h3>
+            <div class="step__media">
+              <div class="step__img step__img--pill">
+                <img src="/assets/img/step-purchase.webp" width="1600" height="1067" loading="lazy" alt="<%= t('content.pages_221') %>" />
+                <span class="step__cap"><%= t('content.pages_222') %></span>
+              </div>
+              <div class="step__img step__img--circle">
+                <img src="/assets/img/step-purchase.webp" width="1600" height="1067" loading="lazy" alt="" aria-hidden="true" />
+              </div>
+            </div>
+          </article>
+          <article class="step" style="--i: 3">
+            <h3 class="step__title"><%= t('content.pages_223') %></h3>
+            <div class="step__media">
+              <div class="step__img step__img--pill">
+                <img src="/assets/img/step-shipping.webp" width="1200" height="799" loading="lazy" alt="<%= t('content.pages_223') %>" />
+                <span class="step__cap"><%= t('content.pages_176') %></span>
+              </div>
+              <div class="step__img step__img--circle">
+                <img src="/assets/img/step-shipping.webp" width="1200" height="799" loading="lazy" alt="" aria-hidden="true" />
+              </div>
+            </div>
+          </article>
+          <article class="step" style="--i: 4">
+            <h3 class="step__title"><%= t('content.pages_224') %></h3>
+            <div class="step__media">
+              <div class="step__img step__img--pill">
+                <img src="/assets/img/step-training.webp" width="1200" height="799" loading="lazy" alt="<%= t('content.pages_224') %>" />
+                <span class="step__cap"><%= t('content.pages_225') %></span>
+              </div>
+              <div class="step__img step__img--circle">
+                <img src="/assets/img/step-training.webp" width="1200" height="799" loading="lazy" alt="" aria-hidden="true" />
+              </div>
+            </div>
+          </article>
+          <article class="step" style="--i: 5">
+            <h3 class="step__title"><%= t('content.pages_226') %></h3>
+            <div class="step__media">
+              <div class="step__img step__img--pill">
+                <img src="/assets/img/step-followup.webp" width="1600" height="1067" loading="lazy" alt="<%= t('content.pages_226') %>" />
+                <span class="step__cap"><%= t('content.pages_227') %></span>
+              </div>
+              <div class="step__img step__img--circle">
+                <img src="/assets/img/step-followup.webp" width="1600" height="1067" loading="lazy" alt="" aria-hidden="true" />
+              </div>
+            </div>
+          </article>
+    </div>
+  </div>
+</section>
 
+<%# Commercial terms and training — moved here from the medical "service model" page %>
+<section class="section" id="terms"><div class="container">
+  <div class="grid grid-2" style="gap:16px">
+    <div class="card" style="padding:28px 30px">
+      <h3 class="card__title" style="font-size:17px;margin-bottom:16px"><%= t('content.pages_235') %></h3>
+      <ul class="check-list">
+        <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_236') %></li>
+        <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_237') %></li>
+        <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_238') %></li>
+      </ul>
+    </div>
+    <div class="card" style="padding:28px 30px">
+      <h3 class="card__title" style="font-size:17px;margin-bottom:16px"><%= t('content.pages_239') %></h3>
+      <ul class="check-list">
+        <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_240') %></li>
+        <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_241') %></li>
+        <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_242') %></li>
+      </ul>
+    </div>
+  </div>
+</div></section>
 
+<section class="section--mint section--last" id="training"><div class="container">
+
+<div class="sec-head">
+  <span class="eyebrow"><i></i><%= t('content.brands_162') %></span>
+  <h2 class="sec-title"><%= t('content.pages_244') %></h2>
+
+</div>
+  <div class="grid grid-3">
+    <div class="card" style="padding:24px"><h4 class="card__title" style="font-size:15px"><%= t('content.pages_245') %></h4><p style="line-height:1.95"><%= t('content.pages_246') %></p></div><div class="card" style="padding:24px"><h4 class="card__title" style="font-size:15px"><%= t('content.pages_247') %></h4><p style="line-height:1.95"><%= t('content.pages_248') %></p></div><div class="card" style="padding:24px"><h4 class="card__title" style="font-size:15px"><%= t('content.pages_249') %></h4><p style="line-height:1.95"><%= t('content.pages_250') %></p></div>
+  </div>
+  <p class="foot-note"><%= t('content.pages_251') %></p>
+</div></section>
