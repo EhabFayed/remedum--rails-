@@ -31,5 +31,33 @@
         }
       });
     });
+    // nested brand menus (ReMedium / HA Filler): tap the brand to list its
+    // products; the "full collection" link at the top opens the brand page
+    nav.querySelectorAll('.dropdown__group').forEach(function (group) {
+      var parent = group.querySelector('.dropdown__parent');
+      if (!parent) return;
+      parent.addEventListener('click', function (e) {
+        if (window.matchMedia('(max-width: 1280px)').matches) {
+          e.preventDefault();
+          group.classList.toggle('is-open');
+        }
+      });
+    });
+  }
+  /* back-to-top: appears once the page is scrolled a screen or so */
+  var toTop = document.querySelector('[data-to-top]');
+  if (toTop) {
+    var toTopTick = false;
+    var updateToTop = function () {
+      toTop.classList.toggle('is-on', window.scrollY > 600);
+      toTopTick = false;
+    };
+    window.addEventListener('scroll', function () {
+      if (!toTopTick) { toTopTick = true; window.requestAnimationFrame(updateToTop); }
+    }, { passive: true });
+    toTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    updateToTop();
   }
 })();

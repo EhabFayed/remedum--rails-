@@ -191,3 +191,43 @@ html[dir="rtl"] .site-header .logo--brand .logo__text:where(.site-header,.site-h
   .site-header .nav__link:where(.site-header,.site-header *):not(#_){padding-inline:5px}
   .site-header__inner:where(.site-header,.site-header *):not(#_){gap:10px}
 }
+
+/* ---- nested brand menus (ReMedium / HA Filler), mirrors site.css ---- */
+.dropdown__group:where(.site-header,.site-header *):not(#_){position:relative}
+.dropdown__parent:where(.site-header,.site-header *):not(#_){display:flex;align-items:center;justify-content:space-between;gap:8px}
+.dropdown__parent svg:where(.site-header,.site-header *):not(#_){flex:none;opacity:1;color:var(--ink);stroke-width:2.6;transition:transform .3s}
+.dropdown__sub a:first-child:where(.site-header,.site-header *):not(#_){font-weight:600;color:var(--ink-2);margin-bottom:4px;border-bottom:1px solid var(--line);border-radius:10px 10px 0 0}
+@media (min-width:1281px){
+  .dropdown__parent svg:where(.site-header,.site-header *):not(#_){transform:rotate(-90deg)}
+  html[dir="rtl"] .dropdown__parent svg:where(.site-header,.site-header *):not(#_){transform:rotate(90deg)}
+  .dropdown__sub:where(.site-header,.site-header *):not(#_){position:absolute;top:-10px;inset-inline-start:calc(100% + 6px); min-width:210px;padding:10px; background:#fff;border-radius:16px;box-shadow:var(--shadow-card); opacity:0;visibility:hidden;transform:translateY(8px); transition:.28s var(--ease);z-index:71;}
+  .dropdown__sub::before{content:"";position:absolute;top:0;bottom:0;inset-inline-end:100%;width:18px}
+  .dropdown__group:hover .dropdown__sub:where(.site-header,.site-header *):not(#_),.dropdown__group:focus-within .dropdown__sub:where(.site-header,.site-header *):not(#_){opacity:1;visibility:visible;transform:none}
+  .dropdown__group:hover .dropdown__parent:where(.site-header,.site-header *):not(#_){background:var(--mint);color:var(--green-900)}
+}
+@media (max-width:1280px){
+  .dropdown__sub:where(.site-header,.site-header *):not(#_){max-height:0;overflow:hidden;padding-inline-start:12px;transition:max-height .4s var(--ease)}
+  .dropdown__group.is-open .dropdown__sub:where(.site-header,.site-header *):not(#_){max-height:420px}
+  .dropdown__group.is-open .dropdown__parent svg:where(.site-header,.site-header *):not(#_){transform:rotate(180deg)}
+  .nav__item.is-open .dropdown:where(.site-header,.site-header *):not(#_),.nav__item.is-open:hover .dropdown:where(.site-header,.site-header *):not(#_){max-height:1100px}
+}
+.dropdown__name:where(.site-header,.site-header *):not(#_){display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:0 6px;min-width:0}
+.dropdown__name b:where(.site-header,.site-header *):not(#_){font-weight:700;color:var(--ink-2)}
+.dropdown__tag:where(.site-header,.site-header *):not(#_){font-style:normal;font-weight:700;font-size:12px;color:var(--brown)}
+.dropdown__parent:where(.site-header,.site-header *):not(#_){white-space:nowrap}
+.dropdown:has(.dropdown__group):where(.site-header,.site-header *):not(#_){min-width:250px}
+@media (min-width:1537px){
+  html[dir="ltr"] .site-header__inner:where(.site-header,.site-header *):not(#_){gap:12px;padding-inline:22px}
+  html[dir="ltr"] .nav__link:where(.site-header,.site-header *):not(#_){padding:8px 9px;font-size:13.5px;gap:4px}
+  html[dir="ltr"] .site-header .wa-btn:where(.site-header,.site-header *):not(#_){padding:11px;gap:0}
+  html[dir="ltr"] .site-header .wa-btn__txt:where(.site-header,.site-header *):not(#_){display:none}
+}
+@media (min-width:1281px) and (max-width:1536px){
+  html[dir="ltr"] .site-header__inner:where(.site-header,.site-header *):not(#_){gap:10px;padding-inline:14px}
+  html[dir="ltr"] .nav__list:where(.site-header,.site-header *):not(#_){gap:0}
+  html[dir="ltr"] .nav__link:where(.site-header,.site-header *):not(#_){padding:8px 6px;font-size:12.5px;gap:3px}
+  html[dir="ltr"] .header__actions:where(.site-header,.site-header *):not(#_){gap:6px}
+}
+@media (min-width:1281px) and (max-width:1366px){
+  html[dir="ltr"] .nav__link:where(.site-header,.site-header *):not(#_){padding:8px 4px;font-size:12px}
+}

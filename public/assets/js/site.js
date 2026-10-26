@@ -25,6 +25,46 @@
   openTabFromHash();
   window.addEventListener('hashchange', openTabFromHash);
 
+  /* contact page "how to start" steps: chip <-> card sync (same behaviour the home page had) */
+  var stepsWrap = document.getElementById('stepsGrid');
+  var stepsBar = document.getElementById('stepsBar');
+  if (stepsWrap && stepsBar) {
+    var stepEls = Array.prototype.slice.call(stepsWrap.querySelectorAll('.step'));
+    var chipEls = Array.prototype.slice.call(stepsBar.querySelectorAll('.step-chip'));
+    var DEFAULT_STEP = 1;
+    var setStep = function (n) {
+      stepEls.forEach(function (el, i) { el.classList.toggle('is-active', i === n); });
+      chipEls.forEach(function (el, i) { el.classList.toggle('is-active', i === n); });
+    };
+    stepEls.forEach(function (el, i) { el.addEventListener('mouseenter', function () { setStep(i); }); });
+    chipEls.forEach(function (el, i) {
+      el.addEventListener('mouseenter', function () { setStep(i); });
+      el.addEventListener('focus', function () { setStep(i); });
+      el.addEventListener('click', function () { setStep(i); });
+    });
+    document.getElementById('steps').addEventListener('mouseleave', function () { setStep(DEFAULT_STEP); });
+    setStep(DEFAULT_STEP);
+  }
+
+
+  /* ReMedium comparison table: phones show one product column (chips), desktop highlights the hovered column */
+  var cmp = document.querySelector('[data-cmp]');
+  var cmpPicker = document.querySelector('[data-cmp-picker]');
+  if (cmp && cmpPicker) {
+    var cmpCells = Array.prototype.slice.call(cmp.querySelectorAll('[data-col]'));
+    var cmpChips = Array.prototype.slice.call(cmpPicker.querySelectorAll('[data-pick]'));
+    var showCol = function (key) {
+      cmpCells.forEach(function (c) { c.classList.toggle('is-shown', key === 'all' || c.dataset.col === key); });
+      cmpChips.forEach(function (ch) { ch.classList.toggle('is-active', ch.dataset.pick === key); });
+    };
+    cmpChips.forEach(function (ch) { ch.addEventListener('click', function () { showCol(ch.dataset.pick); }); });
+    showCol(window.matchMedia('(max-width:760px)').matches ? 'subq' : 'all');
+    cmpCells.forEach(function (c) {
+      c.addEventListener('mouseenter', function () { cmpCells.forEach(function (x) { x.classList.toggle('is-hot', x.dataset.col === c.dataset.col && x.tagName === 'TD'); }); });
+    });
+    cmp.addEventListener('mouseleave', function () { cmpCells.forEach(function (x) { x.classList.remove('is-hot'); }); });
+  }
+
   /* medical gate: checkbox enables the button; entry reveals gated content */
   var gate = document.querySelector('[data-gate]');
   if (gate) {

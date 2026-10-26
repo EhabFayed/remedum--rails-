@@ -10,8 +10,15 @@
   <a href="<%= locale_path("") %>"><%= t('content.hfil_1') %></a><span class="sep"><%= t('content.hfil_22') %></span><a href="<%= locale_path("brands") %>"><%= t('content.hfil_2') %></a><span class="sep"><%= t('content.hfil_22') %></span><span class="here"><span class="lat" dir="ltr">HA Filler</span></span>
 </div>
     <h1 class="page-title"><span class="lat" dir="ltr">HA Filler</span> | <%= t('content.hfil_18') %></h1>
-    <p class="page-hero__lead"><%= t('content.hfil_17') %></p>
-    <div class="page-hero__chips"><span class="chip"><%= t('content.hfil_19') %></span><span class="chip chip--green"><span class="lat" dir="ltr">Hyaluronic Acid Dermal Fillers</span></span></div>
+    <div class="page-hero__chips" style="margin-bottom:14px"><span class="chip"><%= t('content.hfil_19') %></span><span class="chip chip--green"><span class="lat" dir="ltr">Hyaluronic Acid Dermal Fillers</span></span></div>
+    <p class="page-hero__lead"><%= t('content.hfil_25') %></p>
+    <p class="page-hero__lead" style="margin-top:8px"><%= t('content.hfil_26') %></p>
+    <div class="hf-uses">
+      <b class="hf-uses__label"><%= t('content.hfil_27') %> — <%= t('content.hfil_28') %></b>
+      <ul class="hf-uses__list">
+        <li><%= t('content.hfil_29') %></li><li><%= t('content.hfil_30') %></li><li><%= t('content.hfil_31') %></li><li><%= t('content.hfil_32') %></li><li><%= t('content.hfil_33') %></li>
+      </ul>
+    </div>
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px">
       <a class="btn btn--dark" href="<%= locale_path("medical/quote") %>"><%= t('content.hfil_21') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></span></a>
       <a class="btn btn--ghost" href="<%= locale_path("company/contact") %>"><%= t('content.hfil_23') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></span></a>
@@ -21,27 +28,6 @@
     <img src="/assets/img/hafiller-hero-wide.webp" alt="<%= t('content.hfil_20') %>" width="1200" height="1143">
   </div>
 </div></div></section>
-
-<section class="section"><div class="container">
-  <div class="grid grid-2" style="gap:18px;align-items:start">
-    <div class="card">
-      <h3 class="card__title" style="font-size:17px"><%= t('content.hfil_24') %></h3>
-      <p style="font-size:13px;line-height:2"><%= t('content.hfil_25') %></p>
-      <p style="font-size:13px;line-height:2;margin-top:10px"><%= t('content.hfil_26') %></p>
-    </div>
-    <div class="card">
-      <h3 class="card__title" style="font-size:17px"><%= t('content.hfil_27') %></h3>
-      <p style="font-size:13px;line-height:2"><%= t('content.hfil_28') %></p>
-      <ul class="check-list" style="margin-top:8px">
-        <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.hfil_29') %></li>
-        <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.hfil_30') %></li>
-        <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.hfil_31') %></li>
-        <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.hfil_32') %></li>
-        <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.hfil_33') %></li>
-      </ul>
-    </div>
-  </div>
-</div></section>
 
 <section class="section--mint"><div class="container" data-tabs>
   
@@ -54,7 +40,7 @@
     <button type="button" class="tab is-active" data-tab="fine-lines" role="tab"><span class="lat" dir="ltr">Fine Lines</span></button><button type="button" class="tab" data-tab="derm" role="tab"><span class="lat" dir="ltr">Derm</span></button><button type="button" class="tab" data-tab="derm-deep" role="tab"><span class="lat" dir="ltr">Derm Deep</span></button><button type="button" class="tab" data-tab="derm-plus" role="tab"><span class="lat" dir="ltr">Derm Plus</span></button><button type="button" class="tab" data-tab="sub-skin" role="tab"><span class="lat" dir="ltr">Sub Skin</span></button>
   </div>
   
-  <div class="tab-panel hf-slide" data-panel="fine-lines" role="tabpanel">
+  <div class="tab-panel hf-slide" id="fine-lines" data-panel="fine-lines" role="tabpanel">
     <div class="hf-slide__body">
       <span class="eyebrow"><i></i><%= t('content.hfil_3') %></span>
       <h3 class="hf-slide__name lat" dir="ltr">Fine Lines</h3>
@@ -69,7 +55,7 @@
       <img src="/assets/img/hafiller-fine-lines-pack.webp" width="1000" height="1000" alt="<%= t('content.hfil_40') %> HA Filler Fine Lines" loading="lazy">
     </div>
   </div>
-  <div class="tab-panel hf-slide" data-panel="derm" hidden role="tabpanel">
+  <div class="tab-panel hf-slide" id="derm" data-panel="derm" hidden role="tabpanel">
     <div class="hf-slide__body">
       <span class="eyebrow"><i></i><%= t('content.hfil_6') %></span>
       <h3 class="hf-slide__name lat" dir="ltr">Derm</h3>
@@ -84,7 +70,7 @@
       <img src="/assets/img/hafiller-derm-pack.webp" width="1000" height="1000" alt="<%= t('content.hfil_40') %> HA Filler Derm" loading="lazy">
     </div>
   </div>
-  <div class="tab-panel hf-slide" data-panel="derm-deep" hidden role="tabpanel">
+  <div class="tab-panel hf-slide" id="derm-deep" data-panel="derm-deep" hidden role="tabpanel">
     <div class="hf-slide__body">
       <span class="eyebrow"><i></i><%= t('content.hfil_9') %></span>
       <h3 class="hf-slide__name lat" dir="ltr">Derm Deep</h3>
@@ -99,7 +85,7 @@
       <img src="/assets/img/hafiller-derm-deep-pack.webp" width="1000" height="1000" alt="<%= t('content.hfil_40') %> HA Filler Derm Deep" loading="lazy">
     </div>
   </div>
-  <div class="tab-panel hf-slide" data-panel="derm-plus" hidden role="tabpanel">
+  <div class="tab-panel hf-slide" id="derm-plus" data-panel="derm-plus" hidden role="tabpanel">
     <div class="hf-slide__body">
       <span class="eyebrow"><i></i><%= t('content.hfil_11') %></span>
       <h3 class="hf-slide__name lat" dir="ltr">Derm Plus</h3>
@@ -114,7 +100,7 @@
       <img src="/assets/img/hafiller-derm-plus-pack.webp" width="1000" height="1000" alt="<%= t('content.hfil_40') %> HA Filler Derm Plus" loading="lazy">
     </div>
   </div>
-  <div class="tab-panel hf-slide" data-panel="sub-skin" hidden role="tabpanel">
+  <div class="tab-panel hf-slide" id="sub-skin" data-panel="sub-skin" hidden role="tabpanel">
     <div class="hf-slide__body">
       <span class="eyebrow"><i></i><%= t('content.hfil_14') %></span>
       <h3 class="hf-slide__name lat" dir="ltr">Sub Skin</h3>

@@ -624,7 +624,7 @@ button{background:none;border:0;cursor:pointer}
 }
 
 .acc.is-open{background:transparent}
-.acc.is-open .acc__head{background:var(--ink);border-radius:var(--r-md) var(--r-md) 0 0;padding-block:20px}
+.acc.is-open .acc__head{background:var(--green-900);border-radius:var(--r-md) var(--r-md) 0 0;padding-block:20px}
 .acc.is-open .acc__no,
 .acc.is-open .acc__title{color:#fff}
 .acc.is-open .acc__desc{color:rgba(255,255,255,.62)}
@@ -2102,3 +2102,29 @@ html.srch-locked .wa-float{opacity:0;pointer-events:none}
 }
 /* keep 330px beside the face for the 302px popup at every desktop width */
 @media (min-width:901px){ .fm-split__map .facemap__stage{max-width:min(440px,calc(100% - 330px))} }
+
+/* ---- back-to-top: the opposite corner from the WhatsApp pill ---- */
+.to-top{
+  position:fixed;z-index:50;
+  bottom:calc(26px + env(safe-area-inset-bottom,0px));
+  inset-inline-start:22px;
+  width:50px;height:50px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--ink);color:#fff;border:0;cursor:pointer;
+  box-shadow:0 14px 30px -12px rgba(0,0,0,.5),0 0 0 2px rgba(255,255,255,.7);
+  opacity:0;transform:translateY(16px);pointer-events:none;
+  transition:opacity .3s,transform .3s,background .3s;
+}
+.to-top.is-on{opacity:1;transform:none;pointer-events:auto}
+.to-top:hover{background:var(--green);transform:translateY(-3px)}
+.to-top:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+html.nav-locked .to-top,html.srch-locked .to-top{opacity:0;pointer-events:none}
+@media (max-width:680px){
+  .to-top{width:44px;height:44px;inset-inline-start:16px;bottom:calc(23px + env(safe-area-inset-bottom,0px))}
+  .to-top svg{width:19px;height:19px}
+}
+@media print{.to-top{display:none}}
+
+/* face-map side panel: link to the comparison tool on the ReMedium page */
+.facemap__cta{margin-top:18px}
+.facemap__side-head .facemap__cta{margin-top:20px}

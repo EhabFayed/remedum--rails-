@@ -1052,15 +1052,6 @@ html[dir="rtl"] .face-dot--flip{transform:translateX(calc(100% - 13px))}
 }
 .grid[style*="repeat(6"] span{font-size:11.5px!important}
 
-/* ---- skincare row on the brands hub at tablet width ---- */
-@media (max-width:900px){
-  #skincare-external .grid[style]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
-  #skincare-external .grid > .arch-media{grid-column:1/-1;aspect-ratio:16/9;min-height:0}
-  #skincare-external .grid > .arch-media img{object-position:center 65%}
-}
-@media (max-width:680px){
-  #skincare-external .grid > .arch-media{aspect-ratio:4/3}
-}
 
 /* ---- brand names inside Arabic cards line up with the Arabic text ---- */
 html[dir="rtl"] b.lat[dir="ltr"][style*="display:block"]{text-align:right}
@@ -1711,3 +1702,336 @@ html.srch-locked .wa-float{opacity:0;pointer-events:none}
 @media (prefers-reduced-motion:reduce){
   .rm-pillar,.rm-pillar img,.rm-pillar__more{transition:none}
 }
+
+/* ---- nested brand menus: ReMedium / HA Filler list their products ----
+   desktop: a flyout beside the brand row; drawer: an indented list that the
+   brand row toggles (the "full collection" link at the top opens the page) */
+.dropdown__group{position:relative}
+.dropdown__parent{display:flex!important;align-items:center;justify-content:space-between;gap:8px}
+.dropdown__parent svg{flex:none;opacity:1;color:var(--ink);stroke-width:2.6;transition:transform .3s}
+.dropdown__sub a:first-child{font-weight:600;color:var(--ink-2);margin-bottom:4px;border-bottom:1px solid var(--line);border-radius:10px 10px 0 0}
+@media (min-width:1281px){
+  .dropdown__parent svg{transform:rotate(-90deg)}
+  html[dir="rtl"] .dropdown__parent svg{transform:rotate(90deg)}
+  .dropdown__sub{
+    position:absolute;top:-10px;inset-inline-start:calc(100% + 6px);
+    min-width:210px;padding:10px;
+    background:#fff;border-radius:16px;box-shadow:var(--shadow-card);
+    opacity:0;visibility:hidden;transform:translateY(8px);
+    transition:.28s var(--ease);z-index:71;
+  }
+  /* bridges the gap so the flyout survives the pointer crossing to it */
+  .dropdown__sub::before{content:"";position:absolute;top:0;bottom:0;inset-inline-end:100%;width:18px}
+  .dropdown__group:hover .dropdown__sub,.dropdown__group:focus-within .dropdown__sub{opacity:1;visibility:visible;transform:none}
+  .dropdown__group:hover .dropdown__parent{background:var(--mint);color:var(--green-900)}
+}
+@media (max-width:1280px){
+  .dropdown__sub{max-height:0;overflow:hidden;padding-inline-start:12px;transition:max-height .4s var(--ease)}
+  .dropdown__group.is-open .dropdown__sub{max-height:420px}
+  .dropdown__group.is-open .dropdown__parent svg{transform:rotate(180deg)}
+  /* the Brands list grew with the nested products */
+  .nav__item.is-open .dropdown,
+  .nav__item.is-open:hover .dropdown{max-height:1100px}
+}
+/* brand rows in the Brands menu: name a touch bolder, "exclusive agency" tag in bold brown */
+.dropdown__name{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:0 6px;min-width:0}
+.dropdown__name b{font-weight:700;color:var(--ink-2)}
+.dropdown__tag{font-style:normal;font-weight:700;font-size:12px;color:var(--brown)}
+.dropdown__parent{white-space:nowrap}
+.dropdown:has(.dropdown__group){min-width:250px}
+
+/* ---------- contact page: "how to start" steps (moved from the home page) ---------- */
+/* ---------- 10. PROCESS ---------- */
+.process{
+  --step-drop:40px;
+  --step-gap:30px;
+  position:relative;
+  padding:96px 0 92px;
+  background:
+    radial-gradient(90% 70% at 22% 4%, rgba(31,120,88,.55) 0%, rgba(31,120,88,0) 62%),
+    radial-gradient(130% 130% at 50% 0%, #0E4432 0%, #093225 48%, #04150F 100%);
+  overflow:hidden;
+  isolation:isolate;
+}
+/* white petal clusters, top-left + bottom-right */
+.process__flower{
+  position:absolute;z-index:0;
+  color:#fff;pointer-events:none;
+  filter:drop-shadow(0 18px 40px rgba(0,0,0,.28));
+}
+.process__flower svg{width:100%;height:100%;display:block}
+.process__flower--tl{
+  width:290px;height:290px;
+  top:-118px;left:-104px;
+  transform:rotate(24deg);
+}
+.process__flower--br{
+  width:260px;height:260px;
+  bottom:-128px;right:-96px;
+  transform:rotate(-158deg);
+}
+/* faint contour ripples, top-right + bottom-left */
+.process__wave{
+  position:absolute;z-index:0;pointer-events:none;
+  width:560px;height:440px;
+  background:repeating-radial-gradient(ellipse 58% 68% at 50% 50%,
+    rgba(255,255,255,.13) 0 1px, transparent 1px 10px);
+  -webkit-mask-image:radial-gradient(ellipse 62% 70% at 50% 50%, #000 26%, transparent 74%);
+  mask-image:radial-gradient(ellipse 62% 70% at 50% 50%, #000 26%, transparent 74%);
+  opacity:.5;
+}
+.process__wave--tr{top:-150px;right:-140px;transform:rotate(-16deg) skewX(-10deg)}
+.process__wave--bl{bottom:-170px;left:-150px;transform:rotate(14deg) skewX(10deg)}
+
+.process .container{position:relative;z-index:1}
+
+/* ---- step chips ---- */
+.steps-bar{
+  position:relative;
+  display:grid;grid-template-columns:repeat(6,1fr);
+  align-items:center;
+  margin:10px 0 var(--step-gap);
+}
+.steps-bar__line{
+  position:absolute;left:6%;right:6%;top:50%;height:1px;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.26) 0 8px,transparent 8px 16px);
+}
+.step-chip{
+  position:relative;justify-self:center;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 17px;border-radius:999px;
+  font-family:var(--ff);
+  font-size:12.5px;font-weight:600;line-height:1.5;
+  color:rgba(255,255,255,.6);
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.13);
+  backdrop-filter:blur(4px);
+  cursor:pointer;
+  transition:color .35s var(--ease),background .35s var(--ease),
+             border-color .35s var(--ease),box-shadow .35s var(--ease);
+}
+.step-chip i{
+  width:5px;height:5px;border-radius:50%;flex:none;
+  background:currentColor;opacity:.65;
+  transition:opacity .35s var(--ease);
+}
+.step-chip:hover{color:rgba(255,255,255,.85);border-color:rgba(255,255,255,.26)}
+.step-chip.is-active{
+  color:#fff;
+  background:var(--green);
+  border-color:var(--green);
+  box-shadow:0 8px 22px -8px rgba(28,169,124,.85), 0 0 0 4px rgba(28,169,124,.16);
+}
+.step-chip.is-active i{opacity:1}
+/* dashed drop-line from the active chip down to its card */
+.step-chip::after{
+  content:'';position:absolute;left:50%;top:calc(100% + 5px);
+  width:1px;
+  height:calc(var(--step-gap) + var(--i) * var(--step-drop) - 14px);
+  background:repeating-linear-gradient(180deg,rgba(255,255,255,.34) 0 5px,transparent 5px 11px);
+  opacity:0;transition:opacity .35s var(--ease);
+  pointer-events:none;
+}
+.step-chip.is-active::after{opacity:1}
+
+/* ---- step cards ---- */
+.steps{
+  display:grid;grid-template-columns:repeat(6,1fr);
+  gap:12px;align-items:start;
+}
+.step{
+  position:relative;
+  margin-top:calc(var(--i) * var(--step-drop));
+  text-align:center;
+}
+/* curved teal arrow linking one step to the next */
+.step__media::after{
+  content:'';position:absolute;z-index:3;
+  right:-34px;bottom:-22px;
+  width:60px;height:60px;
+  background:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M4 6C22 10 36 24 44 42' fill='none' stroke='%2317A47C' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M47.7 50.2 38.5 44.4 49.5 39.6Z' fill='%2317A47C'/%3E%3C/svg%3E") center/contain no-repeat;
+  opacity:.9;
+  pointer-events:none;
+}
+.step:last-child .step__media::after{display:none}
+.step__title{
+  font-family:var(--ff-d);
+  font-size:clamp(14px,1.2vw,17px);
+  font-weight:600;color:#fff;letter-spacing:-.01em;
+  margin-bottom:18px;
+  transition:color .35s var(--ease);
+}
+.step__media{position:relative;display:flex;justify-content:center;padding-bottom:26px}
+.step__img{overflow:hidden;box-shadow:0 24px 44px -22px rgba(0,0,0,.7)}
+.step__img img{width:100%;height:100%;object-fit:cover}
+.step__img--pill{
+  position:relative;
+  width:min(196px,92%);height:132px;
+  border-radius:98px 98px 20px 20px;
+  border:5px solid rgba(255,255,255,.1);
+  transition:transform .5s var(--ease),border-color .45s var(--ease),box-shadow .45s var(--ease);
+}
+.step__img--circle{
+  position:absolute;right:6%;bottom:0;z-index:1;
+  width:78px;height:78px;border-radius:50%;
+  border:5px solid #093225;
+  transition:opacity .4s var(--ease),transform .5s var(--ease);
+}
+/* caption revealed over the pill on hover / active */
+.step__cap{
+  position:absolute;inset:0;z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  padding:16px 13px 22px;
+  font-size:10.5px;line-height:1.62;
+  color:rgba(255,255,255,.93);
+  background:linear-gradient(180deg,rgba(4,26,18,.2) 0%,rgba(4,26,18,.74) 40%,rgba(4,26,18,.92) 100%);
+  opacity:0;transform:translateY(10px);
+  transition:opacity .45s var(--ease),transform .45s var(--ease);
+  pointer-events:none;
+}
+.step:hover .step__cap,
+.step.is-active .step__cap{opacity:1;transform:none}
+.step:hover .step__img--pill,
+.step.is-active .step__img--pill{
+  z-index:2;
+  transform:translateY(-8px);
+  border-color:rgba(28,169,124,.5);
+  box-shadow:
+    0 0 0 1px rgba(28,169,124,.55),
+    0 0 34px -4px rgba(28,169,124,.45),
+    0 30px 52px -22px rgba(0,0,0,.85);
+}
+/* the badge steps aside so the caption reads cleanly */
+.step:hover .step__img--circle,
+.step.is-active .step__img--circle{opacity:0;transform:translateY(10px) scale(.88)}
+
+.step__img--circle img{transform:scale(1.6)}
+.sec-head--light .sec-title{color:#fff}
+.sec-head--light .sec-lead{color:rgba(255,255,255,.65)}
+.sec-head--center{align-items:center;text-align:center}
+.sec-head--center .sec-title::after{margin-inline:auto}
+.process .sec-head{margin-bottom:34px}
+.process .step-chip{font-family:inherit}
+@media (max-width:1100px){
+  .steps{grid-template-columns:repeat(3,1fr);gap:34px 12px}
+  .step{margin-top:0}
+  .step__media::after{display:none}
+  .steps-bar{display:none}
+  .process__flower--tl{width:220px;height:220px;top:-92px;left:-84px}
+  .process__flower--br{width:200px;height:200px;bottom:-96px;right:-76px}
+}
+@media (max-width:860px){
+  .steps{grid-template-columns:repeat(2,1fr);gap:40px 16px}
+  .step__cap{opacity:1;transform:none;font-size:12px}
+}
+@media (max-width:520px){
+  .steps{grid-template-columns:1fr;max-width:340px;margin-inline:auto}
+  .process{padding:72px 0 68px}
+  .process__flower--tl{width:170px;height:170px;top:-70px;left:-64px}
+  .process__flower--br{width:150px;height:150px;bottom:-72px;right:-58px}
+  .process__wave{width:380px;height:300px}
+}
+
+/* the English row grew by the "Contact Us" item: keep it on one line */
+@media (min-width:1537px){
+  html[dir="ltr"] .site-header__inner{gap:12px;padding-inline:22px}
+  html[dir="ltr"] .nav__link{padding:8px 9px;font-size:13.5px;gap:4px}
+  html[dir="ltr"] .site-header .wa-btn{padding:11px;gap:0}
+  html[dir="ltr"] .site-header .wa-btn__txt{display:none}
+}
+@media (min-width:1281px) and (max-width:1536px){
+  html[dir="ltr"] .site-header__inner{gap:10px;padding-inline:14px}
+  html[dir="ltr"] .nav__list{gap:0}
+  html[dir="ltr"] .nav__link{padding:8px 6px;font-size:12.5px;gap:3px}
+  html[dir="ltr"] .header__actions{gap:6px}
+}
+@media (min-width:1281px) and (max-width:1366px){
+  html[dir="ltr"] .nav__link{padding:8px 4px;font-size:12px}
+}
+
+/* ---- back-to-top: the opposite corner from the WhatsApp pill ---- */
+.to-top{
+  position:fixed;z-index:50;
+  bottom:calc(26px + env(safe-area-inset-bottom,0px));
+  inset-inline-start:22px;
+  width:50px;height:50px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--ink);color:#fff;border:0;cursor:pointer;
+  box-shadow:0 14px 30px -12px rgba(0,0,0,.5),0 0 0 2px rgba(255,255,255,.7);
+  opacity:0;transform:translateY(16px);pointer-events:none;
+  transition:opacity .3s,transform .3s,background .3s;
+}
+.to-top.is-on{opacity:1;transform:none;pointer-events:auto}
+.to-top:hover{background:var(--green);transform:translateY(-3px)}
+.to-top:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+html.nav-locked .to-top,html.srch-locked .to-top{opacity:0;pointer-events:none}
+@media (max-width:680px){
+  .to-top{width:44px;height:44px;inset-inline-start:16px;bottom:calc(23px + env(safe-area-inset-bottom,0px))}
+  .to-top svg{width:19px;height:19px}
+}
+@media print{.to-top{display:none}}
+
+/* ---- brands hub: skincare + hair care blocks ---- */
+.care-card{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.care-card__media{aspect-ratio:16/10;overflow:hidden;background:var(--sand)}
+.care-card__media img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.care-card:hover .care-card__media img{transform:scale(1.03)}
+.care-card__body{display:flex;flex-direction:column;gap:10px;flex:1;padding:22px 24px 24px}
+.care-card__title{font-size:19px!important;margin-bottom:0!important}
+.care-card__body p{line-height:1.9}
+.care-card__foot{margin-top:auto;padding-top:8px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.care-card__tag{font-size:11.5px;font-weight:700;color:var(--green-600)}
+@media (max-width:680px){
+  .care-card__body{padding:18px 18px 20px}
+  .care-card__foot .btn{width:100%;justify-content:space-between}
+}
+
+/* ---------- ReMedium comparison tool ---------- */
+#compare{scroll-margin-top:96px}
+.cmp-t__wrap{border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;background:#fff}
+.cmp-t{width:100%;border-collapse:collapse;table-layout:fixed}
+.cmp-t th,.cmp-t td{padding:16px 20px;border-top:1px solid var(--line);vertical-align:top;font-size:13px;line-height:1.9;text-align:start}
+.cmp-t thead th{border-top:0;vertical-align:bottom}
+.cmp-t tbody th{font-weight:700;color:var(--ink);background:var(--mint-2);width:19%}
+.cmp-t__corner{background:var(--mint-2)}
+.cmp-t__prod{padding:0!important}
+.cmp-t__prodlink{display:flex;flex-direction:column;gap:6px;padding:18px 20px 16px;color:inherit;text-decoration:none;transition:background .25s}
+.cmp-t__prodlink:hover{background:var(--mint-2)}
+.cmp-t__prodlink img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:14px;margin-bottom:6px}
+.cmp-t__name{display:flex;align-items:center;gap:9px;font-family:var(--ff-d);font-size:16px;font-weight:800}
+.cmp-t__tag{font-size:12px;font-weight:700;color:var(--green-600)}
+.cmp-t .dur{max-width:260px}
+.cmp-t .dur__head{justify-content:flex-start}
+.cmp-t__foot td{padding-top:14px;padding-bottom:18px}
+.cmp-t__foot .btn{font-size:12.5px}
+.cmp-t td.is-hot{background:var(--mint-2)}
+.cmp-t__picker{display:none;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.cmp-t__chip{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;font:inherit;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer}
+.cmp-t__chip.is-active{background:var(--ink);border-color:var(--ink);color:#fff}
+@media (max-width:760px){
+  .cmp-t__picker{display:flex}
+  .cmp-t{table-layout:auto}
+  .cmp-t tbody th{width:38%}
+  .cmp-t th,.cmp-t td{padding:12px 14px;font-size:12.5px}
+  .cmp-t [data-col]{display:none}
+  .cmp-t [data-col].is-shown{display:table-cell}
+  .cmp-t__prodlink img{display:none}
+  .cmp-t__name{font-size:14px}
+}
+
+/* ---------- leadership: the general manager's card leads the row ---------- */
+.lead-grid{grid-template-columns:1.35fr 1fr 1fr;align-items:start}
+.lead-card--gm{background:var(--mint-2);border-color:rgba(28,169,124,.35);padding:30px}
+.lead-card--gm img{width:84px!important;height:84px!important}
+.lead-card--gm b{font-size:18px!important}
+.lead-card--gm span{font-size:13px!important}
+.lead-card--gm p{font-size:14px;line-height:2}
+@media (max-width:1080px){.lead-grid{grid-template-columns:1fr 1fr}.lead-card--gm{grid-column:1/-1}}
+@media (max-width:680px){.lead-grid{grid-template-columns:1fr}}
+
+/* ---------- HA Filler hero: intro + uses live in the hero now ---------- */
+.hf-uses{margin-top:18px}
+.hf-uses__label{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.hf-uses__list{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.hf-uses__list li{padding:7px 13px;border-radius:999px;background:var(--mint);color:var(--green-900);font-size:12.5px;font-weight:600;line-height:1.6}

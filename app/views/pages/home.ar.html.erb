@@ -459,7 +459,7 @@
                   </li>
                 
                   <li class="acc__chips-more">
-                    <a class="acc__chip" href="<%= locale_path("brands/remedium") %>"><b>عرض المجموعة</b><svg class="ico ico--xs" aria-hidden="true"><use href="#i-arrow-ur" /></svg></a>
+                    <a class="acc__chip" href="<%= locale_path("brands/remedium") %>"><b>عرض التشكيلة</b><svg class="ico ico--xs" aria-hidden="true"><use href="#i-arrow-ur" /></svg></a>
                   </li>
                 </ul>
               </div>
@@ -469,7 +469,7 @@
           <article class="acc">
             <button class="acc__head">
               <span class="acc__no">02.</span>
-              <span class="acc__title">فيلر حمض الهيالورونيك (<span dir="ltr">HA Filler</span>)</span>
+              <span class="acc__title">فيلر هيالورونيك أسيد (<span dir="ltr">HA Filler</span>)</span>
               <span class="acc__desc"
                 >فيلر تجميلي من هيالورونات الصوديوم المتشابك، مصمم لتصحيح الخطوط والتجاعيد واستعادة الحجم وتحديد ملامح الوجه.</span
               >
@@ -478,11 +478,31 @@
               <div class="acc__media">
                 <img
                   src="/assets/img/hafiller-hero-wide.webp" width="1600" height="893" loading="lazy"
-                  alt="علب منتجات HA Filler من فيلر حمض الهيالورونيك"
+                  alt="علب منتجات HA Filler من فيلر هيالورونيك أسيد"
                 />
                 <ul class="acc__chips">
+                  <li>
+                    <a class="acc__chip" href="<%= locale_path("brands/ha-filler#fine-lines") %>"><b>HA Filler Fine Lines</b
+                    ><span>للخطوط الدقيقة</span></a>
+                  </li>
+                  <li>
+                    <a class="acc__chip" href="<%= locale_path("brands/ha-filler#derm") %>"><b>HA Filler Derm</b
+                    ><span>للتجاعيد المتوسطة</span></a>
+                  </li>
+                  <li>
+                    <a class="acc__chip" href="<%= locale_path("brands/ha-filler#derm-deep") %>"><b>HA Filler Derm Deep</b
+                    ><span>للتجاعيد المتوسطة والعميقة</span></a>
+                  </li>
+                  <li>
+                    <a class="acc__chip" href="<%= locale_path("brands/ha-filler#derm-plus") %>"><b>HA Filler Derm Plus</b
+                    ><span>للتجاعيد العميقة واستعادة الحجم</span></a>
+                  </li>
+                  <li>
+                    <a class="acc__chip" href="<%= locale_path("brands/ha-filler#sub-skin") %>"><b>HA Filler Sub Skin</b
+                    ><span>لاستعادة الحجم وتحديد الملامح</span></a>
+                  </li>
                   <li class="acc__chips-more">
-                    <a class="acc__chip" href="<%= locale_path("brands/ha-filler") %>"><b>استكشف منتجات HA Filler</b><svg class="ico ico--xs" aria-hidden="true"><use href="#i-arrow-ur" /></svg></a>
+                    <a class="acc__chip" href="<%= locale_path("brands/ha-filler") %>"><b>عرض التشكيلة</b><svg class="ico ico--xs" aria-hidden="true"><use href="#i-arrow-ur" /></svg></a>
                   </li>
                 </ul>
               </div>
@@ -500,12 +520,12 @@
             <div class="acc__panel">
               <div class="acc__media">
                 <img
-                  src="/assets/img/home-skincare.webp" width="1600" height="840" loading="lazy"
+                  src="/assets/img/home-all-products.webp" width="2400" height="1792" loading="lazy"
                   alt="تشكيلة عناية احترافية بالبشرة"
                 />
                 <ul class="acc__chips">
                   <li class="acc__chips-more">
-                    <a class="acc__chip" href="https://reemncream.com/ar/collections/all" target="_blank" rel="noopener noreferrer"><b>تسوق منتجات العناية بالبشرة</b><svg class="ico ico--xs" aria-hidden="true"><use href="#i-arrow-ur" /></svg></a>
+                    <a class="acc__chip" href="https://reemncream.com/ar/collections/all" target="_blank" rel="noopener noreferrer"><b>عرض التشكيلة</b><svg class="ico ico--xs" aria-hidden="true"><use href="#i-arrow-ur" /></svg></a>
                   </li>
                 </ul>
               </div>
@@ -538,6 +558,9 @@
                   <li>
                     <a class="acc__chip" href="<%= locale_path("brands/ovds") %>"><b>OVDs</b
                     ><span>مستحضرات لزجة لجراحات العيون</span></a>
+                  </li>
+                  <li class="acc__chips-more">
+                    <a class="acc__chip" href="<%= locale_path("brands#specialized-medical") %>"><b>عرض التشكيلة</b><svg class="ico ico--xs" aria-hidden="true"><use href="#i-arrow-ur" /></svg></a>
                   </li>
                 </ul>
               </div>
@@ -777,6 +800,7 @@
                 الرقيقة والحركية يناسبها الجل الأكثر انسيابية، بينما تتطلب
                 المناطق الهيكلية قوامًا متماسكًا يحدد الملامح ويدعمها.
               </p>
+            <a class="btn btn--dark facemap__cta" href="<%= locale_path("brands/remedium") %>#compare"><span>قارن بين الأنواع الثلاثة</span><i class="btn__circle"><svg class="ico ico--sm"><use href="#i-arrow-ur" /></svg></i></a>
             </div>
 
             <p class="facemap__note">
@@ -1029,142 +1053,6 @@
       </div>
     </section>
 
-    <!-- ================= 8. HOW WE WORK WITH YOU ================= -->
-    <section class="process" id="process">
-      <span class="process__wave process__wave--tr" aria-hidden="true"></span>
-      <span class="process__wave process__wave--bl" aria-hidden="true"></span>
-      <span class="process__flower process__flower--tl" aria-hidden="true"
-        ><svg viewBox="0 0 200 200"><use href="#i-flower" /></svg
-      ></span>
-      <span class="process__flower process__flower--br" aria-hidden="true"
-        ><svg viewBox="0 0 200 200"><use href="#i-flower" /></svg
-      ></span>
-      <div class="container">
-        <div class="sec-head sec-head--center sec-head--light">
-          <span class="eyebrow eyebrow--light"
-            ><svg class="ico ico--xs"><use href="#i-arr-in-r" /></svg> خطوات البدء
-            <svg class="ico ico--xs"><use href="#i-arr-in-l" /></svg
-          ></span>
-          <h2 class="sec-title">التسجيل والدعم خطوة بخطوة</h2>
-          <p class="sec-lead">تجربة مصممة للمجال الطبي.. متكاملة مع احتياجات منشأتكم</p>
-        </div>
-
-        <div class="steps-bar" id="stepsBar">
-          <span class="steps-bar__line"></span>
-          <button class="step-chip" type="button" style="--i: 0">
-            <i></i>الخطوة 1
-          </button>
-          <button class="step-chip is-active" type="button" style="--i: 1">
-            <i></i>الخطوة 2
-          </button>
-          <button class="step-chip" type="button" style="--i: 2">
-            <i></i>الخطوة 3
-          </button>
-          <button class="step-chip" type="button" style="--i: 3">
-            <i></i>الخطوة 4
-          </button>
-          <button class="step-chip" type="button" style="--i: 4">
-            <i></i>الخطوة 5
-          </button>
-          <button class="step-chip" type="button" style="--i: 5">
-            <i></i>الخطوة 6
-          </button>
-        </div>
-
-        <div class="steps" id="steps">
-          <article class="step" style="--i: 0">
-            <h3 class="step__title">التواصل</h3>
-            <div class="step__media">
-              <div class="step__img step__img--pill">
-                <img
-                  src="/assets/img/step-contact.webp" width="1200" height="799" loading="lazy"
-                  alt="التواصل مع فريقنا"
-                />
-                <span class="step__cap">عبر الهاتف، البريد الإلكتروني، أو من خلال ممثل الشركة</span>
-              </div>
-              <div class="step__img step__img--circle">
-                <img src="/assets/img/step-contact.webp" width="1200" height="799" loading="lazy" alt="" aria-hidden="true" />
-              </div>
-            </div>
-          </article>
-          <article class="step is-active" style="--i: 1">
-            <h3 class="step__title">فتح الحساب</h3>
-            <div class="step__media">
-              <div class="step__img step__img--pill">
-                <img
-                  src="/assets/img/step-account.webp" width="1200" height="799" loading="lazy"
-                  alt="مستندات المنشأة"
-                />
-                <span class="step__cap">تزويدنا ببيانات المنشأة والمستندات المطلوبة</span>
-              </div>
-              <div class="step__img step__img--circle">
-                <img src="/assets/img/step-account.webp" width="1200" height="799" loading="lazy" alt="" aria-hidden="true" />
-              </div>
-            </div>
-          </article>
-          <article class="step" style="--i: 2">
-            <h3 class="step__title">إتمام عملية الشراء</h3>
-            <div class="step__media">
-              <div class="step__img step__img--pill">
-                <img
-                  src="/assets/img/step-purchase.webp" width="1600" height="1067" loading="lazy"
-                  alt="تجهيز الطلب"
-                />
-                <span class="step__cap">تحديد المنتجات المطلوبة واستكمال إجراءات الشراء</span>
-              </div>
-              <div class="step__img step__img--circle">
-                <img src="/assets/img/step-purchase.webp" width="1600" height="1067" loading="lazy" alt="" aria-hidden="true" />
-              </div>
-            </div>
-          </article>
-          <article class="step" style="--i: 3">
-            <h3 class="step__title">الشحن والتوصيل</h3>
-            <div class="step__media">
-              <div class="step__img step__img--pill">
-                <img
-                  src="/assets/img/step-shipping.webp" width="1200" height="799" loading="lazy"
-                  alt="الشحن والتوصيل"
-                />
-                <span class="step__cap">عبر قنوات معتمدة وفق معايير التوصيل الجيد </span>
-              </div>
-              <div class="step__img step__img--circle">
-                <img src="/assets/img/step-shipping.webp" width="1200" height="799" loading="lazy" alt="" aria-hidden="true" />
-              </div>
-            </div>
-          </article>
-          <article class="step" style="--i: 4">
-            <h3 class="step__title">التدريب والدعم</h3>
-            <div class="step__media">
-              <div class="step__img step__img--pill">
-                <img
-                  src="/assets/img/step-training.webp" width="1200" height="799" loading="lazy"
-                  alt="التدريب والدعم"
-                />
-                <span class="step__cap">نوفر المواد التدريبية والدعم الفني المرتبط بالمنتج</span>
-              </div>
-              <div class="step__img step__img--circle">
-                <img src="/assets/img/step-training.webp" width="1200" height="799" loading="lazy" alt="" aria-hidden="true" />
-              </div>
-            </div>
-          </article>
-          <article class="step" style="--i: 5">
-            <h3 class="step__title">المتابعة</h3>
-            <div class="step__media">
-              <div class="step__img step__img--pill">
-                <img
-                  src="/assets/img/step-followup.webp" width="1600" height="1067" loading="lazy"
-                  alt="المتابعة المستمرة"
-                />
-                <span class="step__cap">متابعة احتياجات المنشأة وإعادة الطلب لضمان استمرارية التوريد</span>
-              </div>
-              <div class="step__img step__img--circle">
-                <img src="/assets/img/step-followup.webp" width="1600" height="1067" loading="lazy" alt="" aria-hidden="true" />
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
 
     <!-- ================= 10. KNOWLEDGE CENTER ================= -->
     <section class="blog" id="knowledge">
@@ -1210,6 +1098,7 @@
     <!-- ================= 11. DUAL CALL TO ACTION + FOOTER ================= -->
     <%= render "shared/site_footer" %>
 <%= render "shared/wa_float" %>
+<%= render "shared/back_to_top" %>
 
     <script src="<%= static_asset("/assets/js/site-header.js") %>"></script>
     <script src="<%= static_asset("/assets/js/main.js") %>"></script>
