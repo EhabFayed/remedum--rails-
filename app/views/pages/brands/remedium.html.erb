@@ -2,7 +2,7 @@
 <% content_for :description, t('content.brands_remedium_description') %>
 <% content_for :nav_active, 'brands' %>
 
-<section class="page-hero"><div class="container"><div class="page-hero__inner hero-split">
+<section class="page-hero"><div class="container"><div class="page-hero__inner page-hero__inner--rm"><div class="hero-split">
   <div>
 
 <div class="crumbs">
@@ -10,11 +10,37 @@
 </div>
     <h1 class="page-title"><%= t('content.brands_124_html') %></h1>
     <p class="page-hero__lead"><%= t('content.brands_125') %></p>
-    <div class="page-hero__chips"><span class="chip chip--green"><%= t('content.brands_126') %></span><span class="chip"><%= t('content.brands_127') %></span><span class="chip"><%= t('content.brands_128') %></span></div>
+    <%# revisions PDF (Oct 2026): only the exclusive-agency badge stays, shown as a badge rather than a chip %>
+    <div class="rm-agency">
+      <span class="rm-agency__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.6 3.1 8.3 7.5 9.5 4.4-1.2 7.5-4.9 7.5-9.5V6L12 3z"></path><path d="m8.8 12.2 2.2 2.2 4.4-4.6"></path></svg></span>
+      <span class="rm-agency__text"><b><%= t('content.brands_126') %></b><small><%= t('content.remedium_hero_agency_sub') %></small></span>
+    </div>
   </div>
   <div class="arch-media">
     <img src="/assets/img/brand-remedium.webp" alt="<%= t('content.brands_129') %>" style="height:380px">
     <span class="media-shade"></span>
+  </div>
+</div>
+  <%# figures from remediumkorea.com (Oct 2026) + "present in 32 countries" from the revisions PDF %>
+  <ul class="rm-stats">
+    <% [['10+', 'years'], ['46+', 'partners'], ['85+', 'approvals'], ['50,000+', 'professionals'], ['32', 'countries']].each do |num, key| %>
+      <li class="rm-stat"><b dir="ltr"><%= num %></b><span><%= t("content.remedium_hero_stat_#{key}") %></span></li>
+    <% end %>
+  </ul>
+  <%# certification marks: SFDA first, then the order on remediumkorea.com (sfda.svg is a stand-in until the official mark is supplied) %>
+  <div class="rm-certs">
+    <span class="rm-certs__label"><%= t('content.remedium_hero_certs') %></span>
+    <%# moving row: the set is rendered 4 times and the track slides by half its width, so the loop is seamless on any screen;
+        only the first set is announced to screen readers %>
+    <div class="rm-certs__marquee">
+      <ul class="rm-certs__track">
+        <% 4.times do |copy| %>
+          <% [['sfda.svg', 'SFDA'], ['scpn.png', 'SCPN'], ['gmp-cosmetics.png', 'GMP'], ['iso.png', 'ISO'], ['gmp-mfds.png', 'GMP (MFDS)'], ['ce.png', 'CE'], ['usfda.png', 'US FDA'], ['mdsap.png', 'MDSAP'], ['kfda.png', 'KFDA'], ['cpnp.png', 'CPNP']].each do |file, name| %>
+            <li<%= ' aria-hidden="true"'.html_safe if copy > 0 %>><img src="/assets/img/certs/<%= file %>" alt="<%= copy.zero? ? name : '' %>" title="<%= name %>"></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div></div></section>
 
@@ -101,43 +127,6 @@
   </div>
 </div></section>
 
-<section class="section"><div class="container">
-  <div style="background:var(--mint);border-radius:28px;padding:30px 34px">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:18px;flex-wrap:wrap">
-      <h3 style="font-family:var(--ff-d);font-size:18px;font-weight:800"><%= t('content.brands_138') %></h3>
-      <a href="<%= locale_path("quality/certifications") %>" style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--green-600);white-space:nowrap"><%= t('content.brands_139') %> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></a>
-    </div>
-
-<div class="grid" style="grid-template-columns:repeat(6,minmax(0,1fr));gap:12px">
-
-  <a href="<%= locale_path("quality/certifications") %>" style="display:flex;flex-direction:column;gap:4px;padding:16px 12px;background:#fff;border:1px solid var(--line);border-radius:16px;text-align:center">
-    <b class="lat" dir="ltr" style="font-size:14.5px;font-weight:800;color:var(--green-900)">SFDA</b>
-    <span style="font-size:10px;line-height:1.5;color:var(--muted)"><%= t('content.brands_86') %></span>
-  </a>
-  <a href="<%= locale_path("quality/certifications") %>" style="display:flex;flex-direction:column;gap:4px;padding:16px 12px;background:#fff;border:1px solid var(--line);border-radius:16px;text-align:center">
-    <b class="lat" dir="ltr" style="font-size:14.5px;font-weight:800;color:var(--green-900)">MFDS</b>
-    <span style="font-size:10px;line-height:1.5;color:var(--muted)"><%= t('content.brands_87') %></span>
-  </a>
-  <a href="<%= locale_path("quality/certifications") %>" style="display:flex;flex-direction:column;gap:4px;padding:16px 12px;background:#fff;border:1px solid var(--line);border-radius:16px;text-align:center">
-    <b class="lat" dir="ltr" style="font-size:14.5px;font-weight:800;color:var(--green-900)">GMP</b>
-    <span style="font-size:10px;line-height:1.5;color:var(--muted)"><%= t('content.brands_88') %></span>
-  </a>
-  <a href="<%= locale_path("quality/certifications") %>" style="display:flex;flex-direction:column;gap:4px;padding:16px 12px;background:#fff;border:1px solid var(--line);border-radius:16px;text-align:center">
-    <b class="lat" dir="ltr" style="font-size:14.5px;font-weight:800;color:var(--green-900)">MDSAP</b>
-    <span style="font-size:10px;line-height:1.5;color:var(--muted)"><%= t('content.brands_89') %></span>
-  </a>
-  <a href="<%= locale_path("quality/certifications") %>" style="display:flex;flex-direction:column;gap:4px;padding:16px 12px;background:#fff;border:1px solid var(--line);border-radius:16px;text-align:center">
-    <b class="lat" dir="ltr" style="font-size:14.5px;font-weight:800;color:var(--green-900)">ISO 13485</b>
-    <span style="font-size:10px;line-height:1.5;color:var(--muted)"><%= t('content.brands_90') %></span>
-  </a>
-  <a href="<%= locale_path("quality/certifications") %>" style="display:flex;flex-direction:column;gap:4px;padding:16px 12px;background:#fff;border:1px solid var(--line);border-radius:16px;text-align:center">
-    <b class="lat" dir="ltr" style="font-size:14.5px;font-weight:800;color:var(--green-900)">CE</b>
-    <span style="font-size:10px;line-height:1.5;color:var(--muted)"><%= t('content.brands_91') %></span>
-  </a>
-</div>
-  </div>
-</div></section>
-
 
 
 <section class="section"><div class="container">
@@ -183,7 +172,7 @@
   <h2 class="sec-title"><%= t('content.remedium_compare_title') %></h2>
   <p class="sec-lead"><%= t('content.remedium_compare_lead') %></p>
 </div>
-  <%# On phones the table shows one product at a time; these chips pick it. %>
+  <%# Product picker chips: hidden everywhere now; phones scroll the full table sideways instead (site.css). %>
   <div class="cmp-t__picker" data-cmp-picker>
       <button type="button" class="cmp-t__chip is-active" data-pick="all"><%= t('content.remedium_compare_all') %></button>
       <button type="button" class="cmp-t__chip" data-pick="subq"><i class="swatch swatch--subq"></i><bdi dir="ltr">Sub-Q</bdi></button>

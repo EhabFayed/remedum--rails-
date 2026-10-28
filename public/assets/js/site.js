@@ -47,7 +47,7 @@
   }
 
 
-  /* ReMedium comparison table: phones show one product column (chips), desktop highlights the hovered column */
+  /* ReMedium comparison table: every column shows (phones scroll it sideways, see site.css), desktop highlights the hovered column */
   var cmp = document.querySelector('[data-cmp]');
   var cmpPicker = document.querySelector('[data-cmp-picker]');
   if (cmp && cmpPicker) {
@@ -58,7 +58,7 @@
       cmpChips.forEach(function (ch) { ch.classList.toggle('is-active', ch.dataset.pick === key); });
     };
     cmpChips.forEach(function (ch) { ch.addEventListener('click', function () { showCol(ch.dataset.pick); }); });
-    showCol(window.matchMedia('(max-width:760px)').matches ? 'subq' : 'all');
+    showCol('all');
     cmpCells.forEach(function (c) {
       c.addEventListener('mouseenter', function () { cmpCells.forEach(function (x) { x.classList.toggle('is-hot', x.dataset.col === c.dataset.col && x.tagName === 'TD'); }); });
     });

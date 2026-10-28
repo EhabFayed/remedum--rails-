@@ -243,8 +243,8 @@ ${pageHero(ctx, [[T('الرئيسية', 'Home'), u('')], [T('العلامات و
       ${btn(T('للجمهور: اسألي طبيبك', 'Public: ask your doctor'), WA, 'ghost', I.wa(15))}
     </div>
   </div>
-  <div class="arch-media">
-    <img src="/assets/img/brand-${p.slug === 'sub-q' ? 'subq' : p.slug}.jpg" alt="${p.name}" style="height:420px">
+  <div class="arch-media arch-media--card arch-media--full">
+    <img src="/assets/img/brand-${p.slug === 'sub-q' ? 'subq' : p.slug}.webp" width="1600" height="1066" alt="${p.name}">
     <span class="media-shade"></span>
   </div>
 </div></div></section>
