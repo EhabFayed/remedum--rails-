@@ -220,95 +220,22 @@
     <%= render "shared/site_header" %>
 
     <!-- ================= 1. HERO + 2. IN NUMBERS ================= -->
-    <section class="hero">
-      <div class="hero__panel">
-        <span class="dots dots--a"></span>
-        <span class="dots dots--b"></span>
-        <span class="checker"></span>
+    <%# Hero, "Option 1 - Hero with a feeling (Editorial + Minimal)" design (Oct 2026), with the brand video in place of the leaf photo %>
+    <section class="ed-hero">
+      <div class="ed-hero__media" aria-hidden="true">
+        <video class="ed-hero__video" src="/assets/video/hero.mp4" poster="/hero.webp" autoplay muted loop playsinline></video>
       </div>
-
-      <div class="hero__inner">
-        <!-- LEFT -->
-        <div class="hero__left">
-          <span class="hero__badge"
-            ><svg class="ico ico--xs"><use href="#i-shield" /></svg> موزّع معتمد
-            ومطابق لمتطلبات هيئة الغذاء والدواء</span
-          >
-
-          <h1 class="hero__title">
-            <span class="line">الموزّع المعتمد والوكيل الحصري</span>
-            <span class="line"
-              >لمنتجات
-              <span class="word-fx" translate="no"><span class="word-fx__label">ReMedium</span><span class="word-fx__letters" aria-hidden="true">
-                  <b style="--d: 0" data-l="R"></b><b style="--d: 1" data-l="e"></b
-                  ><b style="--d: 2" data-l="M"></b><b style="--d: 3" data-l="e"></b
-                  ><b style="--d: 4" data-l="d"></b><b style="--d: 5" data-l="i"></b
-                  ><b style="--d: 6" data-l="u"></b><b style="--d: 7" data-l="m"></b>
-                </span></span>
-            </span>
-            <span class="line">في المملكة</span>
-          </h1>
-
-          <div class="hero__cta">
-            <a href="/ar/medical/quote/" class="btn btn--dark">
-              <span>طلب عرض سعر</span>
-              <i class="btn__circle btn__circle--green"
-                ><svg class="ico ico--sm"><use href="#i-arrow-ur" /></svg
-              ></i>
-            </a>
-            <a href="<%= whatsapp_url %>" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">
-              <span>اسألي طبيبِك عن المنتج</span>
-              <i class="btn__circle btn__circle--outline"
-                ><svg class="ico ico--sm"><use href="#i-arrow-ur" /></svg
-              ></i>
-            </a>
-          </div>
-
-          <!-- 2. Beauty Roots in numbers -->
-          <div class="stats-card">
-            <ul class="stats-card__list">
-              <li>
-                <strong
-                  class="counter"
-                  data-target="2016"
-                  data-from="1996"
-                  data-suffix=""
-                  >2016</strong
-                ><span>سنة التأسيس</span>
-              </li>
-              <li>
-                <strong class="counter" data-target="9" data-suffix="">9</strong
-                ><span>علامات تجارية عالمية</span>
-              </li>
-              <li>
-                <strong class="counter" data-target="13" data-suffix=""
-                  >13</strong
-                ><span>منطقة إدارية حول المملكة</span>
-              </li>
-              <li>
-                <strong class="counter" data-target="14" data-suffix="+"
-                  >14+</strong
-                ><span>عامًا من الخبرة لفريق العمل</span>
-              </li>
-            </ul>
-          </div>
+      <div class="ed-hero__inner">
+        <div class="ed-hero__copy">
+          <h1 class="ed-hero__title"><span>شريكك في التميز</span><span>في عالم التجميل الطبي</span></h1>
+          <p class="ed-hero__lead">نورّد لأخصائيي التجميل الطبي منتجات مختارة بعناية، ونقدّم دعمًا متخصصًا للمنشآت الصحية في المملكة.</p>
+          <a class="ed-hero__cta" href="/ar/brands/"><span>اكتشفي منتجاتنا</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-
-        <!-- CENTER IMAGE -->
-        <div class="hero__figure">
-          <video src="/assets/video/hero.mp4" poster="/hero.webp" autoplay muted loop playsinline></video>
-        </div>
-
-        <!-- RIGHT: trust quote (Two Audiences cards removed per client) -->
-        <div class="hero__right">
-          <div class="hero__quote" style="border-top: 0; padding-top: 0; margin-top: 0">
-            <%# <p> %>
-              <%# «كل منتج/عبوة نُورّدها مسجّلة نظاميًا، وتُحفظ في ظروف مثالية، وقابلة %>
-              <%# للتتبّع برقم التشغيلة والفاتورة الضريبية من المصنع وحتى الوصول %>
-              <%# للعيادة.» %>
-            <%# </p> %>
-          </div>
-        </div>
+        <ul class="ed-hero__feats">
+          <li class="ed-hero__feat"><span class="ed-hero__icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 4.6 5.6v5.6c0 4.7 3.1 8.5 7.4 9.9 4.3-1.4 7.4-5.2 7.4-9.9V5.6L12 2.8z"/><path d="m8.6 12.1 2.4 2.4 4.5-4.7"/></svg></span><span class="ed-hero__label">منتجات معتمدة<br>عالميًا</span></li>
+          <li class="ed-hero__feat"><span class="ed-hero__icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 5.2 8.4 3.6l3.4 2.1 3.1.4 2.3 3 1.4.8.6 1.7 1.9 1.4-.9 3.2-5 2.4-3.9.6-1.5 1.5-1.6-1.4-1.4-4-1.6-2.6-1.5-3.6z"/></svg></span><span class="ed-hero__label">توزيع حصري<br>في المملكة</span></li>
+          <li class="ed-hero__feat"><span class="ed-hero__icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="3.6"/><path d="M6.6 9.4V8.6a5.4 5.4 0 0 1 10.8 0v.8"/><path d="M17.4 9.4v1.2a2 2 0 0 1-2 2h-1.6"/><path d="M5 21v-.9a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v.9"/></svg></span><span class="ed-hero__label">دعم فني<br>ولوجستي للمنشآت</span></li>
+        </ul>
       </div>
     </section>
 
