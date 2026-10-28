@@ -368,7 +368,8 @@
     var ps = FACE_POINTS[key].products;
     return ps.length > 1 ? 'duo' : ps[0];
   };
-  var mine = POINTS.filter(function (p) {
+  /* data-product="all" (ReMedium brand page) = the full home-page map; a product key keeps only its zones */
+  var mine = PRODUCT === 'all' ? POINTS.slice() : POINTS.filter(function (p) {
     var d = FACE_POINTS[p[0]]; return d && d.products.indexOf(PRODUCT) > -1;
   });
 
