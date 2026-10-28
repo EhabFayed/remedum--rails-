@@ -16,9 +16,9 @@
   --mint:#E9F7F0;
   --mint-2:#F2FAF6;
   --line:#E2EAE6;
-  --fine:#4FD3A5;
-  --mid:#1CA97C;
-  --subq:#0B4432;
+  --fine:#6EC1E4;
+  --mid:#E0C536;
+  --subq:#8E5CC2;
   /* brand brown — the “Roots” half of the logo (company profile 2026) */
   --brown:#8A5B1E;
   --brown-600:#6F4915;
@@ -1161,9 +1161,9 @@ html[dir="ltr"] .article-body,html[dir="ltr"] .faq-list{max-width:680px}
   display:grid;place-items:center;
   z-index:3;
 }
-.fpoint--fine{--c:#4FD3A5}
-.fpoint--mid{--c:var(--green)}
-.fpoint--subq{--c:#0B4432}
+.fpoint--fine{--c:#6EC1E4}
+.fpoint--mid{--c:#E0C536}
+.fpoint--subq{--c:#8E5CC2}
 .fpoint--duo{--c:var(--green)}
 
 .fpoint__dot{
@@ -1173,7 +1173,13 @@ html[dir="ltr"] .article-body,html[dir="ltr"] .faq-list{max-width:680px}
   box-shadow:0 0 0 3px rgba(255,255,255,.92),0 8px 16px -6px rgba(10,46,34,.55);
   transition:transform .4s var(--ease);
 }
-.fpoint--duo .fpoint__dot{background:linear-gradient(135deg,var(--green) 0 50%,var(--green-900) 50% 100%)}
+.fpoint--duo .fpoint__dot {
+  background: linear-gradient(
+    135deg,
+    #E0C536 0 50%,
+    #8E5CC2 50% 100%
+  );
+}
 .fpoint__dot::after{
   content:'';position:absolute;inset:-5px;border-radius:50%;
   border:1.5px solid var(--c);
@@ -2122,3 +2128,25 @@ html[dir="rtl"] .rm-certs__track{animation-direction:reverse}
 
 /* ReMedium product pages: the short intro that replaced the tagline + technical paragraph (revisions PDF 02, point 1) */
 .rm-prod-intro{font-size:17px;line-height:1.95;color:var(--ink-2);margin-bottom:24px;max-width:560px}
+
+
+/* ---------- Face map colours: one definition shared with the home page (style.css) ----------
+   One colour per ReMedium density, taken from the packs: Sub-Q purple, Mid yellow, Fine baby blue;
+   the chin point serves Mid + Sub-Q (split dot, yellow ring). Same values as style.css so the
+   product-page face maps match the home page: dots, rings, highlighted regions, popup swatches. */
+:root{--fm-subq:#8E5CC2;--fm-mid:#E0C536;--fm-fine:#6EC1E4}
+.fpoint--fine{--c:var(--fm-fine)}
+.fpoint--mid{--c:var(--fm-mid)}
+.fpoint--subq{--c:var(--fm-subq)}
+.fpoint--duo{--c:var(--fm-mid)}
+.fpoint--duo .fpoint__dot{background:linear-gradient(135deg,var(--fm-mid) 0 50%,var(--fm-subq) 50% 100%)}
+.fregion--fine{color:var(--fm-fine)}
+.fregion--mid{color:var(--fm-mid)}
+.fregion--subq{color:var(--fm-subq)}
+.fpop-prod--fine{--c:var(--fm-fine)}
+.fpop-prod--mid{--c:var(--fm-mid)}
+.fpop-prod--subq{--c:var(--fm-subq)}
+/* the chin region serves Mid + Sub-Q: on a product page it takes that page's colour (the home map has no shared region) */
+.fregion--duo{color:var(--fm-mid)}
+.facemap__frame[data-product="subq"] .fregion--duo{color:var(--fm-subq)}
+.facemap__frame[data-product="mid"] .fregion--duo{color:var(--fm-mid)}
