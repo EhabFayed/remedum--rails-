@@ -2092,3 +2092,6 @@ html[dir="rtl"] .rm-certs__track{animation-direction:reverse}
   .rm-certs__track img{height:36px}
   .rm-certs__track{animation-duration:35s}
 }
+
+/* ReMedium product pages: the short intro that replaced the tagline + technical paragraph (revisions PDF 02, point 1) */
+.rm-prod-intro{font-size:17px;line-height:1.95;color:var(--ink-2);margin-bottom:24px;max-width:560px}
