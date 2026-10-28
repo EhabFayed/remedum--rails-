@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75" role="img" aria-label="SFDA">
+  <!-- stand-in seal until the client supplies the official SFDA mark -->
+  <circle cx="37.5" cy="37.5" r="35" fill="none" stroke="#111" stroke-width="3"/>
+  <circle cx="37.5" cy="37.5" r="28.5" fill="none" stroke="#111" stroke-width="1.2"/>
+  <text x="37.5" y="42" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="800" fill="#111" letter-spacing=".5">SFDA</text>
+  <text x="37.5" y="53" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="5.6" font-weight="700" fill="#111" letter-spacing=".8">SAUDI FDA</text>
+  <text x="37.5" y="27" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="5.6" font-weight="700" fill="#111" letter-spacing=".8">REGISTERED</text>
+</svg>

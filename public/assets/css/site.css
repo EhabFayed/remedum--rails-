@@ -2049,3 +2049,46 @@ html.nav-locked .to-top,html.srch-locked .to-top{opacity:0;pointer-events:none}
 .hf-uses__label{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px}
 .hf-uses__list{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
 .hf-uses__list li{padding:7px 13px;border-radius:999px;background:var(--mint);color:var(--green-900);font-size:12.5px;font-weight:600;line-height:1.6}
+
+
+/* ---------- ReMedium hero (revisions PDF, Oct 2026): agency badge, figures, certification marks ---------- */
+.rm-agency{display:inline-flex;align-items:center;gap:12px;margin-top:22px;padding:10px 20px 10px 12px;border-radius:999px;
+  background:#fff;border:1px solid rgba(28,169,124,.35);box-shadow:0 10px 26px -14px rgba(28,169,124,.55)}
+html[dir="rtl"] .rm-agency{padding:10px 12px 10px 20px}
+.rm-agency__icon{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--green);color:#fff;flex:none}
+.rm-agency__text{display:flex;flex-direction:column;line-height:1.35}
+.rm-agency__text b{font-family:var(--ff-d);font-size:16px;font-weight:800;color:var(--ink)}
+.rm-agency__text small{font-size:12px;font-weight:600;color:var(--green-600)}
+.page-hero__inner--rm{padding-bottom:34px}
+.rm-stats{list-style:none;margin:36px 0 0;padding:22px 0 0;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
+.rm-stat{display:flex;flex-direction:column;gap:4px;padding-inline-start:16px;border-inline-start:2px solid rgba(28,169,124,.35)}
+.rm-stat b{font-family:var(--ff-lat);font-size:clamp(26px,2.6vw,36px);font-weight:800;line-height:1.1;color:var(--ink);align-self:flex-start;unicode-bidi:isolate}
+.rm-stat span{font-size:12.5px;font-weight:700;color:var(--muted)}
+.rm-certs{margin-top:28px;display:flex;flex-direction:column;gap:14px}
+.rm-certs__label{font-size:12.5px;font-weight:700;color:var(--muted)}
+/* moving row of certification marks (always runs left-to-right internally so the -50% loop is exact in both languages) */
+.rm-certs__marquee{overflow:hidden;direction:ltr;
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)}
+.rm-certs__track{list-style:none;margin:0;padding:0;display:flex;align-items:center;width:max-content;animation:rm-certs-slide 45s linear infinite}
+.rm-certs__track li{flex:none;padding-inline-end:44px}
+.rm-certs__track img{display:block;height:46px;width:auto;opacity:.82;transition:opacity .2s}
+.rm-certs__track img:hover{opacity:1}
+.rm-certs__marquee:hover .rm-certs__track{animation-play-state:paused}
+html[dir="rtl"] .rm-certs__track{animation-direction:reverse}
+@keyframes rm-certs-slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+  .rm-certs__marquee{-webkit-mask-image:none;mask-image:none}
+  .rm-certs__track{animation:none;width:auto;flex-wrap:wrap;gap:14px 22px}
+  .rm-certs__track li{padding:0}
+  .rm-certs__track li[aria-hidden]{display:none}
+}
+@media (max-width:900px){
+  .rm-stats{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:22px}
+}
+@media (max-width:560px){
+  .rm-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rm-stat:last-child{grid-column:1/-1}
+  .rm-certs__track li{padding-inline-end:30px}
+  .rm-certs__track img{height:36px}
+  .rm-certs__track{animation-duration:35s}
+}
