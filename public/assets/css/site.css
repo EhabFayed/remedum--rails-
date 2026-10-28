@@ -16,9 +16,9 @@
   --mint:#E9F7F0;
   --mint-2:#F2FAF6;
   --line:#E2EAE6;
-  --fine:#4FD3A5;
-  --mid:#1CA97C;
-  --subq:#0B4432;
+  --fine:#6EC1E4;
+  --mid:#E0C536;
+  --subq:#8E5CC2;
   /* brand brown — the “Roots” half of the logo (company profile 2026) */
   --brown:#8A5B1E;
   --brown-600:#6F4915;
@@ -1161,9 +1161,9 @@ html[dir="ltr"] .article-body,html[dir="ltr"] .faq-list{max-width:680px}
   display:grid;place-items:center;
   z-index:3;
 }
-.fpoint--fine{--c:#4FD3A5}
-.fpoint--mid{--c:var(--green)}
-.fpoint--subq{--c:#0B4432}
+.fpoint--fine{--c:#6EC1E4}
+.fpoint--mid{--c:#E0C536}
+.fpoint--subq{--c:#8E5CC2}
 .fpoint--duo{--c:var(--green)}
 
 .fpoint__dot{
@@ -1173,7 +1173,13 @@ html[dir="ltr"] .article-body,html[dir="ltr"] .faq-list{max-width:680px}
   box-shadow:0 0 0 3px rgba(255,255,255,.92),0 8px 16px -6px rgba(10,46,34,.55);
   transition:transform .4s var(--ease);
 }
-.fpoint--duo .fpoint__dot{background:linear-gradient(135deg,var(--green) 0 50%,var(--green-900) 50% 100%)}
+.fpoint--duo .fpoint__dot {
+  background: linear-gradient(
+    135deg,
+    #E0C536 0 50%,
+    #8E5CC2 50% 100%
+  );
+}
 .fpoint__dot::after{
   content:'';position:absolute;inset:-5px;border-radius:50%;
   border:1.5px solid var(--c);
@@ -2122,3 +2128,43 @@ html[dir="rtl"] .rm-certs__track{animation-direction:reverse}
 
 /* ReMedium product pages: the short intro that replaced the tagline + technical paragraph (revisions PDF 02, point 1) */
 .rm-prod-intro{font-size:17px;line-height:1.95;color:var(--ink-2);margin-bottom:24px;max-width:560px}
+
+
+/* ---------- Face map colours: one definition shared with the home page (style.css) ----------
+   One colour per ReMedium density, taken from the packs: Sub-Q purple, Mid yellow, Fine baby blue;
+   the chin point serves Mid + Sub-Q (split dot, yellow ring). Same values as style.css so the
+   product-page face maps match the home page: dots, rings, highlighted regions, popup swatches. */
+:root{--fm-subq:#8E5CC2;--fm-mid:#E0C536;--fm-fine:#6EC1E4}
+.fpoint--fine{--c:var(--fm-fine)}
+.fpoint--mid{--c:var(--fm-mid)}
+.fpoint--subq{--c:var(--fm-subq)}
+.fpoint--duo{--c:var(--fm-mid)}
+.fpoint--duo .fpoint__dot{background:linear-gradient(135deg,var(--fm-mid) 0 50%,var(--fm-subq) 50% 100%)}
+.fregion--fine{color:var(--fm-fine)}
+.fregion--mid{color:var(--fm-mid)}
+.fregion--subq{color:var(--fm-subq)}
+.fpop-prod--fine{--c:var(--fm-fine)}
+.fpop-prod--mid{--c:var(--fm-mid)}
+.fpop-prod--subq{--c:var(--fm-subq)}
+/* the chin region serves Mid + Sub-Q: on a product page it takes that page's colour (the home map has no shared region) */
+.fregion--duo{color:var(--fm-mid)}
+.facemap__frame[data-product="subq"] .fregion--duo{color:var(--fm-subq)}
+.facemap__frame[data-product="mid"] .fregion--duo{color:var(--fm-mid)}
+
+/* ---------- ReMedium brand page: face map from the home page (before the compare section) ---------- */
+.rm-fmap__grid{grid-template-columns:.95fr 1.05fr;gap:44px;align-items:center}
+.rm-fmap__side{display:flex;flex-direction:column;gap:16px}
+.rm-fmap__side-title{margin:0;font-family:var(--ff-d);font-size:clamp(20px,1.9vw,26px);font-weight:800;line-height:1.45;color:var(--ink)}
+.rm-fmap__side-text{margin:0;font-size:14.5px;line-height:2;color:var(--muted)}
+/* colour key for the dots (in place of the home page's pack cards) */
+.rm-fmap__key{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:10px}
+.rm-fmap__key a{display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:14px;padding:14px 18px;border-radius:16px;
+  background:#fff;border:1px solid var(--line);border-inline-start:4px solid var(--c);color:var(--ink);text-decoration:none;transition:transform .25s,box-shadow .25s}
+.rm-fmap__key a:hover{transform:translateY(-2px);box-shadow:var(--shadow-soft)}
+.rm-fmap__key i{grid-row:span 2;width:13px;height:13px;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px #fff,0 0 0 4.5px var(--c)}
+.rm-fmap__key b{font-family:var(--ff-lat);font-size:15px;font-weight:800;line-height:1.3;text-align:start}
+.rm-fmap__key small{font-size:12.5px;color:var(--muted)}
+.rm-fmap__note{margin:4px 0 0;font-size:12px;line-height:1.95;color:var(--muted-2)}
+@media (max-width:992px){
+  .rm-fmap__grid{grid-template-columns:1fr;gap:28px}
+}

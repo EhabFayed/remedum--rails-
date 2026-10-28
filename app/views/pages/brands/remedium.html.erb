@@ -165,6 +165,34 @@
   </div>
 </div></section>
 
+<%# Face map from the home page (Oct 2026): same zones, points, colours and popup, all three products.
+    Built by site.js from data-product="all"; the pack cards are left out because this page already shows the range above. %>
+<section class="section--mint rm-fmap" id="facemap"><div class="container">
+
+<div class="sec-head">
+  <span class="eyebrow"><i></i><%= t('content.remedium_fmap_eyebrow') %></span>
+  <h2 class="sec-title"><%= t('content.remedium_fmap_title') %></h2>
+  <p class="sec-lead"><%= t('content.remedium_fmap_lead') %></p>
+</div>
+  <div class="hero-split rm-fmap__grid">
+    <div class="facemap__stage">
+      <div class="facemap__frame" data-product="all">
+        <img class="facemap__photo" src="/assets/img/face-front.webp" width="880" height="1056" loading="lazy" alt="<%= t('content.brands_191') %> — ReMedium">
+      </div>
+    </div>
+    <aside class="rm-fmap__side">
+      <h3 class="rm-fmap__side-title"><%= t('content.remedium_fmap_side_title') %></h3>
+      <p class="rm-fmap__side-text"><%= t('content.remedium_fmap_side_text') %></p>
+      <ul class="rm-fmap__key">
+        <% [['subq', 'sub-q', 'Sub-Q'], ['mid', 'mid', 'Mid'], ['fine', 'fine', 'Fine']].each do |key, slug, name| %>
+          <li><a href="<%= locale_path("brands/remedium/#{slug}") %>" style="--c:var(--fm-<%= key %>)"><i aria-hidden="true"></i><b><bdi dir="ltr">ReMedium <%= name %></bdi></b><small><%= t("content.remedium_fmap_depth_#{key}") %></small></a></li>
+        <% end %>
+      </ul>
+      <p class="rm-fmap__note"><%= t('content.remedium_fmap_note') %></p>
+    </aside>
+  </div>
+</div></section>
+
 <section class="section cmp-sec" id="compare"><div class="container">
 
 <div class="sec-head">
