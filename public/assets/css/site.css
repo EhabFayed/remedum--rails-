@@ -2264,3 +2264,14 @@ html[dir="rtl"] .rm-certs__track{animation-direction:reverse}
 /* logo: the Beauty Roots emblem image replaces the green symbol (Oct 2026) */
 .logo__mark.logo__mark--img,.site-header .logo--brand .logo__mark.logo__mark--img{width:auto;height:46px;background:none;border-radius:0;padding:0;display:block;box-shadow:none}
 .logo__mark--img img{display:block;height:100%;width:auto}
+
+/* certifications page: the ReMedium tiles as a moving row (reuses the ReMedium page's marquee animation) */
+.cert-marquee{padding-block:6px}
+.rm-certs__track.cert-tiles--track{gap:0;animation-duration:50s;align-items:stretch}  /* equal-height tiles */
+.rm-certs__track .cert-tile{flex:none;width:180px;margin-inline-end:14px;padding:20px 14px 18px}
+.rm-certs__track .cert-tile img{height:52px;opacity:1}
+@media (max-width:760px){.rm-certs__track .cert-tile{width:150px;margin-inline-end:10px}.rm-certs__track.cert-tiles--track{animation-duration:40s}}
+@media (prefers-reduced-motion:reduce){
+  .rm-certs__track.cert-tiles--track{gap:12px;justify-content:center}
+  .rm-certs__track .cert-tile{margin:0}
+}

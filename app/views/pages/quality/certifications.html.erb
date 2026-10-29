@@ -48,16 +48,21 @@
     <span class="eyebrow"><i></i><span class="cert-step">02</span> <%= t('content.certs_remedium_eyebrow') %></span>
     <h2 class="sec-title"><%= t('content.certs_remedium_title_html') %></h2>
   </div>
-  <ul class="cert-tiles">
-    <% remedium.each do |c| %>
-    <li class="cert-tile">
-      <span class="cert-tile__mark"><%= mark.call(c) %></span>
-      <b class="cert-tile__code" dir="ltr"><%= c.code %></b>
-      <span class="cert-tile__name"><%= c.name_for(I18n.locale) %></span>
-      <% if c.pending? %><% end %>
-    </li>
-    <% end %>
-  </ul>
+  <%# moving row, like the certification strip on the ReMedium page: the set is rendered 4 times and the
+      track slides by half its width so the loop is seamless; only the first set is read by screen readers %>
+  <div class="rm-certs__marquee cert-marquee">
+    <ul class="rm-certs__track cert-tiles--track">
+      <% 4.times do |copy| %>
+      <% remedium.each do |c| %>
+      <li class="cert-tile"<%= ' aria-hidden="true"'.html_safe if copy > 0 %>>
+        <span class="cert-tile__mark"><%= mark.call(c) %></span>
+        <b class="cert-tile__code" dir="ltr"><%= c.code %></b>
+        <span class="cert-tile__name"><%= c.name_for(I18n.locale) %></span>
+      </li>
+      <% end %>
+      <% end %>
+    </ul>
+  </div>
 </div></section>
 
 <%# 03 the other brands, then their shared manufacturer %>
