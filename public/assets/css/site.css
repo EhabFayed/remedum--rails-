@@ -1944,6 +1944,41 @@ html.srch-locked .wa-float{opacity:0;pointer-events:none}
   .process__flower--br{width:150px;height:150px;bottom:-72px;right:-58px}
   .process__wave{width:380px;height:300px}
 }
+/* phones: the six image blocks were ~2 screens tall, so they become a compact 2-column "snake" of numbered cards
+   (icon + title + caption), linked by green chevrons 1→2 ↓ 3←4 ↓ 5→6. Everything here is phone-only; the icon span is hidden above. */
+.step__ico{display:none}
+@media (max-width:640px){
+  .process{padding:56px 0 52px}
+  .process .sec-head{margin-bottom:22px}
+  .steps{grid-template-columns:1fr 1fr;gap:10px;align-items:stretch;max-width:none;margin-inline:0;counter-reset:step}
+  .step{counter-increment:step;position:relative;display:flex;flex-direction:column;gap:6px;margin:0;padding:12px 12px 13px;text-align:start;
+    border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);box-shadow:0 14px 30px -22px rgba(0,0,0,.8)}
+  /* snake placement: row 1 start→end, row 2 end→start, row 3 start→end (mirrors itself in RTL) */
+  .step:nth-child(1){grid-area:1/1}.step:nth-child(2){grid-area:1/2}.step:nth-child(3){grid-area:2/2}
+  .step:nth-child(4){grid-area:2/1}.step:nth-child(5){grid-area:3/1}.step:nth-child(6){grid-area:3/2}
+  /* step number, top inline-end corner */
+  .step::before{content:"0" counter(step);position:absolute;top:10px;inset-inline-end:12px;font-family:var(--ff-d);font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--green);opacity:.95}
+  /* green chevron connector sitting in the gap towards the next card */
+  .step::after{content:'';position:absolute;z-index:2;width:20px;height:20px;border-radius:50%;background:var(--green) url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E") center/13px no-repeat;
+    box-shadow:0 0 0 3px #093225;top:50%;margin-top:-10px;inset-inline-end:-15px}
+  .step:nth-child(3)::after{inset-inline-end:auto;inset-inline-start:-15px;transform:scaleX(-1)}
+  .step:nth-child(2)::after,.step:nth-child(4)::after{top:auto;bottom:-15px;margin-top:0;inset-inline-end:50%;margin-inline-end:-10px;transform:rotate(90deg)}
+  .step:nth-child(6)::after{display:none}
+  html[dir="rtl"] .step::after{transform:scaleX(-1)}
+  html[dir="rtl"] .step:nth-child(3)::after{transform:none}
+  html[dir="rtl"] .step:nth-child(2)::after,html[dir="rtl"] .step:nth-child(4)::after{transform:rotate(90deg)}
+  /* icon badge */
+  .step__ico{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:11px;color:var(--green);background:rgba(28,169,124,.14);border:1px solid rgba(28,169,124,.32);margin-bottom:2px}
+  .step__ico svg{width:20px;height:20px;display:block}
+  html[dir="rtl"] .step:nth-child(3) .step__ico svg,html[dir="rtl"] .step:nth-child(4) .step__ico svg{transform:scaleX(-1)}  /* cart + truck face the reading direction */
+  .step__title{font-size:14px;line-height:1.35;margin:0}
+  /* the media block collapses to just the caption text */
+  .step__media{display:block;padding:0}
+  .steps .step .step__img--pill,.steps .step.is-active .step__img--pill{position:static;width:auto;height:auto;border:0;border-radius:0;box-shadow:none;transform:none;overflow:visible}
+  .step__img--pill img,.step__img--circle{display:none}
+  .steps .step .step__cap,.steps .step.is-active .step__cap{position:static;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden;
+    opacity:1;transform:none;padding:0;background:none;text-align:start;font-size:11.5px;line-height:1.6;color:rgba(255,255,255,.72)}
+}
 
 /* the English row grew by the "Contact Us" item: keep it on one line */
 @media (min-width:1537px){
@@ -2002,7 +2037,7 @@ html.nav-locked .to-top,html.srch-locked .to-top{opacity:0;pointer-events:none}
 /* ---------- ReMedium comparison tool ---------- */
 #compare{scroll-margin-top:96px}
 /* ---------- Compare: a hand of cards (Oct 2026, client reference) ---------- */
-.cmph{--cream:#F7F2EA;position:relative;overflow:clip;margin-top:56px;padding:88px 0 96px;background:var(--cream);isolation:isolate}
+.cmph{--cream:#F7F2EA;position:relative;overflow:hidden;overflow:clip;margin-top:56px;padding:88px 0 96px;background:var(--cream);isolation:isolate}
 .cmph + .section{padding-top:64px}
 .cmph__blob{position:absolute;border-radius:50%;z-index:-1;pointer-events:none}
 .cmph__blob--a{width:min(46vw,520px);aspect-ratio:1;background:#E9BFA9;opacity:.55;inset-inline-end:-12vw;top:30%}

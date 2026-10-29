@@ -99,7 +99,14 @@
               transform="rotate(180 100 100)"
             />
           </g>
-        </symbol></svg>
+        </symbol>
+        <%# phone-only step icons (24px line icons, see .step__ico in site.css) %>
+        <symbol id="i-st-contact" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+        <symbol id="i-st-account" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></symbol>
+        <symbol id="i-st-purchase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></symbol>
+        <symbol id="i-st-shipping" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2M15 18H9M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+        <symbol id="i-st-training" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></symbol>
+        <symbol id="i-st-followup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8M21 3v5h-5M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16M8 16H3v5"/></symbol></svg>
 <section class="process" id="steps">
   <span class="process__wave process__wave--tr" aria-hidden="true"></span>
   <span class="process__wave process__wave--bl" aria-hidden="true"></span>
@@ -122,6 +129,7 @@
     </div>
     <div class="steps" id="stepsGrid">
           <article class="step" style="--i: 0">
+            <span class="step__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-st-contact" /></svg></span>
             <h3 class="step__title"><%= t('content.pages_217') %></h3>
             <div class="step__media">
               <div class="step__img step__img--pill">
@@ -134,6 +142,7 @@
             </div>
           </article>
           <article class="step is-active" style="--i: 1">
+            <span class="step__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-st-account" /></svg></span>
             <h3 class="step__title"><%= t('content.pages_219') %></h3>
             <div class="step__media">
               <div class="step__img step__img--pill">
@@ -146,6 +155,7 @@
             </div>
           </article>
           <article class="step" style="--i: 2">
+            <span class="step__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-st-purchase" /></svg></span>
             <h3 class="step__title"><%= t('content.pages_221') %></h3>
             <div class="step__media">
               <div class="step__img step__img--pill">
@@ -158,6 +168,7 @@
             </div>
           </article>
           <article class="step" style="--i: 3">
+            <span class="step__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-st-shipping" /></svg></span>
             <h3 class="step__title"><%= t('content.pages_223') %></h3>
             <div class="step__media">
               <div class="step__img step__img--pill">
@@ -170,6 +181,7 @@
             </div>
           </article>
           <article class="step" style="--i: 4">
+            <span class="step__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-st-training" /></svg></span>
             <h3 class="step__title"><%= t('content.pages_224') %></h3>
             <div class="step__media">
               <div class="step__img step__img--pill">
@@ -182,6 +194,7 @@
             </div>
           </article>
           <article class="step" style="--i: 5">
+            <span class="step__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-st-followup" /></svg></span>
             <h3 class="step__title"><%= t('content.pages_226') %></h3>
             <div class="step__media">
               <div class="step__img step__img--pill">
