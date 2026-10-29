@@ -2215,3 +2215,48 @@ html[dir="rtl"] .rm-certs__track{animation-direction:reverse}
 @media (max-width:992px){
   .rm-fmap__grid{grid-template-columns:1fr;gap:28px}
 }
+
+/* ---------- certifications page, grouped (Oct 2026): Saudi -> ReMedium -> other brands -> manufacturer ---------- */
+.cert-step{font-family:var(--ff-lat);font-weight:800;color:var(--green);margin-inline-end:2px}
+.cert-group + .cert-group{padding-top:44px}
+.cert-saudi{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;padding:38px 42px}
+.cert-saudi__mark{font-size:30px;font-weight:800;color:#7FE3BE;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:22px 30px}
+.cert-code{display:inline-flex;align-items:center;justify-content:center;min-width:64px;height:48px;padding:0 12px;border-radius:12px;
+  background:var(--mint);color:var(--green-900);font-family:var(--ff-lat);font-size:15px;font-weight:800;letter-spacing:.02em;white-space:nowrap}
+.cert-code.is-sm{min-width:52px;height:40px;font-size:13px;border-radius:10px}
+.cert-logo{display:block;height:52px;width:auto;max-width:120px;object-fit:contain}
+.cert-logo.is-sm{height:40px;max-width:96px}
+.cert-pending{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;line-height:1.6;
+  background:var(--sand);color:var(--brown);border:1px solid var(--sand-line)}
+.cert-pending::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--brown-300)}
+/* ReMedium: a grid of mark tiles */
+.cert-tiles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.cert-tile{display:flex;flex-direction:column;align-items:center;gap:6px;padding:20px 14px 18px;text-align:center;background:#fff;border:1px solid var(--line);border-radius:18px}
+.cert-tile__mark{height:60px;display:grid;place-items:center;margin-bottom:6px}
+.cert-tile__code{font-family:var(--ff-lat);font-size:14px;font-weight:800;color:var(--ink)}
+.cert-tile__name{font-size:12.5px;line-height:1.7;color:var(--muted)}
+/* other brands: one card per brand */
+.cert-brands{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.cert-brand{display:flex;flex-direction:column;gap:14px;padding:22px}
+.cert-brand__name{margin:0;font-size:19px;font-weight:800;color:var(--ink);text-align:start}
+.cert-brand__list,.cert-maker__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.cert-brand__list li,.cert-maker__list li{display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:12px;row-gap:6px}
+.cert-brand__list .cert-pending,.cert-maker__list .cert-pending{grid-column:2}
+.cert-brand__text{display:flex;flex-direction:column;line-height:1.5}
+.cert-brand__text b{font-family:var(--ff-lat);font-size:14px;font-weight:800;color:var(--ink);text-align:start}
+.cert-brand__text small{font-size:12px;color:var(--muted)}
+.cert-brand__none{margin:0;font-size:13px;line-height:1.9;color:var(--muted);padding:12px 14px;border-radius:12px;background:var(--mint-2);border:1px dashed var(--line)}
+/* the shared manufacturer */
+.cert-maker{margin-top:16px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;align-items:center;padding:26px 30px;border-radius:var(--r-md);
+  background:var(--mint-2);border:1px solid var(--line)}
+.cert-maker__name{margin:8px 0 6px;font-size:22px;font-weight:800;color:var(--ink);text-align:start}
+.cert-maker__text{margin:0;font-size:13.5px;line-height:1.95;color:var(--muted)}
+.cert-maker__list{flex-direction:row;flex-wrap:wrap;gap:12px 22px}
+@media (max-width:1100px){.cert-brands{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){
+  .cert-saudi{grid-template-columns:1fr;gap:18px;padding:26px 22px}
+  .cert-saudi__mark{justify-self:start;font-size:24px;padding:14px 22px}
+  .cert-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cert-brands{grid-template-columns:1fr}
+  .cert-maker{grid-template-columns:1fr;gap:18px;padding:22px}
+}

@@ -8,11 +8,12 @@
     <% else %>
       <div class="tablewrap"><div class="tablescroll">
         <table class="tbl tbl--auto">
-          <thead><tr><th>الرمز</th><th>عربي</th><th>English</th><th>الترتيب</th><th>الحالة</th><th></th></tr></thead>
+          <thead><tr><th>القسم</th><th>الرمز</th><th>عربي</th><th>English</th><th>الترتيب</th><th>الحالة</th><th></th></tr></thead>
           <tbody>
             <% @certifications.each do |cert| %>
               <tr>
-                <td class="lat" style="font-weight:700"><%= cert.code %></td>
+                <td style="color:var(--muted)"><%= Certification::GROUPS[cert.group_key] %><% if cert.brand_name.present? %> · <span class="lat"><%= cert.brand_name %></span><% end %></td>
+                <td class="lat" style="font-weight:700"><%= cert.code %><% if cert.pending? %> <%= status_pill("draft") %><% end %></td>
                 <td style="color:var(--muted)"><%= cert.name_ar %></td>
                 <td dir="ltr" style="color:var(--muted)"><%= cert.name_en %></td>
                 <td class="lat" style="color:var(--faint)"><%= cert.position %></td>

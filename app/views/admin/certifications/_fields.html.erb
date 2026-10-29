@@ -1,3 +1,27 @@
+<div class="grid-2">
+  <div class="field">
+    <label class="label">القسم في صفحة الشهادات <span class="req">*</span></label>
+    <%= form.select :group_key, Certification::GROUPS.map { |k, v| [v, k] }, {}, class: "inp" %>
+    <p class="hint">الترتيب على الصفحة: السعودية ← ReMedium ← بقية المنتجات ← الشركة المصنّعة.</p>
+  </div>
+  <div class="field">
+    <label class="label">العلامة التجارية / الجهة</label>
+    <%= form.text_field :brand_name, class: "inp", dir: "ltr", placeholder: "HA Filler · Hairont · OVDs · Jingjia Medical" %>
+    <p class="hint">لقسمي «بقية المنتجات» و«الشركة المصنّعة» فقط — تُجمع الشهادات تحت هذا الاسم.</p>
+  </div>
+</div>
+<div class="grid-2">
+  <div class="field">
+    <label class="label">حالة التحقق</label>
+    <%= form.select :status, Certification::STATUSES.map { |k, v| [v, k] }, {}, class: "inp" %>
+    <p class="hint">«قيد المطابقة» يظهر بشارة على الموقع حتى تتم مطابقة الاعتماد مع المستندات.</p>
+  </div>
+  <div class="field">
+    <label class="label">مسار الشعار الرسمي</label>
+    <%= form.text_field :logo_path, class: "inp", dir: "ltr", placeholder: "/assets/img/certs/ce.png" %>
+    <p class="hint">اتركه فارغًا ليظهر الرمز كنص. استخدم ملفات الشعارات الرسمية فقط.</p>
+  </div>
+</div>
 <div class="field">
   <label class="label">الرمز <span class="req">*</span></label>
   <%= form.text_field :code, class: "inp inp--mono", dir: "ltr", placeholder: "SFDA" %>
