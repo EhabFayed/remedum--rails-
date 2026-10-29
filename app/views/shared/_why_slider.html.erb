@@ -1,0 +1,51 @@
+<%# "Why Beauty Roots?" (Oct 2026): replaces the four why-cards and the seven-tab regulated-vs-unregulated
+    comparison on the home page with three slides, one reason each, every one linking to its quality page.
+    The track is native horizontal scroll-snap (so swiping works on phones with no JS), and main.js adds
+    the arrows, the dots, the autoplay progress and keyboard arrows on top. Copy is in content.*.yml. %>
+<% why_slides = [
+     { key: 'licensed', img: 'why-licensed', href: 'quality/certifications' },
+     { key: 'quality',  img: 'why-quality',  href: 'quality/compliance' },
+     { key: 'supply',   img: 'why-supply',   href: 'quality/supply' }
+   ] %>
+<section class="whys" id="why">
+  <span class="whys__glow whys__glow--a" aria-hidden="true"></span>
+  <span class="whys__glow whys__glow--b" aria-hidden="true"></span>
+  <div class="container">
+    <div class="sec-head sec-head--center whys__head">
+      <span class="eyebrow eyebrow--light"><svg class="ico ico--xs"><use href="#i-arr-in-r" /></svg> <%= t('content.whys_eyebrow') %> <svg class="ico ico--xs"><use href="#i-arr-in-l" /></svg></span>
+      <h2 class="sec-title"><%= t('content.whys_title') %></h2>
+    </div>
+
+    <div class="whys__slider" data-whys>
+      <div class="whys__track" tabindex="0" aria-roledescription="carousel" aria-label="<%= t('content.whys_title') %>">
+        <% why_slides.each_with_index do |s, i| %>
+        <article class="whys__slide" aria-roledescription="slide" aria-label="<%= i + 1 %> / <%= why_slides.size %>">
+          <div class="whys__media">
+            <img src="/assets/img/<%= s[:img] %>.webp" width="1600" height="1100" loading="<%= i.zero? ? 'eager' : 'lazy' %>" decoding="async" alt="<%= t("content.whys_#{s[:key]}_alt") %>">
+            <span class="whys__num" aria-hidden="true"><%= format('%02d', i + 1) %></span>
+          </div>
+          <div class="whys__body">
+            <span class="whys__kicker"><i></i><%= t("content.whys_#{s[:key]}_kicker") %></span>
+            <h3 class="whys__h"><%= t("content.whys_#{s[:key]}_title") %></h3>
+            <p class="whys__p"><%= t("content.whys_#{s[:key]}_text") %></p>
+            <a class="btn btn--green whys__btn" href="<%= locale_path(s[:href]) %>"><%= t("content.whys_#{s[:key]}_btn") %><span class="btn__circle"><svg class="ico ico--sm"><use href="#i-arrow-ur" /></svg></span></a>
+          </div>
+        </article>
+        <% end %>
+      </div>
+
+      <div class="whys__nav">
+        <button class="whys__arrow" type="button" data-dir="-1" aria-label="<%= t('content.whys_prev') %>"><svg class="ico ico--sm"><use href="#i-arrow-r" /></svg></button>
+        <div class="whys__dots" role="tablist" aria-label="<%= t('content.whys_title') %>">
+          <% why_slides.each_with_index do |s, i| %>
+          <button class="whys__dot<%= ' is-active' if i.zero? %>" type="button" role="tab" aria-selected="<%= i.zero? %>" aria-label="<%= t("content.whys_#{s[:key]}_title") %>"><i></i></button>
+          <% end %>
+        </div>
+        <span class="whys__count" dir="ltr"><b>01</b> / <%= format('%02d', why_slides.size) %></span>
+        <button class="whys__arrow" type="button" data-dir="1" aria-label="<%= t('content.whys_next') %>"><svg class="ico ico--sm"><use href="#i-arrow-l" /></svg></button>
+      </div>
+      <%# the Riyadh photo is CC BY-SA 4.0, so its author is credited; the other two are public domain (US government photos) %>
+      <p class="whys__credit"><%= t('content.whys_credit') %> <a href="https://commons.wikimedia.org/wiki/File:Riyadh_Skyline.jpg" rel="noopener license" target="_blank">B.alotaby — Wikimedia Commons, CC BY-SA 4.0</a></p>
+    </div>
+  </div>
+</section>

@@ -430,18 +430,6 @@
 
   /* testimonials slider removed — section is off until real reviews are supplied */
 
-  /* ---------- why-choose-us active card ---------- */
-  var whyGrid = document.querySelector('.why__grid');
-  if (whyGrid) {
-    var cards = Array.prototype.slice.call(whyGrid.querySelectorAll('.why-card'));
-    cards.forEach(function (c) {
-      c.addEventListener('mouseenter', function () {
-        cards.forEach(function (x) { x.classList.remove('is-active'); });
-        c.classList.add('is-active');
-      });
-    });
-  }
-
   /* ---------- counters ---------- */
   var counters = Array.prototype.slice.call(document.querySelectorAll('.counter'));
   var runCounter = function (el) {
@@ -460,63 +448,93 @@
     requestAnimationFrame(tick);
   };
 
-  /* ---------- comparison: one criterion at a time ---------- */
-  var cmp = document.getElementById('cmp');
-  if (cmp) {
-    var cmpTabs = Array.prototype.slice.call(cmp.querySelectorAll('.cmp__tab'));
-    var cmpPanels = Array.prototype.slice.call(cmp.querySelectorAll('.cmp__panel'));
-    var cmpDotsWrap = cmp.querySelector('.cmp__dots');
-    var cmpCount = cmp.querySelector('.cmp__count');
-    var cmpCur = 0;
-    var cmpReady = false;
-    var cmpGo = function (n) {
-      cmpCur = (n + cmpPanels.length) % cmpPanels.length;
-      cmpTabs.forEach(function (t, i) {
-        var on = i === cmpCur;
-        t.classList.toggle('is-active', on);
-        t.setAttribute('aria-selected', on ? 'true' : 'false');
-        t.tabIndex = on ? 0 : -1;
+  /* ---------- why beauty roots: three slides ---------- */
+  /* The track is native scroll-snap, so this only adds arrows, dots, autoplay and keyboard support on top.
+     Scroll positions are measured against the first slide, which makes the same arithmetic work in RTL
+     (where scrollLeft runs negative) and LTR. */
+  var whys = document.querySelector('[data-whys]');
+  if (whys) {
+    var wTrack = whys.querySelector('.whys__track');
+    var wSlides = Array.prototype.slice.call(wTrack.querySelectorAll('.whys__slide'));
+    var wDots = Array.prototype.slice.call(whys.querySelectorAll('.whys__dot'));
+    var wCount = whys.querySelector('.whys__count b');
+    var wCur = 0, wTimer = null, wStart = 0, wPaused = false;
+    var W_HOLD = 6500;
+    var wStill = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var wOffset = function (i) { return wSlides[i].offsetLeft - wSlides[0].offsetLeft; };
+    var wShow = function (n) {
+      wCur = (n + wSlides.length) % wSlides.length;
+      wSlides.forEach(function (s, i) { s.classList.toggle('is-active', i === wCur); });
+      wDots.forEach(function (d, i) {
+        d.classList.toggle('is-active', i === wCur);
+        d.classList.toggle('is-done', i < wCur);
+        d.setAttribute('aria-selected', i === wCur ? 'true' : 'false');
+        d.style.setProperty('--p', 0);
       });
-      cmpPanels.forEach(function (p, i) { p.classList.toggle('is-active', i === cmpCur); });
-      cmpDots.forEach(function (d, i) { d.classList.toggle('is-active', i === cmpCur); });
-      if (cmpCount) cmpCount.textContent = (cmpCur + 1) + ' / ' + cmpPanels.length;
-      // keep the active tab visible in the scrolling tab row (screen coords, so RTL works too)
-      if (cmpReady) {
-        var bar = cmpTabs[cmpCur].parentElement;
-        var tr = cmpTabs[cmpCur].getBoundingClientRect(), br = bar.getBoundingClientRect();
-        bar.scrollBy({ left: (tr.left + tr.width / 2) - (br.left + br.width / 2), behavior: 'smooth' });
-      }
+      if (wCount) wCount.textContent = (wCur < 9 ? '0' : '') + (wCur + 1);
+      wStart = performance.now();
     };
-    var cmpDots = cmpPanels.map(function (_, i) {
-      var d = document.createElement('button');
-      d.type = 'button';
-      d.className = 'cmp__dot';
-      d.setAttribute('aria-label', (IS_AR ? 'المعيار ' : 'Criterion ') + (i + 1));
-      d.addEventListener('click', function () { cmpGo(i); });
-      cmpDotsWrap.appendChild(d);
-      return d;
+    var wGo = function (n, smooth) {
+      var i = (n + wSlides.length) % wSlides.length;
+      wTrack.scrollTo({ left: wOffset(i), behavior: smooth === false ? 'auto' : 'smooth' });
+      wShow(i);
+    };
+    /* the active dot fills over the hold time, then the next slide comes */
+    var wTick = function (now) {
+      if (!wPaused && !wStill) {
+        var p = (now - wStart) / W_HOLD;
+        if (p >= 1) { wGo(wCur + 1); p = 0; }
+        wDots[wCur].style.setProperty('--p', Math.min(p, 1).toFixed(3));
+      }
+      wTimer = requestAnimationFrame(wTick);
+    };
+    /* a swipe or a scrollbar drag changes the slide without us: follow it */
+    var wSyncing = null;
+    wTrack.addEventListener('scroll', function () {
+      clearTimeout(wSyncing);
+      wSyncing = setTimeout(function () {
+        var w = wSlides[0].offsetWidth || 1;
+        var i = Math.round(Math.abs(wTrack.scrollLeft) / w);
+        if (i !== wCur && i >= 0 && i < wSlides.length) wShow(i);
+      }, 80);
+    }, { passive: true });
+    Array.prototype.forEach.call(whys.querySelectorAll('.whys__arrow'), function (b) {
+      b.addEventListener('click', function () { wGo(wCur + parseInt(b.getAttribute('data-dir'), 10)); });
     });
-    cmpTabs.forEach(function (t, i) { t.addEventListener('click', function () { cmpGo(i); }); });
-    Array.prototype.forEach.call(cmp.querySelectorAll('.cmp__arrow'), function (b) {
-      b.addEventListener('click', function () { cmpGo(cmpCur + parseInt(b.getAttribute('data-dir'), 10)); });
-    });
-    cmp.addEventListener('keydown', function (e) {
+    wDots.forEach(function (d, i) { d.addEventListener('click', function () { wGo(i); }); });
+    wTrack.addEventListener('keydown', function (e) {
       if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
       var fwd = (e.key === 'ArrowRight') !== IS_AR;
-      cmpGo(cmpCur + (fwd ? 1 : -1));
-      cmpTabs[cmpCur].focus();
+      wGo(wCur + (fwd ? 1 : -1));
       e.preventDefault();
     });
-    cmpGo(0);
-    cmpReady = true;
+    /* pause while the reader is on it, or while it is off screen */
+    var wPause = function (on) { return function () { wPaused = on; if (!on) wStart = performance.now() - (parseFloat(wDots[wCur].style.getPropertyValue('--p')) || 0) * W_HOLD; }; };
+    whys.addEventListener('mouseenter', wPause(true));
+    whys.addEventListener('mouseleave', wPause(false));
+    whys.addEventListener('focusin', wPause(true));
+    whys.addEventListener('focusout', wPause(false));
+    wTrack.addEventListener('touchstart', wPause(true), { passive: true });
+    wTrack.addEventListener('touchend', function () { setTimeout(wPause(false), 2500); }, { passive: true });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        var seen = entries[0].isIntersecting;
+        if (seen && wTimer === null) { wStart = performance.now(); wTimer = requestAnimationFrame(wTick); }
+        if (!seen && wTimer !== null) { cancelAnimationFrame(wTimer); wTimer = null; }
+      }, { threshold: 0.35 }).observe(whys);
+    } else {
+      wTimer = requestAnimationFrame(wTick);
+    }
+    window.addEventListener('resize', function () { wTrack.scrollTo({ left: wOffset(wCur), behavior: 'auto' }); });
+    wShow(0);
   }
 
   /* ---------- scroll reveal ---------- */
   var revealTargets = [
     '.sec-head', '.about__media', '.about__content', '.acc',
     '.facemap__stage', '.facemap__side', '.step', '.testi__media', '.testi__content',
-    '.why-card', '.post', '.footer__cta', '.footer__col',
-    '.cmp__tabs', '.cmp__stage', '.certs__head', '.certs__list li'
+    '.whys__slider', '.post', '.footer__cta', '.footer__col',
+    '.certs__head', '.certs__list li'
   ];
   document.querySelectorAll(revealTargets.join(',')).forEach(function (el, i) {
     el.classList.add('reveal');
