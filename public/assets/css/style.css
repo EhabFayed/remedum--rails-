@@ -2128,3 +2128,7 @@ html.nav-locked .to-top,html.srch-locked .to-top{opacity:0;pointer-events:none}
 /* face-map side panel: link to the comparison tool on the ReMedium page */
 .facemap__cta{margin-top:18px}
 .facemap__side-head .facemap__cta{margin-top:20px}
+
+/* logo: the Beauty Roots emblem image replaces the green symbol (Oct 2026) */
+.logo__mark.logo__mark--img{width:auto;height:46px;background:none;border-radius:0;padding:0;display:block;box-shadow:none}
+.logo__mark--img img{display:block;height:100%;width:auto}
