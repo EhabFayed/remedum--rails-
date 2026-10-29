@@ -86,3 +86,7 @@ html:not([dir="rtl"]) .site-footer .cta-box:hover i{transform:rotate(45deg)}
 html .site-footer .cta-box:hover i,
 html[dir] .site-footer .cta-box:hover i,
 html:not([dir="rtl"]) .site-footer .cta-box:hover i{transform:none}
+
+/* logo: the Beauty Roots emblem image (Oct 2026) */
+.site-footer .logo__mark.logo__mark--img{width:auto;height:52px;background:none;border-radius:0;padding:0;display:block}
+.site-footer .logo__mark--img img{display:block;height:100%;width:auto}

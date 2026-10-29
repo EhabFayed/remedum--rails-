@@ -231,3 +231,8 @@ html[dir="rtl"] .site-header .logo--brand .logo__text:where(.site-header,.site-h
 @media (min-width:1281px) and (max-width:1366px){
   html[dir="ltr"] .nav__link:where(.site-header,.site-header *):not(#_){padding:8px 4px;font-size:12px}
 }
+
+/* logo: the Beauty Roots emblem image replaces the green symbol (Oct 2026) */
+.logo__mark.logo__mark--img:where(.site-header,.site-header *):not(#_){width:auto;height:46px;background:none;border-radius:0;padding:0;display:block}
+.logo__mark--img img:where(.site-header,.site-header *):not(#_){display:block;height:100%;width:auto}
+.site-header .logo--brand .logo__mark.logo__mark--img:where(.site-header,.site-header *):not(#_){width:auto;height:44px;border-radius:0}
