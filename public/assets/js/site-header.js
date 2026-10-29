@@ -20,14 +20,15 @@
     burger.addEventListener('click', function () { setNav(!nav.classList.contains('is-open')); });
     scrim.addEventListener('click', function () { setNav(false); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setNav(false); });
-    // tap to open dropdowns on touch layouts
+    // tap to open dropdowns on touch layouts; a second tap on an opened entry follows its link,
+    // since an entry can be a page of its own (quality & accreditations) with no sub-item for it
     nav.querySelectorAll('.nav__item').forEach(function (item) {
       var link = item.querySelector('.nav__link');
       if (!item.querySelector('.dropdown') || !link) return;
       link.addEventListener('click', function (e) {
-        if (window.matchMedia('(max-width: 1280px)').matches) {
+        if (window.matchMedia('(max-width: 1280px)').matches && !item.classList.contains('is-open')) {
           e.preventDefault();
-          item.classList.toggle('is-open');
+          item.classList.add('is-open');
         }
       });
     });

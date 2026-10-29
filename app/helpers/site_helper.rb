@@ -32,8 +32,8 @@ module SiteHelper
     ] },
     # Two quality pages (client revisions, Oct 2026): the former quality/compliance page is
     # folded into these and 301s to the certifications page (config/routes.rb).
+    # The entry itself is the certifications & accreditations page; the only sub-item is the supply chain page
     { key: "quality", path: "quality/certifications", items: [
-      %w[quality_certifications quality/certifications],
       %w[quality_supply quality/supply]
     ] },
     { key: "medical", path: "medical/evidence", items: [

@@ -147,21 +147,22 @@ html.nav-locked{overflow:hidden}
 }
 html .btn:hover .btn__circle:where(.site-header,.site-header *):not(#_),html[dir] .btn:hover .btn__circle:where(.site-header,.site-header *):not(#_),html[dir] .btn--sm:hover .btn__circle:where(.site-header,.site-header *):not(#_){transform:none}
 html.nav-locked .wa-float{opacity:0;pointer-events:none}
-.site-header .logo--brand:where(.site-header,.site-header *):not(#_){gap:9px;color:var(--ink)}
+.site-header .logo--brand:where(.site-header,.site-header *):not(#_){gap:11px;color:var(--ink)}
 .site-header .logo--brand .logo__mark:where(.site-header,.site-header *):not(#_){width:26px;height:26px;border-radius:8px}
 .site-header .logo--brand .logo__mark svg:where(.site-header,.site-header *):not(#_){width:16px;height:16px}
 .site-header .logo--brand .logo__stack:where(.site-header,.site-header *):not(#_){display:flex;flex-direction:column;line-height:1.15}
-.site-header .logo--brand .logo__text:where(.site-header,.site-header *):not(#_){display:inline;font-family:var(--ff-d); font-size:18px;font-weight:800;letter-spacing:.02em;line-height:1.15; color:var(--ink);white-space:nowrap;}
+.site-header .logo--brand .logo__text:where(.site-header,.site-header *):not(#_){display:inline;font-family:var(--ff-d); font-size:23px;font-weight:800;letter-spacing:.02em;line-height:1.15; color:var(--ink);white-space:nowrap;}
 html[dir="rtl"] .site-header .logo--brand .logo__text:where(.site-header,.site-header *):not(#_){letter-spacing:0}
 .site-header .logo--brand .logo__u:where(.site-header,.site-header *):not(#_){color:var(--green)}
 .site-header .logo--brand .logo__r:where(.site-header,.site-header *):not(#_){color:var(--brown)}
-.site-header .logo--brand .logo__sub:where(.site-header,.site-header *):not(#_){display:block;font-style:normal;font-family:var(--ff-lat,inherit); font-size:9.5px;font-weight:700;letter-spacing:.22em; color:var(--brown);margin-top:2px;}
-.site-header .logo--brand .logo__sub[lang="ar"]:where(.site-header,.site-header *):not(#_){font-family:inherit;letter-spacing:0;font-size:10.5px}
+.site-header .logo--brand .logo__sub:where(.site-header,.site-header *):not(#_){display:block;font-style:normal;font-family:var(--ff-lat,inherit); font-size:11px;font-weight:700;letter-spacing:.24em; color:var(--brown);margin-top:3px;}
+.site-header .logo--brand .logo__sub[lang="ar"]:where(.site-header,.site-header *):not(#_){font-family:inherit;letter-spacing:0;font-size:12px}
 @media (max-width:380px){
-  .site-header .logo--brand .logo__text:where(.site-header,.site-header *):not(#_){font-size:16px}
+  .site-header .logo--brand .logo__text:where(.site-header,.site-header *):not(#_){font-size:18px}
 }
 @media (max-width:520px){
-  .site-header .logo--brand .logo__text:where(.site-header,.site-header *):not(#_){font-size:16px}
+  .site-header .logo--brand .logo__text:where(.site-header,.site-header *):not(#_){font-size:20px}
+  .site-header .logo--brand .logo__sub:where(.site-header,.site-header *):not(#_){font-size:10px}
 }
 @media (min-width:1281px) and (max-width:1366px){
   .site-header .nav__link:where(.site-header,.site-header *):not(#_){padding:8px 7px;font-size:13px}
@@ -235,4 +236,4 @@ html[dir="rtl"] .site-header .logo--brand .logo__text:where(.site-header,.site-h
 /* logo: the Beauty Roots emblem image replaces the green symbol (Oct 2026) */
 .logo__mark.logo__mark--img:where(.site-header,.site-header *):not(#_){width:auto;height:46px;background:none;border-radius:0;padding:0;display:block}
 .logo__mark--img img:where(.site-header,.site-header *):not(#_){display:block;height:100%;width:auto}
-.site-header .logo--brand .logo__mark.logo__mark--img:where(.site-header,.site-header *):not(#_){width:auto;height:44px;border-radius:0}
+.site-header .logo--brand .logo__mark.logo__mark--img:where(.site-header,.site-header *):not(#_){width:auto;height:50px;border-radius:0}
