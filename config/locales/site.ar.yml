@@ -50,7 +50,6 @@ ar:
       medical_service: "نموذج الخدمة والشروط التجارية"
       medical_evidence: "الأدلة المختبرية وبروتوكولات الحقن"
       medical_results: "معرض النتائج السريرية"
-      medical_quote: "طلب عرض سعر"
       knowledge: "مركز المعرفة والرؤى"
       contact: "تواصل معنا"
     actions:

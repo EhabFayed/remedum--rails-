@@ -49,11 +49,110 @@
     </div>
     <div class="dark-strip" style="display:flex;flex-direction:column;gap:14px;justify-content:center;padding:32px">
       <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
-        <a class="btn btn--white" href="<%= locale_path("medical/quote") %>"><%= t('content.brands_204') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></span></a>
+        <a class="btn btn--white" href="#quote"><%= t('content.brands_204') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></span></a>
         <a class="btn btn--green" href="<%= whatsapp_url %>"><%= t('content.pages_102') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2zm4.8 13.9c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9.3-1.5-.6-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.6-.1 1.2z"></path></svg></span></a>
         <a class="btn btn--white" href="<%= whatsapp_url %>" target="_blank" rel="noopener noreferrer"><%= t('content.brands_203') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></span></a>
       </div>
     </div>
+  </div>
+</div></section>
+
+<%# "Request a quote" — the form that used to be its own page (medical/quote); site.js posts it to /leads %>
+<section class="section" id="quote" style="scroll-margin-top:96px"><div class="container">
+  <div class="sec-head">
+    <span class="eyebrow"><i></i><%= t('content.pages_84') %></span>
+    <h2 class="sec-title"><%= t('content.pages_313') %></h2>
+    <p class="sec-lead"><%= t('content.pages_312') %></p>
+  </div>
+  <div class="grid" style="grid-template-columns:1.3fr .7fr;gap:18px;align-items:start">
+    <form class="form-card" data-quote-form novalidate>
+      <div data-form-body>
+
+        <div class="form-grid">
+
+<div class="field">
+  <label for="name"><%= t('content.pages_316') %> <span class="req">*</span></label>
+  <input type="text" id="name" name="name" placeholder="<%= t('content.pages_317') %>" required>
+</div>
+          <div class="field">
+            <label><%= t('content.pages_318') %> <span class="req">*</span></label>
+            <div class="choice-chips" data-field="facility_type">
+              <button type="button" class="cchip is-on"><%= t('content.pages_319') %></button>
+              <button type="button" class="cchip"><%= t('content.pages_320') %></button>
+              <button type="button" class="cchip"><%= t('content.pages_321') %></button>
+              <button type="button" class="cchip"><%= t('content.pages_322') %></button>
+            </div>
+          </div>
+
+<div class="field">
+  <label for="facility"><%= t('content.pages_323') %> <span class="req">*</span></label>
+  <input type="text" id="facility" name="facility" placeholder="<%= t('content.pages_324') %>" required>
+</div>
+
+<div class="field">
+  <label for="city"><%= t('content.pages_325') %> <span class="req">*</span></label>
+  <input type="text" id="city" name="city" placeholder="<%= t('content.pages_326') %>" required>
+</div>
+
+<div class="field">
+  <label for="phone"><%= t('content.pages_327') %> <span class="req">*</span></label>
+  <input type="tel" id="phone" name="phone" placeholder="+966 5X XXX XXXX" required>
+</div>
+
+<div class="field">
+  <label for="email"><%= t('content.pages_90') %> <span class="req">*</span></label>
+  <input type="email" id="email" name="email" placeholder="name@clinic.sa" required>
+</div>
+          <div class="field field--wide">
+            <label><%= t('content.pages_328') %> <span class="req">*</span></label>
+            <div class="choice-chips" data-multi data-field="products">
+              <button type="button" class="cchip">ReMedium® Fine</button>
+              <button type="button" class="cchip">ReMedium® Mid</button>
+              <button type="button" class="cchip">ReMedium® Sub-Q</button>
+              <button type="button" class="cchip"><%= t('content.pages_329') %></button>
+              <button type="button" class="cchip">Hairont</button>
+              <button type="button" class="cchip">GynWell</button>
+              <button type="button" class="cchip">OVDs</button>
+              <button type="button" class="cchip"><%= t('content.pages_330') %></button>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="form-grid">
+          <div class="field">
+            <label><%= t('content.pages_332') %></label>
+            <div class="choice-chips" data-field="volume">
+              <button type="button" class="cchip"><%= t('content.pages_333') %></button>
+              <button type="button" class="cchip"><%= t('content.pages_334') %></button>
+              <button type="button" class="cchip"><%= t('content.pages_335') %></button>
+            </div>
+          </div>
+          <div class="field">
+            <label><%= t('content.pages_336') %></label>
+            <div class="choice-chips" data-field="existing">
+              <button type="button" class="cchip"><%= t('content.pages_337') %></button>
+              <button type="button" class="cchip"><%= t('content.pages_338') %></button>
+            </div>
+          </div>
+          <label class="checkbox-row field--wide"><input type="checkbox" name="visit"><%= t('content.pages_339') %></label>
+
+<div class="field field--wide">
+  <label for="notes"><%= t('content.pages_340') %></label>
+  <textarea id="notes" name="notes" placeholder="<%= t('content.pages_341') %>"></textarea>
+</div>
+        </div>
+        <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line);padding-top:22px">
+          <label class="checkbox-row"><input type="checkbox" data-consent><%= t('content.pages_342') %> <a href="<%= locale_path("legal/privacy") %>" style="color:var(--green-600);font-weight:700"><%= t('content.pages_343') %></a> <%= t('content.pages_344') %></label>
+          <label class="checkbox-row"><input type="checkbox" name="eligibility"><%= t('content.pages_345') %></label>
+          <p data-form-error hidden style="font-size:12.5px;line-height:1.8"></p>
+          <div><button type="submit" class="btn btn--green"><%= t('content.pages_347') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></span></button></div>
+        </div>
+      </div>
+      <div class="thanks" data-form-thanks hidden>
+        <b><%= t('content.pages_348') %></b>
+        <p><%= t('content.pages_349') %></p>
+      </div>
+    </form>
   </div>
 </div></section>
 <br>

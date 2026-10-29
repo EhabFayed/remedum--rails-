@@ -37,8 +37,7 @@ module SiteHelper
     ] },
     { key: "medical", path: "medical/evidence", items: [
       %w[medical_evidence medical/evidence],
-      %w[medical_results medical/results],
-      %w[medical_quote medical/quote]
+      %w[medical_results medical/results]
     ] },
     { key: "knowledge", path: "knowledge" },
     { key: "contact", path: "company/contact" }

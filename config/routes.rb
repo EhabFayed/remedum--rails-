@@ -59,6 +59,10 @@ Rails.application.routes.draw do
   get ":locale/company/identity", constraints: { locale: /ar|en/ }, format: false,
       to: redirect(status: 301) { |p, _req| "/#{p[:locale]}/company/about/#identity" }
 
+  # The "request a quote" page became a section of the contact page
+  get ":locale/medical/quote", constraints: { locale: /ar|en/ }, format: false,
+      to: redirect(status: 301) { |p, _req| "/#{p[:locale]}/company/contact/#quote" }
+
   # Site search index (JSON), matched before the catch-all page route
   get ":locale/search-index", to: "search#index", constraints: { locale: /ar|en/ },
       defaults: { format: :json }, as: :search_index
