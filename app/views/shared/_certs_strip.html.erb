@@ -1,0 +1,20 @@
+<%# Moving row of certification marks, shared by the ReMedium page hero and the home page (#certs).
+    locals: marks  — array of [logo_src, name]; a mark without a logo (nil src) is shown as its code
+            label  — optional small caption above the row (the ReMedium page passes its "Certifications & approvals" label;
+                     the home page renders its own heading before the partial)
+    The set is rendered 4 times and the track slides by half its width, so the loop is seamless on any screen;
+    only the first set is announced to screen readers. Styles: site.css + style.css `.rm-certs*`. %>
+<div class="rm-certs">
+  <% if local_assigns[:label].present? %>
+  <span class="rm-certs__label"><%= label %></span>
+  <% end %>
+  <div class="rm-certs__marquee">
+    <ul class="rm-certs__track">
+      <% 4.times do |copy| %>
+        <% marks.each do |src, name| %>
+          <li<%= ' aria-hidden="true"'.html_safe if copy > 0 %>><% if src.present? %><img src="<%= src %>" alt="<%= copy.zero? ? name : '' %>" title="<%= name %>"><% else %><b class="rm-certs__code" dir="ltr"><%= name %></b><% end %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>

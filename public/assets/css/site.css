@@ -2251,6 +2251,7 @@ html[dir="rtl"] .rm-agency{padding:10px 12px 10px 20px}
 .rm-certs__track li{flex:none;padding-inline-end:44px}
 .rm-certs__track img{display:block;height:46px;width:auto;opacity:.82;transition:opacity .2s}
 .rm-certs__track img:hover{opacity:1}
+.rm-certs__code{display:inline-flex;align-items:center;height:46px;padding:0 14px;border-radius:12px;background:var(--mint);color:var(--green-900);font-family:var(--ff-lat);font-size:15px;font-weight:800;letter-spacing:.02em;white-space:nowrap}  /* mark without a logo */
 .rm-certs__marquee:hover .rm-certs__track{animation-play-state:paused}
 html[dir="rtl"] .rm-certs__track{animation-direction:reverse}
 @keyframes rm-certs-slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}

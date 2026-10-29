@@ -108,4 +108,15 @@ module SiteHelper
   def rtl?
     I18n.locale == :ar
   end
+
+  # Certification records -> [logo_src, name] pairs for shared/_certs_strip (the home page's moving row).
+  # Duplicates of the same code (SFDA is listed under both the Saudi and the ReMedium group) are shown once.
+  # SFDA has no logo in Admin yet, so it uses the same stand-in mark as the ReMedium page; any other record
+  # without a logo is rendered as its code.
+  def certification_marks(certifications)
+    certifications.uniq(&:code).map do |c|
+      src = c.logo_path.presence || ("/assets/img/certs/sfda.svg" if c.code == "SFDA")
+      [src, c.code]
+    end
+  end
 end

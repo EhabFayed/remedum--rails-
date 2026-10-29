@@ -27,21 +27,10 @@
       <li class="rm-stat"><b dir="ltr"><%= num %></b><span><%= t("content.remedium_hero_stat_#{key}") %></span></li>
     <% end %>
   </ul>
-  <%# certification marks: SFDA first, then the order on remediumkorea.com (sfda.svg is a stand-in until the official mark is supplied) %>
-  <div class="rm-certs">
-    <span class="rm-certs__label"><%= t('content.remedium_hero_certs') %></span>
-    <%# moving row: the set is rendered 4 times and the track slides by half its width, so the loop is seamless on any screen;
-        only the first set is announced to screen readers %>
-    <div class="rm-certs__marquee">
-      <ul class="rm-certs__track">
-        <% 4.times do |copy| %>
-          <% [['sfda.svg', 'SFDA'], ['scpn.png', 'SCPN'], ['gmp-cosmetics.png', 'GMP'], ['iso.png', 'ISO'], ['gmp-mfds.png', 'GMP (MFDS)'], ['ce.png', 'CE'], ['usfda.png', 'US FDA'], ['mdsap.png', 'MDSAP'], ['kfda.png', 'KFDA'], ['cpnp.png', 'CPNP']].each do |file, name| %>
-            <li<%= ' aria-hidden="true"'.html_safe if copy > 0 %>><img src="/assets/img/certs/<%= file %>" alt="<%= copy.zero? ? name : '' %>" title="<%= name %>"></li>
-          <% end %>
-        <% end %>
-      </ul>
-    </div>
-  </div>
+  <%# certification marks: SFDA first, then the order on remediumkorea.com (sfda.svg is a stand-in until the official mark is supplied).
+      The moving row itself is shared/_certs_strip (also used by the home page's #certs section). %>
+  <%= render "shared/certs_strip", label: t('content.remedium_hero_certs'),
+        marks: [['sfda.svg', 'SFDA'], ['scpn.png', 'SCPN'], ['gmp-cosmetics.png', 'GMP'], ['iso.png', 'ISO'], ['gmp-mfds.png', 'GMP (MFDS)'], ['ce.png', 'CE'], ['usfda.png', 'US FDA'], ['mdsap.png', 'MDSAP'], ['kfda.png', 'KFDA'], ['cpnp.png', 'CPNP']].map { |file, name| ["/assets/img/certs/#{file}", name] } %>
 </div></div></section>
 
 <section class="section rm-range"><div class="container">

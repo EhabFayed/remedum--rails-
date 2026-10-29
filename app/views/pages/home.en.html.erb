@@ -754,20 +754,15 @@
     <!-- ================= 7. CERTIFICATIONS ================= -->
     <section class="certs" id="certs">
       <div class="container">
-        <div class="certs__inner">
-          <div class="certs__head">
-            <span class="eyebrow"
-              ><svg class="ico ico--xs"><use href="#i-arr-in-r" /></svg>
-              Certifications</span
-            >
-            <h3>Accreditations behind every unit we release</h3>
-          </div>
-          <ul class="certs__list">
-            <% @certifications.each do |cert| %>
-            <li><b><%= cert.code %></b><span><%= cert.name_for(I18n.locale) %></span></li>
-            <% end %>
-          </ul>
+        <div class="certs__head">
+          <span class="eyebrow"
+            ><svg class="ico ico--xs"><use href="#i-arr-in-r" /></svg>
+            Certifications</span
+          >
+          <h3>Accreditations behind every unit we release</h3>
         </div>
+        <%# the same moving row of marks as the ReMedium brand page (shared/_certs_strip); records from Admin > Certifications %>
+        <%= render "shared/certs_strip", marks: certification_marks(@certifications) %>
       </div>
     </section>
 

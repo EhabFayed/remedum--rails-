@@ -534,7 +534,7 @@
     '.sec-head', '.about__media', '.about__content', '.acc',
     '.facemap__stage', '.facemap__side', '.step', '.testi__media', '.testi__content',
     '.whys__slider', '.post', '.footer__cta', '.footer__col',
-    '.certs__head', '.certs__list li'
+    '.certs__head', '.certs .rm-certs'
   ];
   document.querySelectorAll(revealTargets.join(',')).forEach(function (el, i) {
     el.classList.add('reveal');

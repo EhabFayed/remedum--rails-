@@ -42,7 +42,6 @@ html[dir="rtl"] .testi__author strong,
 html[dir="rtl"] .why-card h4,
 html[dir="rtl"] .compare__row--head > span,
 html[dir="rtl"] .certs__head h3,
-html[dir="rtl"] .certs__list b,
 html[dir="rtl"] .post__title{letter-spacing:0}
 html[dir="rtl"] .hero__title{text-transform:none}
 
