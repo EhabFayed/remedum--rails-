@@ -1512,13 +1512,13 @@ html.nav-locked .wa-float{opacity:0;pointer-events:none}
 /* ---- header logo = the home-page lockup (two-tone name + sub-line) ----
    Values copied from style.css (.logo / .logo__text / .logo__sub) so every
    navbar matches the home header. The footer logo keeps its own style. */
-.site-header .logo--brand{gap:9px;color:var(--ink)}
+.site-header .logo--brand{gap:11px;color:var(--ink)}
 .site-header .logo--brand .logo__mark{width:26px;height:26px;border-radius:8px}
 .site-header .logo--brand .logo__mark svg{width:16px;height:16px}
 .site-header .logo--brand .logo__stack{display:flex;flex-direction:column;line-height:1.15}
 .site-header .logo--brand .logo__text{
   display:inline;font-family:var(--ff-d);
-  font-size:18px;font-weight:800;letter-spacing:.02em;line-height:1.15;
+  font-size:23px;font-weight:800;letter-spacing:.02em;line-height:1.15;
   color:var(--ink);white-space:nowrap;
 }
 html[dir="rtl"] .site-header .logo--brand .logo__text{letter-spacing:0}
@@ -1526,16 +1526,16 @@ html[dir="rtl"] .site-header .logo--brand .logo__text{letter-spacing:0}
 .site-header .logo--brand .logo__r{color:var(--brown)}
 .site-header .logo--brand .logo__sub{
   display:block;font-style:normal;font-family:var(--ff-lat,inherit);
-  font-size:9.5px;font-weight:700;letter-spacing:.22em;
-  color:var(--brown);margin-top:2px;
+  font-size:11px;font-weight:700;letter-spacing:.24em;
+  color:var(--brown);margin-top:3px;
 }
-.site-header .logo--brand .logo__sub[lang="ar"]{font-family:inherit;letter-spacing:0;font-size:10.5px}
+.site-header .logo--brand .logo__sub[lang="ar"]{font-family:inherit;letter-spacing:0;font-size:12px}
 @media (max-width:380px){
-  .site-header .logo--brand .logo__text{font-size:16px}
+  .site-header .logo--brand .logo__text{font-size:18px}
 }
 /* match the home logo's phone size, and make room for the wider
    English lockup where the inline nav first returns (1281–1366) */
-@media (max-width:520px){ .site-header .logo--brand .logo__text{font-size:16px} }
+@media (max-width:520px){ .site-header .logo--brand .logo__text{font-size:20px} .site-header .logo--brand .logo__sub{font-size:10px} }
 @media (min-width:1281px) and (max-width:1366px){ .site-header .nav__link{padding:8px 7px;font-size:13px} }
 /* small phones: the floating WhatsApp button already covers this, and the
    header needs the room for the full logo lockup */
@@ -2361,7 +2361,7 @@ html[dir="rtl"] .rm-certs__track{animation-direction:reverse}
 }
 
 /* logo: the Beauty Roots emblem image replaces the green symbol (Oct 2026) */
-.logo__mark.logo__mark--img,.site-header .logo--brand .logo__mark.logo__mark--img{width:auto;height:46px;background:none;border-radius:0;padding:0;display:block;box-shadow:none}
+.logo__mark.logo__mark--img,.site-header .logo--brand .logo__mark.logo__mark--img{width:auto;height:50px;background:none;border-radius:0;padding:0;display:block;box-shadow:none}
 .logo__mark--img img{display:block;height:100%;width:auto}
 
 /* certifications page: the ReMedium tiles as a moving row (reuses the ReMedium page's marquee animation) */
