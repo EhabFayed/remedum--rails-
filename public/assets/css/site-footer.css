@@ -90,3 +90,13 @@ html:not([dir="rtl"]) .site-footer .cta-box:hover i{transform:none}
 /* logo: the Beauty Roots emblem image (Oct 2026) */
 .site-footer .logo__mark.logo__mark--img{width:auto;height:52px;background:none;border-radius:0;padding:0;display:block}
 .site-footer .logo__mark--img img{display:block;height:100%;width:auto}
+
+/* CTA pair (Oct 2026): same size, radius and type, only the surface differs.
+   The quote box is the formal/primary action (solid brand green); WhatsApp
+   is the quick channel (outlined, with the WhatsApp-green badge). */
+.site-footer .cta-box--quote{background:var(--green,#1CA97C);border-color:rgba(255,255,255,.18);box-shadow:0 16px 30px -16px rgba(28,169,124,.6)}
+.site-footer .cta-box--quote:hover{background:var(--green-600,#16916A);box-shadow:0 20px 34px -16px rgba(28,169,124,.7)}
+.site-footer .cta-box--quote .tag{color:rgba(255,255,255,.8)}
+.site-footer .cta-box--quote i{background:#fff;color:var(--green-900,#0B4432)}
+.site-footer .cta-box--alt i{background:#25D366;color:#fff}
+.site-footer .cta-box--alt:hover{border-color:rgba(37,211,102,.5)}

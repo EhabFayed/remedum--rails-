@@ -27,55 +27,7 @@
 <main>
 <%= yield %>
 </main>
-<footer class="site-footer"><div class="container">
-  <div class="site-footer__top">
-    <div class="site-footer__about">
-      <a class="logo" href="<%= locale_path("") %>">
-        <span class="logo__mark logo__mark--img"><img src="/assets/img/logo-mark.webp" width="74" height="112" alt="" aria-hidden="true"></span>
-        <span class="logo__text"><b><%= t("site.brand") %></b><i class="lat"><%= t("site.brand_sub") %></i></span>
-      </a>
-      <p><%= t("site.footer.tagline") %></p>
-      <ul>
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><span><%= site_setting("address_#{I18n.locale}", t("site.footer.address")) %></span></li>
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"></path></svg><span><span class="lat" dir="ltr"><%= site_setting("contact_phone", "+966 56 201 7170") %></span> — <%= t("site.footer.phone_label") %></span></li>
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg><span class="lat" dir="ltr"><%= site_setting("contact_email", "sales@beautyrooots.com") %></span></li>
-      </ul>
-      <div class="site-footer__socials">
-        <% social_links.each do |link| %>
-        <a href="<%= link[:url] %>" target="_blank" rel="noopener noreferrer" aria-label="<%= link[:label] %>"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><%= raw link[:svg] %></svg></a>
-        <% end %>
-      </div>
-    </div>
-    <div class="site-footer__links">
-      <h5><%= t("site.footer.quick_links") %></h5>
-      <ul>
-        <% SiteHelper::FOOTER_LINKS.each do |(label_key, path)| %>
-        <li><a href="<%= locale_path(path) %>"><%= t("site.footer.#{label_key}") %></a></li>
-        <% end %>
-      </ul>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:12px">
-      <a class="cta-box" href="<%= locale_path("medical/quote") %>">
-        <span class="tag"><%= t("site.footer.cta1_tag") %></span>
-        <strong><%= t("site.footer.cta1_title") %></strong>
-        <i><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></i>
-      </a>
-      <a class="cta-box cta-box--alt" href="<%= whatsapp_url %>" target="_blank" rel="noopener">
-        <span class="tag"><%= t("site.footer.cta2_tag") %></span>
-        <strong><%= t("site.footer.cta2_title") %></strong>
-        <i><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2zm4.8 13.9c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.6-.1 1.2z"></path></svg></i>
-      </a>
-    </div>
-  </div>
-  <div class="site-footer__bottom">
-    <p>© <span data-year>2026</span> <%= site_setting("company_name_#{I18n.locale}", t("site.footer.company_name")) %> — <%= t("site.footer.cr_label") %> <span class="lat" dir="ltr"><%= site_setting("cr_number", "1010909714") %></span> · <%= t("site.footer.vat") %> <span class="lat" dir="ltr"><%= site_setting("vat_number", "311755763600003") %></span></p>
-    <ul>
-      <li><a href="<%= locale_path("legal/privacy") %>"><%= t("site.footer.legal_privacy") %></a></li>
-      <li><a href="<%= locale_path("legal/terms") %>"><%= t("site.footer.legal_terms") %></a></li>
-      <li><a href="<%= locale_path("legal/medical-disclaimer") %>"><%= t("site.footer.legal_disclaimer") %></a></li>
-    </ul>
-  </div>
-</div></footer>
+<%= render "shared/site_footer" %>
 <%= render "shared/wa_float" %>
 <%= render "shared/back_to_top" %>
 <script src="<%= static_asset("/assets/js/site-header.js") %>"></script>
