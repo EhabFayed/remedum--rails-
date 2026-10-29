@@ -13,19 +13,23 @@
 
 </div></div></section>
 
-<section class="section"><div class="container">
+<%# Grouped certifications (client revisions, Oct 2026): Saudi approvals -> ReMedium -> the other brands
+    (then the shared manufacturer). Records, logos and "pending" flags are managed in Admin > Certifications;
+    nothing here describes a certificate until it has been matched against the documents. %>
+<% saudi = @certifications.select { |c| c.group_key == "saudi" } %>
+<% remedium = @certifications.select { |c| c.group_key == "remedium" } %>
+<% brands = @certifications.select { |c| c.group_key == "brand" }.group_by(&:brand_name) %>
+<% makers = @certifications.select { |c| c.group_key == "manufacturer" }.group_by(&:brand_name) %>
+<% mark = ->(c, size = "") { c.logo_path.present? ? image_tag(c.logo_path, alt: c.code, class: "cert-logo #{size}", loading: "lazy") : content_tag(:b, c.code, class: "cert-code #{size}", dir: "ltr") } %>
 
-<div class="sec-head">
-  <span class="eyebrow"><i></i><%= t('content.pages_185') %></span>
-
-
-</div>
-  <%= render "pages/certification_rows" %>
-</div></section>
-
-<section class="section"><div class="container">
-  <div class="dark-strip" style="display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;padding:38px 42px">
-    <b class="lat" dir="ltr" style="font-size:30px;font-weight:800;color:#7FE3BE;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:22px 30px">SFDA</b>
+<%# 01 Saudi %>
+<section class="section cert-group"><div class="container">
+  <div class="sec-head">
+    <span class="eyebrow"><i></i><span class="cert-step">01</span> <%= t('content.certs_saudi_eyebrow') %></span>
+  </div>
+  <% saudi.each do |c| %>
+  <div class="dark-strip cert-saudi">
+    <b class="lat cert-saudi__mark" dir="ltr"><%= c.code %></b>
     <div>
       <h3 style="font-size:19px"><%= t('content.pages_187') %></h3>
       <p><%= t('content.pages_188') %></p>
@@ -35,6 +39,69 @@
       </div>
     </div>
   </div>
+  <% end %>
+</div></section>
+
+<%# 02 ReMedium %>
+<section class="section cert-group"><div class="container">
+  <div class="sec-head">
+    <span class="eyebrow"><i></i><span class="cert-step">02</span> <%= t('content.certs_remedium_eyebrow') %></span>
+    <h2 class="sec-title"><%= t('content.certs_remedium_title_html') %></h2>
+  </div>
+  <ul class="cert-tiles">
+    <% remedium.each do |c| %>
+    <li class="cert-tile">
+      <span class="cert-tile__mark"><%= mark.call(c) %></span>
+      <b class="cert-tile__code" dir="ltr"><%= c.code %></b>
+      <span class="cert-tile__name"><%= c.name_for(I18n.locale) %></span>
+      <% if c.pending? %><% end %>
+    </li>
+    <% end %>
+  </ul>
+</div></section>
+
+<%# 03 the other brands, then their shared manufacturer %>
+<section class="section cert-group"><div class="container">
+  <div class="sec-head">
+    <span class="eyebrow"><i></i><span class="cert-step">03</span> <%= t('content.certs_brands_eyebrow') %></span>
+    <h2 class="sec-title"><%= t('content.certs_brands_title') %></h2>
+    <p class="sec-lead"><%= t('content.certs_brands_lead') %></p>
+  </div>
+  <div class="cert-brands">
+    <% %w[HA\ Filler Hairont OVDs].each do |brand| %>
+    <% list = brands[brand] || [] %>
+    <article class="card cert-brand">
+      <h3 class="cert-brand__name lat" dir="ltr"><%= brand %></h3>
+      <% if list.any? %>
+      <ul class="cert-brand__list">
+        <% list.each do |c| %>
+        <li>
+          <span class="cert-brand__mark"><%= mark.call(c, "is-sm") %></span>
+          <span class="cert-brand__text"><% if c.logo_path.present? %><b dir="ltr"><%= c.code %></b><% end %><small><%= c.name_for(I18n.locale) %></small></span>
+          <% if c.pending? %><% end %>
+        </li>
+        <% end %>
+      </ul>
+      <% else %>
+      <% end %>
+    </article>
+    <% end %>
+  </div>
+
+  <% makers.each do |maker, list| %>
+  <div class="cert-maker">
+    <div class="cert-maker__head">
+      <span class="eyebrow"><i></i><%= t('content.certs_maker_eyebrow') %></span>
+      <h3 class="cert-maker__name lat" dir="ltr"><%= maker %></h3>
+      <p class="cert-maker__text"><%= t('content.certs_maker_text') %></p>
+    </div>
+    <ul class="cert-maker__list">
+      <% list.each do |c| %>
+      <li><span class="cert-brand__mark"><%= mark.call(c, "is-sm") %></span><span class="cert-brand__text"><% if c.logo_path.present? %><b dir="ltr"><%= c.code %></b><% end %><small><%= c.name_for(I18n.locale) %></small></span><% if c.pending? %><% end %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
 </div></section>
 
 <section class="section section--last"><div class="container">

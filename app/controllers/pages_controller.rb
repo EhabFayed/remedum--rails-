@@ -8,7 +8,7 @@ class PagesController < ApplicationController
 
   def home
     @posts = Post.published.includes(:category).recent.limit(3)
-    @certifications = Certification.live.ordered
+    @certifications = Certification.live.home_strip.ordered
     render "pages/home", layout: false
   end
 

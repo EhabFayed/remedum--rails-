@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_10_04_140000) do
+ActiveRecord::Schema[8.0].define(version: 2026_10_29_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -59,7 +59,11 @@ ActiveRecord::Schema[8.0].define(version: 2026_10_04_140000) do
     t.string "full_name"
     t.text "meaning_ar"
     t.text "meaning_en"
-    t.index ["code"], name: "index_certifications_on_code", unique: true
+    t.string "group_key", default: "remedium", null: false
+    t.string "brand_name", default: "", null: false
+    t.string "status", default: "verified", null: false
+    t.string "logo_path"
+    t.index ["group_key", "brand_name", "code"], name: "index_certifications_on_group_key_and_brand_name_and_code", unique: true
   end
 
   create_table "faqs", force: :cascade do |t|

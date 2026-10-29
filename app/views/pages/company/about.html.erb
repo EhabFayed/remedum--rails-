@@ -111,7 +111,7 @@
   </div>
 </div></section>
 
-<section class="section section--last"><div class="container">
+<section class="section"><div class="container">
 
 <div class="sec-head">
   <span class="eyebrow"><i></i><%= t('content.pages_38') %></span>
@@ -157,3 +157,19 @@
   </div>
 </div></section>
 
+<%# Regulatory identity card, moved here from its own page (company/identity) per the client revisions
+    (Oct 2026): content kept exactly as it was; company/identity now redirects to #identity. %>
+<section class="section section--last" id="identity"><div class="container">
+
+<div class="sec-head">
+  <span class="eyebrow"><i></i><%= t('content.pages_57') %></span>
+  <h2 class="sec-title"><%= t('content.pages_58') %></h2>
+  <p class="sec-lead"><%= t('content.pages_56') %></p>
+
+</div>
+  <div class="grid grid-4" style="gap:14px">
+    <div class="fact-tile"><span><%= t('content.pages_59') %></span><b><%= t('content.pages_60') %></b></div><div class="fact-tile"><span><%= t('content.pages_61') %></span><b><%= t('content.pages_62') %></b></div><div class="fact-tile"><span><%= t('content.pages_63') %></span><b><span class="lat" dir="ltr">1010909714</span></b></div><div class="fact-tile"><span><%= t('content.pages_65') %></span><b><%= t('content.pages_66') %></b></div><div class="fact-tile"><span><%= t('content.pages_67') %></span><b><span class="lat" dir="ltr">842174</span></b></div><div class="fact-tile"><span><%= t('content.pages_68') %></span><b><%= t('content.pages_69') %></b></div><div class="fact-tile"><span><%= t('content.pages_70') %></span><b><%= t('content.pages_71') %></b></div>
+  </div>
+  <div class="dark-strip" style="margin-top:28px"><h3><%= t('content.pages_82') %></h3><p><%= t('content.pages_83') %></p></div>
+  <div style="display:flex;justify-content:center;margin-top:24px"><a class="btn btn--dark" href="<%= locale_path("company/contact") %>"><%= t('content.brands_242') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></span></a></div>
+</div></section>
