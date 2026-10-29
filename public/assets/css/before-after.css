@@ -9,11 +9,11 @@
 html[dir="ltr"] .ba-sec__title{font-family:'Archivo','Plus Jakarta Sans',sans-serif}
 .ba-sec__note{margin:16px auto 0;max-width:720px;text-align:center;font-size:12.5px;line-height:1.9;color:var(--ba-muted)}
 
-/* the frame keeps each pair's own shape; tall pairs are capped by the screen height */
+/* one frame size for every case (all photos are 4:3) */
 .ba-slider{position:relative;display:flex;justify-content:center;direction:ltr}
 /* the stage shrinks to the visible photo, so the arrows always sit on its edges */
 .ba-stage{position:relative;width:fit-content;max-width:100%}
-.ba{position:relative;aspect-ratio:var(--ratio);width:min(calc(100vw - 48px),calc(70vh * (var(--ratio))),960px);overflow:hidden;border-radius:22px;
+.ba{position:relative;aspect-ratio:var(--ratio);width:min(calc(100vw - 48px),calc(72vh * (var(--ratio))),860px);overflow:hidden;border-radius:22px;
   background:#EEE8E0;box-shadow:0 26px 60px -30px rgba(10,46,34,.45);user-select:none;-webkit-user-select:none;touch-action:pan-y;
   --pos:50%;animation:ba-in .45s ease}
 .ba[hidden]{display:none}
@@ -46,7 +46,7 @@ html[dir="ltr"] .ba-sec__title{font-family:'Archivo','Plus Jakarta Sans',sans-se
 @media (max-width:760px){
   .ba-sec{padding:56px 0 52px}
   .ba-sec__inner{padding-inline:18px}
-  .ba{border-radius:16px;width:min(calc(100vw - 36px),calc(62vh * (var(--ratio))))}
+  .ba{border-radius:16px;width:calc(100vw - 36px)}
   .ba__grip{width:46px;height:46px;margin:-23px 0 0 -23px}
   .ba__tag{bottom:10px;padding:4px 10px;font-size:12px}
   .ba__tag--before{left:10px}.ba__tag--after{right:10px}
