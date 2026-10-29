@@ -2374,6 +2374,140 @@ html[dir="rtl"] .rm-certs__track{animation-direction:reverse}
   .rm-certs__track .cert-tile{margin:0}
 }
 
+/* ===== Quality pages, two-page version (client copy, Oct 2026) =====
+   quality/certifications: SFDA strip, the four standards, per-brand marks, documents CTA.
+   quality/supply: the four-slide "quality management" slider (site.js [data-qslider]),
+   the seven-stage zig-zag journey, GSP/GDP cards, the traceability CTA. */
+.cert-saudi__title{font-size:19px}
+.cert-saudi__chips{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.cert-saudi__mark--img{display:grid;place-items:center;background:#fff;border-radius:18px;padding:14px 18px}
+.cert-saudi__mark--img img{display:block;height:72px;width:auto;max-width:150px;object-fit:contain}
+
+/* 02: the standards as text cards; the code badge stands in for a logo */
+.q-standard{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.q-standard .cert-code{height:44px;min-width:72px;padding:0 16px;font-size:15px}
+.card .q-standard__text{font-size:13.5px;color:var(--ink-2);line-height:1.9}
+
+/* 03: brand blocks */
+.q-brand__head{display:flex;flex-direction:column;gap:6px}
+.q-brand__text{margin:0;font-size:13.5px;line-height:1.9;color:var(--muted)}
+.q-brand--remedium{display:flex;flex-direction:column;gap:14px;padding:24px 26px 18px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--mint-2)}
+.q-brand--remedium .cert-marquee{margin-inline:-26px;padding-inline:26px}
+.q-brands{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:14px;margin-top:14px}
+.q-brand__sep{color:var(--muted-2);font-weight:600;margin-inline:4px}
+.q-brand__rows{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.q-brand__row{display:grid;grid-template-columns:120px minmax(0,1fr);align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:var(--mint-2);border:1px solid var(--line)}
+.q-brand__row-name{font-family:var(--ff-lat);font-size:15px;font-weight:800;color:var(--ink);text-align:start}
+.q-brand__row .cert-brand__list{flex-direction:row;flex-wrap:wrap;gap:10px 20px}
+.q-brand__pending{align-self:flex-start;justify-self:start}
+.q-brands .cert-brand{gap:16px}
+.q-brands .cert-maker{margin-top:0}
+
+/* CTA strips (04 on both pages): text on one side, the button on the other */
+.dark-strip.q-cta{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 36px;align-items:center}
+.q-cta__body h3{margin-bottom:8px}
+.q-cta__body p{margin:0}
+.q-cta__chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.q-cta__btn{justify-self:end;flex:none}
+
+/* supply 01: slider. The track is native horizontal snap scrolling; the arrows, dots and counter are
+   added by site.js. Slides are photo + text on desktop and stack on tablets/phones. */
+.qslider{position:relative}
+.qslider__track{display:flex;gap:16px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;outline:none;border-radius:var(--r-lg)}
+.qslider__track::-webkit-scrollbar{display:none}
+.qslider__track:focus-visible{box-shadow:0 0 0 3px rgba(28,169,124,.35)}
+.qslider__slide{flex:0 0 100%;min-width:0;scroll-snap-align:start;scroll-snap-stop:always;
+  display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:stretch;
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-soft)}
+.qslider__media{position:relative;min-height:380px;background:var(--mint)}
+.qslider__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.04);transition:transform 1.2s var(--ease)}
+.qslider__slide.is-active .qslider__media img{transform:none}
+.qslider__media::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,36,25,.5),transparent 45%)}
+.qslider__num{position:absolute;z-index:1;inset-inline-start:22px;bottom:16px;font-family:var(--ff-lat);font-size:48px;font-weight:800;line-height:1;letter-spacing:-.03em;color:#fff;text-shadow:0 6px 24px rgba(0,0,0,.35)}
+.qslider__body{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:14px;padding:46px 50px}
+.qslider__h{font-family:var(--ff-d);font-size:clamp(22px,2.1vw,30px);font-weight:800;line-height:1.35;color:var(--ink);margin:0}
+.qslider__p{font-size:15px;line-height:1.95;color:var(--muted);max-width:52ch;margin:0}
+.qslider__nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:22px}
+.qslider__arrow{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;transition:.3s var(--ease)}
+.qslider__arrow:hover{background:var(--green);border-color:var(--green);color:#fff}
+.qslider__arrow:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+html[dir="rtl"] .qslider__arrow svg{transform:scaleX(-1)}
+.qslider__dots{display:flex;align-items:center;gap:8px}
+.qslider__dot{position:relative;width:30px;height:4px;border-radius:999px;background:var(--line);border:0;padding:0;cursor:pointer;transition:width .35s var(--ease),background .35s}
+.qslider__dot::after{content:"";position:absolute;inset:-10px}
+.qslider__dot:hover{background:var(--muted-2)}
+.qslider__dot.is-active{width:56px;background:var(--green)}
+.qslider__count{font-family:var(--ff-lat);font-size:13px;font-weight:600;color:var(--muted-2);font-variant-numeric:tabular-nums;min-width:52px;text-align:center}
+.qslider__count b{color:var(--ink);font-size:16px}
+
+/* supply 02: seven stages on a zig-zag timeline (two columns around a centre line) */
+.journey{position:relative;list-style:none;margin:0;padding:0 0 64px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:84px;row-gap:28px}
+.journey::before{content:"";position:absolute;top:28px;bottom:0;left:50%;width:2px;margin-left:-1px;background:linear-gradient(to bottom,var(--green) 0%,var(--brown-300) 100%);opacity:.5;border-radius:2px}
+.journey__item{position:relative;min-width:0}
+.journey__item:nth-child(even){transform:translateY(64px)}
+.journey__dot{position:absolute;top:28px;width:18px;height:18px;border-radius:50%;background:var(--green);border:4px solid #fff;box-shadow:0 0 0 2px var(--green)}
+.journey__item:nth-child(odd) .journey__dot{inset-inline-end:-51px}
+.journey__item:nth-child(even) .journey__dot{inset-inline-start:-51px}
+.journey__card{height:100%;padding:24px 26px 26px}
+.journey__item:nth-child(3n+2) .journey__card{background:var(--mint-2);border-color:#DCEBE3}
+.journey__item:nth-child(3n+3) .journey__card{background:var(--sand-2);border-color:var(--sand-line)}
+.journey__item:nth-child(3n+3) .journey__card .num{color:var(--brown-600)}
+.journey__card .num{color:var(--green);margin-bottom:8px}
+.journey__card p{font-size:13px}
+
+/* supply 03: GSP / GDP cards beside the warehouse photo */
+.q-storage__photo{min-height:360px}
+.q-storage__cards{display:grid;grid-template-rows:repeat(2,minmax(0,1fr));gap:14px}
+.q-practice{display:flex;gap:18px;align-items:flex-start;padding:24px 26px}
+.q-practice .cert-code{flex:none;height:44px;min-width:72px;padding:0 16px;font-size:15px}
+.q-practice .card__title{margin-bottom:6px}
+.q-practice p{font-size:13.5px}
+
+@media (max-width:1100px){
+  .q-brands{grid-template-columns:1fr}
+  .journey{column-gap:64px}
+  .journey__item:nth-child(odd) .journey__dot{inset-inline-end:-41px}
+  .journey__item:nth-child(even) .journey__dot{inset-inline-start:-41px}
+}
+@media (max-width:900px){
+  .qslider__slide{grid-template-columns:1fr}
+  .qslider__media{min-height:0;aspect-ratio:16/9}
+  .qslider__num{font-size:40px;inset-inline-start:18px;bottom:14px}
+  .qslider__body{padding:26px 24px 28px;gap:12px}
+  .qslider__h{font-size:22px}
+  .qslider__p{font-size:14px;line-height:1.85;max-width:none}
+  /* the journey becomes one column with the line along the start edge */
+  .journey{grid-template-columns:1fr;column-gap:0;row-gap:16px;padding:0 0 0 0;padding-inline-start:34px}
+  .journey::before{left:auto;inset-inline-start:8px;top:10px;bottom:28px;margin:0}
+  .journey__item:nth-child(even){transform:none}
+  .journey__item .journey__dot,.journey__item:nth-child(odd) .journey__dot,.journey__item:nth-child(even) .journey__dot{inset-inline:auto;inset-inline-start:-34px;top:22px}
+  .q-storage__photo{min-height:240px}
+  .q-storage__cards{grid-template-rows:none}
+}
+@media (max-width:640px){
+  .cert-saudi__mark--img{justify-self:start;padding:10px 14px}
+  .cert-saudi__mark--img img{height:56px}
+  .q-brand--remedium{padding:20px 18px 14px}
+  .q-brand--remedium .cert-marquee{margin-inline:-18px;padding-inline:18px}
+  .q-brand__row{grid-template-columns:1fr;gap:8px;padding:12px}
+  .dark-strip.q-cta{grid-template-columns:1fr;padding:26px 22px}
+  .q-cta__btn{justify-self:stretch;justify-content:center}
+  .qslider__track{gap:12px}
+  .qslider__body{padding:22px 18px 24px}
+  .qslider__nav{gap:12px}
+  .qslider__arrow{width:40px;height:40px}
+  .qslider__dot{width:24px}
+  .qslider__dot.is-active{width:44px}
+  .journey{padding-inline-start:30px}
+  .journey__item .journey__dot,.journey__item:nth-child(odd) .journey__dot,.journey__item:nth-child(even) .journey__dot{inset-inline-start:-30px}
+  .journey__card{padding:20px 18px 22px}
+  .q-practice{flex-direction:column;gap:12px;padding:20px 18px}
+}
+@media (prefers-reduced-motion:reduce){
+  .qslider__media img{transition:none;transform:none}
+  .qslider__track{scroll-behavior:auto}
+}
+
 /* ===== HA Filler range on phones (Oct 2026) =====
    The five product tabs become one swipeable pill row that bleeds to the screen
    edges (site.js keeps the active pill in view); each product card stacks the

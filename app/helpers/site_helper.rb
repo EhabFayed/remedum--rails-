@@ -30,10 +30,11 @@ module SiteHelper
       %w[brands_ovds brands/ovds],
       %w[brands_skincare brands#skincare-external]
     ] },
-    { key: "quality", path: "quality/compliance", items: [
-      %w[quality_compliance quality/compliance],
-      %w[quality_supply quality/supply],
-      %w[quality_certifications quality/certifications]
+    # Two quality pages (client revisions, Oct 2026): the former quality/compliance page is
+    # folded into these and 301s to the certifications page (config/routes.rb).
+    { key: "quality", path: "quality/certifications", items: [
+      %w[quality_certifications quality/certifications],
+      %w[quality_supply quality/supply]
     ] },
     { key: "medical", path: "medical/evidence", items: [
       %w[medical_evidence medical/evidence],
@@ -46,8 +47,8 @@ module SiteHelper
   FOOTER_LINKS = [
     %w[link_about company/about],
     %w[link_remedium brands/remedium],
-    %w[link_quality quality/compliance],
-    %w[link_certs quality/certifications],
+    %w[link_quality quality/certifications],
+    %w[link_supply quality/supply],
     %w[link_knowledge knowledge],
     %w[link_contact company/contact]
   ].freeze

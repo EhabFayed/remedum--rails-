@@ -2,95 +2,135 @@
 <% content_for :description, t('content.quality_certifications_description') %>
 <% content_for :nav_active, 'quality' %>
 
+<%# "Certifications, accreditations & licences" (client copy, Oct 2026). The former quality/compliance page
+    301s here. Four numbered sections: SFDA licences -> the quality standards -> each brand's verified marks
+    (the ReMedium marquee, the other brands, then their shared manufacturer) -> documents on request.
+    Records, logos and "pending" flags are managed in Admin > Certifications; a pending mark is never shown. %>
 
 <section class="page-hero"><div class="container"><div class="page-hero__inner">
-
 <div class="crumbs">
-  <a href="<%= locale_path("") %>"><%= t('content.brands_76') %></a><span class="sep"><%= t('content.brands_80') %></span><a href="<%= locale_path("quality/compliance") %>"><%= t('content.pages_104') %></a><span class="sep"><%= t('content.brands_80') %></span><span class="here"><%= t('content.pages_182') %></span>
+  <a href="<%= locale_path("") %>"><%= t('content.brands_76') %></a><span class="sep"><%= t('content.brands_80') %></span><a href="<%= locale_path("quality/certifications") %>"><%= t('site.nav.quality') %></a><span class="sep"><%= t('content.brands_80') %></span><span class="here"><%= t('content.quality_certifications_title') %></span>
 </div>
-  <h1 class="page-title"><%= t('content.pages_182') %></h1>
-
-
+  <h1 class="page-title"><%= t('content.qc_hero_title') %></h1>
+  <p class="page-hero__lead"><%= t('content.qc_hero_text') %></p>
 </div></div></section>
 
-<%# Grouped certifications (client revisions, Oct 2026): Saudi approvals -> ReMedium -> the other brands
-    (then the shared manufacturer). Records, logos and "pending" flags are managed in Admin > Certifications;
-    nothing here describes a certificate until it has been matched against the documents. %>
-<% saudi = @certifications.select { |c| c.group_key == "saudi" } %>
+<% sfda = @certifications.find { |c| c.group_key == "saudi" } %>
 <% remedium = @certifications.select { |c| c.group_key == "remedium" } %>
-<% brands = @certifications.select { |c| c.group_key == "brand" }.group_by(&:brand_name) %>
-<% makers = @certifications.select { |c| c.group_key == "manufacturer" }.group_by(&:brand_name) %>
+<% brands = @certifications.select { |c| c.group_key == "brand" && !c.pending? }.group_by(&:brand_name) %>
+<% makers = @certifications.select { |c| c.group_key == "manufacturer" && !c.pending? }.group_by(&:brand_name) %>
 <% mark = ->(c, size = "") { c.logo_path.present? ? image_tag(c.logo_path, alt: c.code, class: "cert-logo #{size}", loading: "lazy") : content_tag(:b, c.code, class: "cert-code #{size}", dir: "ltr") } %>
+<% mark_row = ->(c) { capture do %>
+  <li><span class="cert-brand__mark"><%= mark.call(c, "is-sm") %></span><span class="cert-brand__text"><% if c.logo_path.present? %><b dir="ltr"><%= c.code %></b><% end %><small><%= c.name_for(I18n.locale) %></small></span></li>
+<% end } %>
 
-<%# 01 Saudi %>
+<%# 01 licences & regulatory compliance %>
 <section class="section cert-group"><div class="container">
   <div class="sec-head">
-    <span class="eyebrow"><i></i><span class="cert-step">01</span> <%= t('content.certs_saudi_eyebrow') %></span>
+    <span class="eyebrow"><i></i><span class="cert-step">01</span> <%= t('content.qc_s1_eyebrow') %></span>
+    <h2 class="sec-title"><%= t('content.qc_s1_title') %></h2>
+    <p class="sec-lead"><%= t('content.qc_s1_text') %></p>
   </div>
-  <% saudi.each do |c| %>
   <div class="dark-strip cert-saudi">
-    <b class="lat cert-saudi__mark" dir="ltr"><%= c.code %></b>
+    <% if sfda&.logo_path.present? %>
+    <span class="cert-saudi__mark cert-saudi__mark--img"><%= image_tag(sfda.logo_path, alt: "SFDA") %></span>
+    <% else %>
+    <b class="lat cert-saudi__mark" dir="ltr">SFDA</b>
+    <% end %>
     <div>
-      <h3 style="font-size:19px"><%= t('content.pages_187') %></h3>
-      <p><%= t('content.pages_188') %></p>
-      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+      <h3 class="cert-saudi__title"><%= t('content.qc_sfda_name') %></h3>
+      <p><%= t('content.qc_sfda_text') %></p>
+      <div class="cert-saudi__chips">
         <span class="chip chip--dark"><%= t('content.pages_189_html') %></span>
         <span class="chip chip--dark"><%= t('content.pages_190_html') %></span>
       </div>
     </div>
   </div>
-  <% end %>
 </div></section>
 
-<%# 02 ReMedium %>
+<%# 02 the quality standards behind the supply system (text only: the marks themselves are shown
+    under the brand or manufacturer they apply to, never as standalone Beauty Roots certificates) %>
 <section class="section cert-group"><div class="container">
   <div class="sec-head">
-    <span class="eyebrow"><i></i><span class="cert-step">02</span> <%= t('content.certs_remedium_eyebrow') %></span>
-    <h2 class="sec-title"><%= t('content.certs_remedium_title_html') %></h2>
+    <span class="eyebrow"><i></i><span class="cert-step">02</span> <%= t('content.qc_s2_eyebrow') %></span>
+    <h2 class="sec-title"><%= t('content.qc_s2_title') %></h2>
+    <p class="sec-lead"><%= t('content.qc_s2_text') %></p>
   </div>
-  <%# moving row, like the certification strip on the ReMedium page: the set is rendered 4 times and the
-      track slides by half its width so the loop is seamless; only the first set is read by screen readers %>
-  <div class="rm-certs__marquee cert-marquee">
-    <ul class="rm-certs__track cert-tiles--track">
-      <% 4.times do |copy| %>
-      <% remedium.each do |c| %>
-      <li class="cert-tile"<%= ' aria-hidden="true"'.html_safe if copy > 0 %>>
-        <span class="cert-tile__mark"><%= mark.call(c) %></span>
-        <b class="cert-tile__code" dir="ltr"><%= c.code %></b>
-        <span class="cert-tile__name"><%= c.name_for(I18n.locale) %></span>
-      </li>
-      <% end %>
-      <% end %>
-    </ul>
+  <div class="grid grid-4 q-standards">
+    <% [["GMP", "qc_std_gmp"], ["ISO 13485", "qc_std_iso"], ["CE", "qc_std_ce"], ["MDSAP", "qc_std_mdsap"]].each do |code, key| %>
+    <div class="card q-standard">
+      <b class="cert-code lat" dir="ltr"><%= code %></b>
+      <p class="q-standard__text"><%= t("content.#{key}") %></p>
+    </div>
+    <% end %>
   </div>
 </div></section>
 
-<%# 03 the other brands, then their shared manufacturer %>
+<%# 03 brand & product accreditations: ReMedium's moving row, then the other brands, then their manufacturer %>
 <section class="section cert-group"><div class="container">
   <div class="sec-head">
-    <span class="eyebrow"><i></i><span class="cert-step">03</span> <%= t('content.certs_brands_eyebrow') %></span>
-    <h2 class="sec-title"><%= t('content.certs_brands_title') %></h2>
-    <p class="sec-lead"><%= t('content.certs_brands_lead') %></p>
+    <span class="eyebrow"><i></i><span class="cert-step">03</span> <%= t('content.qc_s3_eyebrow') %></span>
+    <h2 class="sec-title"><%= t('content.qc_s3_title') %></h2>
+    <p class="sec-lead"><%= t('content.qc_s3_text') %></p>
   </div>
-  <div class="cert-brands">
-    <% %w[HA\ Filler Hairont OVDs].each do |brand| %>
-    <% list = brands[brand] || [] %>
-    <article class="card cert-brand">
-      <h3 class="cert-brand__name lat" dir="ltr"><%= brand %></h3>
-      <% if list.any? %>
-      <ul class="cert-brand__list">
-        <% list.each do |c| %>
-        <li>
-          <span class="cert-brand__mark"><%= mark.call(c, "is-sm") %></span>
-          <span class="cert-brand__text"><% if c.logo_path.present? %><b dir="ltr"><%= c.code %></b><% end %><small><%= c.name_for(I18n.locale) %></small></span>
-          <% if c.pending? %><% end %>
+
+  <div class="q-brand q-brand--remedium">
+    <div class="q-brand__head">
+      <h3 class="cert-brand__name lat" dir="ltr">ReMedium</h3>
+      <p class="q-brand__text"><%= t('content.qc_remedium_text') %></p>
+    </div>
+    <% if remedium.any? %>
+    <%# moving row, like the certification strip on the ReMedium page: the set is rendered 4 times and the
+        track slides by half its width so the loop is seamless; only the first set is read by screen readers %>
+    <div class="rm-certs__marquee cert-marquee">
+      <ul class="rm-certs__track cert-tiles--track">
+        <% 4.times do |copy| %>
+        <% remedium.each do |c| %>
+        <li class="cert-tile"<%= ' aria-hidden="true"'.html_safe if copy > 0 %>>
+          <span class="cert-tile__mark"><%= mark.call(c) %></span>
+          <b class="cert-tile__code" dir="ltr"><%= c.code %></b>
+          <span class="cert-tile__name"><%= c.name_for(I18n.locale) %></span>
         </li>
         <% end %>
+        <% end %>
       </ul>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="q-brands">
+    <article class="card cert-brand q-brand">
+      <div class="q-brand__head">
+        <h3 class="cert-brand__name lat" dir="ltr">HA Filler</h3>
+        <p class="q-brand__text"><%= t('content.qc_hafiller_text') %></p>
+      </div>
+      <% list = brands["HA Filler"] || [] %>
+      <% if list.any? %>
+      <ul class="cert-brand__list"><% list.each { |c| concat mark_row.call(c) } %></ul>
       <% else %>
+      <span class="chip chip--brown q-brand__pending"><%= t('content.certs_pending') %></span>
       <% end %>
     </article>
-    <% end %>
+
+    <article class="card cert-brand q-brand q-brand--group">
+      <div class="q-brand__head">
+        <h3 class="cert-brand__name lat" dir="ltr">Hairont <span class="q-brand__sep">·</span> GynWell <span class="q-brand__sep">·</span> OVDs</h3>
+        <p class="q-brand__text"><%= t('content.qc_others_text') %></p>
+      </div>
+      <div class="q-brand__rows">
+        <% %w[Hairont GynWell OVDs].each do |brand| %>
+        <% list = brands[brand] || [] %>
+        <div class="q-brand__row">
+          <b class="q-brand__row-name lat" dir="ltr"><%= brand %></b>
+          <% if list.any? %>
+          <ul class="cert-brand__list"><% list.each { |c| concat mark_row.call(c) } %></ul>
+          <% else %>
+          <span class="chip chip--brown q-brand__pending"><%= t('content.certs_pending') %></span>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+    </article>
   </div>
 
   <% makers.each do |maker, list| %>
@@ -100,43 +140,27 @@
       <h3 class="cert-maker__name lat" dir="ltr"><%= maker %></h3>
       <p class="cert-maker__text"><%= t('content.certs_maker_text') %></p>
     </div>
-    <ul class="cert-maker__list">
-      <% list.each do |c| %>
-      <li><span class="cert-brand__mark"><%= mark.call(c, "is-sm") %></span><span class="cert-brand__text"><% if c.logo_path.present? %><b dir="ltr"><%= c.code %></b><% end %><small><%= c.name_for(I18n.locale) %></small></span><% if c.pending? %><% end %></li>
-      <% end %>
-    </ul>
+    <ul class="cert-maker__list"><% list.each { |c| concat mark_row.call(c) } %></ul>
   </div>
   <% end %>
 </div></section>
 
-<section class="section section--last"><div class="container">
-
-<div class="sec-head">
-  <span class="eyebrow"><i></i><%= t('content.pages_191') %></span>
-  <h2 class="sec-title"><%= t('content.pages_192') %></h2>
-
-</div>
-  <div class="grid grid-3">
-
-    <div class="card">
-      <h4 class="card__title" style="margin-bottom:14px"><%= t('content.pages_193') %></h4>
-      <ul class="check-list">
-        <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_194') %></li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_195') %></li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_196') %></li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_197') %></li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_198') %></li>
-      </ul>
-    </div>
-    <div class="card">
-      <h4 class="card__title" style="margin-bottom:14px"><%= t('content.pages_199') %></h4>
-      <ul class="check-list">
-        <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_200') %></li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_201') %></li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_202') %></li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_203') %></li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_204') %></li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_205') %></li>
-      </ul>
-    </div>
-    <div class="card">
-      <h4 class="card__title" style="margin-bottom:14px"><%= t('content.pages_206') %></h4>
-      <ul class="check-list">
-        <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg><%= t('content.pages_207') %></li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg>SKIN1004</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg>Purito</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg>Orjena</li><li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 7"></path></svg>Herb Earth</li>
-      </ul>
-    </div>
+<%# 04 regulatory documents on request %>
+<section class="section section--last cert-group"><div class="container">
+  <div class="sec-head">
+    <span class="eyebrow"><i></i><span class="cert-step">04</span> <%= t('content.qc_s4_eyebrow') %></span>
+    <h2 class="sec-title"><%= t('content.qc_s4_title') %></h2>
+    <p class="sec-lead"><%= t('content.qc_s4_text') %></p>
   </div>
-  <div style="display:flex;justify-content:center;margin-top:26px"><a class="btn btn--dark" href="<%= locale_path("company/contact") %>"><%= t('content.pages_208') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></span></a></div>
+  <div class="dark-strip q-cta">
+    <div class="q-cta__body">
+      <h3><%= t('content.qc_docs_label') %></h3>
+      <div class="q-cta__chips">
+        <span class="chip chip--dark"><%= t('content.qc_doc_1') %></span>
+        <span class="chip chip--dark"><%= t('content.qc_doc_2') %></span>
+        <span class="chip chip--dark"><%= t('content.qc_doc_3') %></span>
+      </div>
+    </div>
+    <a class="btn btn--white q-cta__btn" href="<%= locale_path("company/contact") %>"><%= t('content.qc_s4_btn') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></span></a>
+  </div>
 </div></section>
-

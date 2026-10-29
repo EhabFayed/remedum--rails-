@@ -529,3 +529,56 @@
   window.addEventListener('resize', set, { passive: true });
 })();
 
+/* Quality & supply chain page: the four-slide "quality management" slider ([data-qslider]).
+   The track is native scroll-snap, so a swipe works with no JS; this adds the arrows, dots, the counter
+   and keyboard arrows. Scroll positions are measured against the first slide, which makes the same
+   arithmetic work in RTL (where scrollLeft runs negative) and LTR. No autoplay. */
+(function () {
+  'use strict';
+  var IS_RTL = (document.documentElement.dir || '').toLowerCase() === 'rtl';
+  Array.prototype.forEach.call(document.querySelectorAll('[data-qslider]'), function (root) {
+    var track = root.querySelector('.qslider__track');
+    var slides = track ? Array.prototype.slice.call(track.querySelectorAll('.qslider__slide')) : [];
+    if (slides.length < 2) return;
+    var dots = Array.prototype.slice.call(root.querySelectorAll('.qslider__dot'));
+    var count = root.querySelector('.qslider__count b');
+    var cur = 0, syncing = null;
+    var offset = function (i) { return slides[i].offsetLeft - slides[0].offsetLeft; };
+    var show = function (i) {
+      cur = i;
+      slides.forEach(function (s, k) { s.classList.toggle('is-active', k === cur); });
+      dots.forEach(function (d, k) {
+        d.classList.toggle('is-active', k === cur);
+        d.setAttribute('aria-selected', k === cur ? 'true' : 'false');
+      });
+      if (count) count.textContent = (cur < 9 ? '0' : '') + (cur + 1);
+    };
+    var go = function (n, smooth) {
+      var i = (n + slides.length) % slides.length;
+      track.scrollTo({ left: offset(i), behavior: smooth === false ? 'auto' : 'smooth' });
+      show(i);
+    };
+    /* a swipe or a scrollbar drag moves the track without us: follow it (nearest slide to the scroll position) */
+    track.addEventListener('scroll', function () {
+      clearTimeout(syncing);
+      syncing = setTimeout(function () {
+        var x = track.scrollLeft, best = 0, dist = Infinity;
+        slides.forEach(function (_, i) { var d = Math.abs(offset(i) - x); if (d < dist) { dist = d; best = i; } });
+        if (best !== cur) show(best);
+      }, 80);
+    }, { passive: true });
+    Array.prototype.forEach.call(root.querySelectorAll('.qslider__arrow'), function (b) {
+      b.addEventListener('click', function () { go(cur + parseInt(b.getAttribute('data-dir'), 10)); });
+    });
+    dots.forEach(function (d, i) { d.addEventListener('click', function () { go(i); }); });
+    track.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      var fwd = (e.key === 'ArrowRight') !== IS_RTL;
+      go(cur + (fwd ? 1 : -1));
+      e.preventDefault();
+    });
+    window.addEventListener('resize', function () { track.scrollTo({ left: offset(cur), behavior: 'auto' }); }, { passive: true });
+    show(0);
+  });
+})();
+

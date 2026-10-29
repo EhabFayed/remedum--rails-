@@ -63,6 +63,10 @@ Rails.application.routes.draw do
   get ":locale/medical/quote", constraints: { locale: /ar|en/ }, format: false,
       to: redirect(status: 301) { |p, _req| "/#{p[:locale]}/company/contact/#quote" }
 
+  # The "quality & compliance" page was folded into the certifications page (Oct 2026)
+  get ":locale/quality/compliance", constraints: { locale: /ar|en/ }, format: false,
+      to: redirect(status: 301) { |p, _req| "/#{p[:locale]}/quality/certifications/" }
+
   # Site search index (JSON), matched before the catch-all page route
   get ":locale/search-index", to: "search#index", constraints: { locale: /ar|en/ },
       defaults: { format: :json }, as: :search_index
