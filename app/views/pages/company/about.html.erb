@@ -1,5 +1,5 @@
 <% content_for :title, t('content.company_about_title') %>
-<% content_for :description, t('content.company_about_description') %>
+<% content_for :description, [t('content.company_about_description'), t('content.company_identity_description')].join(" ") %>
 <% content_for :nav_active, 'company' %>
 
 
@@ -157,19 +157,57 @@
   </div>
 </div></section>
 
-<%# Regulatory identity card, moved here from its own page (company/identity) per the client revisions
-    (Oct 2026): content kept exactly as it was; company/identity now redirects to #identity. %>
-<section class="section section--last" id="identity"><div class="container">
+<%# ---- Regulatory identity & licences: merged here from the former company/identity page
+    (Oct 2026). Text unchanged; the old page's hero became this section's header, its own
+    section headings were kept, and /company/identity/ now 301-redirects to #identity. ---- %>
+<section class="section--mint" id="identity" style="scroll-margin-top:96px"><div class="container">
 
 <div class="sec-head">
-  <span class="eyebrow"><i></i><%= t('content.pages_57') %></span>
-  <h2 class="sec-title"><%= t('content.pages_58') %></h2>
+  <h2 class="sec-title"><%= t('content.pages_55') %></h2>
   <p class="sec-lead"><%= t('content.pages_56') %></p>
+
+</div>
+
+<div class="sec-head" style="gap:8px">
+  <span class="eyebrow"><i></i><%= t('content.pages_57') %></span>
+  <h3 style="font-family:var(--ff-d);font-size:19px;font-weight:800;color:var(--green-900)"><%= t('content.pages_58') %></h3>
 
 </div>
   <div class="grid grid-4" style="gap:14px">
     <div class="fact-tile"><span><%= t('content.pages_59') %></span><b><%= t('content.pages_60') %></b></div><div class="fact-tile"><span><%= t('content.pages_61') %></span><b><%= t('content.pages_62') %></b></div><div class="fact-tile"><span><%= t('content.pages_63') %></span><b><span class="lat" dir="ltr">1010909714</span></b></div><div class="fact-tile"><span><%= t('content.pages_65') %></span><b><%= t('content.pages_66') %></b></div><div class="fact-tile"><span><%= t('content.pages_67') %></span><b><span class="lat" dir="ltr">842174</span></b></div><div class="fact-tile"><span><%= t('content.pages_68') %></span><b><%= t('content.pages_69') %></b></div><div class="fact-tile"><span><%= t('content.pages_70') %></span><b><%= t('content.pages_71') %></b></div>
   </div>
-  <div class="dark-strip" style="margin-top:28px"><h3><%= t('content.pages_82') %></h3><p><%= t('content.pages_83') %></p></div>
+</div></section>
+
+<%# Licence table — was already commented out on the former identity page; kept as it was. %>
+<%# <section class="section"><div class="container"> %>
+
+<%# <div class="sec-head"> %>
+  <%# <span class="eyebrow"><i></i><%= t('content.pages_72') </span> %>
+  <%# <h2 class="sec-title"><%= t('content.pages_73') </h2> %>
+
+<%# </div> %>
+  <%# <div class="lic-table"> %>
+    <%# <div class="row row--head"><span><%= t('content.pages_74') </span><span><%= t('content.pages_75') </span><span><%= t('content.pages_76') </span></div> %>
+
+    <%# <div class="row"> %>
+      <%# <span><%= t('content.pages_77') </span> %>
+      <%# <span class="no" dir="ltr">842174</span> %>
+      <%# <span><span class="chip chip--warn"><%= t('content.pages_80') </span></span> %>
+    <%# </div> %>
+    <%# <div class="row"> %>
+      <%# <span><%= t('content.pages_78') </span> %>
+      <%# <span class="no" dir="ltr">IDL-2024-MD-0095</span> %>
+      <%# <span><span class="chip chip--warn"><%= t('content.pages_80') </span></span> %>
+    <%# </div> %>
+    <%# <div class="row"> %>
+      <%# <span><%= t('content.pages_79') </span> %>
+      <%# <span class="no" dir="ltr">SWL-2024-CM-0262</span> %>
+      <%# <span><span class="chip chip--warn"><%= t('content.pages_80') </span></span> %>
+    <%# </div> %>
+  <%# </div> %>
+<%# </div></section> %>
+
+<section class="section section--last"><div class="container">
+  <div class="dark-strip"><h3><%= t('content.pages_82') %></h3><p><%= t('content.pages_83') %></p></div>
   <div style="display:flex;justify-content:center;margin-top:24px"><a class="btn btn--dark" href="<%= locale_path("company/contact") %>"><%= t('content.brands_242') %><span class="btn__circle"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></span></a></div>
 </div></section>

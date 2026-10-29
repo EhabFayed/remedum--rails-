@@ -4,11 +4,8 @@
 module SiteHelper
   NAV = [
     { key: "home", path: "" },
-    { key: "company", path: "company/about", items: [
-      %w[company_about company/about],
-      %w[company_identity company/identity],
-      %w[company_contact company/contact]
-    ] },
+    # One merged "About the company" page (the former identity page lives at #identity)
+    { key: "company", path: "company/about" },
     { key: "brands", path: "brands", items: [
       %w[brands_all brands],
       # A hash entry opens a nested menu: the brand's full collection first,

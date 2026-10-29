@@ -55,6 +55,10 @@ Rails.application.routes.draw do
   get ":locale/medical/service-model", constraints: { locale: /ar|en/ }, format: false,
       to: redirect { |p, _req| "/#{p[:locale]}/company/contact/#steps" }
 
+  # The "regulatory identity & licences" page was merged into the about page
+  get ":locale/company/identity", constraints: { locale: /ar|en/ }, format: false,
+      to: redirect(status: 301) { |p, _req| "/#{p[:locale]}/company/about/#identity" }
+
   # Site search index (JSON), matched before the catch-all page route
   get ":locale/search-index", to: "search#index", constraints: { locale: /ar|en/ },
       defaults: { format: :json }, as: :search_index
