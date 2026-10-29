@@ -64,9 +64,50 @@ Setting.write_all(
     "علامة المطابقة الأوروبية:  استيفاء المنتج لمتطلبات السلامة والأداء المعمول بها في السوق الأوروبي.",
     "The European conformity mark: the product meets the safety and performance requirements of the European market." ]
 ].each_with_index do |(code, ar, en, full, m_ar, m_en), i|
-  Certification.find_or_initialize_by(code: code)
+  Certification.find_or_initialize_by(code: code, group_key: code == "SFDA" ? "saudi" : "remedium", brand_name: "")
                .update!(name_ar: ar, name_en: en, full_name: full,
                         meaning_ar: m_ar, meaning_en: m_en, position: i, published: true)
+end
+
+# grouped page order, logos and verification flags (client revisions, Oct 2026)
+# Certifications in the client's order (revisions, Oct 2026). Names only for new records: the brief says no
+# description is written before each approval is matched against its documents.
+# [group, brand, code, name_ar, name_en, full_name, status, logo]
+L = "/assets/img/certs/"
+rows = [
+  ["saudi", "", "SFDA", nil, nil, nil, "verified", nil],
+  # ReMedium: the marks shown on remediumkorea.com, in its order; logos taken from that site
+  ["remedium", "", "SCPN", "إخطار منتجات التجميل", "Cosmetic product notification", nil, "verified", L + "scpn.png"],
+  ["remedium", "", "GMP", nil, nil, nil, "verified", L + "gmp-mfds.png"],
+  ["remedium", "", "ISO 13485", nil, nil, nil, "verified", L + "iso.png"],
+  ["remedium", "", "CE", nil, nil, nil, "verified", L + "ce.png"],
+  ["remedium", "", "US FDA", "هيئة الغذاء والدواء الأمريكية", "US Food & Drug Administration", "U.S. Food and Drug Administration", "verified", L + "usfda.png"],
+  ["remedium", "", "MDSAP", nil, nil, nil, "verified", L + "mdsap.png"],
+  ["remedium", "", "MFDS", nil, nil, nil, "verified", L + "kfda.png"],
+  ["remedium", "", "CPNP", "بوابة إخطار مستحضرات التجميل الأوروبية", "EU Cosmetic Products Notification Portal", "Cosmetic Products Notification Portal", "verified", L + "cpnp.png"],
+  # other brands: as listed in the brief, all pending until matched with the documents
+  ["brand", "HA Filler", "CE", "المطابقة الأوروبية", "European conformity", "European Conformity", "pending", L + "ce.png"],
+  ["brand", "HA Filler", "NMPA", "الهيئة الوطنية للمنتجات الطبية — الصين", "China National Medical Products Administration", "National Medical Products Administration", "pending", nil],
+  ["brand", "Hairont", "CE", "المطابقة الأوروبية", "European conformity", "European Conformity", "pending", L + "ce.png"],
+  ["brand", "OVDs", "CE", "المطابقة الأوروبية — حسب الموديل", "European conformity — by model", "European Conformity", "pending", L + "ce.png"],
+  ["brand", "OVDs", "NMPA", "الهيئة الوطنية للمنتجات الطبية — حسب الموديل", "China NMPA — by model", "National Medical Products Administration", "pending", nil],
+  # GynWell: no confirmed product approval -> no record; the page says so and points to the manufacturer
+  ["manufacturer", "Jingjia Medical", "ISO 13485", "إدارة جودة الأجهزة الطبية", "Medical device quality management", "Medical Devices — Quality Management Systems", "verified", nil],
+  ["manufacturer", "Jingjia Medical", "ISO 9001", "نظام إدارة الجودة", "Quality management system", "Quality Management Systems", "verified", nil],
+  ["manufacturer", "Jingjia Medical", "MDSAP", "التدقيق الدولي الموحد", "Single audit program", "Medical Device Single Audit Program", "verified", nil],
+]
+Certification.transaction do
+  rows.each_with_index do |(group, brand, code, ar, en, full, status, logo), i|
+    # existing flat records (SFDA, MFDS, GMP, MDSAP, ISO 13485, CE) become the Saudi / ReMedium ones, keeping their text
+    rec = Certification.find_by(group_key: group, brand_name: brand, code: code) ||
+          (%w[saudi remedium].include?(group) && Certification.find_by(group_key: "remedium", brand_name: "", code: code)) ||
+          Certification.new(code: code)
+    attrs = { group_key: group, brand_name: brand, status: status, logo_path: logo, position: i, published: true }
+    attrs[:name_ar] = ar if ar
+    attrs[:name_en] = en if en
+    attrs[:full_name] = full if full
+    rec.update!(attrs)
+  end
 end
 
 # ---------------------------------------------------------------- brands

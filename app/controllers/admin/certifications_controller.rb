@@ -2,7 +2,7 @@ class Admin::CertificationsController < Admin::BaseController
   before_action :load_certification, only: %i[edit update destroy]
 
   def index
-    @certifications = Certification.ordered
+    @certifications = Certification.order(:group_key, :brand_name, :position, :id)
     @certification = Certification.new(published: true)
   end
 
@@ -39,6 +39,7 @@ class Admin::CertificationsController < Admin::BaseController
 
   def certification_params
     params.require(:certification).permit(:code, :name_ar, :name_en, :full_name,
-                                          :meaning_ar, :meaning_en, :position, :published)
+                                          :meaning_ar, :meaning_en, :position, :published,
+                                          :group_key, :brand_name, :status, :logo_path)
   end
 end

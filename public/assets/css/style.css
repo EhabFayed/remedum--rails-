@@ -2191,3 +2191,6 @@ html[dir="rtl"] .ed-hero__cta svg{transform:scaleX(-1)}
   .ed-hero__video{display:none}
   .ed-hero__media{background:var(--ed-cream) url(/hero.webp) center 22%/cover no-repeat;background-blend-mode:multiply}
 }
+/* logo: the Beauty Roots emblem image replaces the green symbol (Oct 2026) */
+.logo__mark.logo__mark--img{width:auto;height:46px;background:none;border-radius:0;padding:0;display:block;box-shadow:none}
+.logo__mark--img img{display:block;height:100%;width:auto}

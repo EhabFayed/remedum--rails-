@@ -368,7 +368,8 @@
     var ps = FACE_POINTS[key].products;
     return ps.length > 1 ? 'duo' : ps[0];
   };
-  var mine = POINTS.filter(function (p) {
+  /* data-product="all" (ReMedium brand page) = the full home-page map; a product key keeps only its zones */
+  var mine = PRODUCT === 'all' ? POINTS.slice() : POINTS.filter(function (p) {
     var d = FACE_POINTS[p[0]]; return d && d.products.indexOf(PRODUCT) > -1;
   });
 
@@ -508,3 +509,39 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' || e.key === 'Esc') closePop(true); });
   window.addEventListener('resize', function () { if (activePoint) placePop(activePoint); }, { passive: true });
 })();
+
+/* ReMedium compare "hand of cards": as the section scrolls into view the cards go from a stacked deck
+   (all at the middle) to a fan held from below. --dx = each card's distance to the middle, --e = progress. */
+(function () {
+  'use strict';
+  var stage = document.querySelector('[data-cmp-hand]');
+  if (!stage) return;
+  var cards = Array.prototype.slice.call(stage.querySelectorAll('.cmpc'));
+  var wide = window.matchMedia('(min-width:1101px)');
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var ticking = false;
+  var measure = function () {
+    var mid = stage.getBoundingClientRect().left + stage.clientWidth / 2;
+    cards.forEach(function (c) {
+      var r = c.offsetLeft + c.offsetWidth / 2 - stage.clientWidth / 2;   /* offsetLeft ignores transforms */
+      c.style.setProperty('--dx', (-r) + 'px');
+      c.style.setProperty('--side', Math.abs(r) < 4 ? 0 : (r < 0 ? -1 : 1));   /* the middle card stays upright */
+    });
+    return mid;
+  };
+  var update = function () {
+    ticking = false;
+    if (!wide.matches || still.matches) { stage.style.setProperty('--e', 1); return; }
+    var box = stage.getBoundingClientRect(), vh = window.innerHeight;
+    /* 0 while the stage top is in the lower part of the screen, 1 once it is near the top: the deal plays across a long scroll */
+    var p = (vh * 0.92 - box.top) / (vh * 0.62);
+    p = Math.max(0, Math.min(1, p));
+    var e = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;   /* ease-in-out */
+    stage.style.setProperty('--e', e.toFixed(4));
+  };
+  var onScroll = function () { if (!ticking) { ticking = true; window.requestAnimationFrame(update); } };
+  measure(); update();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', function () { measure(); update(); });
+})();
+
