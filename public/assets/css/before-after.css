@@ -1,0 +1,56 @@
+/* Before / after slider (home + ReMedium page). Self-contained: the home page and the inner pages use
+   different stylesheets, so this file carries its own heading styles. */
+.ba-sec{--ba-ink:#0C1A14;--ba-muted:#6E8079;--ba-green:#1CA97C;--ba-brown:#8A5B1E;padding:84px 0 72px;background:#fff}
+.ba-sec__inner{width:100%;max-width:1290px;margin-inline:auto;padding-inline:24px}
+.ba-sec__head{display:flex;flex-direction:column;gap:10px;margin-bottom:30px}
+.ba-sec__eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--ba-brown)}
+.ba-sec__eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--ba-green)}
+.ba-sec__title{margin:0;font-family:'Cairo','IBM Plex Sans Arabic',sans-serif;font-size:clamp(22px,2.4vw,31px);font-weight:800;line-height:1.4;color:var(--ba-ink)}
+html[dir="ltr"] .ba-sec__title{font-family:'Archivo','Plus Jakarta Sans',sans-serif}
+.ba-sec__note{margin:16px auto 0;max-width:720px;text-align:center;font-size:12.5px;line-height:1.9;color:var(--ba-muted)}
+
+/* the frame keeps each pair's own shape; tall pairs are capped by the screen height */
+.ba-slider{position:relative;display:flex;justify-content:center;direction:ltr}
+/* the stage shrinks to the visible photo, so the arrows always sit on its edges */
+.ba-stage{position:relative;width:fit-content;max-width:100%}
+.ba{position:relative;aspect-ratio:var(--ratio);width:min(calc(100vw - 48px),calc(70vh * (var(--ratio))),960px);overflow:hidden;border-radius:22px;
+  background:#EEE8E0;box-shadow:0 26px 60px -30px rgba(10,46,34,.45);user-select:none;-webkit-user-select:none;touch-action:pan-y;
+  --pos:50%;animation:ba-in .45s ease}
+.ba[hidden]{display:none}
+@keyframes ba-in{from{opacity:0}}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+/* "before" underneath on the left, "after" revealed from the handle to the right (as on the reference) */
+.ba__after{clip-path:inset(0 0 0 var(--pos))}
+.ba__handle{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;margin-left:-1px;background:rgba(255,255,255,.9);box-shadow:0 0 12px rgba(0,0,0,.25);pointer-events:none}
+.ba__grip{position:absolute;top:50%;left:50%;display:grid;place-items:center;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;
+  background:rgba(255,255,255,.92);box-shadow:0 8px 22px rgba(0,0,0,.25);color:var(--ba-ink);transition:transform .2s}
+.ba__grip svg{width:26px;height:13px;fill:currentColor}
+.ba:active .ba__grip{transform:scale(.92)}
+.ba__tag{position:absolute;bottom:16px;padding:6px 14px;border-radius:8px;background:rgba(12,26,20,.62);color:#fff;font-size:13px;font-weight:700;
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);pointer-events:none}
+.ba__tag--before{left:16px}
+.ba__tag--after{right:16px}
+/* the range input covers the frame: drag anywhere, keyboard arrows work too */
+.ba__range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;-webkit-appearance:none;appearance:none;touch-action:pan-y}
+.ba__range:focus-visible + .ba__handle,.ba:focus-within .ba__grip{outline:3px solid var(--ba-green);outline-offset:2px}
+
+.ba-slider__arrow{position:absolute;top:50%;z-index:3;display:grid;place-items:center;width:56px;height:56px;margin-top:-28px;border-radius:50%;border:0;
+  background:rgba(12,26,20,.55);color:#fff;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .2s,transform .2s}
+.ba-slider__arrow:hover{background:rgba(12,26,20,.8);transform:scale(1.05)}
+.ba-slider__arrow svg{width:24px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.ba-slider__arrow--prev{left:16px}
+.ba-slider__arrow--next{right:16px}
+.ba-dots{display:flex;justify-content:center;gap:10px;margin-top:20px}
+.ba-dot{width:30px;height:3px;padding:0;border:0;border-radius:2px;background:#D5DDD9;cursor:pointer;transition:width .3s,background .3s}
+.ba-dot.is-active{width:56px;background:var(--ba-green)}
+@media (max-width:760px){
+  .ba-sec{padding:56px 0 52px}
+  .ba-sec__inner{padding-inline:18px}
+  .ba{border-radius:16px;width:min(calc(100vw - 36px),calc(62vh * (var(--ratio))))}
+  .ba__grip{width:46px;height:46px;margin:-23px 0 0 -23px}
+  .ba__tag{bottom:10px;padding:4px 10px;font-size:12px}
+  .ba__tag--before{left:10px}.ba__tag--after{right:10px}
+  .ba-slider__arrow{width:42px;height:42px;margin-top:-21px}
+  .ba-slider__arrow--prev{left:8px}.ba-slider__arrow--next{right:8px}
+}
+@media (prefers-reduced-motion:reduce){.ba{animation:none}}

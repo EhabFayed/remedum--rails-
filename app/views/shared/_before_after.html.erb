@@ -1,0 +1,35 @@
+<%# Before / after slider (Oct 2026), modelled on the "قبل وبعد — اسحب للمقارنة" section of
+    tower-next.vercel.app/ar/project/palace: one comparison at a time, drag the handle to reveal,
+    arrows + dots to move between cases. Used on the home page and the ReMedium page only.
+    Photos: public/assets/img/before-after/<n>-{before,after}.webp (each pair cropped to one frame). %>
+<% ba_cases = [[1, 1400, 1875], [2, 1080, 607], [3, 1400, 1254], [4, 773, 375], [5, 791, 381]] %>
+<link rel="stylesheet" href="<%= static_asset("/assets/css/before-after.css") %>">
+<section class="ba-sec" id="before-after" aria-labelledby="ba-title">
+  <div class="ba-sec__inner">
+    <div class="ba-sec__head">
+      <span class="ba-sec__eyebrow"><i></i><%= t('content.ba_eyebrow') %></span>
+      <h2 class="ba-sec__title" id="ba-title"><%= t('content.ba_title') %></h2>
+    </div>
+    <div class="ba-slider" data-ba role="group" aria-roledescription="carousel" aria-label="<%= t('content.ba_eyebrow') %>">
+      <div class="ba-stage">
+      <% ba_cases.each_with_index do |(n, w, h), i| %>
+      <div class="ba" style="--ratio:<%= w %>/<%= h %>"<%= ' hidden'.html_safe unless i.zero? %> data-ba-slide aria-label="<%= i + 1 %> / <%= ba_cases.size %>">
+        <img class="ba__before" src="/assets/img/before-after/<%= n %>-before.webp" width="<%= w %>" height="<%= h %>" alt="<%= t('content.ba_before') %>" draggable="false" loading="lazy">
+        <img class="ba__after" src="/assets/img/before-after/<%= n %>-after.webp" width="<%= w %>" height="<%= h %>" alt="<%= t('content.ba_after') %>" draggable="false" loading="lazy">
+        <span class="ba__tag ba__tag--before"><%= t('content.ba_before') %></span>
+        <span class="ba__tag ba__tag--after"><%= t('content.ba_after') %></span>
+        <div class="ba__handle" aria-hidden="true"><span class="ba__grip"><svg viewBox="0 0 32 16" aria-hidden="true" focusable="false"><path d="M9.8 1.4 1.6 8l8.2 6.6z"/><path d="M22.2 1.4 30.4 8l-8.2 6.6z"/></svg></span></div>
+        <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="<%= t('content.ba_range') %>">
+      </div>
+      <% end %>
+      <button type="button" class="ba-slider__arrow ba-slider__arrow--prev" data-ba-prev aria-label="<%= t('content.ba_prev') %>"><svg viewBox="0 0 40 24" aria-hidden="true" focusable="false"><path d="M39 12H3M14 1 2 12l12 11"/></svg></button>
+      <button type="button" class="ba-slider__arrow ba-slider__arrow--next" data-ba-next aria-label="<%= t('content.ba_next') %>"><svg viewBox="0 0 40 24" aria-hidden="true" focusable="false"><path d="M1 12h36M26 1l12 11-12 11"/></svg></button>
+      </div>
+    </div>
+    <div class="ba-dots" role="tablist" aria-label="<%= t('content.ba_eyebrow') %>">
+      <% ba_cases.each_index do |i| %><button type="button" role="tab" class="ba-dot<%= ' is-active' if i.zero? %>" aria-selected="<%= i.zero? %>" aria-label="<%= i + 1 %>" data-ba-dot="<%= i %>"></button><% end %>
+    </div>
+    <p class="ba-sec__note"><%= t('content.ba_note') %></p>
+  </div>
+</section>
+<script src="<%= static_asset("/assets/js/before-after.js") %>" defer></script>

@@ -22,9 +22,9 @@
       <link rel="alternate" hreflang="en" href="/en/" />
     <link rel="alternate" hreflang="ar" href="/" />
     <link rel="alternate" hreflang="x-default" href="/" />
-      <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" href="/favicon.ico" sizes="32x32" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      <link rel="icon" href="<%= static_asset("/favicon.svg") %>" type="image/svg+xml" />
+    <link rel="icon" href="<%= static_asset("/favicon.ico") %>" sizes="32x32" />
+    <link rel="apple-touch-icon" href="<%= static_asset("/apple-touch-icon.png") %>" />
   </head>
   <body>
     <!-- ================= SVG SPRITE ================= -->
@@ -215,22 +215,19 @@
     <%= render "shared/site_header" %>
 
     <!-- ================= 1. HERO + 2. IN NUMBERS ================= -->
-    <section class="hero">
-      <div class="hero__panel">
-        <span class="dots dots--a"></span>
-        <span class="dots dots--b"></span>
-        <span class="checker"></span>
+    <%# Hero, "Option 1 - Hero with a feeling (Editorial + Minimal)" design (Oct 2026), with the brand video in place of the leaf photo %>
+    <section class="ed-hero">
+      <div class="ed-hero__media" aria-hidden="true">
+        <video class="ed-hero__video" src="/assets/video/hero.mp4" poster="/hero.webp" autoplay muted loop playsinline></video>
       </div>
-
-      <div class="hero__inner">
-        <!-- LEFT -->
-        <div class="hero__left">
+      <div class="ed-hero__inner">
+        <div class="ed-hero__copy">
           <span class="hero__badge"
             ><svg class="ico ico--xs"><use href="#i-shield" /></svg> Authorized
             &amp; Fully SFDA-Compliant</span
           >
 
-          <h1 class="hero__title">
+          <h1 class="ed-hero__title">
             <span class="line">LICENSED DISTRIBUTOR</span>
             <span class="line">&amp; EXCLUSIVE AGENT</span>
             <span class="line"
@@ -259,7 +256,6 @@
             </a>
           </div>
 
-          <!-- 2. Beauty Roots in numbers -->
           <div class="stats-card">
             <ul class="stats-card__list">
               <li>
@@ -288,23 +284,7 @@
             </ul>
           </div>
         </div>
-
-        <!-- CENTER IMAGE -->
-        <div class="hero__figure">
-          <video src="/assets/video/hero.mp4" poster="/hero.webp" autoplay muted loop playsinline></video>
-        </div>
-
-        <!-- RIGHT: trust quote (Two Audiences cards removed per client) -->
-        <div class="hero__right">
-          <div class="hero__quote" style="border-top: 0; padding-top: 0; margin-top: 0">
-            <p>
-              <%# “Every product/unit we supply is fully registered, temperature-controlled, %>
-              <%# and traceable to its original batch and invoice from factory to %>
-              <%# clinic door.” %>
-            </p>
-          </div>
-        </div>
-      </div>
+              </div>
     </section>
 
     <!-- ================= WHO WE ARE ================= -->
@@ -766,7 +746,8 @@
         </div>
       </div>
     </section>
-
+    <%# before / after slider, under the compare section (Oct 2026) %>
+    <%= render "shared/before_after" %>
     <!-- ================= 5. WHY BEAUTY ROOTS ================= -->
     <section class="why" id="why">
       <span class="deco-leaf deco-leaf--tr"
