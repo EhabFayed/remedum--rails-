@@ -1,8 +1,9 @@
 <%# Before / after slider (Oct 2026), modelled on the "قبل وبعد — اسحب للمقارنة" section of
     tower-next.vercel.app/ar/project/palace: one comparison at a time, drag the handle to reveal,
     arrows + dots to move between cases. Used on the home page and the ReMedium page only.
-    Photos: public/assets/img/before-after/<n>-{before,after}.webp (each pair cropped to one frame). %>
-<% ba_cases = [[1, 1400, 1875], [2, 1080, 607], [3, 1400, 1254], [4, 773, 375], [5, 791, 381]] %>
+    Photos: public/assets/img/before-after/<n>-{before,after}.webp, all cropped to 4:3 around the treated area. %>
+<%# every case uses the same 4:3 frame (1200x900), so the slider never changes size between cases %>
+<% ba_cases = (1..5).map { |n| [n, 1200, 900] } %>
 <link rel="stylesheet" href="<%= static_asset("/assets/css/before-after.css") %>">
 <section class="ba-sec" id="before-after" aria-labelledby="ba-title">
   <div class="ba-sec__inner">
