@@ -2091,3 +2091,19 @@ html[dir="rtl"] .ed-hero__cta svg{transform:scaleX(-1)}
   .ed-hero .btn--ghost:hover{color:var(--green-900);box-shadow:inset 0 0 0 1.5px var(--green)}
   .ed-hero .btn__circle--outline{color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
 }
+
+/* certification marks in the hero, under the numbers card (moved from the bottom #certs section, Oct 2026) */
+.hero-certs{grid-column:1/-1;margin-top:26px;padding-top:20px;border-top:1px solid rgba(23,57,45,.1);max-width:100%;min-width:0}
+.hero-certs .rm-certs__label{text-align:center}
+.hero-certs .rm-certs{gap:10px}
+.hero-certs .rm-certs__label{font-size:12.5px;font-weight:700;color:var(--muted)}
+.hero-certs .rm-certs__track img{height:38px}
+.hero-certs .rm-certs__code{height:38px}
+.hero-certs .rm-certs__track li{padding-inline-end:32px}
+@media (max-width:900px){
+  .hero-certs{margin-top:26px;padding-top:18px}
+  .hero-certs .rm-certs{align-items:stretch}
+  .hero-certs .rm-certs__label{text-align:center}
+  .hero-certs .rm-certs__track img,.hero-certs .rm-certs__code{height:32px}
+  .hero-certs .rm-certs__track li{padding-inline-end:24px}
+}

@@ -283,7 +283,13 @@
               </li>
             </ul>
           </div>
+
         </div>
+
+          <%# certification marks, moved from the bottom #certs section (Oct 2026); full hero width, under the text and the video %>
+          <div class="hero-certs" id="certs">
+            <%= render "shared/certs_strip", marks: certification_marks(@certifications), label: "Accreditations behind every unit we release" %>
+          </div>
               </div>
     </section>
 
@@ -750,22 +756,6 @@
     <%= render "shared/before_after" %>
     <!-- ================= 5. WHY BEAUTY ROOTS — three slides (replaces the why-cards and the regulated-vs-others comparison) ================= -->
     <%= render "shared/why_slider" %>
-
-    <!-- ================= 7. CERTIFICATIONS ================= -->
-    <section class="certs" id="certs">
-      <div class="container">
-        <div class="certs__head">
-          <span class="eyebrow"
-            ><svg class="ico ico--xs"><use href="#i-arr-in-r" /></svg>
-            Certifications</span
-          >
-          <h3>Accreditations behind every unit we release</h3>
-        </div>
-        <%# the same moving row of marks as the ReMedium brand page (shared/_certs_strip); records from Admin > Certifications %>
-        <%= render "shared/certs_strip", marks: certification_marks(@certifications) %>
-      </div>
-    </section>
-
 
     <!-- ================= 10. KNOWLEDGE CENTER ================= -->
     <section class="blog" id="knowledge">
