@@ -4,6 +4,10 @@
     Photos: public/assets/img/before-after/<n>-{before,after}.webp, all cropped to 4:3 around the treated area. %>
 <%# every case uses the same 4:3 frame (1200x900), so the slider never changes size between cases %>
 <% ba_cases = (1..5).map { |n| [n, 1200, 900] } %>
+<%# Photos are replaced in place under the same names, so their URLs carry the file digest (static_asset).
+    The extra r=2: Cloudflare cached 1-after.webp?v=<digest> with the OLD photo after a pre-deploy request
+    (2026-10-29); r=2 gives every slider photo a URL no one has requested yet. Bump it if that ever recurs. %>
+<% ba_img = ->(file) { url = static_asset("/assets/img/before-after/#{file}"); "#{url}#{url.include?('?') ? '&' : '?'}r=2" } %>
 <link rel="stylesheet" href="<%= static_asset("/assets/css/before-after.css") %>">
 <section class="ba-sec" id="before-after" aria-labelledby="ba-title">
   <div class="ba-sec__inner">
@@ -15,8 +19,8 @@
       <div class="ba-stage">
       <% ba_cases.each_with_index do |(n, w, h), i| %>
       <div class="ba" style="--ratio:<%= w %>/<%= h %>"<%= ' hidden'.html_safe unless i.zero? %> data-ba-slide aria-label="<%= i + 1 %> / <%= ba_cases.size %>">
-        <img class="ba__before" src="/assets/img/before-after/<%= n %>-before.webp" width="<%= w %>" height="<%= h %>" alt="<%= t('content.ba_before') %>" draggable="false" loading="lazy">
-        <img class="ba__after" src="/assets/img/before-after/<%= n %>-after.webp" width="<%= w %>" height="<%= h %>" alt="<%= t('content.ba_after') %>" draggable="false" loading="lazy">
+        <img class="ba__before" src="<%= ba_img.("#{n}-before.webp") %>" width="<%= w %>" height="<%= h %>" alt="<%= t('content.ba_before') %>" draggable="false" loading="lazy">
+        <img class="ba__after" src="<%= ba_img.("#{n}-after.webp") %>" width="<%= w %>" height="<%= h %>" alt="<%= t('content.ba_after') %>" draggable="false" loading="lazy">
         <span class="ba__tag ba__tag--before"><%= t('content.ba_before') %></span>
         <span class="ba__tag ba__tag--after"><%= t('content.ba_after') %></span>
         <div class="ba__handle" aria-hidden="true"><span class="ba__grip"><svg viewBox="0 0 32 16" aria-hidden="true" focusable="false"><path d="M9.8 1.4 1.6 8l8.2 6.6z"/><path d="M22.2 1.4 30.4 8l-8.2 6.6z"/></svg></span></div>
