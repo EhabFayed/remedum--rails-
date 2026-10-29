@@ -2373,3 +2373,44 @@ html[dir="rtl"] .rm-certs__track{animation-direction:reverse}
   .rm-certs__track.cert-tiles--track{gap:12px;justify-content:center}
   .rm-certs__track .cert-tile{margin:0}
 }
+
+/* ===== HA Filler range on phones (Oct 2026) =====
+   The five product tabs become one swipeable pill row that bleeds to the screen
+   edges (site.js keeps the active pill in view); each product card stacks the
+   packshot, contained and centred, over the text; the spec rows stay key/value
+   but tighten up. Desktop and tablet are untouched (phone-only media query). */
+@media (max-width:640px){
+  .section--mint .hf-tabs{
+    flex-wrap:nowrap;justify-content:flex-start;gap:8px;
+    margin:0 -18px 18px;padding:2px 18px 6px;
+    overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;
+    overscroll-behavior-x:contain;scroll-snap-type:x proximity;scroll-padding-inline:18px;
+    scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .section--mint .hf-tabs::-webkit-scrollbar{display:none}
+  .section--mint .hf-tabs .tab{
+    flex:none;scroll-snap-align:center;
+    padding:9px 16px;min-height:38px;font-size:13px;white-space:nowrap;
+  }
+  .section--mint .hf-slide{gap:14px;padding:16px 16px 18px;border-radius:20px}
+  .section--mint .hf-slide__media{
+    order:-1;align-self:center;width:min(100%,240px);margin-inline:auto;
+    aspect-ratio:1/1;border-radius:16px;background:#fff;
+  }
+  .section--mint .hf-slide__media img{display:block;width:100%;height:100%;aspect-ratio:auto;object-fit:cover}
+  .section--mint .hf-slide__body{min-width:0}
+  .section--mint .hf-slide__body .eyebrow{font-size:12px}
+  .section--mint .hf-slide__name{font-size:22px;margin:4px 0 6px}
+  .section--mint .hf-slide__desc{font-size:13px;line-height:1.9;margin-bottom:14px}
+  .section--mint .hf-specs{gap:8px}
+  .section--mint .hf-specs > div{
+    display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:12px;
+    padding:10px 14px;border-radius:12px;
+  }
+  .section--mint .hf-specs dt{font-size:12.5px;line-height:1.5}
+  .section--mint .hf-specs dd{font-size:13px;line-height:1.5;justify-self:end;overflow-wrap:anywhere}  /* dd may carry dir="ltr": align the cell, not its text */
+}
+@media (max-width:380px){
+  .section--mint .hf-slide__media{width:min(100%,220px)}
+  .section--mint .hf-slide__name{font-size:21px}
+}

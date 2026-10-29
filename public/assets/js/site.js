@@ -6,10 +6,18 @@
   document.querySelectorAll('[data-tabs]').forEach(function (root) {
     var tabs = root.querySelectorAll('.tab');
     var panels = root.querySelectorAll('.tab-panel');
+    /* on phones the tab strip scrolls sideways (see .hf-tabs in site.css): keep the chosen tab in view */
+    var revealTab = function (tab) {
+      var strip = tab.parentNode;
+      if (!strip || strip.scrollWidth <= strip.clientWidth + 1) return;
+      var s = strip.getBoundingClientRect(), t = tab.getBoundingClientRect();
+      strip.scrollBy({ left: (t.left + t.width / 2) - (s.left + s.width / 2), behavior: 'smooth' });
+    };
     tabs.forEach(function (tab) {
       tab.addEventListener('click', function () {
         tabs.forEach(function (t) { t.classList.toggle('is-active', t === tab); });
         panels.forEach(function (p) { p.hidden = p.dataset.panel !== tab.dataset.tab; });
+        revealTab(tab);
       });
     });
   });
