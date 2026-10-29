@@ -2194,3 +2194,18 @@ html[dir="rtl"] .ed-hero__cta svg{transform:scaleX(-1)}
 /* logo: the Beauty Roots emblem image replaces the green symbol (Oct 2026) */
 .logo__mark.logo__mark--img{width:auto;height:46px;background:none;border-radius:0;padding:0;display:block;box-shadow:none}
 .logo__mark--img img{display:block;height:100%;width:auto}
+
+/* ed-hero now carries the live hero copy (badge, title with «ReMedium», CTAs, stats card) on its light cream
+   background at every width. Keep that copy laid out and coloured as on the live hero, and undo — inside
+   .ed-hero only — the old hero's dark-panel mobile colours from @media (max-width:992px) above. */
+.ed-hero__title .word-fx,.ed-hero__title .word-fx__letters{display:inline}
+.ed-hero__title .word-fx{text-transform:none}
+.ed-hero .stats-card{margin-top:28px}
+@keyframes ed-hue{0%,55%,100%{color:#C3D2CB}20%,35%{color:var(--green)}}
+.ed-hero .word-fx b{color:#C3D2CB;animation-name:ed-hue}
+@media (max-width:992px){
+  .ed-hero .btn--dark{background:var(--ink);color:#fff}
+  .ed-hero .btn--ghost{color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+  .ed-hero .btn--ghost:hover{color:var(--green-900);box-shadow:inset 0 0 0 1.5px var(--green)}
+  .ed-hero .btn__circle--outline{color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+}
