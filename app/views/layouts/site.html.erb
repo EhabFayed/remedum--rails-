@@ -8,9 +8,9 @@
   <link rel="alternate" hreflang="<%= I18n.locale %>" href="<%= self_canonical_path %>">
   <link rel="alternate" hreflang="<%= rtl? ? "en" : "ar" %>" href="<%= alt_locale_path %>">
   <link rel="alternate" hreflang="x-default" href="<%= rtl? ? self_canonical_path : alt_locale_path %>">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon.ico" sizes="32x32">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" href="<%= static_asset("/favicon.svg") %>" type="image/svg+xml">
+  <link rel="icon" href="<%= static_asset("/favicon.ico") %>" sizes="32x32">
+  <link rel="apple-touch-icon" href="<%= static_asset("/apple-touch-icon.png") %>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <% if rtl? %>
