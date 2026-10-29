@@ -196,14 +196,15 @@
 <%# before / after slider, under the face map (Oct 2026) %>
 <%= render "shared/before_after" %>
 
-<%# Compare section as a "hand of cards" (Oct 2026, from the client's reference image): one card per product.
-    Desktop: scrolling into the section deals the cards from a stacked deck into a fan held from below,
-    Mid raised in the middle (site.js sets --e from scroll position). Phones: the cards stack as you scroll.
-    No ranking between products: the middle card is simply the middle density. %>
+<%# Compare section as a criterion × product grid (Oct 2026): one row per criterion, one column per product,
+    so each value is read against the two beside it on the same scale. Desktop and tablets: four columns
+    (criterion + three products). Phones: the criterion becomes a heading over three narrow product columns,
+    with the product header row pinned under the site header (site.js measures the header's height).
+    No ranking between products: the order is simply deep to superficial. %>
 <% cmp_products = [
-     { key: 'subq', slug: 'sub-q', name: 'Sub-Q', tag: 'brands_50', level: 'brands_58', areas: 'brands_52', dur: 'brands_53', from: 18, to: 24, needle: 'brands_59', depth: 84 },
-     { key: 'mid',  slug: 'mid',   name: 'Mid',   tag: 'brands_26', level: 'brands_34', areas: 'brands_28', dur: 'brands_29', from: 12, to: 18, needle: 'brands_35', depth: 50 },
-     { key: 'fine', slug: 'fine',  name: 'Fine',  tag: 'brands_1',  level: 'brands_9',  areas: 'brands_3',  dur: 'brands_4',  from: 9,  to: 12, needle: 'brands_10', depth: 27 }
+     { key: 'subq', slug: 'sub-q', name: 'Sub-Q', tag: 'brands_50', level: 'brands_58', areas: 'brands_52', from: 18, to: 24, gauge: '25–27G', wire: 3, depth: 84 },
+     { key: 'mid',  slug: 'mid',   name: 'Mid',   tag: 'brands_26', level: 'brands_34', areas: 'brands_28', from: 12, to: 18, gauge: '27G',    wire: 2, depth: 50 },
+     { key: 'fine', slug: 'fine',  name: 'Fine',  tag: 'brands_1',  level: 'brands_9',  areas: 'brands_3',  from: 9,  to: 12, gauge: '30G',    wire: 1, depth: 27 }
    ] %>
 <section class="cmph" id="compare">
   <span class="cmph__blob cmph__blob--a" aria-hidden="true"></span>
@@ -217,51 +218,89 @@
       <p class="sec-lead"><%= t('content.remedium_compare_lead') %></p>
     </div>
 
-    <div class="cmph__stage" data-cmp-hand>
-      <% cmp_products.each_with_index do |p, i| %>
-      <article class="cmpc" data-col="<%= p[:key] %>" style="--c:var(--fm-<%= p[:key] %>);--i:<%= i %>">
-        <header class="cmpc__head">
-          <span class="cmpc__pack"><img src="/assets/img/remedium-<%= p[:key] %>-pack-v.webp" width="400" height="631" loading="lazy" alt="ReMedium <%= p[:name] %>"></span>
-          <span class="cmpc__title">
-            <h3 class="cmpc__name"><bdi dir="ltr">ReMedium <b><%= p[:name] %></b></bdi></h3>
-            <span class="cmpc__tag"><%= t("content.#{p[:tag]}").strip %></span>
-          </span>
-        </header>
-        <dl class="cmpc__list">
-          <div class="cmpc__row">
-            <dt><%= t('content.brands_175') %></dt>
-            <dd>
-              <span class="cmpc__depth" style="--depth:<%= p[:depth] %>%" aria-hidden="true">
-                <i class="cmpc__layer"><em><%= t('content.remedium_cmp_layer_epi') %></em></i>
-                <i class="cmpc__layer"><em><%= t('content.remedium_cmp_layer_derm') %></em></i>
-                <i class="cmpc__layer"><em><%= t('content.remedium_cmp_layer_sub') %></em></i>
-                <span class="cmpc__needle"></span><span class="cmpc__dot"></span>
-              </span>
-              <span class="cmpc__level"><%= t("content.#{p[:level]}") %></span>
-            </dd>
-          </div>
-          <div class="cmpc__row">
-            <dt><%= t('content.brands_176') %></dt>
-            <dd><ul class="cmpc__chips"><% t("content.#{p[:areas]}").split('·').map(&:strip).reject(&:blank?).each do |area| %><li><%= area %></li><% end %></ul></dd>
-          </div>
-          <div class="cmpc__row">
-            <dt><%= t('content.brands_94') %></dt>
-            <dd class="cmpc__dur">
-              <b><%= t("content.#{p[:dur]}") %></b>
-              <span class="cmpc__track"><span style="inset-inline-start:<%= p[:from] * 100 / 24.0 %>%;width:<%= (p[:to] - p[:from]) * 100 / 24.0 %>%"></span></span>
-            </dd>
-          </div>
-          <div class="cmpc__row">
-            <dt><%= t('content.brands_177') %></dt>
-            <dd class="cmpc__needlerow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 2 4 4M17 7l-9.5 9.5M14.5 4.5l5 5M3 21l3.5-3.5M9 12l3 3M6.5 14.5l3 3"/></svg><span><%= t("content.#{p[:needle]}") %></span></dd>
-          </div>
-        </dl>
-        <a class="cmpc__go" href="<%= locale_path("brands/remedium/#{p[:slug]}") %>"><span><%= t('content.brands_96') %></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></a>
-      </article>
-      <% end %>
+    <div class="cmpg" role="table" aria-label="<%= t('content.remedium_cmp_table_aria') %>">
+      <div class="cmpg__hdr" role="row">
+        <div class="cmpg__corner" role="columnheader"><%= t('content.remedium_cmp_criterion') %></div>
+        <% cmp_products.each do |p| %>
+        <div class="cmpg__prod" role="columnheader" style="--c:var(--fm-<%= p[:key] %>)">
+          <a href="<%= locale_path("brands/remedium/#{p[:slug]}") %>">
+            <span class="cmpg__pack"><img src="/assets/img/remedium-<%= p[:key] %>-pack-v.webp" width="400" height="631" loading="lazy" alt=""></span>
+            <span class="cmpg__ptitle">
+              <span class="cmpg__brand">ReMedium</span>
+              <span class="cmpg__pname"><bdi dir="ltr"><%= p[:name] %></bdi></span>
+              <span class="cmpg__ptag"><%= t("content.#{p[:tag]}").strip %></span>
+            </span>
+          </a>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="cmpg__row" role="row">
+        <div class="cmpg__lbl" role="rowheader">
+          <b><%= t('content.brands_175') %></b>
+          <span class="cmpg__hint"><%= t('content.remedium_cmp_depth_hint') %></span>
+          <ul class="cmpg__legend" aria-hidden="true">
+            <li><i></i><%= t('content.remedium_cmp_layer_epi') %></li>
+            <li><i></i><%= t('content.remedium_cmp_layer_derm') %></li>
+            <li><i></i><%= t('content.remedium_cmp_layer_sub') %></li>
+          </ul>
+        </div>
+        <% cmp_products.each do |p| %>
+        <div class="cmpg__cell" role="cell" style="--c:var(--fm-<%= p[:key] %>)">
+          <span class="cmpg__depth" style="--depth:<%= p[:depth] %>%" aria-hidden="true"><i></i><i></i><i></i><span class="cmpg__needle"></span><span class="cmpg__dot"></span></span>
+          <span class="cmpg__lvl"><%= t("content.remedium_cmp_lvl_#{p[:key]}") %></span>
+          <span class="cmpg__lvl-full"><%= t("content.#{p[:level]}") %></span>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="cmpg__row" role="row">
+        <div class="cmpg__lbl" role="rowheader"><b><%= t('content.brands_176') %></b></div>
+        <% cmp_products.each do |p| %>
+        <div class="cmpg__cell" role="cell" style="--c:var(--fm-<%= p[:key] %>)">
+          <ul class="cmpg__chips"><% t("content.#{p[:areas]}").split('·').map(&:strip).reject(&:blank?).each do |area| %><li><%= area %></li><% end %></ul>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="cmpg__row" role="row">
+        <div class="cmpg__lbl" role="rowheader">
+          <b><%= t('content.brands_94') %></b>
+          <span class="cmpg__hint"><%= t('content.remedium_cmp_months_scale') %></span>
+        </div>
+        <% cmp_products.each do |p| %>
+        <div class="cmpg__cell" role="cell" style="--c:var(--fm-<%= p[:key] %>)">
+          <span class="cmpg__num"><b><bdi dir="ltr"><%= p[:from] %>–<%= p[:to] %></bdi></b><small><%= t('content.remedium_cmp_months') %></small></span>
+          <span class="cmpg__track" aria-hidden="true"><span style="inset-inline-start:<%= p[:from] * 100 / 24.0 %>%;width:<%= (p[:to] - p[:from]) * 100 / 24.0 %>%"></span></span>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="cmpg__row" role="row">
+        <div class="cmpg__lbl" role="rowheader">
+          <b><%= t('content.brands_177') %></b>
+          <span class="cmpg__hint"><%= t('content.remedium_cmp_gauge_hint') %></span>
+        </div>
+        <% cmp_products.each do |p| %>
+        <div class="cmpg__cell" role="cell" style="--c:var(--fm-<%= p[:key] %>)">
+          <span class="cmpg__gauge"><bdi dir="ltr"><%= p[:gauge] %></bdi></span>
+          <i class="cmpg__wire" style="--t:<%= p[:wire] %>px" aria-hidden="true"></i>
+          <span class="cmpg__ndl"><%= t("content.remedium_cmp_ndl_#{p[:key]}") %></span>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="cmpg__foot" role="row">
+        <div role="cell"></div>
+        <% cmp_products.each do |p| %>
+        <div role="cell" style="--c:var(--fm-<%= p[:key] %>)">
+          <a class="cmpg__go" href="<%= locale_path("brands/remedium/#{p[:slug]}") %>"><span><%= t('content.brands_96') %></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></a>
+        </div>
+        <% end %>
+      </div>
     </div>
 
-    <%# identical for all three, so said once under the hand %>
+    <%# identical for all three, so said once under the grid %>
     <ul class="cmph__shared">
       <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><%= t('content.brands_173') %>: <b class="lat" dir="ltr"><%= t('content.brands_174') %></b></span></li>
       <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><%= t('content.brands_152') %>: <b><%= t('content.brands_180') %></b></span></li>

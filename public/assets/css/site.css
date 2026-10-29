@@ -2002,7 +2002,7 @@ html.nav-locked .to-top,html.srch-locked .to-top{opacity:0;pointer-events:none}
 /* ---------- ReMedium comparison tool ---------- */
 #compare{scroll-margin-top:96px}
 /* ---------- Compare: a hand of cards (Oct 2026, client reference) ---------- */
-.cmph{--cream:#F7F2EA;position:relative;overflow:hidden;margin-top:56px;padding:88px 0 96px;background:var(--cream);isolation:isolate}
+.cmph{--cream:#F7F2EA;position:relative;overflow:clip;margin-top:56px;padding:88px 0 96px;background:var(--cream);isolation:isolate}
 .cmph + .section{padding-top:64px}
 .cmph__blob{position:absolute;border-radius:50%;z-index:-1;pointer-events:none}
 .cmph__blob--a{width:min(46vw,520px);aspect-ratio:1;background:#E9BFA9;opacity:.55;inset-inline-end:-12vw;top:30%}
@@ -2013,78 +2013,141 @@ html.nav-locked .to-top,html.srch-locked .to-top{opacity:0;pointer-events:none}
 .cmph__head{margin-inline:auto;text-align:center;align-items:center}
 .cmph__head .sec-lead{margin-inline:auto}
 
-/* the hand */
-.cmph__stage{--w:clamp(280px,25vw,330px);--gap:10px;--e:1;display:flex;justify-content:center;align-items:flex-end;gap:var(--gap);
-  padding:56px 0 30px;perspective:1600px}
-.cmpc{position:relative;flex:none;width:var(--w);display:flex;flex-direction:column;border-radius:22px;overflow:hidden;background:#fff;
-  box-shadow:0 30px 60px -28px rgba(23,57,45,.45),0 2px 6px rgba(23,57,45,.06);border:1px solid rgba(23,57,45,.08);
-  /* --dx: distance to the middle (set by site.js), --side: -1 | 0 | 1; --e: 0 = stacked deck, 1 = fanned hand */
-  transform-origin:50% 135%;
-  transform:translateX(calc(var(--dx,0px) * (1 - var(--e)))) translateY(calc((1 - var(--e)) * 70px + var(--lift,0px) * var(--e)))
-            rotate(calc(var(--side,0) * (6deg * var(--e) - 3deg * (1 - var(--e))))) scale(calc(.9 + .1 * var(--e) + var(--grow,0) * var(--e)));
-  will-change:transform}
-.cmpc[data-col="mid"]{z-index:3;--lift:-26px;--grow:.04}
-.cmpc[data-col="subq"],.cmpc[data-col="fine"]{z-index:2}
-.cmpc:hover{box-shadow:0 36px 70px -26px rgba(23,57,45,.55)}
+/* the comparison grid: one row per criterion, one column per product, so every value is read against
+   its two neighbours. Each cell is on the same scale as the cells beside it (same skin cross-section,
+   same 0–24 month track, same wire thickness rule). The grid itself has no overflow:hidden because the
+   product header row is sticky on phones. */
+.cmpg{--cols:minmax(176px,.78fr) repeat(3,minmax(0,1fr));--hdr:0px;position:relative;margin-top:8px;background:#fff;border-radius:24px;
+  border:1px solid rgba(23,57,45,.1);box-shadow:0 30px 60px -30px rgba(23,57,45,.35),0 2px 6px rgba(23,57,45,.05)}
+.cmpg__hdr,.cmpg__row,.cmpg__foot{display:grid;grid-template-columns:var(--cols)}
+.cmpg__row,.cmpg__foot{border-top:1px solid #EDE7DD}
+.cmpg__foot{background:#FBF8F3;border-radius:0 0 24px 24px}
 
-/* card head: dark green band like the reference, the pack in its colour */
-.cmpc__head{position:relative;display:flex;align-items:center;gap:14px;padding:16px 18px;background:#17392D;color:#fff;border-bottom:4px solid var(--c)}
-.cmpc__pack{flex:none;width:52px;height:82px;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 0 0 2px var(--c)}
-.cmpc__pack img{width:100%;height:100%;object-fit:cover;display:block}
-.cmpc__title{display:flex;flex-direction:column;gap:4px;min-width:0}
-.cmpc__name{margin:0;font-family:var(--ff-lat);font-size:18px;font-weight:600;line-height:1.25;color:#fff;white-space:nowrap}
-.cmpc__name b{font-weight:800;color:var(--c)}
-.cmpc__tag{font-size:12.5px;font-weight:600;line-height:1.6;color:rgba(255,255,255,.72)}
+/* product columns: dark band, the name in the product colour, a coloured rule so the colour carries down the column */
+.cmpg__hdr{background:#17392D;color:#fff;border-radius:24px 24px 0 0}
+.cmpg__corner{display:flex;align-items:flex-end;padding:18px 20px 14px;font-size:12px;font-weight:700;color:rgba(255,255,255,.55)}
+.cmpg__prod{position:relative;padding:18px 16px;border-inline-start:1px solid rgba(255,255,255,.08)}
+.cmpg__prod::after{content:"";position:absolute;inset:auto 0 0 0;height:4px;background:var(--c)}
+.cmpg__prod a{display:flex;align-items:center;gap:12px;min-width:0;color:#fff;text-decoration:none}
+.cmpg__prod a:hover .cmpg__pname{text-decoration:underline;text-underline-offset:4px}
+.cmpg__pack{flex:none;width:40px;height:62px;border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 0 0 2px var(--c)}
+.cmpg__pack img{width:100%;height:100%;object-fit:cover;display:block}
+.cmpg__brand{display:block;font-family:var(--ff-lat);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.cmpg__pname{display:block;font-family:var(--ff-lat);font-size:24px;font-weight:800;line-height:1.15;color:var(--c);white-space:nowrap}
+.cmpg__ptag{display:block;margin-top:3px;font-size:12px;line-height:1.5;color:rgba(255,255,255,.75)}
 
-.cmpc__list{margin:0;padding:6px 18px 4px;display:flex;flex-direction:column;flex:1}
-.cmpc__row{padding:12px 0;border-top:1px solid #EDE7DD}
-.cmpc__row:first-child{border-top:0}
-.cmpc__row dt{font-size:11.5px;font-weight:700;color:#8A7F70;margin-bottom:7px}
-.cmpc__row dd{margin:0;font-size:13px;line-height:1.85;color:var(--ink-2)}
-/* mini skin cross-section: the needle stops at this product's layer */
-.cmpc__depth{position:relative;display:grid;grid-template-rows:18% 46% 36%;height:86px;border-radius:12px;overflow:hidden;margin-bottom:8px}
-.cmpc__layer{display:flex;align-items:center;justify-content:flex-end;padding-inline-end:10px;font-style:normal}
-.cmpc__layer em{font-style:normal;font-size:9.5px;font-weight:700;color:rgba(70,40,25,.6)}
-.cmpc__layer:nth-child(1){background:linear-gradient(180deg,#F6DCCB,#EDC8B2)}
-.cmpc__layer:nth-child(2){background:linear-gradient(180deg,#E8B8A3,#D99A85)}
-.cmpc__layer:nth-child(3){background:radial-gradient(circle at 18% 45%,#F7E7BD 0 20%,transparent 21%),radial-gradient(circle at 58% 70%,#F7E7BD 0 22%,transparent 23%),#EDD9A2}
-.cmpc__needle{position:absolute;top:0;inset-inline-start:38%;width:3px;margin-inline-start:-1.5px;height:var(--depth);background:linear-gradient(180deg,#fff,var(--c));
+/* criterion column */
+.cmpg__lbl{padding:18px 20px;background:#FBF8F3}
+.cmpg__lbl b{display:block;font-family:var(--ff-d);font-size:14.5px;font-weight:800;line-height:1.5;color:#17392D}
+.cmpg__hint{display:block;margin-top:6px;font-size:11.5px;line-height:1.7;color:#8A7F70}
+.cmpg__legend{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:5px;font-size:11.5px;line-height:1.5;color:#5E6B63}
+.cmpg__legend li{display:flex;align-items:center;gap:7px}
+.cmpg__legend i{width:12px;height:12px;border-radius:3px;flex:none}
+.cmpg__legend li:nth-child(1) i{background:#F2D2BF}
+.cmpg__legend li:nth-child(2) i{background:#E0A892}
+.cmpg__legend li:nth-child(3) i{background:#EFDCA8}
+.cmpg__cell{padding:18px 16px;border-inline-start:1px solid #EDE7DD;background:color-mix(in srgb,var(--c) 3%,#fff);font-size:13px;line-height:1.8;color:var(--ink-2)}
+
+/* target layer: the same skin cross-section in every cell, the dot stops where this product is placed */
+.cmpg__depth{position:relative;display:grid;grid-template-rows:18% 46% 36%;height:78px;border-radius:10px;overflow:hidden}
+.cmpg__depth i:nth-child(1){background:linear-gradient(180deg,#F6DCCB,#EDC8B2)}
+.cmpg__depth i:nth-child(2){background:linear-gradient(180deg,#E8B8A3,#D99A85)}
+.cmpg__depth i:nth-child(3){background:radial-gradient(circle at 18% 45%,#F7E7BD 0 20%,transparent 21%),radial-gradient(circle at 58% 70%,#F7E7BD 0 22%,transparent 23%),#EDD9A2}
+.cmpg__needle{position:absolute;top:0;inset-inline-start:50%;width:3px;margin-inline-start:-1.5px;height:var(--depth);background:linear-gradient(180deg,#fff,var(--c));
   box-shadow:0 0 8px color-mix(in srgb,var(--c) 70%,transparent);border-radius:0 0 3px 3px}
-.cmpc__dot{position:absolute;top:var(--depth);inset-inline-start:38%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;
+.cmpg__dot{position:absolute;top:var(--depth);inset-inline-start:50%;width:14px;height:14px;margin-top:-7px;margin-inline-start:-7px;border-radius:50%;
   background:var(--c);box-shadow:0 0 0 3px #fff,0 0 14px 3px color-mix(in srgb,var(--c) 70%,transparent)}
-html[dir="rtl"] .cmpc__dot{margin:-7px -7px 0 0}
-.cmpc__level{display:block;font-size:12px;line-height:1.8;color:#5E6B63}
-.cmpc__chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
-.cmpc__chips li{padding:3px 11px;border-radius:999px;font-size:12px;font-weight:600;line-height:1.7;
-  background:color-mix(in srgb,var(--c) 16%,#fff);border:1px solid color-mix(in srgb,var(--c) 50%,#fff);color:var(--ink-2)}
-.cmpc__dur b{display:block;font-family:var(--ff-d);font-size:22px;font-weight:800;line-height:1.3;color:color-mix(in srgb,var(--c) 70%,#17392D)}
-.cmpc__track{position:relative;display:block;height:7px;margin-top:8px;border-radius:999px;background:#EFE9E0}
-.cmpc__track span{position:absolute;top:0;bottom:0;border-radius:999px;background:var(--c)}
-.cmpc__needlerow{display:flex;align-items:flex-start;gap:8px}
-.cmpc__needlerow svg{flex:none;margin-top:5px;color:color-mix(in srgb,var(--c) 75%,#17392D)}
-.cmpc__go{display:flex;align-items:center;justify-content:center;gap:8px;margin:6px 18px 18px;padding:12px 16px;border-radius:999px;
-  background:#17392D;color:#fff;font-size:13.5px;font-weight:700;text-decoration:none;transition:background .25s,transform .25s}
-.cmpc__go:hover{background:color-mix(in srgb,var(--c) 30%,#17392D);transform:translateY(-1px)}
-html[dir="rtl"] .cmpc__go svg{transform:scaleX(-1)}
+.cmpg__lvl{display:block;margin-top:10px;font-weight:700;line-height:1.6;color:#17392D}
+.cmpg__lvl-full{display:block;margin-top:2px;font-size:11.5px;line-height:1.7;color:#5E6B63}
 
-.cmph__shared{list-style:none;margin:34px auto 0;padding:14px 22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 26px;
+/* injection areas */
+.cmpg__chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.cmpg__chips li{padding:3px 11px;border-radius:999px;font-size:12px;font-weight:600;line-height:1.7;
+  background:color-mix(in srgb,var(--c) 16%,#fff);border:1px solid color-mix(in srgb,var(--c) 50%,#fff);color:var(--ink-2)}
+
+/* longevity: the same 0–24 month track in every cell (ticks every 6 months), so the bars line up across the row */
+.cmpg__num{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 6px;line-height:1.2;color:color-mix(in srgb,var(--c) 70%,#17392D)}
+.cmpg__num b{font-family:var(--ff-lat);font-size:26px;font-weight:800;white-space:nowrap}
+.cmpg__num small{font-family:var(--ff-d);font-size:12.5px;font-weight:700;color:#8A7F70}
+.cmpg__track{position:relative;display:block;height:8px;margin-top:10px;border-radius:999px;background:#EFE9E0}
+.cmpg__track::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(to right,transparent 0 calc(25% - 1px),#fff calc(25% - 1px) 25%)}
+.cmpg__track span{position:absolute;top:0;bottom:0;border-radius:999px;background:var(--c)}
+
+/* needle: the gauge, a wire drawn at a thickness that follows it, and how it is delivered */
+.cmpg__gauge{display:block;font-family:var(--ff-lat);font-size:24px;font-weight:800;line-height:1.2;color:color-mix(in srgb,var(--c) 70%,#17392D)}
+.cmpg__wire{display:block;height:var(--t);margin:10px 0 8px;border-radius:999px;background:linear-gradient(90deg,var(--c),color-mix(in srgb,var(--c) 35%,#fff))}
+.cmpg__ndl{display:block;font-size:12.5px;line-height:1.7;color:#5E6B63}
+
+/* footer: a link per column */
+.cmpg__foot > div{padding:14px 16px;border-inline-start:1px solid #EDE7DD}
+.cmpg__foot > div:first-child{border-inline-start:0}
+.cmpg__go{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 14px;border-radius:999px;
+  background:#17392D;color:#fff;font-size:13px;font-weight:700;text-decoration:none;transition:background .25s,transform .25s}
+.cmpg__go:hover{background:color-mix(in srgb,var(--c) 30%,#17392D);transform:translateY(-1px)}
+html[dir="rtl"] .cmpg__go svg{transform:scaleX(-1)}
+
+.cmph__shared{list-style:none;margin:30px auto 0;padding:14px 22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 26px;
   width:fit-content;max-width:100%;border-radius:18px;background:rgba(255,255,255,.75);border:1px solid #EDE7DD;font-size:13px;color:var(--ink-2)}
 .cmph__shared li{display:flex;align-items:center;gap:8px}
 .cmph__shared svg{color:var(--green)}
 .cmph__shared-note{font-size:11.5px;font-weight:700;color:#8A7F70;padding:2px 10px;border-radius:999px;border:1px solid #E3DACB}
 .cmph__note{text-align:center;max-width:760px;margin:18px auto 0}
 
-/* tablets, small laptops and phones: no room for a fan - the cards pile up like a hand as you scroll */
-@media (max-width:1100px){
-  .cmph{padding:64px 0 70px}
-  .cmph__stage{display:block;padding:24px 0 0;max-width:440px;margin-inline:auto}
-  .cmpc{width:auto;transform:none!important;position:sticky;top:calc(96px + var(--i) * 18px);margin-bottom:22px}
-  .cmpc:last-child{margin-bottom:0}
+/* tablets and small laptops: the same four columns, tighter */
+@media (max-width:960px){
+  .cmpg{--cols:minmax(136px,.7fr) repeat(3,minmax(0,1fr))}
+  .cmpg__lbl{padding:16px 14px}
+  .cmpg__cell{padding:16px 12px}
+  .cmpg__prod{padding:14px 12px}
+  .cmpg__prod a{gap:9px}
+  .cmpg__pack{width:32px;height:50px}
+  .cmpg__pname{font-size:19px}
+  .cmpg__ptag{display:none}
+  .cmpg__num b,.cmpg__gauge{font-size:22px}
+}
+/* phones: the criterion becomes a row heading, the three products sit side by side under it,
+   and the product header row stays pinned under the site header while the rows scroll past */
+@media (max-width:640px){
+  .cmph{padding:56px 0 64px}
+  .cmpg{--cols:repeat(3,minmax(0,1fr));border-radius:18px}
+  .cmpg__hdr{position:sticky;top:var(--hdr);z-index:5;border-radius:18px 18px 0 0;box-shadow:0 10px 24px -16px rgba(23,57,45,.5)}
+  .cmpg__corner{display:none}
+  .cmpg__prod{padding:10px 8px 12px}
+  .cmpg__prod:first-of-type{border-inline-start:0}
+  .cmpg__prod a{flex-direction:column;align-items:flex-start;gap:6px}
+  .cmpg__pack{width:26px;height:40px;border-radius:6px}
+  .cmpg__brand{font-size:9px;letter-spacing:.04em}
+  .cmpg__pname{font-size:16px}
+  .cmpg__lbl{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;padding:12px 12px 10px;border-bottom:1px solid #EDE7DD}
+  .cmpg__lbl b{font-size:13.5px}
+  .cmpg__hint{margin:0;font-size:11px}
+  .cmpg__legend{flex-direction:row;flex-wrap:wrap;gap:4px 12px;margin:4px 0 0;width:100%;font-size:11px}
+  .cmpg__cell{padding:12px 9px;font-size:12px;line-height:1.6}
+  .cmpg__lbl + .cmpg__cell{border-inline-start:0}
+  .cmpg__depth{height:64px;border-radius:8px}
+  .cmpg__dot{width:12px;height:12px;margin-top:-6px;margin-inline-start:-6px}
+  .cmpg__lvl{margin-top:8px;font-size:11.5px;line-height:1.5}
+  .cmpg__lvl-full{display:none}
+  .cmpg__chips{flex-direction:column;align-items:stretch;gap:5px}
+  .cmpg__chips li{padding:3px 7px;font-size:11px;line-height:1.5;text-align:center}
+  .cmpg__num{gap:4px}
+  .cmpg__num b{font-size:20px}
+  .cmpg__num small{font-size:11px}
+  .cmpg__track{height:7px;margin-top:8px}
+  .cmpg__gauge{font-size:20px}
+  .cmpg__wire{margin:8px 0 6px}
+  .cmpg__ndl{font-size:11px;line-height:1.5}
+  .cmpg__foot{border-radius:0 0 18px 18px}
+  .cmpg__foot > div:first-child{display:none}
+  .cmpg__foot > div{padding:10px 6px}
+  .cmpg__foot > div:nth-child(2){border-inline-start:0}
+  .cmpg__go{padding:9px 6px;gap:5px;font-size:11.5px}
   .cmph__leaves{opacity:.5}
   .cmph__shared{flex-direction:column;align-items:flex-start;width:auto}
 }
-@media (prefers-reduced-motion:reduce){
-  .cmpc{transform:none!important}
+@media (max-width:360px){
+  .cmpg__pname{font-size:14px}
+  .cmpg__num b,.cmpg__gauge{font-size:17px}
 }
 
 /* ---------- leadership: the general manager's card leads the row ---------- */
