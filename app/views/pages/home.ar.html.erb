@@ -220,22 +220,19 @@
     <%= render "shared/site_header" %>
 
     <!-- ================= 1. HERO + 2. IN NUMBERS ================= -->
-    <section class="hero">
-      <div class="hero__panel">
-        <span class="dots dots--a"></span>
-        <span class="dots dots--b"></span>
-        <span class="checker"></span>
+    <%# Hero, "Option 1 - Hero with a feeling (Editorial + Minimal)" design (Oct 2026), with the brand video in place of the leaf photo %>
+    <section class="ed-hero">
+      <div class="ed-hero__media" aria-hidden="true">
+        <video class="ed-hero__video" src="/assets/video/hero.mp4" poster="/hero.webp" autoplay muted loop playsinline></video>
       </div>
-
-      <div class="hero__inner">
-        <!-- LEFT -->
-        <div class="hero__left">
+      <div class="ed-hero__inner">
+        <div class="ed-hero__copy">
           <span class="hero__badge"
             ><svg class="ico ico--xs"><use href="#i-shield" /></svg> موزّع معتمد
             ومطابق لمتطلبات هيئة الغذاء والدواء</span
           >
 
-          <h1 class="hero__title">
+          <h1 class="ed-hero__title">
             <span class="line">الموزّع المعتمد والوكيل الحصري</span>
             <span class="line"
               >لمنتجات
@@ -264,7 +261,6 @@
             </a>
           </div>
 
-          <!-- 2. Beauty Roots in numbers -->
           <div class="stats-card">
             <ul class="stats-card__list">
               <li>
@@ -293,23 +289,7 @@
             </ul>
           </div>
         </div>
-
-        <!-- CENTER IMAGE -->
-        <div class="hero__figure">
-          <video src="/assets/video/hero.mp4" poster="/hero.webp" autoplay muted loop playsinline></video>
-        </div>
-
-        <!-- RIGHT: trust quote (Two Audiences cards removed per client) -->
-        <div class="hero__right">
-          <div class="hero__quote" style="border-top: 0; padding-top: 0; margin-top: 0">
-            <%# <p> %>
-              <%# «كل منتج/عبوة نُورّدها مسجّلة نظاميًا، وتُحفظ في ظروف مثالية، وقابلة %>
-              <%# للتتبّع برقم التشغيلة والفاتورة الضريبية من المصنع وحتى الوصول %>
-              <%# للعيادة.» %>
-            <%# </p> %>
-          </div>
-        </div>
-      </div>
+              </div>
     </section>
 
     <!-- ================= WHO WE ARE ================= -->
