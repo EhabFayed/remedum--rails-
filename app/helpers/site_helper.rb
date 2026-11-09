@@ -47,8 +47,8 @@ module SiteHelper
   FOOTER_LINKS = [
     %w[link_about company/about],
     %w[link_remedium brands/remedium],
-    %w[link_quality quality/certifications],
-    %w[link_supply quality/supply],
+    %w[link_certs quality/certifications],
+    %w[link_quality quality/supply],
     %w[link_knowledge knowledge],
     %w[link_contact company/contact]
   ].freeze
@@ -96,7 +96,7 @@ module SiteHelper
   # The same page in the other locale — for the language pill and hreflang.
   def alt_locale_path
     self_path = request.path.end_with?("/") ? request.path : "#{request.path}/"
-    return(I18n.locale == :ar ? "/en/" : "/") if self_path == "/" || self_path == "/en/"
+    return (I18n.locale == :ar ? "/en/" : "/") if self_path == "/" || self_path == "/en/"
 
     I18n.locale == :ar ? self_path.sub(%r{\A/ar/}, "/en/") : self_path.sub(%r{\A/en/}, "/ar/")
   end
@@ -116,7 +116,7 @@ module SiteHelper
   def certification_marks(certifications)
     certifications.uniq(&:code).map do |c|
       src = c.logo_path.presence || ("/assets/img/certs/sfda.svg" if c.code == "SFDA")
-      [src, c.code]
+      [ src, c.code ]
     end
   end
 end
