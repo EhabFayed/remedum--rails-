@@ -215,9 +215,9 @@
   };
 
   var FACE_PRODUCTS = IS_AR ? {
-    fine: { name: 'ReMedium Fine', depth: 'حقن سطحي', months: [9, 12], img: FACE_IMGS.fine },
-    mid: { name: 'ReMedium Mid', depth: 'حقن متوسط العمق', months: [12, 18], img: FACE_IMGS.mid },
-    subq: { name: 'ReMedium Sub-Q', depth: 'حقن عميق تحت الجلد', months: [18, 24], img: FACE_IMGS.subq }
+    fine: { name: 'ReMedium® Fine', depth: 'حقن سطحي', months: [9, 12], img: FACE_IMGS.fine },
+    mid: { name: 'ReMedium® Mid', depth: 'حقن متوسط العمق', months: [12, 18], img: FACE_IMGS.mid },
+    subq: { name: 'ReMedium® Sub-Q', depth: 'حقن عميق تحت الجلد', months: [18, 24], img: FACE_IMGS.subq }
   } : {
     fine: { name: 'ReMedium Fine', depth: 'Superficial placement', months: [9, 12], img: FACE_IMGS.fine },
     mid: { name: 'ReMedium Mid', depth: 'Mid-depth placement', months: [12, 18], img: FACE_IMGS.mid },

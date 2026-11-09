@@ -2210,3 +2210,7 @@ html[dir="rtl"] .ed-hero__cta svg{transform:scaleX(-1)}
   .ed-hero .btn--ghost:hover{color:var(--green-900);box-shadow:inset 0 0 0 1.5px var(--green)}
   .ed-hero .btn__circle--outline{color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
 }
+
+/* client content round (Nov 2026): «ReMedium®» in the hero — the mark sits small and raised */
+.word-fx b.word-fx__reg::before{font-size:.42em;vertical-align:super;margin-inline-start:.04em}
+.word-fx__letters{direction:ltr;unicode-bidi:isolate}
