@@ -6,7 +6,7 @@
   <div>
 
 <div class="crumbs">
-  <a href="<%= locale_path("") %>"><%= t('content.brands_76') %></a><span class="sep"><%= t('content.brands_80') %></span><a href="<%= locale_path("brands") %>"><%= t('content.brands_77') %></a><span class="sep"><%= t('content.brands_80') %></span><span class="here"><span class="lat" dir="ltr">ReMedium</span></span>
+  <a href="<%= locale_path("") %>"><%= t('content.brands_76') %></a><span class="sep"><%= t('content.brands_80') %></span><a href="<%= locale_path("brands") %>"><%= t('content.brands_77') %></a><span class="sep"><%= t('content.brands_80') %></span><span class="here"><span class="lat" dir="ltr">ReMedium®</span></span>
 </div>
     <h1 class="page-title"><%= t('content.brands_124_html') %></h1>
     <p class="page-hero__lead"><%= t('content.brands_125') %></p>
@@ -47,7 +47,7 @@
       <img src="/assets/img/brand-subq.webp" width="1600" height="1066" decoding="async" alt="ReMedium Sub-Q — <%= t('content.brands_50').strip %>">
       <div class="rm-pillar__copy">
         <span class="rm-pillar__tag"><%= t('content.brands_50').strip %></span>
-        <h3 class="rm-pillar__name"><bdi dir="ltr">ReMedium Sub-Q</bdi></h3>
+        <h3 class="rm-pillar__name"><bdi dir="ltr">ReMedium® Sub-Q</bdi></h3>
         <div class="rm-pillar__more">
           <p class="rm-pillar__areas"><%= t('content.brands_52') %></p>
           <div class="rm-pillar__meta">
@@ -61,7 +61,7 @@
       <img src="/assets/img/brand-mid.webp" width="1600" height="1066" decoding="async" alt="ReMedium Mid — <%= t('content.brands_26').strip %>">
       <div class="rm-pillar__copy">
         <span class="rm-pillar__tag"><%= t('content.brands_26').strip %></span>
-        <h3 class="rm-pillar__name"><bdi dir="ltr">ReMedium Mid</bdi></h3>
+        <h3 class="rm-pillar__name"><bdi dir="ltr">ReMedium® Mid</bdi></h3>
         <div class="rm-pillar__more">
           <p class="rm-pillar__areas"><%= t('content.brands_28') %></p>
           <div class="rm-pillar__meta">
@@ -75,7 +75,7 @@
       <img src="/assets/img/brand-fine.webp" width="1600" height="1066" decoding="async" alt="ReMedium Fine — <%= t('content.brands_1').strip %>">
       <div class="rm-pillar__copy">
         <span class="rm-pillar__tag"><%= t('content.brands_1').strip %></span>
-        <h3 class="rm-pillar__name"><bdi dir="ltr">ReMedium Fine</bdi></h3>
+        <h3 class="rm-pillar__name"><bdi dir="ltr">ReMedium® Fine</bdi></h3>
         <div class="rm-pillar__more">
           <p class="rm-pillar__areas"><%= t('content.brands_3') %></p>
           <div class="rm-pillar__meta">
@@ -166,7 +166,7 @@
   <div class="hero-split rm-fmap__grid">
     <div class="facemap__stage">
       <div class="facemap__frame" data-product="all">
-        <img class="facemap__photo" src="/assets/img/face-front.webp" width="880" height="1056" loading="lazy" alt="<%= t('content.brands_191') %> — ReMedium">
+        <img class="facemap__photo" src="/assets/img/face-front.webp" width="880" height="1056" loading="lazy" alt="<%= t('content.brands_191') %> — ReMedium®">
       </div>
     </div>
     <aside class="rm-fmap__side">
@@ -174,7 +174,7 @@
       <p class="rm-fmap__side-text"><%= t('content.remedium_fmap_side_text') %></p>
       <ul class="rm-fmap__key">
         <% [['subq', 'sub-q', 'Sub-Q'], ['mid', 'mid', 'Mid'], ['fine', 'fine', 'Fine']].each do |key, slug, name| %>
-          <li><a href="<%= locale_path("brands/remedium/#{slug}") %>" style="--c:var(--fm-<%= key %>)"><i aria-hidden="true"></i><b><bdi dir="ltr">ReMedium <%= name %></bdi></b><small><%= t("content.remedium_fmap_depth_#{key}") %></small></a></li>
+          <li><a href="<%= locale_path("brands/remedium/#{slug}") %>" style="--c:var(--fm-<%= key %>)"><i aria-hidden="true"></i><b><bdi dir="ltr">ReMedium® <%= name %></bdi></b><small><%= t("content.remedium_fmap_depth_#{key}") %></small></a></li>
         <% end %>
       </ul>
       <p class="rm-fmap__note"><%= t('content.remedium_fmap_note') %></p>
@@ -207,86 +207,48 @@
       <p class="sec-lead"><%= t('content.remedium_compare_lead') %></p>
     </div>
 
-    <div class="cmpg" role="table" aria-label="<%= t('content.remedium_cmp_table_aria') %>">
-      <div class="cmpg__hdr" role="row">
-        <div class="cmpg__corner" role="columnheader"><%= t('content.remedium_cmp_criterion') %></div>
-        <% cmp_products.each do |p| %>
-        <div class="cmpg__prod" role="columnheader" style="--c:var(--fm-<%= p[:key] %>)">
-          <a href="<%= locale_path("brands/remedium/#{p[:slug]}") %>">
-            <span class="cmpg__pack"><img src="/assets/img/remedium-<%= p[:key] %>-pack-v.webp" width="400" height="631" loading="lazy" alt=""></span>
-            <span class="cmpg__ptitle">
-              <span class="cmpg__brand">ReMedium</span>
-              <span class="cmpg__pname"><bdi dir="ltr"><%= p[:name] %></bdi></span>
-              <span class="cmpg__ptag"><%= t("content.#{p[:tag]}").strip %></span>
-            </span>
-          </a>
-        </div>
-        <% end %>
-      </div>
-
-      <div class="cmpg__row" role="row">
-        <div class="cmpg__lbl" role="rowheader">
-          <b><%= t('content.brands_175') %></b>
-          <span class="cmpg__hint"><%= t('content.remedium_cmp_depth_hint') %></span>
-          <ul class="cmpg__legend" aria-hidden="true">
-            <li><i></i><%= t('content.remedium_cmp_layer_epi') %></li>
-            <li><i></i><%= t('content.remedium_cmp_layer_derm') %></li>
-            <li><i></i><%= t('content.remedium_cmp_layer_sub') %></li>
-          </ul>
-        </div>
-        <% cmp_products.each do |p| %>
-        <div class="cmpg__cell" role="cell" style="--c:var(--fm-<%= p[:key] %>)">
-          <span class="cmpg__depth" style="--depth:<%= p[:depth] %>%" aria-hidden="true"><i></i><i></i><i></i><span class="cmpg__needle"></span><span class="cmpg__dot"></span></span>
-          <span class="cmpg__lvl"><%= t("content.remedium_cmp_lvl_#{p[:key]}") %></span>
-          <span class="cmpg__lvl-full"><%= t("content.#{p[:level]}") %></span>
-        </div>
-        <% end %>
-      </div>
-
-      <div class="cmpg__row" role="row">
-        <div class="cmpg__lbl" role="rowheader"><b><%= t('content.brands_176') %></b></div>
-        <% cmp_products.each do |p| %>
-        <div class="cmpg__cell" role="cell" style="--c:var(--fm-<%= p[:key] %>)">
-          <ul class="cmpg__chips"><% t("content.#{p[:areas]}").split('·').map(&:strip).reject(&:blank?).each do |area| %><li><%= area %></li><% end %></ul>
-        </div>
-        <% end %>
-      </div>
-
-      <div class="cmpg__row" role="row">
-        <div class="cmpg__lbl" role="rowheader">
-          <b><%= t('content.brands_94') %></b>
-          <span class="cmpg__hint"><%= t('content.remedium_cmp_months_scale') %></span>
-        </div>
-        <% cmp_products.each do |p| %>
-        <div class="cmpg__cell" role="cell" style="--c:var(--fm-<%= p[:key] %>)">
-          <span class="cmpg__num"><b><bdi dir="ltr"><%= p[:from] %>–<%= p[:to] %></bdi></b><small><%= t('content.remedium_cmp_months') %></small></span>
-          <span class="cmpg__track" aria-hidden="true"><span style="inset-inline-start:<%= p[:from] * 100 / 24.0 %>%;width:<%= (p[:to] - p[:from]) * 100 / 24.0 %>%"></span></span>
-        </div>
-        <% end %>
-      </div>
-
-      <div class="cmpg__row" role="row">
-        <div class="cmpg__lbl" role="rowheader">
-          <b><%= t('content.brands_177') %></b>
-          <span class="cmpg__hint"><%= t('content.remedium_cmp_gauge_hint') %></span>
-        </div>
-        <% cmp_products.each do |p| %>
-        <div class="cmpg__cell" role="cell" style="--c:var(--fm-<%= p[:key] %>)">
-          <span class="cmpg__gauge"><bdi dir="ltr"><%= p[:gauge] %></bdi></span>
-          <i class="cmpg__wire" style="--t:<%= p[:wire] %>px" aria-hidden="true"></i>
-          <span class="cmpg__ndl"><%= t("content.remedium_cmp_ndl_#{p[:key]}") %></span>
-        </div>
-        <% end %>
-      </div>
-
-      <div class="cmpg__foot" role="row">
-        <div role="cell"></div>
-        <% cmp_products.each do |p| %>
-        <div role="cell" style="--c:var(--fm-<%= p[:key] %>)">
-          <a class="cmpg__go" href="<%= locale_path("brands/remedium/#{p[:slug]}") %>"><span><%= t('content.brands_96') %></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></a>
-        </div>
-        <% end %>
-      </div>
+    <div class="cmph__stage" data-cmp-hand>
+      <% cmp_products.each_with_index do |p, i| %>
+      <article class="cmpc" data-col="<%= p[:key] %>" style="--c:var(--fm-<%= p[:key] %>);--i:<%= i %>">
+        <header class="cmpc__head">
+          <span class="cmpc__pack"><img src="/assets/img/remedium-<%= p[:key] %>-pack-v.webp" width="400" height="631" loading="lazy" alt="ReMedium® <%= p[:name] %>"></span>
+          <span class="cmpc__title">
+            <h3 class="cmpc__name"><bdi dir="ltr">ReMedium® <b><%= p[:name] %></b></bdi></h3>
+            <span class="cmpc__tag"><%= t("content.#{p[:tag]}").strip %></span>
+          </span>
+        </header>
+        <dl class="cmpc__list">
+          <div class="cmpc__row">
+            <dt><%= t('content.brands_175') %></dt>
+            <dd>
+              <span class="cmpc__depth" style="--depth:<%= p[:depth] %>%" aria-hidden="true">
+                <i class="cmpc__layer"><em><%= t('content.remedium_cmp_layer_epi') %></em></i>
+                <i class="cmpc__layer"><em><%= t('content.remedium_cmp_layer_derm') %></em></i>
+                <i class="cmpc__layer"><em><%= t('content.remedium_cmp_layer_sub') %></em></i>
+                <span class="cmpc__needle"></span><span class="cmpc__dot"></span>
+              </span>
+              <span class="cmpc__level"><%= t("content.#{p[:level]}") %></span>
+            </dd>
+          </div>
+          <div class="cmpc__row">
+            <dt><%= t('content.brands_176') %></dt>
+            <dd><ul class="cmpc__chips"><% t("content.#{p[:areas]}").split('·').map(&:strip).reject(&:blank?).each do |area| %><li><%= area %></li><% end %></ul></dd>
+          </div>
+          <div class="cmpc__row">
+            <dt><%= t('content.brands_94') %></dt>
+            <dd class="cmpc__dur">
+              <b><%= t("content.#{p[:dur]}") %></b>
+              <span class="cmpc__track"><span style="inset-inline-start:<%= p[:from] * 100 / 24.0 %>%;width:<%= (p[:to] - p[:from]) * 100 / 24.0 %>%"></span></span>
+            </dd>
+          </div>
+          <div class="cmpc__row">
+            <dt><%= t('content.brands_177') %></dt>
+            <dd class="cmpc__needlerow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 2 4 4M17 7l-9.5 9.5M14.5 4.5l5 5M3 21l3.5-3.5M9 12l3 3M6.5 14.5l3 3"/></svg><span><%= t("content.#{p[:needle]}") %></span></dd>
+          </div>
+        </dl>
+        <a class="cmpc__go" href="<%= locale_path("brands/remedium/#{p[:slug]}") %>"><span><%= t('content.brands_96') %></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"></path></svg></a>
+      </article>
+      <% end %>
     </div>
 
     <%# identical for all three, so said once under the grid %>
