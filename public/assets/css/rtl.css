@@ -225,3 +225,6 @@ html[dir="rtl"] .compare__row--head > span,
 html[dir="rtl"] .certs__head h3,
 html[dir="rtl"] .certs__list b,
 html[dir="rtl"] .post__title{letter-spacing:0}
+
+/* restored (Nov 2026): home «ما وراء المنتج» comparison — the slider commit removed its styles but the merge kept its markup */
+@media (max-width:992px){html[dir="rtl"] .compare__us::before{content:'جذور الجمال';letter-spacing:0}html[dir="rtl"] .compare__them::before{content:'توريد غير نظامي';letter-spacing:0}}

@@ -442,6 +442,57 @@
     });
   }
 
+  /* ---------- comparison: one criterion at a time ---------- */
+  var cmp = document.getElementById('cmp');
+  if (cmp) {
+    var cmpTabs = Array.prototype.slice.call(cmp.querySelectorAll('.cmp__tab'));
+    var cmpPanels = Array.prototype.slice.call(cmp.querySelectorAll('.cmp__panel'));
+    var cmpDotsWrap = cmp.querySelector('.cmp__dots');
+    var cmpCount = cmp.querySelector('.cmp__count');
+    var cmpCur = 0;
+    var cmpReady = false;
+    var cmpGo = function (n) {
+      cmpCur = (n + cmpPanels.length) % cmpPanels.length;
+      cmpTabs.forEach(function (t, i) {
+        var on = i === cmpCur;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+      });
+      cmpPanels.forEach(function (p, i) { p.classList.toggle('is-active', i === cmpCur); });
+      cmpDots.forEach(function (d, i) { d.classList.toggle('is-active', i === cmpCur); });
+      if (cmpCount) cmpCount.textContent = (cmpCur + 1) + ' / ' + cmpPanels.length;
+      // keep the active tab visible in the scrolling tab row (screen coords, so RTL works too)
+      if (cmpReady) {
+        var bar = cmpTabs[cmpCur].parentElement;
+        var tr = cmpTabs[cmpCur].getBoundingClientRect(), br = bar.getBoundingClientRect();
+        bar.scrollBy({ left: (tr.left + tr.width / 2) - (br.left + br.width / 2), behavior: 'smooth' });
+      }
+    };
+    var cmpDots = cmpPanels.map(function (_, i) {
+      var d = document.createElement('button');
+      d.type = 'button';
+      d.className = 'cmp__dot';
+      d.setAttribute('aria-label', (IS_AR ? 'المعيار ' : 'Criterion ') + (i + 1));
+      d.addEventListener('click', function () { cmpGo(i); });
+      cmpDotsWrap.appendChild(d);
+      return d;
+    });
+    cmpTabs.forEach(function (t, i) { t.addEventListener('click', function () { cmpGo(i); }); });
+    Array.prototype.forEach.call(cmp.querySelectorAll('.cmp__arrow'), function (b) {
+      b.addEventListener('click', function () { cmpGo(cmpCur + parseInt(b.getAttribute('data-dir'), 10)); });
+    });
+    cmp.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      var fwd = (e.key === 'ArrowRight') !== IS_AR;
+      cmpGo(cmpCur + (fwd ? 1 : -1));
+      cmpTabs[cmpCur].focus();
+      e.preventDefault();
+    });
+    cmpGo(0);
+    cmpReady = true;
+  }
+
   /* ---------- counters ---------- */
   var counters = Array.prototype.slice.call(document.querySelectorAll('.counter'));
   var runCounter = function (el) {
