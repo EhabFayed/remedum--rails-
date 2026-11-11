@@ -185,15 +185,14 @@
 <%# before / after slider, under the face map (Oct 2026) %>
 <%= render "shared/before_after" %>
 
-<%# Compare section as a criterion × product grid (Oct 2026): one row per criterion, one column per product,
-    so each value is read against the two beside it on the same scale. Desktop and tablets: four columns
-    (criterion + three products). Phones: the criterion becomes a heading over three narrow product columns,
-    with the product header row pinned under the site header (site.js measures the header's height).
-    No ranking between products: the order is simply deep to superficial. %>
+<%# Compare section as a "hand of cards" (Oct 2026, from the client's reference image): one card per product.
+    Desktop: scrolling into the section deals the cards from a stacked deck into a fan held from below,
+    Mid raised in the middle (site.js sets --e from scroll position). Phones: the cards stack as you scroll.
+    No ranking between products: the middle card is simply the middle density. %>
 <% cmp_products = [
-     { key: 'subq', slug: 'sub-q', name: 'Sub-Q', tag: 'brands_50', level: 'brands_58', areas: 'brands_52', from: 18, to: 24, gauge: '25–27G', wire: 3, depth: 84 },
-     { key: 'mid',  slug: 'mid',   name: 'Mid',   tag: 'brands_26', level: 'brands_34', areas: 'brands_28', from: 12, to: 18, gauge: '27G',    wire: 2, depth: 50 },
-     { key: 'fine', slug: 'fine',  name: 'Fine',  tag: 'brands_1',  level: 'brands_9',  areas: 'brands_3',  from: 9,  to: 12, gauge: '30G',    wire: 1, depth: 27 }
+     { key: 'subq', slug: 'sub-q', name: 'Sub-Q', tag: 'brands_50', level: 'brands_58', areas: 'brands_52', dur: 'brands_53', from: 18, to: 24, needle: 'brands_59', depth: 84 },
+     { key: 'mid',  slug: 'mid',   name: 'Mid',   tag: 'brands_26', level: 'brands_34', areas: 'brands_28', dur: 'brands_29', from: 12, to: 18, needle: 'brands_35', depth: 50 },
+     { key: 'fine', slug: 'fine',  name: 'Fine',  tag: 'brands_1',  level: 'brands_9',  areas: 'brands_3',  dur: 'brands_4',  from: 9,  to: 12, needle: 'brands_10', depth: 27 }
    ] %>
 <section class="cmph" id="compare">
   <span class="cmph__blob cmph__blob--a" aria-hidden="true"></span>
@@ -251,7 +250,7 @@
       <% end %>
     </div>
 
-    <%# identical for all three, so said once under the grid %>
+    <%# identical for all three, so said once under the hand %>
     <ul class="cmph__shared">
       <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><%= t('content.brands_173') %>: <b class="lat" dir="ltr"><%= t('content.brands_174') %></b></span></li>
       <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><%= t('content.brands_152') %>: <b><%= t('content.brands_180') %></b></span></li>

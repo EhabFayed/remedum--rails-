@@ -2095,3 +2095,59 @@ html[dir="rtl"] .ed-hero__cta svg{transform:scaleX(-1)}
 /* client content round (Nov 2026): «ReMedium®» in the hero — the mark sits small and raised */
 .word-fx b.word-fx__reg::before{font-size:.42em;vertical-align:super;margin-inline-start:.04em}
 .word-fx__letters{direction:ltr;unicode-bidi:isolate}
+
+/* restored from main (Nov 2026): the merge of main into dashboard kept main's markup for this
+   section but not its styles */
+.why{position:relative;padding:96px 0 100px;background:var(--mint);overflow:hidden}
+.why .deco-leaf--tr{width:130px;height:130px;top:80px;right:30px;color:#D5EDE1}
+.why__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.why-card{text-align:center}
+.why-card__img{
+  position:relative;
+  border-radius:var(--r-md);
+  overflow:visible;
+  margin-bottom:34px;
+}
+.why-card__img img{
+  width:100%;height:190px;object-fit:cover;
+  border-radius:var(--r-md);
+  transition:transform .7s var(--ease);
+}
+.why-card:hover .why-card__img img{transform:scale(1.03)}
+.why-card__btn{
+  position:absolute;right:14px;bottom:-20px;
+  width:42px;height:42px;border-radius:50%;
+  display:grid;place-items:center;
+  background:#fff;color:var(--ink);
+  box-shadow:var(--shadow-soft);
+  transition:.4s var(--ease);
+}
+.why-card:hover .why-card__btn{background:var(--green);color:#fff;transform:rotate(45deg)}
+.why-card.is-active .why-card__btn{background:var(--green);color:#fff}
+.why-card h3{
+  font-family:var(--ff-d);
+  font-size:17px;font-weight:600;letter-spacing:-.01em;margin-bottom:8px;
+}
+.why-card p{font-size:12.5px;line-height:1.75;color:var(--muted);max-width:250px;margin-inline:auto}
+.why-card.is-active h3{color:var(--green)}
+@media (max-width:1200px){.why__grid{grid-template-columns:repeat(2,1fr);gap:34px 26px}}
+@media (max-width:768px){.why__grid{grid-template-columns:1fr;max-width:380px;margin-inline:auto}}
+@media (hover:hover) and (pointer:fine){.stats-card,.certs__list li,.why-card,.post,.exp-badge,.collage__img,
+  .cmp__side,.compare__row,.acc,.testi__photo{
+    transition:
+      transform .38s var(--ease),
+      box-shadow .38s var(--ease),
+      border-color .38s var(--ease),
+      background-color .38s var(--ease);
+  }.why-card:hover{transform:translateY(-4px)}.why-card__img img{transition:transform .7s var(--ease),box-shadow .38s var(--ease)}.why-card:hover .why-card__img img{box-shadow:0 24px 46px -22px rgba(138,91,30,.42)}.why-card:not(.is-active):hover .why-card__btn{background:var(--brown);color:#fff}.why-card h3{transition:color .3s var(--ease)}.why-card:not(.is-active):hover h3{color:var(--brown-600)}}
+@media (prefers-reduced-motion:reduce){.stats-card:hover,.certs__list li:hover,.why-card:hover,.post:hover,
+  .exp-badge:hover,.btn:hover{transform:none}.collage__img:hover img,.testi__photo:hover img,
+  .why-card:hover .why-card__img img{transform:none}}
+@media (min-width:601px) and (max-width:768px){.why__grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:none}}
+html .btn:hover .btn__circle,
+html[dir] .btn:hover .btn__circle,
+html[dir] .btn--sm:hover .btn__circle,
+html .why-card:hover .why-card__btn,
+html[dir] .why-card:hover .why-card__btn,
+html .post:hover .post__btn,
+html[dir] .post:hover .post__btn{transform:none}

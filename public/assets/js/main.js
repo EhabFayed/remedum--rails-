@@ -430,6 +430,18 @@
 
   /* testimonials slider removed — section is off until real reviews are supplied */
 
+  /* ---------- why-choose-us active card ---------- */
+  var whyGrid = document.querySelector('.why__grid');
+  if (whyGrid) {
+    var cards = Array.prototype.slice.call(whyGrid.querySelectorAll('.why-card'));
+    cards.forEach(function (c) {
+      c.addEventListener('mouseenter', function () {
+        cards.forEach(function (x) { x.classList.remove('is-active'); });
+        c.classList.add('is-active');
+      });
+    });
+  }
+
   /* ---------- counters ---------- */
   var counters = Array.prototype.slice.call(document.querySelectorAll('.counter'));
   var runCounter = function (el) {
