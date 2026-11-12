@@ -77,7 +77,7 @@
   <div class="q-brand q-brand--remedium">
     <div class="q-brand__head">
       <h3 class="cert-brand__name lat" dir="ltr">ReMedium®</h3>
-      <p class="q-brand__text"><%= t('content.qc_remedium_text') %></p>
+
     </div>
     <% if remedium.any? %>
     <%# moving row, like the certification strip on the ReMedium page: the set is rendered 4 times and the
@@ -107,8 +107,6 @@
       <% list = brands["HA Filler"] || [] %>
       <% if list.any? %>
       <ul class="cert-brand__list"><% list.each { |c| concat mark_row.call(c) } %></ul>
-      <% else %>
-      <span class="chip chip--brown q-brand__pending"><%= t('content.certs_pending') %></span>
       <% end %>
     </article>
 
@@ -124,8 +122,6 @@
           <b class="q-brand__row-name lat" dir="ltr"><%= brand %></b>
           <% if list.any? %>
           <ul class="cert-brand__list"><% list.each { |c| concat mark_row.call(c) } %></ul>
-          <% else %>
-          <span class="chip chip--brown q-brand__pending"><%= t('content.certs_pending') %></span>
           <% end %>
         </div>
         <% end %>
