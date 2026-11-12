@@ -2095,3 +2095,10 @@ html[dir="rtl"] .ed-hero__cta svg{transform:scaleX(-1)}
 /* client content round (Nov 2026): «ReMedium®» in the hero — the mark sits small and raised */
 .word-fx b.word-fx__reg::before{font-size:.42em;vertical-align:super;margin-inline-start:.04em}
 .word-fx__letters{direction:ltr;unicode-bidi:isolate}
+
+/* face-map «Compare the three types» button: the ≤992px rule turns .btn--dark white for dark
+   backgrounds, which made this one vanish into the light section on phones — keep it as on desktop */
+@media (max-width:992px){
+  .facemap__cta{background:var(--ink);color:#fff}
+  .facemap__cta:hover{background:var(--green-900)}
+}
