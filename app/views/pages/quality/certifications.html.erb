@@ -98,45 +98,29 @@
     <% end %>
   </div>
 
-  <div class="q-brands">
-    <article class="card cert-brand q-brand">
-      <div class="q-brand__head">
-        <h3 class="cert-brand__name lat" dir="ltr">HA Filler</h3>
-        <p class="q-brand__text"><%= t('content.qc_hafiller_text') %></p>
-      </div>
-      <% list = brands["HA Filler"] || [] %>
-      <% if list.any? %>
-      <ul class="cert-brand__list"><% list.each { |c| concat mark_row.call(c) } %></ul>
-      <% end %>
-    </article>
-
-    <article class="card cert-brand q-brand q-brand--group">
-      <div class="q-brand__head">
-        <h3 class="cert-brand__name lat" dir="ltr">Hairont <span class="q-brand__sep">·</span> GynWell <span class="q-brand__sep">·</span> OVDs</h3>
-        <p class="q-brand__text"><%= t('content.qc_others_text') %></p>
-      </div>
-      <div class="q-brand__rows">
-        <% %w[Hairont GynWell OVDs].each do |brand| %>
-        <% list = brands[brand] || [] %>
-        <div class="q-brand__row">
-          <b class="q-brand__row-name lat" dir="ltr"><%= brand %></b>
-          <% if list.any? %>
-          <ul class="cert-brand__list"><% list.each { |c| concat mark_row.call(c) } %></ul>
-          <% end %>
-        </div>
-        <% end %>
-      </div>
-    </article>
-  </div>
-
-  <% makers.each do |maker, list| %>
-  <div class="cert-maker">
-    <div class="cert-maker__head">
+  <%# Jingjia Medical makes HA Filler, Hairont, GynWell and OVDs (Nov 2026): one block for the maker, laid out
+      like the ReMedium block above — the name, the products it makes, and a moving row of its verified
+      certifications (Admin > Certifications, group "manufacturer"). A record without a logo shows its code only. %>
+  <% makers.each do |maker, maker_certs| %>
+  <div class="q-brand q-brand--remedium q-brand--maker">
+    <div class="q-brand__head">
       <span class="eyebrow"><i></i><%= t('content.certs_maker_eyebrow') %></span>
-      <h3 class="cert-maker__name lat" dir="ltr"><%= maker %></h3>
-      <p class="cert-maker__text"><%= t('content.certs_maker_text') %></p>
+      <h3 class="cert-brand__name lat" dir="ltr"><%= maker %></h3>
+      <p class="q-brand__text"><%= t('content.certs_maker_text') %></p>
     </div>
-    <ul class="cert-maker__list"><% list.each { |c| concat mark_row.call(c) } %></ul>
+    <div class="rm-certs__marquee cert-marquee">
+      <ul class="rm-certs__track cert-tiles--track">
+        <% 4.times do |copy| %>
+        <% maker_certs.each do |c| %>
+        <li class="cert-tile"<%= ' aria-hidden="true"'.html_safe if copy > 0 %>>
+          <% if c.logo_path.present? %><span class="cert-tile__mark"><%= mark.call(c) %></span><% end %>
+          <b class="cert-tile__code" dir="ltr"><%= c.code %></b>
+          <span class="cert-tile__name"><%= c.name_for(I18n.locale) %></span>
+        </li>
+        <% end %>
+        <% end %>
+      </ul>
+    </div>
   </div>
   <% end %>
 </div></section>

@@ -2549,3 +2549,7 @@ html[dir="rtl"] .qslider__arrow svg{transform:scaleX(-1)}
   .section--mint .hf-slide__media{width:min(100%,220px)}
   .section--mint .hf-slide__name{font-size:21px}
 }
+
+/* Quality page, section 03 — the Jingjia Medical block reuses the ReMedium block; only its spacing differs */
+.q-brand--maker{margin-top:14px}
+.q-brand--maker .q-brand__head .eyebrow{margin-bottom:2px}
