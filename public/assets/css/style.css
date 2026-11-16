@@ -2110,3 +2110,15 @@ html[dir="rtl"] .ed-hero__cta svg{transform:scaleX(-1)}
 /* pinned portfolio accordion (Nov 2026): main.js wraps the section in .acc-pin and sets its height and top */
 .acc-pin{position:relative;overflow-anchor:none}
 .acc-pin > .services{position:sticky}
+
+/* hero: brand logos as a second moving row beside the certifications row (Nov 2026).
+   .hero-certs keeps its own cell; .hero-brands fills the other column of the same grid row. */
+.hero-certs,.hero-brands{min-width:0;align-self:start}
+.hero-certs .rm-certs__marquee,.hero-brands .rm-certs__marquee{min-height:58px;display:flex;align-items:center}
+.hero-brands{border-inline-start:1px solid var(--line);padding-inline-start:36px;margin-inline-start:36px}
+.hero-brands .rm-certs__track li{padding-inline-end:14px}
+.hero-brands .rm-certs__track img{height:58px;opacity:1}
+.hero-brands .rm-certs__track{animation-duration:6s}
+.hero-certs .rm-certs__track{animation-duration:13s}
+@media (max-width:992px){ .hero-brands{border-inline-start:0;padding-inline-start:0;margin-inline-start:0;margin-top:22px} }
+@media (max-width:760px){ .hero-brands .rm-certs__track{animation-duration:5s} .hero-certs .rm-certs__track{animation-duration:11s} .hero-brands .rm-certs__track img{height:46px} .hero-brands .rm-certs__track li{padding-inline-end:8px} }

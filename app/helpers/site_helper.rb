@@ -119,4 +119,16 @@ module SiteHelper
       [ src, c.code ]
     end
   end
+
+  # Logos of the brands Beauty Roots distributes, for the moving row beside the hero
+  # certifications (shared/_certs_strip). Files: public/assets/img/brand-logos, 600×240 transparent canvases.
+  BRAND_LOGOS = [
+    [ "remedium", "ReMedium" ], [ "hafiller", "HAFILLER" ], [ "hairont", "Hairont" ],
+    [ "gynwell", "GynWell" ], [ "ovds-text", "OVDs" ], [ "purito-seoul", "Purito Seoul" ],
+    [ "skin1004", "SKIN1004" ], [ "herbs-of-the-earth", "Herbs of the Earth" ], [ "orjena", "ORJENA" ]
+  ].freeze
+
+  def brand_logo_marks
+    BRAND_LOGOS.map { |file, name| [ "/assets/img/brand-logos/#{file}.webp", name ] }
+  end
 end
