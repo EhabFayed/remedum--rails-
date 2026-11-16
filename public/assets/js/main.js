@@ -65,6 +65,56 @@
       accordion.querySelectorAll('.acc').forEach(function (a) { a.classList.remove('is-open'); });
       item.classList.add('is-open');
     });
+
+    /* pinned, card by card (Nov 2026): while the reader scrolls, the section stays on screen and opens one
+       item per stretch of scrolling; after the last item the page moves on. The section is wrapped in a taller
+       box and made sticky; a section taller than the screen pins with its bottom on the screen's bottom, so
+       the accordion is what stays in view. Without this script the page simply scrolls as before. */
+    var accItems = Array.prototype.slice.call(accordion.querySelectorAll('.acc'));
+    var accSec = accordion.closest('section');
+    if (accItems.length > 1 && accSec && accSec.parentNode) {
+      var pin = document.createElement('div');
+      pin.className = 'acc-pin';
+      accSec.parentNode.insertBefore(pin, accSec);
+      pin.appendChild(accSec);
+      var STEP = 0.6;          /* screen heights of scrolling per item */
+      var accBand = -1, accTick = false, step = 0, top = 0;
+      var accOpen = function (i) {
+        if (accItems[i].classList.contains('is-open')) return;
+        accItems.forEach(function (a, k) { a.classList.toggle('is-open', k === i); });
+      };
+      var layout = function () {
+        var vh = window.innerHeight;
+        var hdr = document.querySelector('.site-header');
+        var hdrH = hdr && getComputedStyle(hdr).position === 'sticky' ? hdr.offsetHeight : 0;
+        /* fit the whole accordion — every title plus the open item's image — between the header and the
+           bottom of the screen: the image gives up height when the screen is short */
+        accordion.style.removeProperty('--acc-img-h');
+        var img = accordion.querySelector('.acc.is-open .acc__media img');
+        var room = vh - hdrH - 24 - (accordion.offsetHeight - (img ? img.offsetHeight : 0));
+        accordion.style.setProperty('--acc-img-h', Math.max(150, Math.min(img ? img.offsetHeight : 460, room)) + 'px');
+        step = Math.round(vh * STEP);
+        /* pin with the accordion's top just under the header */
+        top = hdrH + 12 - (accordion.getBoundingClientRect().top - accSec.getBoundingClientRect().top);
+        accSec.style.top = top + 'px';
+        pin.style.height = (accSec.offsetHeight + step * accItems.length) + 'px';
+      };
+      var accOnScroll = function () {
+        accTick = false;
+        var scrolled = top - pin.getBoundingClientRect().top;   /* 0 when pinning starts */
+        /* once pinned the whole accordion is on screen: show every item, even one its scroll-reveal has not reached */
+        if (scrolled >= -40) accItems.forEach(function (a) { a.classList.add('is-in'); });
+        var i = Math.max(0, Math.min(accItems.length - 1, Math.floor(scrolled / step)));
+        if (i === accBand) return;
+        accBand = i;
+        accOpen(i);
+      };
+      layout(); accOnScroll();
+      window.addEventListener('resize', function () { layout(); accOnScroll(); });
+      window.addEventListener('scroll', function () {
+        if (!accTick) { accTick = true; window.requestAnimationFrame(accOnScroll); }
+      }, { passive: true });
+    }
   }
 
   /* ---------- interactive face map ---------- */

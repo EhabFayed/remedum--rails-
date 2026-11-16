@@ -2102,3 +2102,12 @@ html[dir="rtl"] .ed-hero__cta svg{transform:scaleX(-1)}
   .facemap__cta{background:var(--ink);color:#fff}
   .facemap__cta:hover{background:var(--green-900)}
 }
+
+/* portfolio accordion opens on scroll (Nov 2026): a calmer open/close than the click default */
+#accordion .acc__panel{transition-duration:.9s}
+#accordion .acc__media img{transition-duration:1.1s}
+
+/* pinned portfolio accordion (Nov 2026): main.js wraps the section in .acc-pin and sets its height and top */
+.acc-pin{position:relative;overflow-anchor:none}
+.acc-pin > .services{position:sticky}
+.acc-pin #accordion .acc__media img{height:var(--acc-img-h,clamp(240px,31vw,460px))}
