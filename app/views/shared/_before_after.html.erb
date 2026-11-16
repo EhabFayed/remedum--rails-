@@ -1,9 +1,10 @@
 <%# Before / after slider (Oct 2026), modelled on the "قبل وبعد — اسحب للمقارنة" section of
     tower-next.vercel.app/ar/project/palace: one comparison at a time, drag the handle to reveal,
-    arrows + dots to move between cases. Used on the home page and the ReMedium page only.
+    arrows + dots to move between cases. Used on the home page, the ReMedium page and the ReMedium Mid / Sub-Q product pages.
     Photos: public/assets/img/before-after/<n>-{before,after}.webp, all cropped to 4:3 around the treated area. %>
 <%# every case uses the same 4:3 frame (1200x900), so the slider never changes size between cases %>
-<% ba_cases = (1..5).map { |n| [n, 1200, 900] } %>
+<%# local `cases`: which photos to show (default all 5); the ReMedium Mid page passes [1, 2], Sub-Q [3, 4, 5] %>
+<% ba_cases = (local_assigns[:cases] || (1..5)).map { |n| [n, 1200, 900] } %>
 <%# Photos are replaced in place under the same names, so their URLs carry the file digest (static_asset).
     The extra r=2: Cloudflare cached 1-after.webp?v=<digest> with the OLD photo after a pre-deploy request
     (2026-10-29); r=2 gives every slider photo a URL no one has requested yet. Bump it if that ever recurs. %>
