@@ -87,15 +87,14 @@
         var vh = window.innerHeight;
         var hdr = document.querySelector('.site-header');
         var hdrH = hdr && getComputedStyle(hdr).position === 'sticky' ? hdr.offsetHeight : 0;
-        /* fit the whole accordion — every title plus the open item's image — between the header and the
-           bottom of the screen: the image gives up height when the screen is short */
-        accordion.style.removeProperty('--acc-img-h');
-        var img = accordion.querySelector('.acc.is-open .acc__media img');
-        var room = vh - hdrH - 24 - (accordion.offsetHeight - (img ? img.offsetHeight : 0));
-        accordion.style.setProperty('--acc-img-h', Math.max(150, Math.min(img ? img.offsetHeight : 460, room)) + 'px');
         step = Math.round(vh * STEP);
-        /* pin with the accordion's top just under the header */
-        top = hdrH + 12 - (accordion.getBoundingClientRect().top - accSec.getBoundingClientRect().top);
+        /* images keep their normal size. Pin with the accordion's top just under the header; if the accordion
+           is taller than the space left, pin with its bottom on the screen's bottom instead */
+        var accOff = accordion.getBoundingClientRect().top - accSec.getBoundingClientRect().top;
+        var underHeader = hdrH + 12 - accOff;
+        var toBottom = vh - 12 - (accOff + accordion.offsetHeight);
+        top = Math.min(underHeader, Math.max(toBottom, underHeader - accordion.offsetHeight));
+        if (accordion.offsetHeight + 24 <= vh - hdrH) top = underHeader;
         accSec.style.top = top + 'px';
         pin.style.height = (accSec.offsetHeight + step * accItems.length) + 'px';
       };

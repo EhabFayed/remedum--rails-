@@ -2110,4 +2110,3 @@ html[dir="rtl"] .ed-hero__cta svg{transform:scaleX(-1)}
 /* pinned portfolio accordion (Nov 2026): main.js wraps the section in .acc-pin and sets its height and top */
 .acc-pin{position:relative;overflow-anchor:none}
 .acc-pin > .services{position:sticky}
-.acc-pin #accordion .acc__media img{height:var(--acc-img-h,clamp(240px,31vw,460px))}
