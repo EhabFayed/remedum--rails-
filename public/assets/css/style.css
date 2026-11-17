@@ -2115,10 +2115,13 @@ html[dir="rtl"] .ed-hero__cta svg{transform:scaleX(-1)}
    .hero-certs keeps its own cell; .hero-brands fills the other column of the same grid row. */
 .hero-certs,.hero-brands{min-width:0;align-self:start}
 .hero-certs .rm-certs__marquee,.hero-brands .rm-certs__marquee{min-height:58px;display:flex;align-items:center}
+/* the marquee is a flex container here, so the track must not shrink to it: at the container's width the
+   half-width slide covered ~250px and snapped back after two logos instead of looping over the whole set */
+.hero-certs .rm-certs__track,.hero-brands .rm-certs__track{flex:none}
 .hero-brands{border-inline-start:1px solid var(--line);padding-inline-start:36px;margin-inline-start:36px}
 .hero-brands .rm-certs__track li{padding-inline-end:14px}
 .hero-brands .rm-certs__track img{height:58px;opacity:1}
-.hero-brands .rm-certs__track{animation-duration:6s}
-.hero-certs .rm-certs__track{animation-duration:13s}
+.hero-brands .rm-certs__track{animation-duration:32s}
+.hero-certs .rm-certs__track{animation-duration:24s}
 @media (max-width:992px){ .hero-brands{border-inline-start:0;padding-inline-start:0;margin-inline-start:0;margin-top:22px} }
-@media (max-width:760px){ .hero-brands .rm-certs__track{animation-duration:5s} .hero-certs .rm-certs__track{animation-duration:11s} .hero-brands .rm-certs__track img{height:46px} .hero-brands .rm-certs__track li{padding-inline-end:8px} }
+@media (max-width:760px){ .hero-brands .rm-certs__track{animation-duration:25s} .hero-certs .rm-certs__track{animation-duration:17s} .hero-brands .rm-certs__track img{height:46px} .hero-brands .rm-certs__track li{padding-inline-end:8px} }
