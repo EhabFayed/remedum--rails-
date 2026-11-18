@@ -128,7 +128,9 @@ module SiteHelper
     [ "skin1004", "SKIN1004" ], [ "herbs-of-the-earth", "Herbs of the Earth" ], [ "orjena", "ORJENA" ]
   ].freeze
 
+  # Digested URLs (static_asset), since Cloudflare caches images for a year and a redrawn logo
+  # would otherwise stay stale at the edge.
   def brand_logo_marks
-    BRAND_LOGOS.map { |file, name| [ "/assets/img/brand-logos/#{file}.webp", name ] }
+    BRAND_LOGOS.map { |file, name| [ static_asset("/assets/img/brand-logos/#{file}.webp"), name ] }
   end
 end
